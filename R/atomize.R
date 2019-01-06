@@ -9,9 +9,9 @@
 #' Non-atomic columns (e.g. `list` or complex S4 classes) will be dropped.
 #'
 #' @examples
-#' object <- S4Vectors::DataFrame(a = "a", b = list(a = seq_len(3)))
-#' lapply(object, is.atomic)
-#' atomize(object)
+#' df <- S4Vectors::DataFrame(a = "a", b = list(a = seq_len(3)))
+#' lapply(df, is.atomic)
+#' x <- atomize(df)
 atomize <- function(object) {
     class <- class(object)[[1L]]
     # First, coerce to S3 data frame.

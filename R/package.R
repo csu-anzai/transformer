@@ -12,7 +12,12 @@
 #' @importFrom BiocGenerics as.data.frame
 #' @importFrom S4Vectors metadata metadata<-
 #' @importFrom SummarizedExperiment rowData rowData<- rowRanges
-#' @importFrom goalie assert hasRownames
-#' @importFrom methods as coerce is setAs setMethod signature slotNames .hasSlot
+#' @importFrom goalie assert hasLength hasRownames
+#' @importFrom methods as is setAs setMethod signature slotNames .hasSlot
 #' @importFrom tibble as_tibble
 "_PACKAGE"
+
+# This is needed to properly declare S4 `as()` coercion methods.
+#' @importFrom methods coerce
+#' @exportMethod coerce
+NULL

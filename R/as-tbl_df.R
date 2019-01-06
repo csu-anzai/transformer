@@ -1,0 +1,135 @@
+#' Coerce to `tbl_df` (tibble)
+#'
+#' @name as-tbl_df
+#'
+#' @section S3 `as_tibble()`:
+#'
+#' S4Transform extends [`as_tibble()`][tibble::as_tibble] method support for
+#' these S4 classes:
+#'
+#' - `DataFrame`.
+#' - `GRanges`.
+#'
+#' @section S4 `as()`:
+#'
+#' Since `tbl_df` is a virtual class that extends `tbl` and `data.frame`, we
+#' need to define an S4 coercion method that allows us to use
+#' [`as()`][methods::as] to coerce an object to a tibble.
+#'
+#' See `getClass("tbl_df")` for details on how tibble is a virtual class.
+#'
+#' @examples
+#' load(system.file("extdata", "rse.rda", package = "S4Transformer"))
+#'
+#' ## DataFrame ====
+#' df <- SummarizedExperiment::colData(rse)
+#' print(df)
+#'
+#' x <- as(df, "tbl_df")
+#' print(x)
+#'
+#' x <- tibble::as_tibble(df)
+#' print(x)
+#'
+#' ## GRanges ====
+#' gr <- SummarizedExperiment::rowRanges(rse)
+#'
+#' x <- as(gr, "tbl_df")
+#'
+#' x <- tibble::as_tibble(gr)
+#' colnames(x)
+NULL
+
+
+
+# S3 ===========================================================================
+#' @rdname as-tbl_df
+#' @name as_tibble
+#' @importFrom tibble as_tibble
+#' @export
+NULL
+
+
+
+#' @method as_tibble DataFrame
+#' @export
+as_tibble.DataFrame <-  # nolint
+    function(x, ..., rownames = "rowname") {
+        # Coerce to standard data frame.
+        x <- as(x, "data.frame")
+        # Check for valid columns (atomic, list).
+        valid <- vapply(
+            X = x,
+            FUN = function(x) {
+                is.atomic(x) || is.list(x)
+            },
+            FUN.VALUE = logical(1L),
+            USE.NAMES = TRUE
+        )
+        # Error if S4 columns are nested.
+        if (!all(valid)) {
+            invalid <- names(valid[!valid])
+            stop(paste0(
+                "tibble supports atomic and list columns.\n",
+                "Invalid columns: ", toString(invalid)
+            ), call. = FALSE)
+        }
+        if (!hasRownames(x)) {
+            rownames <- NULL
+        }
+        do.call(what = as_tibble, args = list(x = x, ..., rownames = rownames))
+    }
+
+
+
+# The default handling from data.frame isn't clean, so add this.
+# Default method will warn: `Arguments in '...' ignored`.
+#' @method as_tibble GRanges
+#' @export
+as_tibble.GRanges <-  # nolint
+    function(x, ..., rownames = "rowname") {
+        names <- names(x)
+        x <- as(x, "data.frame")
+        rownames(x) <- names
+        if (!hasRownames(x)) {
+            rownames <- NULL
+        }
+        do.call(what = as_tibble, args = list(x = x, ..., rownames = rownames))
+    }
+
+
+
+# S4 ===========================================================================
+#' @rdname as-tbl_df
+#' @name coerce,data.frame,tbl_df-method
+setAs(
+    from = "data.frame",
+    to = "tbl_df",
+    def = function(from) {
+        as_tibble(from)
+    }
+)
+
+
+
+#' @rdname as-tbl_df
+#' @name coerce,DataFrame,tbl_df-method
+setAs(
+    from = "DataFrame",
+    to = "tbl_df",
+    def = function(from) {
+        as_tibble(from)
+    }
+)
+
+
+
+#' @rdname as-tbl_df
+#' @name coerce,GRanges,tbl_df-method
+setAs(
+    from = "GRanges",
+    to = "tbl_df",
+    def = function(from) {
+        as_tibble(from)
+    }
+)

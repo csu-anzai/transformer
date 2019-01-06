@@ -5,6 +5,8 @@
 \title{Parameters}
 \arguments{
 \item{object}{Object.}
+
+\item{x}{Object.}
 }
 \description{
 Parameters

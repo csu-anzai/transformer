@@ -24,7 +24,7 @@ coerceS4ToList(from)
 Coerce any S4 object to a list
 }
 \examples{
-data(rse)
+load(system.file("extdata", "rse.rda", package = "S4Transformer"))
 
 x <- coerceS4ToList(rse)
 class(x)

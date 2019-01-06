@@ -1,25 +1,18 @@
 #' Coerce to `data.frame`
 #'
-#' @name data.frame
-#'
+#' @name as-data.frame
 #' @inheritParams base::as.data.frame
 #'
 #' @examples
 #' ## sparseMatrix ====
-#' i <- c(1, 3:8)
-#' j <- c(2, 9, 6:10)
-#' x <- 7 * (1:7)
-#' sm <- Matrix::sparseMatrix(i = i, j = j, x = x)
-#' dim(sm)
-#' summary(sm)
-#' str(sm)
-#' ## Now you can avoid having to coerce with `as.matrix()` first.
-#' df <- as.data.frame(sm)
+#' load(system.file("extdata", "sparseMatrix.rda", package = "S4Transformer"))
+#' x <- as(sparseMatrix, "data.frame")
+#' head(x)
 NULL
 
 
 
-#' @rdname data.frame
+#' @rdname as-data.frame
 #' @name as.data.frame
 #' @importFrom BiocGenerics as.data.frame
 #' @export
@@ -27,7 +20,7 @@ NULL
 
 
 
-#' @rdname data.frame
+#' @rdname as-data.frame
 #' @export
 setMethod(
     f = "as.data.frame",
@@ -39,7 +32,7 @@ setMethod(
 
 
 
-#' @rdname data.frame
+#' @rdname as-data.frame
 #' @name coerce,sparseMatrix,data.frame-method
 setAs(
     from = "sparseMatrix",

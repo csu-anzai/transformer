@@ -9,7 +9,8 @@
 #' All columns will be coerced to `factor`.
 #'
 #' @examples
-#' print("hello")
+#' df <- S4Vectors::DataFrame(a = letters[seq_len(5)], b = seq_len(5))
+#' x <- factorize(df)
 factorize <- function(object) {
     class <- class(object)[[1L]]
     out <- lapply(
