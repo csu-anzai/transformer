@@ -3,8 +3,6 @@
 %   R/tbl_df-s3.R
 \docType{import}
 \name{reexports}
-\alias{reexports}
-\alias{as_tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
