@@ -29,6 +29,9 @@ Suggests:
     datasets,
     patrick,
     testthat (>= 2.0)
+Remotes:
+    steinbaugh/bioverbs,
+    steinbaugh/goalie
 biocViews: Infrastructure
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
