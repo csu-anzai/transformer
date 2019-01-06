@@ -1,4 +1,18 @@
+#' Additional S3 `as_tibble()` methods
+#'
+#' @name as_tibble
+#'
+#' @details
+#' S4Transform adds method support for these S4 classes:
+#'
+#' - `DataFrame`.
+#' - `GRanges`.
+NULL
+
+
+
 #' @importFrom tibble as_tibble
+#' @aliases NULL
 #' @export
 tibble::as_tibble
 
@@ -54,12 +68,5 @@ as_tibble.GRanges <-  # nolint
         if (!hasRownames(x)) {
             rownames <- NULL
         }
-        do.call(
-            what = as_tibble,
-            args = list(
-                x = x,
-                ...,
-                rownames = rownames
-            )
-        )
+        do.call(what = as_tibble, args = list(x = x, ..., rownames = rownames))
     }
