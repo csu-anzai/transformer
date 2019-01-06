@@ -26,6 +26,7 @@ Imports:
     methods,
     tibble (>= 2.0)
 Suggests:
+    datasets,
     patrick,
     testthat (>= 2.0)
 biocViews: Infrastructure
