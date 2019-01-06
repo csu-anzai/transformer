@@ -1,6 +1,8 @@
-#' Additional S4 `as.data.frame()` methods
+#' Coerce to `data.frame`
 #'
-#' @name as.data.frame
+#' @name data.frame
+#'
+#' @inheritParams base::as.data.frame
 #'
 #' @examples
 #' ## sparseMatrix ====
@@ -17,14 +19,15 @@ NULL
 
 
 
+#' @rdname data.frame
+#' @name as.data.frame
 #' @importFrom BiocGenerics as.data.frame
-#' @aliases NULL
 #' @export
-BiocGenerics::as.data.frame
+NULL
 
 
 
-#' @rdname as.data.frame
+#' @rdname data.frame
 #' @export
 setMethod(
     f = "as.data.frame",
@@ -36,7 +39,7 @@ setMethod(
 
 
 
-#' @rdname as
+#' @rdname data.frame
 #' @name coerce,sparseMatrix,data.frame-method
 setAs(
     from = "sparseMatrix",
