@@ -1,7 +1,8 @@
+#' @rdname coerceS4ToList
+#' @name flatFiles
 #' @importFrom bioverbs flatFiles
-#' @aliases NULL
 #' @export
-bioverbs::flatFiles
+NULL
 
 
 

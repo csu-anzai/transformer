@@ -3,6 +3,7 @@
 \docType{methods}
 \name{coerceS4ToList}
 \alias{coerceS4ToList}
+\alias{flatFiles}
 \alias{flatFiles,SummarizedExperiment-method}
 \title{Coerce any S4 object to a list}
 \usage{
