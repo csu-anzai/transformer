@@ -14,20 +14,13 @@ BugReports: https://github.com/steinbaugh/S4Transformer/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: false
-Depends: R (>= 3.5)
+Depends: R (>= 3.4)
 Imports:
-    BiocGenerics,
-    GenomicRanges,
-    Matrix,
-    S4Vectors,
-    SummarizedExperiment,
-    bioverbs (>= 0.1.2),
-    goalie (>= 0.2.3),
+    bioverbs (>= 0.1.2), goalie (>= 0.2.3),
+    BiocGenerics, GenomicRanges, S4Vectors, SummarizedExperiment,
+    Matrix (>= 1.2), tibble (>= 2.0),
     methods,
-    tibble (>= 2.0)
-Suggests:
-    datasets,
-    testthat (>= 2.0)
+Suggests: datasets, testthat (>= 2.0)
 Remotes:
     steinbaugh/bioverbs,
     steinbaugh/goalie
