@@ -9,7 +9,7 @@
 #' @return `list`.
 #'
 #' @examples
-#' load(system.file("extdata", "rse.rda", package = "S4Transformer"))
+#' load(system.file("extdata", "rse.rda", package = "transformer"))
 #'
 #' x <- coerceS4ToList(rse)
 #' class(x)

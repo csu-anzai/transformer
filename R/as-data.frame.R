@@ -4,8 +4,8 @@
 #' @inheritParams base::as.data.frame
 #'
 #' @examples
-#' ## sparseMatrix ====
-#' load(system.file("extdata", "sparseMatrix.rda", package = "S4Transformer"))
+#' ## sparseMatrix to data.frame ====
+#' load(system.file("extdata", "sparseMatrix.rda", package = "transformer"))
 #' x <- as(sparseMatrix, "data.frame")
 #' head(x)
 NULL
@@ -20,6 +20,7 @@ NULL
 
 
 
+# S3(ish) ======================================================================
 #' @rdname as-data.frame
 #' @export
 setMethod(
@@ -32,6 +33,7 @@ setMethod(
 
 
 
+# S4 ===========================================================================
 #' @rdname as-data.frame
 #' @name coerce,sparseMatrix,data.frame-method
 setAs(

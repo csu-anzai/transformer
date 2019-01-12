@@ -1,21 +1,24 @@
 #' Coerce to `DataFrame`
 #'
 #' @name as-DataFrame
+#' @inheritParams params
 #'
 #' @examples
-#' ## sparseMatrix ====
-#' load(system.file("extdata", "sparseMatrix.rda", package = "S4Transformer"))
+#' ## sparseMatrix to DataFrame ====
+#' load(system.file("extdata", "sparseMatrix.rda", package = "transformer"))
 #' x <- as(sparseMatrix, "DataFrame")
 #'
-#' ## tbl_df ====
-#' load(system.file("extdata", "tbl_df.rda", package = "S4Transformer"))
+#' ## tbl_df to DataFrame ====
+#' load(system.file("extdata", "tbl_df.rda", package = "transformer"))
 #' x <- as(tbl_df, "DataFrame")
 #' head(x)
 NULL
 
 
 
-# S3 (internal) ================================================================
+# S3 ===========================================================================
+#' @rdname as-DataFrame
+#' @export
 as.DataFrame <-  # nolint
     function(x) {
         UseMethod("as.DataFrame")
@@ -23,6 +26,8 @@ as.DataFrame <-  # nolint
 
 
 
+#' @method as.DataFrame default
+#' @export
 as.DataFrame.default <- function(x) {
     to <- as.data.frame(x, stringsAsFactors = FALSE)
     to <- as(to, "DataFrame")

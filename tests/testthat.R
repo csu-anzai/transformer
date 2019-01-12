@@ -1,3 +1,3 @@
 library(testthat)
-library(S4Transformer)
-test_check("S4Transformer")
+library(transformer)
+test_check("transformer")

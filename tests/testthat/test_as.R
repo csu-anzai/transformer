@@ -1,6 +1,6 @@
 context("(As) coercion methods")
 
-load(system.file("extdata", "rse.rda", package = "S4Transformer"))
+load(system.file("extdata", "rse.rda", package = "transformer"))
 
 
 

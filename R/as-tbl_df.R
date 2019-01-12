@@ -19,25 +19,19 @@
 #' See `getClass("tbl_df")` for details on how tibble is a virtual class.
 #'
 #' @examples
-#' load(system.file("extdata", "rse.rda", package = "S4Transformer"))
+#' load(system.file("extdata", "rse.rda", package = "transformer"))
+#' df <- colData(rse)
+#' gr <- rowRanges(rse)
 #'
-#' ## DataFrame ====
-#' df <- SummarizedExperiment::colData(rse)
-#' print(df)
-#'
+#' ## DataFrame to tbl_df ====
 #' x <- as(df, "tbl_df")
+#' x <- as_tibble(df)
 #' print(x)
 #'
-#' x <- tibble::as_tibble(df)
-#' print(x)
-#'
-#' ## GRanges ====
-#' gr <- SummarizedExperiment::rowRanges(rse)
-#'
+#' ## GRanges to tbl_df ====
 #' x <- as(gr, "tbl_df")
-#'
-#' x <- tibble::as_tibble(gr)
-#' colnames(x)
+#' x <- as_tibble(gr)
+#' print(x)
 NULL
 
 
@@ -48,6 +42,13 @@ NULL
 #' @importFrom tibble as_tibble
 #' @export
 NULL
+
+
+
+#' @importFrom tibble as_tibble
+#' @aliases NULL
+#' @export
+tibble::as_tibble
 
 
 

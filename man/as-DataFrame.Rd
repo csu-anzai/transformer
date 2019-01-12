@@ -2,19 +2,26 @@
 % Please edit documentation in R/as-DataFrame.R
 \name{as-DataFrame}
 \alias{as-DataFrame}
+\alias{as.DataFrame}
 \alias{coerce,sparseMatrix,DataFrame-method}
 \alias{coerce,tbl_df,DataFrame-method}
 \title{Coerce to \code{DataFrame}}
+\usage{
+as.DataFrame(x)
+}
+\arguments{
+\item{x}{Object.}
+}
 \description{
 Coerce to \code{DataFrame}
 }
 \examples{
-## sparseMatrix ====
-load(system.file("extdata", "sparseMatrix.rda", package = "S4Transformer"))
+## sparseMatrix to DataFrame ====
+load(system.file("extdata", "sparseMatrix.rda", package = "transformer"))
 x <- as(sparseMatrix, "DataFrame")
 
-## tbl_df ====
-load(system.file("extdata", "tbl_df.rda", package = "S4Transformer"))
+## tbl_df to DataFrame ====
+load(system.file("extdata", "tbl_df.rda", package = "transformer"))
 x <- as(tbl_df, "DataFrame")
 head(x)
 }
