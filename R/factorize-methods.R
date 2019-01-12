@@ -1,17 +1,21 @@
-#' Factorize
-#'
-#' @export
+#' @name factorize
+#' @inherit bioverbs::factorize
 #' @inheritParams params
-#'
-#' @seealso `encode()` for Rle approach.
-#'
-#' @return Modified object.
-#' All columns will be coerced to `factor`.
-#'
 #' @examples
-#' df <- S4Vectors::DataFrame(a = letters[seq_len(5)], b = seq_len(5))
+#' df <- DataFrame(a = letters[seq_len(5)], b = seq_len(5))
 #' x <- factorize(df)
-factorize <- function(object) {
+NULL
+
+
+
+#' @importFrom bioverbs factorize
+#' @aliases NULL
+#' @export
+bioverbs::factorize
+
+
+
+factorize.ANY <- function(object) {
     class <- class(object)[[1L]]
     out <- lapply(
         X = object,
@@ -27,3 +31,13 @@ factorize <- function(object) {
     }
     out
 }
+
+
+
+#' @rdname factorize
+#' @export
+setMethod(
+    f = "factorize",
+    signature = signature("ANY"),
+    definition = factorize.ANY
+)
