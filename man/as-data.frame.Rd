@@ -31,8 +31,8 @@
 Coerce to \code{data.frame}
 }
 \examples{
-## sparseMatrix ====
-load(system.file("extdata", "sparseMatrix.rda", package = "S4Transformer"))
+## sparseMatrix to data.frame ====
+load(system.file("extdata", "sparseMatrix.rda", package = "transformer"))
 x <- as(sparseMatrix, "data.frame")
 head(x)
 }
