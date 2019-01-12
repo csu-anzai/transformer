@@ -4,7 +4,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{as_tibble}
 \alias{DataFrame}
 \alias{colData}
 \alias{rowRanges}

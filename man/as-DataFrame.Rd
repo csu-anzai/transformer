@@ -9,6 +9,9 @@
 \usage{
 as.DataFrame(x)
 }
+\arguments{
+\item{x}{Object.}
+}
 \description{
 Coerce to \code{DataFrame}
 }

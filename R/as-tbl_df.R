@@ -46,6 +46,7 @@ NULL
 
 
 #' @importFrom tibble as_tibble
+#' @aliases NULL
 #' @export
 tibble::as_tibble
 

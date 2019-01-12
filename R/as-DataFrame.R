@@ -1,6 +1,7 @@
 #' Coerce to `DataFrame`
 #'
 #' @name as-DataFrame
+#' @inheritParams params
 #'
 #' @examples
 #' ## sparseMatrix to DataFrame ====
