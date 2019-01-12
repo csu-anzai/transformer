@@ -16,7 +16,7 @@ bioverbs::atomize
 
 
 
-atomize.ANY <-
+atomize.ANY <-  # nolint
     function(object) {
         class <- class(object)[[1L]]
         # First, coerce to S3 data frame.
