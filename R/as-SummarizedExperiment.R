@@ -9,7 +9,7 @@
 #' @inheritParams params
 #'
 #' @examples
-#' load(system.file("extdata", "rse.rda", package = "S4Transformer"))
+#' load(system.file("extdata", "rse.rda", package = "transformer"))
 #' x <- as.SummarizedExperiment(rse)
 NULL
 
@@ -27,7 +27,7 @@ as.SummarizedExperiment <-  # nolint
 
 # Note that our method here keeps track of `rowData()` when coercing an object
 # that extends RangedSummarizedExperiment to SummarizedExperiment. This bug
-# needs to be fixed in the SummarizedExperiment package.
+# needs to be fixed in SummarizedExperiment.
 #
 # getMethod(
 #     f = "coerce",
@@ -55,4 +55,4 @@ as.SummarizedExperiment.default <-  # nolint
 
 
 # S4 ===========================================================================
-# This is already defined in SummarizedExperiment package, so avoid here.
+# S4 methods are already defined in SummarizedExperiment.

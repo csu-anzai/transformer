@@ -19,7 +19,7 @@
 #' See `getClass("tbl_df")` for details on how tibble is a virtual class.
 #'
 #' @examples
-#' load(system.file("extdata", "rse.rda", package = "S4Transformer"))
+#' load(system.file("extdata", "rse.rda", package = "transformer"))
 #'
 #' ## DataFrame ====
 #' df <- SummarizedExperiment::colData(rse)
