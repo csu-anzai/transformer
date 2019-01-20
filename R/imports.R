@@ -4,8 +4,7 @@
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #' @importClassesFrom tibble tbl_df
 #'
-#' @importFrom BiocGenerics as.data.frame
-#' @importFrom S4Vectors metadata metadata<-
+#' @importFrom S4Vectors as.data.frame metadata metadata<-
 #' @importFrom SummarizedExperiment rowData rowData<- rowRanges
 #' @importFrom goalie assert hasLength hasRownames
 #' @importFrom methods as is setAs setMethod signature slotNames .hasSlot
