@@ -13,7 +13,7 @@ Coerce to \code{tbl_df} (tibble)
 \section{S3 \code{as_tibble()}}{
 
 
-S4Transform extends \code{\link[tibble:as_tibble]{as_tibble()}} method support for
+transformer extends \code{\link[tibble:as_tibble]{as_tibble()}} method support for
 these S4 classes:
 \itemize{
 \item \code{DataFrame}.
@@ -33,8 +33,9 @@ See \code{getClass("tbl_df")} for details on how tibble is a virtual class.
 
 \examples{
 load(system.file("extdata", "rse.rda", package = "transformer"))
-df <- colData(rse)
-gr <- rowRanges(rse)
+
+df <- SummarizedExperiment::colData(rse)
+gr <- SummarizedExperiment::rowRanges(rse)
 
 ## DataFrame to tbl_df ====
 x <- as(df, "tbl_df")
