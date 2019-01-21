@@ -4,9 +4,12 @@
 \name{decode}
 \alias{decode}
 \alias{decode,DataFrame-method}
+\alias{decode,GRanges-method}
 \title{Decode column data that uses run-length encoding}
 \usage{
 \S4method{decode}{DataFrame}(x)
+
+\S4method{decode}{GRanges}(x)
 }
 \arguments{
 \item{x}{Object.}

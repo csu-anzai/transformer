@@ -4,7 +4,7 @@
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #' @importClassesFrom tibble tbl_df
 #'
-#' @importFrom S4Vectors Rle as.data.frame metadata metadata<-
+#' @importFrom S4Vectors Rle as.data.frame metadata metadata<- mcols mcols<-
 #' @importFrom SummarizedExperiment rowData rowData<- rowRanges
 #' @importFrom goalie assert hasLength hasRownames
 #' @importFrom methods as is setAs setMethod signature slotNames .hasSlot

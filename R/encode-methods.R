@@ -62,3 +62,24 @@ setMethod(
     signature = signature("DataFrame"),
     definition = encode.DataFrame
 )
+
+
+
+encode.GRanges <-  # nolint
+    function(x) {
+        mcols <- mcols(x)
+        assert(is(mcols, "DataFrame"))
+        mcols <- encode(mcols)
+        mcols(x) <- mcols
+        x
+    }
+
+
+
+#' @rdname encode
+#' @export
+setMethod(
+    f = "encode",
+    signature = signature("GRanges"),
+    definition = encode.GRanges
+)
