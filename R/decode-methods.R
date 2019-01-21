@@ -58,3 +58,24 @@ setMethod(
     signature = signature("DataFrame"),
     definition = decode.DataFrame
 )
+
+
+
+decode.GRanges <-  # nolint
+    function(x) {
+        mcols <- mcols(x)
+        assert(is(mcols, "DataFrame"))
+        mcols <- decode(mcols)
+        mcols(x) <- mcols
+        x
+    }
+
+
+
+#' @rdname decode
+#' @export
+setMethod(
+    f = "decode",
+    signature = signature("GRanges"),
+    definition = decode.GRanges
+)

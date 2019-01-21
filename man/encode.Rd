@@ -4,9 +4,12 @@
 \name{encode}
 \alias{encode}
 \alias{encode,DataFrame-method}
+\alias{encode,GRanges-method}
 \title{Encode using run-length encoding}
 \usage{
 \S4method{encode}{DataFrame}(x)
+
+\S4method{encode}{GRanges}(x)
 }
 \arguments{
 \item{x}{Object.}

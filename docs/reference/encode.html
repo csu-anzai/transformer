@@ -113,6 +113,9 @@
     </div>
 
     <pre class="usage"><span class='co'># S4 method for DataFrame</span>
+<span class='fu'>encode</span>(<span class='no'>x</span>)
+
+<span class='co'># S4 method for GRanges</span>
 <span class='fu'>encode</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -140,22 +143,8 @@ All <code>atomic</code> columns will be encoded to <code>Rle</code> S4 class.</p
     <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>binary</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>50L</span>),
     <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>binary</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>50L</span>)
 )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>df</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $a
-#&gt; [1] "integer"
-#&gt; 
-#&gt; $b
-#&gt; [1] "integer"
-#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>encode</span>(<span class='no'>df</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $a
-#&gt; [1] "Rle"
-#&gt; attr(,"package")
-#&gt; [1] "S4Vectors"
-#&gt; 
-#&gt; $b
-#&gt; [1] "Rle"
-#&gt; attr(,"package")
-#&gt; [1] "S4Vectors"
-#&gt; </div></pre>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>df</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; <span class='error'>Error in get(as.character(FUN), mode = "function", envir = envir): object 'tbl_df' of mode 'function' was not found</span></div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>encode</span>(<span class='no'>df</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; <span class='error'>Error in get(as.character(FUN), mode = "function", envir = envir): object 'tbl_df' of mode 'function' was not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

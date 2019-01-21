@@ -23,15 +23,23 @@ atomize.ANY <-  # nolint
     function(object) {
         class <- class(object)[[1L]]
         # Note that going straight to data.frame using `as.data.frame()` doesn't
-        # handle stringsAsFactors correctly for Rle, at least in BioC 3.7.
-        df <- as(object, "DataFrame")
-        # This step will convert Rle columns (e.g. in GRanges mcols).
-        df <- decode(df)
-        # Including this step here to coerce complex S4 columns, like IRanges.
-        df <- as.data.frame(df)
+        # handle stringsAsFactors correctly for Rle, at least in BioC 3.7. We've
+        # attempted to fix this by defining DataFrame and GRanges methods.
+        df <- as.data.frame(object)
         # Keep only atomic columns. Complex columns won't write to disk as CSVs
         # or work with R Markdown functions.
         keep <- vapply(X = df, FUN = is.atomic, FUN.VALUE = logical(1L))
+
+        # Inform the user about which columns to drop.
+        drop <- names(keep)[!keep]
+        if (hasLength(drop)) {
+            message(paste(
+                "Dropping non-atomic columns:",
+                toString(drop),
+                sep = "\n"
+            ))
+        }
+
         df <- df[, keep, drop = FALSE]
         assert(hasLength(df))
         as(df, Class = class)
@@ -45,4 +53,44 @@ setMethod(
     f = "atomize",
     signature = signature("ANY"),
     definition = atomize.ANY
+)
+
+
+
+atomize.DataFrame <-  # nolint
+    function(object) {
+        object %>%
+            decode() %>%
+            as.data.frame() %>%
+            atomize()
+    }
+
+
+
+#' @rdname atomize
+#' @export
+setMethod(
+    f = "atomize",
+    signature = signature("DataFrame"),
+    definition = atomize.DataFrame
+)
+
+
+
+atomize.GRanges <-  # nolint
+    function(object) {
+        object %>%
+            decode() %>%
+            as.data.frame() %>%
+            atomize()
+    }
+
+
+
+#' @rdname atomize
+#' @export
+setMethod(
+    f = "atomize",
+    signature = signature("GRanges"),
+    definition = atomize.GRanges
 )
