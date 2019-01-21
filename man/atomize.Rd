@@ -4,9 +4,15 @@
 \name{atomize}
 \alias{atomize}
 \alias{atomize,ANY-method}
+\alias{atomize,DataFrame-method}
+\alias{atomize,GRanges-method}
 \title{Atomize}
 \usage{
 \S4method{atomize}{ANY}(object)
+
+\S4method{atomize}{DataFrame}(object)
+
+\S4method{atomize}{GRanges}(object)
 }
 \arguments{
 \item{object}{Object.}
