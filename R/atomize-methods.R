@@ -19,16 +19,12 @@ bioverbs::atomize
 # @seealso
 # - `base:::as.data.frame.matrix()`.
 # - `S4Vectors:::as.data.frame.DataTable()`.
-atomize.ANY <-  # nolint
+atomize.data.frame <-  # nolint
     function(object) {
-        class <- class(object)[[1L]]
-        # Note that going straight to data.frame using `as.data.frame()` doesn't
-        # handle stringsAsFactors correctly for Rle, at least in BioC 3.7. We've
-        # attempted to fix this by defining DataFrame and GRanges methods.
-        df <- as.data.frame(object)
         # Keep only atomic columns. Complex columns won't write to disk as CSVs
         # or work with R Markdown functions.
-        keep <- vapply(X = df, FUN = is.atomic, FUN.VALUE = logical(1L))
+        keep <- vapply(X = object, FUN = is.atomic, FUN.VALUE = logical(1L))
+        assert(hasLength(keep))
 
         # Inform the user about which columns to drop.
         drop <- names(keep)[!keep]
@@ -40,9 +36,7 @@ atomize.ANY <-  # nolint
             ))
         }
 
-        df <- df[, keep, drop = FALSE]
-        assert(hasLength(df))
-        as(df, Class = class)
+        object[, keep, drop = FALSE]
     }
 
 
@@ -51,18 +45,19 @@ atomize.ANY <-  # nolint
 #' @export
 setMethod(
     f = "atomize",
-    signature = signature("ANY"),
-    definition = atomize.ANY
+    signature = signature("data.frame"),
+    definition = atomize.data.frame
 )
 
 
 
 atomize.DataFrame <-  # nolint
     function(object) {
-        object %>%
-            decode() %>%
-            as.data.frame() %>%
-            atomize()
+        object <- decode(object)
+        object <- as.data.frame(object)
+        object <- atomize(object)
+        object <- as(object, "DataFrame")
+        object
     }
 
 
@@ -79,10 +74,8 @@ setMethod(
 
 atomize.GRanges <-  # nolint
     function(object) {
-        object %>%
-            decode() %>%
-            as.data.frame() %>%
-            atomize()
+        mcols(object) <- atomize(mcols(object))
+        object
     }
 
 

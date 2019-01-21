@@ -3,12 +3,12 @@
 \docType{methods}
 \name{atomize}
 \alias{atomize}
-\alias{atomize,ANY-method}
+\alias{atomize,data.frame-method}
 \alias{atomize,DataFrame-method}
 \alias{atomize,GRanges-method}
 \title{Atomize}
 \usage{
-\S4method{atomize}{ANY}(object)
+\S4method{atomize}{data.frame}(object)
 
 \S4method{atomize}{DataFrame}(object)
 
