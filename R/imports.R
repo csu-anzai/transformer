@@ -4,31 +4,9 @@
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #' @importClassesFrom tibble tbl_df
 #'
-#' @importFrom BiocGenerics as.data.frame
-#' @importFrom S4Vectors metadata metadata<-
+#' @importFrom S4Vectors Rle as.data.frame metadata metadata<-
 #' @importFrom SummarizedExperiment rowData rowData<- rowRanges
 #' @importFrom goalie assert hasLength hasRownames
 #' @importFrom methods as is setAs setMethod signature slotNames .hasSlot
 #' @importFrom tibble as_tibble
 NULL
-
-
-
-# This is needed to properly declare S4 `as()` coercion methods.
-#' @importFrom methods coerce
-#' @exportMethod coerce
-NULL
-
-
-
-#' @importFrom S4Vectors DataFrame
-#' @export
-S4Vectors::DataFrame
-
-#' @importFrom SummarizedExperiment colData
-#' @export
-SummarizedExperiment::colData
-
-#' @importFrom SummarizedExperiment rowRanges
-#' @export
-SummarizedExperiment::rowRanges

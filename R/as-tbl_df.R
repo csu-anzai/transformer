@@ -4,7 +4,7 @@
 #'
 #' @section S3 `as_tibble()`:
 #'
-#' S4Transform extends [`as_tibble()`][tibble::as_tibble] method support for
+#' transformer extends [`as_tibble()`][tibble::as_tibble] method support for
 #' these S4 classes:
 #'
 #' - `DataFrame`.
@@ -20,8 +20,9 @@
 #'
 #' @examples
 #' load(system.file("extdata", "rse.rda", package = "transformer"))
-#' df <- colData(rse)
-#' gr <- rowRanges(rse)
+#'
+#' df <- SummarizedExperiment::colData(rse)
+#' gr <- SummarizedExperiment::rowRanges(rse)
 #'
 #' ## DataFrame to tbl_df ====
 #' x <- as(df, "tbl_df")
