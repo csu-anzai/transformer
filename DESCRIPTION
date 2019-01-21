@@ -21,7 +21,7 @@ Imports:
     Matrix (>= 1.2), tibble (>= 2.0),
     methods
 Suggests:
-    testthat,
+    patrick, testthat,
     datasets
 Remotes:
     steinbaugh/bioverbs,
