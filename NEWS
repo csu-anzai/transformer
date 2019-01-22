@@ -1,3 +1,11 @@
+## transformer 0.1.3 (2019-01-22)
+
+### Major changes
+
+- Migrated these functions to [brio][] package: `atomize()`, `factorize()`,
+  `encode()`, `decode()`.
+
+
 ## transformer 0.1.2 (2019-01-20)
 
 ### Major changes
@@ -38,5 +46,6 @@ easier unit testing in a separate package.
 
 [AppVeyor CI]: https://www.appveyor.com/
 [basejump]: https://steinbaugh.com/basejump/
+[brio]: https://steinbaugh.com/brio/
 [Bioconductor]: https://bioconductor.org/
 [Travis CI]: https://travis-ci.com/
