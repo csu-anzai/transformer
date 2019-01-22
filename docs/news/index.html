@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce to <code>SummarizedExperiment</code> — as-SummarizedExperiment • transformer</title>
+<title>Changelog • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,12 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce to <code>SummarizedExperiment</code> — as-SummarizedExperiment" />
-
-<meta property="og:description" content="Improved method for reliably coercing objects that extend
-RangedSummarizedExperiment to a standard SummarizedExperiment, that
-doesn't drop rowData()." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -54,7 +49,7 @@ doesn't drop rowData()." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -106,44 +101,69 @@ doesn't drop rowData()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coerce to <code>SummarizedExperiment</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/transformer/blob/master/R/as-SummarizedExperiment.R'><code>R/as-SummarizedExperiment.R</code></a></small>
-    <div class="hidden name"><code>as-SummarizedExperiment.Rd</code></div>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/steinbaugh/transformer/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    
-    <p>Improved method for reliably coercing objects that extend
-<code>RangedSummarizedExperiment</code> to a standard <code>SummarizedExperiment</code>, that
-doesn't drop <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData()</a></code>.</p>
-    
-    </div>
-
-    <pre class="usage"><span class='fu'>as.SummarizedExperiment</span>(<span class='no'>x</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>Object.</p></td>
-    </tr>
-    </table>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/load'>load</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"rse.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"transformer"</span>))
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.SummarizedExperiment</span>(<span class='no'>rse</span>)</div></pre>
+    <div id="transformer-0-1-2-2019-01-20" class="section level2">
+<h2 class="hasAnchor">
+<a href="#transformer-0-1-2-2019-01-20" class="anchor"></a>transformer 0.1.2 (2019-01-20)</h2>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>Migrated <code>decode()</code> and <code>encode()</code> S4 methods from <a href="https://steinbaugh.com/basejump/">basejump</a>.</li>
+<li>Improved <code>atomize()</code> compatibility with <a href="https://bioconductor.org/">Bioconductor</a> 3.7 release. Now DataFrame objects containing Rle columns will get decoded consistently without applying stringsAsFactors in an unexpected fashion. This works correctly in Bioconductor 3.8 simply using <code><a href="../reference/as-data.frame.html">as.data.frame()</a></code> internally, but has unwanted coercion of <code>character</code> to <code>factor</code> columns for Rle-encoded data when using the Bioconductor 3.7 release.</li>
+</ul>
+</div>
+<div id="minor-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Improved code coverage to 100%.</li>
+</ul>
+</div>
+</div>
+    <div id="transformer-0-1-1-2019-01-14" class="section level2">
+<h2 class="hasAnchor">
+<a href="#transformer-0-1-1-2019-01-14" class="anchor"></a>transformer 0.1.1 (2019-01-14)</h2>
+<div id="major-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<ul>
+<li>Renamed package from S4Transformer to simply transformer.</li>
+<li>Migrated <code>atomize()</code> and <code>factorize()</code> from <a href="https://steinbaugh.com/basejump/">basejump</a>.</li>
+</ul>
+</div>
+<div id="minor-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Ensuring <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">tibble::as_tibble()</a></code> gets reexported.</li>
+<li>Now exporting <code><a href="../reference/as-DataFrame.html">as.DataFrame()</a></code> S3 coercion methods, for consistency.</li>
+<li>Improved documentation for <code>as()</code> coercion methods.</li>
+<li>Improved <a href="https://travis-ci.com/">Travis CI</a> and [AppVeyor][] CI build settings.</li>
+</ul>
+</div>
+</div>
+    <div id="transformer-0-1-0-2019-01-06" class="section level2">
+<h2 class="hasAnchor">
+<a href="#transformer-0-1-0-2019-01-06" class="anchor"></a>transformer 0.1.0 (2019-01-06)</h2>
+<p>Initial release. Migrated useful S4 coercion methods from <a href="https://steinbaugh.com/basejump/">basejump</a> for easier unit testing in a separate package.</p>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#transformer-0-1-2-2019-01-20">0.1.2</a></li>
+        <li><a href="#transformer-0-1-1-2019-01-14">0.1.1</a></li>
+        <li><a href="#transformer-0-1-0-2019-01-06">0.1.0</a></li>
+      </ul>
+    </div>
   </div>
+
 </div>
 
       <footer>
