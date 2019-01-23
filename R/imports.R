@@ -9,3 +9,10 @@
 #' @importFrom methods as is setAs setMethod signature slotNames .hasSlot
 #' @importFrom tibble as_tibble
 NULL
+
+
+
+# This is needed to properly declare S4 `as()` coercion methods.
+#' @importFrom methods coerce
+#' @exportMethod coerce
+NULL
