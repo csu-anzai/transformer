@@ -32,8 +32,5 @@ after_success:
   - R CMD BiocCheck .
 
 notifications:
-  email:
-    recipients:
-      - mike@steinbaugh.com
     on_success: change
-    on_failure: always
+    on_failure: change
