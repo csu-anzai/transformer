@@ -57,8 +57,6 @@ tibble::as_tibble
 #' @export
 as_tibble.DataFrame <-  # nolint
     function(x, ..., rownames = "rowname") {
-        # Coerce to standard data frame.
-        x <- as(x, "data.frame")
         # Check for valid columns (atomic, list).
         valid <- vapply(
             X = x,
@@ -70,12 +68,21 @@ as_tibble.DataFrame <-  # nolint
         )
         # Error if S4 columns are nested.
         if (!all(valid)) {
-            invalid <- names(valid[!valid])
-            stop(paste0(
-                "tibble supports atomic and list columns.\n",
-                "Invalid columns: ", toString(invalid)
-            ), call. = FALSE)
+            invalid <- x[, names(valid[!valid]), drop = FALSE]
+            invalid <- vapply(
+                X = invalid,
+                FUN = class,
+                FUN.VALUE = character(1)
+            )
+            stop(paste(
+                "tibble supports atomic and list columns.",
+                "Invalid columns:",
+                printString(invalid),
+                sep = "\n"
+            ))
         }
+        # Coerce to standard data frame.
+        x <- as.data.frame(x)
         if (!hasRownames(x)) {
             rownames <- NULL
         }
