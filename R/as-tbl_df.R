@@ -82,7 +82,9 @@ as_tibble.DataFrame <-  # nolint
             ))
         }
         # Coerce to standard data frame.
-        x <- as.data.frame(x)
+        # Note that using `as.data.frame()` here instead can sanitize invalid
+        # names (e.g. human gene symbols) unexpectedly.
+        x <- as(x, "data.frame")
         if (!hasRownames(x)) {
             rownames <- NULL
         }
