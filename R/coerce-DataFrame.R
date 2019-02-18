@@ -1,6 +1,6 @@
 #' Coerce to `DataFrame`
 #'
-#' @name as-DataFrame
+#' @name coerce-DataFrame
 #' @inheritParams params
 #'
 #' @examples
@@ -17,7 +17,7 @@ NULL
 
 
 # S3 ===========================================================================
-#' @rdname as-DataFrame
+#' @rdname coerce-DataFrame
 #' @export
 as.DataFrame <-  # nolint
     function(x) {
@@ -45,7 +45,7 @@ as.DataFrame.default <- function(x) {
 
 
 # S4 ===========================================================================
-#' @rdname as-DataFrame
+#' @rdname coerce-DataFrame
 #' @name coerce,sparseMatrix,DataFrame-method
 setAs(
     from = "sparseMatrix",
@@ -57,7 +57,7 @@ setAs(
 
 
 
-#' @rdname as-DataFrame
+#' @rdname coerce-DataFrame
 #' @name coerce,tbl_df,DataFrame-method
 setAs(
     from = "tbl_df",

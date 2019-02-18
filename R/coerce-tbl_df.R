@@ -1,6 +1,6 @@
 #' Coerce to `tbl_df` (tibble)
 #'
-#' @name as-tbl_df
+#' @name coerce-tbl_df
 #'
 #' @section S3 `as_tibble()`:
 #'
@@ -38,7 +38,7 @@ NULL
 
 
 # S3 ===========================================================================
-#' @rdname as-tbl_df
+#' @rdname coerce-tbl_df
 #' @name as_tibble
 #' @importFrom tibble as_tibble
 #' @export
@@ -111,7 +111,7 @@ as_tibble.GRanges <-  # nolint
 
 
 # S4 ===========================================================================
-#' @rdname as-tbl_df
+#' @rdname coerce-tbl_df
 #' @name coerce,data.frame,tbl_df-method
 setAs(
     from = "data.frame",
@@ -123,7 +123,7 @@ setAs(
 
 
 
-#' @rdname as-tbl_df
+#' @rdname coerce-tbl_df
 #' @name coerce,DataFrame,tbl_df-method
 setAs(
     from = "DataFrame",
@@ -135,7 +135,7 @@ setAs(
 
 
 
-#' @rdname as-tbl_df
+#' @rdname coerce-tbl_df
 #' @name coerce,GRanges,tbl_df-method
 setAs(
     from = "GRanges",
