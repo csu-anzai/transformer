@@ -12,6 +12,7 @@ NULL
 
 
 
+# S3(ish) ======================================================================
 #' @rdname coerce-data.frame
 #' @name as.data.frame
 #' @importFrom BiocGenerics as.data.frame
@@ -20,7 +21,6 @@ NULL
 
 
 
-# S3(ish) ======================================================================
 #' @rdname coerce-data.frame
 #' @export
 setMethod(
