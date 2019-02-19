@@ -38,10 +38,11 @@ NULL
 
 
 # S3 ===========================================================================
+#' @rdname coerce-data.table
+#' @name as.data.table
 #' @importFrom data.table as.data.table
-#' @aliases NULL
 #' @export
-data.table::as.data.table
+NULL
 
 
 

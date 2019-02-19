@@ -38,10 +38,11 @@ NULL
 
 
 # S3 ===========================================================================
+#' @rdname coerce-tbl_df
+#' @name as_tibble
 #' @importFrom tibble as_tibble
-#' @aliases NULL
 #' @export
-tibble::as_tibble
+NULL
 
 
 
