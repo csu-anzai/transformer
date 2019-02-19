@@ -19,10 +19,11 @@ NULL
 
 
 
+#' @rdname flatFiles
+#' @name flatFiles
 #' @importFrom bioverbs flatFiles
-#' @aliases NULL
 #' @export
-bioverbs::flatFiles
+NULL
 
 
 

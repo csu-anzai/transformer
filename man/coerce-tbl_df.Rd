@@ -2,6 +2,7 @@
 % Please edit documentation in R/coerce-tbl_df.R
 \name{coerce-tbl_df}
 \alias{coerce-tbl_df}
+\alias{as_tibble}
 \alias{coerce,data.frame,tbl_df-method}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}

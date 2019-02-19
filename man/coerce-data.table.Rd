@@ -2,6 +2,7 @@
 % Please edit documentation in R/coerce-data.table.R
 \name{coerce-data.table}
 \alias{coerce-data.table}
+\alias{as.data.table}
 \alias{coerce,data.frame,data.table-method}
 \alias{coerce,DataFrame,data.table-method}
 \alias{coerce,GRanges,data.table-method}
