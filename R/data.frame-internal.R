@@ -17,7 +17,7 @@
         invalid <- vapply(
             X = invalid,
             FUN = class,
-            FUN.VALUE = character(1)
+            FUN.VALUE = character(1L)
         )
         stop(paste(
             "Only atomic and list columns are supported.",

@@ -52,10 +52,10 @@ data.table::as.data.table
 #' @method as.data.table DataFrame
 #' @export
 as.data.table.DataFrame <-  # nolint
-    function(x, keep.rownames = "rowname", ...) {
+    function(x, keep.rownames = "rowname", ...) {  # nolint
         x <- .coerceDataFrame(x)
         if (!hasRownames(x)) {
-            keep.rownames <- FALSE
+            keep.rownames <- FALSE  # nolint
         }
         as.data.table(x = x, keep.rownames = keep.rownames, ...)
     }
@@ -67,12 +67,12 @@ as.data.table.DataFrame <-  # nolint
 #' @method as.data.table GRanges
 #' @export
 as.data.table.GRanges <-  # nolint
-    function(x, keep.rownames = "rowname", ...) {
+    function(x, keep.rownames = "rowname", ...) {  # nolint
         names <- names(x)
         x <- as(x, "data.frame")
         rownames(x) <- names
         if (!hasRownames(x)) {
-            keep.rownames <- FALSE
+            keep.rownames <- FALSE  # nolint
         }
         as.data.table(x = x, keep.rownames = keep.rownames, ...)
     }

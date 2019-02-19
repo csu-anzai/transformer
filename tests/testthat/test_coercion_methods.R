@@ -4,7 +4,7 @@ load(system.file("extdata", "rse.rda", package = "transformer"))
 load(system.file("extdata", "sparseMatrix.rda", package = "transformer"))
 load(system.file("extdata", "tbl_df.rda", package = "transformer"))
 
-DataFrame <- S4Vectors::DataFrame
+DataFrame <- S4Vectors::DataFrame  # nolint
 colData <- SummarizedExperiment::colData
 data.table <- data.table::data.table  # nolint
 rowData <- SummarizedExperiment::rowData
@@ -51,7 +51,7 @@ test_that("DataFrame to data.table", {
 
     # Coercion of a DataFrame containing a list column is allowed.
     data <- DataFrame()
-    data$x <- list()
+    data[["x"]] <- list()
     data <- as(data, "data.table")
     expect_is(data, "data.table")
 
@@ -153,7 +153,7 @@ test_that("DataFrame to tbl_df", {
 
     # Coercion of a DataFrame containing a list column is allowed.
     data <- DataFrame()
-    data$x <- list()
+    data[["x"]] <- list()
     data <- as(data, "tbl_df")
     expect_is(data, "tbl_df")
 
