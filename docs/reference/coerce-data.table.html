@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce to <code>SummarizedExperiment</code> — as-SummarizedExperiment • transformer</title>
+<title>Coerce to <code>data.table</code> — coerce-data.table • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,11 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce to <code>SummarizedExperiment</code> — as-SummarizedExperiment" />
+<meta property="og:title" content="Coerce to <code>data.table</code> — coerce-data.table" />
 
-<meta property="og:description" content="Improved method for reliably coercing objects that extend
-RangedSummarizedExperiment to a standard SummarizedExperiment, that
-doesn't drop rowData()." />
+<meta property="og:description" content="Coerce to data.table" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -67,7 +65,7 @@ doesn't drop rowData()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -106,40 +104,76 @@ doesn't drop rowData()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coerce to <code>SummarizedExperiment</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/transformer/blob/master/R/as-SummarizedExperiment.R'><code>R/as-SummarizedExperiment.R</code></a></small>
-    <div class="hidden name"><code>as-SummarizedExperiment.Rd</code></div>
+    <h1>Coerce to <code>data.table</code></h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/transformer/blob/master/R/coerce-data.table.R'><code>R/coerce-data.table.R</code></a></small>
+    <div class="hidden name"><code>coerce-data.table.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Improved method for reliably coercing objects that extend
-<code>RangedSummarizedExperiment</code> to a standard <code>SummarizedExperiment</code>, that
-doesn't drop <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>rowData()</a></code>.</p>
+    <p>Coerce to <code>data.table</code></p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>as.SummarizedExperiment</span>(<span class='no'>x</span>)</pre>
+        
+    <h2 class="hasAnchor" id="s-as-data-table-"><a class="anchor" href="#s-as-data-table-"></a>S3 <code>as.data.table()</code></h2>
+
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>Object.</p></td>
-    </tr>
-    </table>
+    <p>transformer extends <code><a href='https://www.rdocumentation.org/packages/data.table/topics/as.data.table'>as.data.table()</a></code> method
+support for these S4 classes:</p><ul>
+<li><p><code>DataFrame</code>.</p></li>
+<li><p><code>GRanges</code>.</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="s-as-"><a class="anchor" href="#s-as-"></a>S4 <code>as()</code></h2>
+
+    
+    <p>Since <code>data.table</code> is a class that extends <code>data.frame</code>, we need to define an
+S4 coercion method that allows us to use <code><a href='https://www.rdocumentation.org/packages/methods/topics/as'>as()</a></code> to coerce an
+object to a <code>data.table</code>.</p>
+<p>See <code>getClass("data.table")</code> for details.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/load'>load</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"rse.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"transformer"</span>))
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.SummarizedExperiment</span>(<span class='no'>rse</span>)</div></pre>
+
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>rse</span>)
+<span class='no'>gr</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>rse</span>)
+
+<span class='co'>## DataFrame to data.table ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>df</span>, <span class='st'>"data.table"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>df</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    rowname treatment
+#&gt; 1:       A      ChIP
+#&gt; 2:       B     Input
+#&gt; 3:       C      ChIP
+#&gt; 4:       D     Input
+#&gt; 5:       E      ChIP
+#&gt; 6:       F     Input</div><div class='input'>
+<span class='co'>## GRanges to data.table ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>gr</span>, <span class='st'>"data.table"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>gr</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      seqnames  start    end width strand featureID
+#&gt;   1:     chr1 248574 248673   100      -     ID001
+#&gt;   2:     chr1 128358 128457   100      +     ID002
+#&gt;   3:     chr1 639932 640031   100      +     ID003
+#&gt;   4:     chr1 667728 667827   100      +     ID004
+#&gt;   5:     chr1 321728 321827   100      +     ID005
+#&gt;  ---                                              
+#&gt; 196:     chr2 761878 761977   100      +     ID196
+#&gt; 197:     chr2 696888 696987   100      +     ID197
+#&gt; 198:     chr2 142223 142322   100      -     ID198
+#&gt; 199:     chr2 899770 899869   100      +     ID199
+#&gt; 200:     chr2 153317 153416   100      -     ID200</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#s-as-data-table-">S3 <code>as.data.table()</code></a></li>
+
+      <li><a href="#s-as-">S4 <code>as()</code></a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

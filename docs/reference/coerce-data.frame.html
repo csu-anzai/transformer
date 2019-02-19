@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • transformer</title>
+<title>Coerce to <code>data.frame</code> — coerce-data.frame • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Coerce to <code>data.frame</code> — coerce-data.frame" />
+
+<meta property="og:description" content="Coerce to data.frame" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -49,7 +52,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -99,78 +102,72 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Coerce to <code>data.frame</code></h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/transformer/blob/master/R/coerce-data.frame.R'><code>R/coerce-data.frame.R</code></a></small>
+    <div class="hidden name"><code>coerce-data.frame.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Coerce to <code>data.frame</code></p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="coerce-DataFrame.html">as.DataFrame()</a></code> </p>
-        </td>
-        <td><p>Coerce to <code>DataFrame</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="coerce-SummarizedExperiment.html">as.SummarizedExperiment()</a></code> </p>
-        </td>
-        <td><p>Coerce to <code>SummarizedExperiment</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="coerce-data.frame.html">as.data.frame(<i>&lt;sparseMatrix&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Coerce to <code>data.frame</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="coerce-data.table.html">coerce-data.table</a></code> </p>
-        </td>
-        <td><p>Coerce to <code>data.table</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="coerce-tbl_df.html">coerce-tbl_df</a></code> </p>
-        </td>
-        <td><p>Coerce to <code>tbl_df</code> (tibble)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="coerceS4ToList.html">coerceS4ToList()</a></code> </p>
-        </td>
-        <td><p>Coerce any S4 object to a list</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="flatFiles.html">flatFiles(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Coerce any S4 object to a list</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='co'># S4 method for sparseMatrix</span>
+<span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>any <span style="R">R</span> object.</p></td>
+    </tr>
+    <tr>
+      <th>row.names</th>
+      <td><p><code>NULL</code> or a character vector giving the row
+    names for the data frame.  Missing values are not allowed.</p></td>
+    </tr>
+    <tr>
+      <th>optional</th>
+      <td><p>logical. If <code>TRUE</code>, setting row names and
+    converting column names (to syntactic names: see
+    <code><a href='https://www.rdocumentation.org/packages/base/topics/make.names'>make.names</a></code>) is optional.  Note that all of <span style="R">R</span>'s
+    <span class="pkg">base</span> package <code>as.data.frame()</code> methods use
+    <code>optional</code> only for column names treatment, basically with the
+    meaning of <code><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a>(*, check.names = !optional)</code>.
+    See also the <code>make.names</code> argument of the <code>matrix</code> method.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional arguments to be passed to or from methods.</p></td>
+    </tr>
     </table>
-  </div>
+    
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>## sparseMatrix to data.frame ====</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/load'>load</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"sparseMatrix.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"transformer"</span>))
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>sparseMatrix</span>, <span class='st'>"data.frame"</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
+#&gt; 1  0  7  0  0  0  0  0  0  0   0
+#&gt; 2  0  0  0  0  0  0  0  0  0   0
+#&gt; 3  0  0  0  0  0  0  0  0 14   0
+#&gt; 4  0  0  0  0  0 21  0  0  0   0
+#&gt; 5  0  0  0  0  0  0 28  0  0   0
+#&gt; 6  0  0  0  0  0  0  0 35  0   0</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+            
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
