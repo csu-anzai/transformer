@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Coerce any S4 object to a list</h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/transformer/blob/master/R/coerceS4ToList.R'><code>R/coerceS4ToList.R</code></a>, <a href='https://github.com/steinbaugh/transformer/blob/master/R/flatFiles-methods.R'><code>R/flatFiles-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/transformer/blob/master/R/coerceS4ToList.R'><code>R/coerceS4ToList.R</code></a></small>
     <div class="hidden name"><code>coerceS4ToList.Rd</code></div>
     </div>
 
@@ -115,10 +115,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>coerceS4ToList</span>(<span class='no'>from</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>flatFiles</span>(<span class='no'>object</span>)</pre>
+    <pre class="usage"><span class='fu'>coerceS4ToList</span>(<span class='no'>from</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -127,10 +124,6 @@
       <th>from</th>
       <td><p>The classes between which the coerce methods
     <code>def</code> and <code>replace</code> perform coercion.</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
     </tr>
     </table>
     
@@ -147,9 +140,6 @@
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/load'>load</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"rse.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"transformer"</span>))
 
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>coerceS4ToList</span>(<span class='no'>rse</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rowRanges"       "colData"         "assays"          "NAMES"          
-#&gt; [5] "elementMetadata" "metadata"       </div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>flatFiles</span>(<span class='no'>rse</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rowRanges"       "colData"         "assays"          "NAMES"          
 #&gt; [5] "elementMetadata" "metadata"       </div></pre>
   </div>

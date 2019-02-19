@@ -1,6 +1,6 @@
 #' Coerce to `data.frame`
 #'
-#' @name as-data.frame
+#' @name coerce-data.frame
 #' @inheritParams base::as.data.frame
 #'
 #' @examples
@@ -12,7 +12,8 @@ NULL
 
 
 
-#' @rdname as-data.frame
+# S3(ish) ======================================================================
+#' @rdname coerce-data.frame
 #' @name as.data.frame
 #' @importFrom BiocGenerics as.data.frame
 #' @export
@@ -20,8 +21,7 @@ NULL
 
 
 
-# S3(ish) ======================================================================
-#' @rdname as-data.frame
+#' @rdname coerce-data.frame
 #' @export
 setMethod(
     f = "as.data.frame",
@@ -34,7 +34,7 @@ setMethod(
 
 
 # S4 ===========================================================================
-#' @rdname as-data.frame
+#' @rdname coerce-data.frame
 #' @name coerce,sparseMatrix,data.frame-method
 setAs(
     from = "sparseMatrix",
