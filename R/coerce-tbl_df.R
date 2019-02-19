@@ -38,14 +38,6 @@ NULL
 
 
 # S3 ===========================================================================
-#' @rdname coerce-tbl_df
-#' @name as_tibble
-#' @importFrom tibble as_tibble
-#' @export
-NULL
-
-
-
 #' @importFrom tibble as_tibble
 #' @aliases NULL
 #' @export
@@ -57,38 +49,11 @@ tibble::as_tibble
 #' @export
 as_tibble.DataFrame <-  # nolint
     function(x, ..., rownames = "rowname") {
-        # Check for valid columns (atomic, list).
-        valid <- vapply(
-            X = x,
-            FUN = function(x) {
-                is.atomic(x) || is.list(x)
-            },
-            FUN.VALUE = logical(1L),
-            USE.NAMES = TRUE
-        )
-        # Error if S4 columns are nested.
-        if (!all(valid)) {
-            invalid <- x[, names(valid[!valid]), drop = FALSE]
-            invalid <- vapply(
-                X = invalid,
-                FUN = class,
-                FUN.VALUE = character(1)
-            )
-            stop(paste(
-                "tibble supports atomic and list columns.",
-                "Invalid columns:",
-                printString(invalid),
-                sep = "\n"
-            ))
-        }
-        # Coerce to standard data frame.
-        # Note that using `as.data.frame()` here instead can sanitize invalid
-        # names (e.g. human gene symbols) unexpectedly.
-        x <- as(x, "data.frame")
+        x <- .coerceDataFrame(x)
         if (!hasRownames(x)) {
             rownames <- NULL
         }
-        do.call(what = as_tibble, args = list(x = x, ..., rownames = rownames))
+        as_tibble(x = x, ..., rownames = rownames)
     }
 
 
@@ -105,7 +70,7 @@ as_tibble.GRanges <-  # nolint
         if (!hasRownames(x)) {
             rownames <- NULL
         }
-        do.call(what = as_tibble, args = list(x = x, ..., rownames = rownames))
+        as_tibble(x = x, ..., rownames = rownames)
     }
 
 
