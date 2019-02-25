@@ -116,6 +116,13 @@
     </div>
 
         
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Our defined methods attempt to improve on the defaults in the tibble package
+to ensure that row names are not dropped by default, which is a poor default
+for bioinformatics. This is accomplished by setting <code>rownames = "rowname"</code> by
+default instead of <code>rownames = NULL</code>.</p>
+    
     <h2 class="hasAnchor" id="s-as-tibble-"><a class="anchor" href="#s-as-tibble-"></a>S3 <code>as_tibble()</code></h2>
 
     
@@ -132,6 +139,10 @@ these S4 classes:</p><ul>
 need to define an S4 coercion method that allows us to use
 <code><a href='https://www.rdocumentation.org/packages/methods/topics/as'>as()</a></code> to coerce an object to a tibble.</p>
 <p>See <code>getClass("tbl_df")</code> for details on how tibble is a virtual class.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>tibble::as_tibble()</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -174,9 +185,13 @@ need to define an S4 coercion method that allows us to use
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#s-as-tibble-">S3 <code>as_tibble()</code></a></li>
 
       <li><a href="#s-as-">S4 <code>as()</code></a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
