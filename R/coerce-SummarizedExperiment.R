@@ -4,7 +4,7 @@
 #' `RangedSummarizedExperiment` to a standard `SummarizedExperiment`, that
 #' doesn't drop [`rowData()`][SummarizedExperiment::rowData].
 #'
-#' @name as-SummarizedExperiment
+#' @name coerce-SummarizedExperiment
 #'
 #' @inheritParams params
 #'
@@ -16,7 +16,7 @@ NULL
 
 
 # S3 ===========================================================================
-#' @rdname as-SummarizedExperiment
+#' @rdname coerce-SummarizedExperiment
 #' @export
 as.SummarizedExperiment <-  # nolint
     function(x) {

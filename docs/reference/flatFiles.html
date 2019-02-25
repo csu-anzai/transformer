@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce to <code>data.frame</code> — as-data.frame • transformer</title>
+<title>Coerce any S4 object to a list — flatFiles • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce to <code>data.frame</code> — as-data.frame" />
+<meta property="og:title" content="Coerce any S4 object to a list — flatFiles" />
 
-<meta property="og:description" content="Coerce to data.frame" />
+<meta property="og:description" content="Coerce any S4 object to a list" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -104,67 +104,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coerce to <code>data.frame</code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/transformer/blob/master/R/as-data.frame.R'><code>R/as-data.frame.R</code></a></small>
-    <div class="hidden name"><code>as-data.frame.Rd</code></div>
+    <h1>Coerce any S4 object to a list</h1>
+    <small class="dont-index">Source: <a href='https://github.com/steinbaugh/transformer/blob/master/R/flatFiles-methods.R'><code>R/flatFiles-methods.R</code></a></small>
+    <div class="hidden name"><code>flatFiles.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Coerce to <code>data.frame</code></p>
+    <p>Coerce any S4 object to a list</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for sparseMatrix</span>
-<span class='fu'>as.data.frame</span>(<span class='no'>x</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optional</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>flatFiles</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>any <span style="R">R</span> object.</p></td>
-    </tr>
-    <tr>
-      <th>row.names</th>
-      <td><p><code>NULL</code> or a character vector giving the row
-    names for the data frame.  Missing values are not allowed.</p></td>
-    </tr>
-    <tr>
-      <th>optional</th>
-      <td><p>logical. If <code>TRUE</code>, setting row names and
-    converting column names (to syntactic names: see
-    <code><a href='https://www.rdocumentation.org/packages/base/topics/make.names'>make.names</a></code>) is optional.  Note that all of <span style="R">R</span>'s
-    <span class="pkg">base</span> package <code>as.data.frame()</code> methods use
-    <code>optional</code> only for column names treatment, basically with the
-    meaning of <code><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a>(*, check.names = !optional)</code>.
-    See also the <code>make.names</code> argument of the <code>matrix</code> method.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>additional arguments to be passed to or from methods.</p></td>
+      <th>object</th>
+      <td><p>Object.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>list</code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='coerceS4ToList.html'>coerceS4ToList()</a></code>.</p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## sparseMatrix to data.frame ====</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/load'>load</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"sparseMatrix.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"transformer"</span>))
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>sparseMatrix</span>, <span class='st'>"data.frame"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
-#&gt; 1  0  7  0  0  0  0  0  0  0   0
-#&gt; 2  0  0  0  0  0  0  0  0  0   0
-#&gt; 3  0  0  0  0  0  0  0  0 14   0
-#&gt; 4  0  0  0  0  0 21  0  0  0   0
-#&gt; 5  0  0  0  0  0  0 28  0  0   0
-#&gt; 6  0  0  0  0  0  0  0 35  0   0</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/load'>load</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"rse.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"transformer"</span>))
+
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>flatFiles</span>(<span class='no'>rse</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "rowRanges"       "colData"         "assays"          "NAMES"          
+#&gt; [5] "elementMetadata" "metadata"       </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

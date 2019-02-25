@@ -6,31 +6,39 @@ cache: packages
 
 matrix:
   include:
-  - os: linux
-    r: bioc-release
-  - os: osx
-    r: bioc-release
+    - os: linux
+      r: bioc-release
+    - os: osx
+      r: bioc-release
 
 branches:
   only:
-  - master
+    - master
 
 env:
   global:
     - LINTR_COMMENT_BOT=true
+
+# Skipping vignettes, which can cause the build to time out.
+r_build_args: "--no-build-vignettes --no-manual"
+r_check_args: "--no-build-vignettes --no-manual --timings"
 
 r_packages:
   - covr
 bioc_packages:
   - BiocCheck
 github_packages:
-  - mjsteinbaugh/lintr
+  - steinbaugh/lintr
 
 after_success:
-  - Rscript -e 'lintr::lint_package()'
-  - Rscript -e 'covr::codecov()'
   - R CMD BiocCheck .
+  # Only check lints and coverage against linux bioc-release.
+  - test $TRAVIS_OS_NAME = 'linux' && $TRAVIS_R_VERSION_STRING = 'bioc-release' && Rscript -e 'lintr::lint_package()'
+  - test $TRAVIS_OS_NAME = 'linux' && $TRAVIS_R_VERSION_STRING = 'bioc-release' && Rscript -e 'covr::codecov()'
 
 notifications:
+  email:
+    recipients:
+      - mike@steinbaugh.com
     on_success: change
     on_failure: change

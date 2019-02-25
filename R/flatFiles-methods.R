@@ -1,4 +1,25 @@
-#' @rdname coerceS4ToList
+# Consider soft deprecating in favor of `coerceS4ToList()`.
+
+
+
+#' @name flatFiles
+#' @inherit bioverbs::flatFiles
+#'
+#' @seealso [coerceS4ToList()].
+#'
+#' @return `list`.
+#'
+#' @examples
+#' load(system.file("extdata", "rse.rda", package = "transformer"))
+#'
+#' x <- flatFiles(rse)
+#' class(x)
+#' names(x)
+NULL
+
+
+
+#' @rdname flatFiles
 #' @name flatFiles
 #' @importFrom bioverbs flatFiles
 #' @export
@@ -6,14 +27,6 @@ NULL
 
 
 
-#' @importFrom bioverbs flatFiles
-#' @aliases NULL
-#' @export
-bioverbs::flatFiles
-
-
-
-# Consider soft deprecating in favor of `coerceS4ToList`.
 flatFiles.SummarizedExperiment <-  # nolint
     function(object) {
         coerceS4ToList(object)
@@ -21,7 +34,7 @@ flatFiles.SummarizedExperiment <-  # nolint
 
 
 
-#' @rdname coerceS4ToList
+#' @rdname flatFiles
 #' @export
 setMethod(
     f = "flatFiles",

@@ -14,10 +14,6 @@
 #' x <- coerceS4ToList(rse)
 #' class(x)
 #' names(x)
-#'
-#' x <- flatFiles(rse)
-#' class(x)
-#' names(x)
 coerceS4ToList <- function(from) {
     assert(isS4(from))
     to <- lapply(slotNames(from), function(slot) {
