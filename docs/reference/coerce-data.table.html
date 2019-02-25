@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
       </span>
     </div>
 
@@ -116,6 +116,15 @@
     </div>
 
         
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Our defined methods attempt to improve on the defaults in the data.table
+package to ensure that row names are not dropped by default, which is a poor
+default for bioinformatics. This is accomplished by setting
+<code>keep.rownames = "rowname"</code> by default instead of <code>keep.rownames = NULL</code>.
+Note that we're manually defining the "<code>rowname</code>" column instead of using
+<code>TRUE</code>, to match the conventions used in our <code><a href='coerce-tbl_df.html'>as_tibble()</a></code> methods.</p>
+    
     <h2 class="hasAnchor" id="s-as-data-table-"><a class="anchor" href="#s-as-data-table-"></a>S3 <code>as.data.table()</code></h2>
 
     
@@ -132,6 +141,10 @@ support for these S4 classes:</p><ul>
 S4 coercion method that allows us to use <code><a href='https://www.rdocumentation.org/packages/methods/topics/as'>as()</a></code> to coerce an
 object to a <code>data.table</code>.</p>
 <p>See <code>getClass("data.table")</code> for details.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/data.table/topics/as.data.table'>data.table::as.data.table()</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -170,9 +183,13 @@ object to a <code>data.table</code>.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#s-as-data-table-">S3 <code>as.data.table()</code></a></li>
 
       <li><a href="#s-as-">S4 <code>as()</code></a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -1,9 +1,9 @@
 Package: transformer
-Title: Coercion Methods for Biological Data
+Title: Coercion methods for biological data
 Description: Additional S3 and S4 coercion methods for easy interconversion
     between Bioconductor and tidyverse data classes.
-Version: 0.1.5
-Date: 2019-02-18
+Version: 0.1.6
+Date: 2019-02-25
 Authors@R: person(
     "Michael", "Steinbaugh",
     email = "mike@steinbaugh.com",
@@ -16,9 +16,9 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 3.4)
 Imports:
-    bioverbs (>= 0.1.7), goalie (>= 0.2.8),
+    bioverbs (>= 0.1.8), goalie (>= 0.2.8),
     BiocGenerics, GenomicRanges, S4Vectors, SummarizedExperiment,
-    Matrix (>= 1.2), data.table (>= 1.12), tibble (>= 2.0),
+    Matrix (>= 1.2), data.table (>= 1.12), tibble (>= 2.0.1),
     methods
 Suggests:
     patrick, testthat,

@@ -10,6 +10,12 @@
 \description{
 Coerce to \code{tbl_df} (tibble)
 }
+\details{
+Our defined methods attempt to improve on the defaults in the tibble package
+to ensure that row names are not dropped by default, which is a poor default
+for bioinformatics. This is accomplished by setting \code{rownames = "rowname"} by
+default instead of \code{rownames = NULL}.
+}
 \section{S3 \code{as_tibble()}}{
 
 
@@ -46,4 +52,7 @@ print(x)
 x <- as(gr, "tbl_df")
 x <- as_tibble(gr)
 print(x)
+}
+\seealso{
+\code{\link[tibble:as_tibble]{tibble::as_tibble()}}.
 }

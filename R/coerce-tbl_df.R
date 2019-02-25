@@ -2,6 +2,12 @@
 #'
 #' @name coerce-tbl_df
 #'
+#' @details
+#' Our defined methods attempt to improve on the defaults in the tibble package
+#' to ensure that row names are not dropped by default, which is a poor default
+#' for bioinformatics. This is accomplished by setting `rownames = "rowname"` by
+#' default instead of `rownames = NULL`.
+#'
 #' @section S3 `as_tibble()`:
 #'
 #' transformer extends [`as_tibble()`][tibble::as_tibble] method support for
@@ -17,6 +23,8 @@
 #' [`as()`][methods::as] to coerce an object to a tibble.
 #'
 #' See `getClass("tbl_df")` for details on how tibble is a virtual class.
+#'
+#' @seealso [tibble::as_tibble()].
 #'
 #' @examples
 #' load(system.file("extdata", "rse.rda", package = "transformer"))
@@ -49,7 +57,10 @@ NULL
 #' @method as_tibble DataFrame
 #' @export
 as_tibble.DataFrame <-  # nolint
-    function(x, ..., rownames = "rowname") {
+    function(
+        x, ...,
+        rownames = pkgconfig::get_config("tibble::rownames", "rowname")
+    ) {
         x <- .coerceDataFrame(x)
         if (!hasRownames(x)) {
             rownames <- NULL
@@ -64,7 +75,10 @@ as_tibble.DataFrame <-  # nolint
 #' @method as_tibble GRanges
 #' @export
 as_tibble.GRanges <-  # nolint
-    function(x, ..., rownames = "rowname") {
+    function(
+        x, ...,
+        rownames = pkgconfig::get_config("tibble::rownames", "rowname")
+    ) {
         names <- names(x)
         x <- as(x, "data.frame")
         rownames(x) <- names

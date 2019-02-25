@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
       </span>
     </div>
 
@@ -116,6 +116,13 @@
     </div>
 
         
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Our defined methods attempt to improve on the defaults in the tibble package
+to ensure that row names are not dropped by default, which is a poor default
+for bioinformatics. This is accomplished by setting <code>rownames = "rowname"</code> by
+default instead of <code>rownames = NULL</code>.</p>
+    
     <h2 class="hasAnchor" id="s-as-tibble-"><a class="anchor" href="#s-as-tibble-"></a>S3 <code>as_tibble()</code></h2>
 
     
@@ -133,6 +140,10 @@ need to define an S4 coercion method that allows us to use
 <code><a href='https://www.rdocumentation.org/packages/methods/topics/as'>as()</a></code> to coerce an object to a tibble.</p>
 <p>See <code>getClass("tbl_df")</code> for details on how tibble is a virtual class.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>tibble::as_tibble()</a></code>.</p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/load'>load</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"rse.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"transformer"</span>))
@@ -143,40 +154,44 @@ need to define an S4 coercion method that allows us to use
 <span class='co'>## DataFrame to tbl_df ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>df</span>, <span class='st'>"tbl_df"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as_tibble</span>(<span class='no'>df</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 2</span><span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 2</span><span>
 #&gt;   rowname treatment
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'>1</span><span> A       ChIP     
-#&gt; </span><span style='color: #555555;'>2</span><span> B       Input    
-#&gt; </span><span style='color: #555555;'>3</span><span> C       ChIP     
-#&gt; </span><span style='color: #555555;'>4</span><span> D       Input    
-#&gt; </span><span style='color: #555555;'>5</span><span> E       ChIP     
-#&gt; </span><span style='color: #555555;'>6</span><span> F       Input    </div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> A       ChIP     
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> B       Input    
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> C       ChIP     
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> D       Input    
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> E       ChIP     
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> F       Input    </div><div class='input'>
 <span class='co'>## GRanges to tbl_df ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>gr</span>, <span class='st'>"tbl_df"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as_tibble</span>(<span class='no'>gr</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 200 x 6</span><span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 200 x 6</span><span>
 #&gt;    seqnames  start    end width strand featureID
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #555555;'> 1</span><span> chr1     </span><span style='text-decoration: underline;'>248</span><span>574 </span><span style='text-decoration: underline;'>248</span><span>673   100 -      ID001    
-#&gt; </span><span style='color: #555555;'> 2</span><span> chr1     </span><span style='text-decoration: underline;'>128</span><span>358 </span><span style='text-decoration: underline;'>128</span><span>457   100 +      ID002    
-#&gt; </span><span style='color: #555555;'> 3</span><span> chr1     </span><span style='text-decoration: underline;'>639</span><span>932 </span><span style='text-decoration: underline;'>640</span><span>031   100 +      ID003    
-#&gt; </span><span style='color: #555555;'> 4</span><span> chr1     </span><span style='text-decoration: underline;'>667</span><span>728 </span><span style='text-decoration: underline;'>667</span><span>827   100 +      ID004    
-#&gt; </span><span style='color: #555555;'> 5</span><span> chr1     </span><span style='text-decoration: underline;'>321</span><span>728 </span><span style='text-decoration: underline;'>321</span><span>827   100 +      ID005    
-#&gt; </span><span style='color: #555555;'> 6</span><span> chr1     </span><span style='text-decoration: underline;'>792</span><span>394 </span><span style='text-decoration: underline;'>792</span><span>493   100 +      ID006    
-#&gt; </span><span style='color: #555555;'> 7</span><span> chr1     </span><span style='text-decoration: underline;'>911</span><span>821 </span><span style='text-decoration: underline;'>911</span><span>920   100 +      ID007    
-#&gt; </span><span style='color: #555555;'> 8</span><span> chr1     </span><span style='text-decoration: underline;'>778</span><span>975 </span><span style='text-decoration: underline;'>779</span><span>074   100 +      ID008    
-#&gt; </span><span style='color: #555555;'> 9</span><span> chr1     </span><span style='text-decoration: underline;'>642</span><span>109 </span><span style='text-decoration: underline;'>642</span><span>208   100 -      ID009    
-#&gt; </span><span style='color: #555555;'>10</span><span> chr1     </span><span style='text-decoration: underline;'>394</span><span>973 </span><span style='text-decoration: underline;'>395</span><span>072   100 -      ID010    
-#&gt; </span><span style='color: #555555;'># … with 190 more rows</span><span></div></span></pre>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> chr1     </span><span style='text-decoration: underline;'>248</span><span>574 </span><span style='text-decoration: underline;'>248</span><span>673   100 -      ID001    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> chr1     </span><span style='text-decoration: underline;'>128</span><span>358 </span><span style='text-decoration: underline;'>128</span><span>457   100 +      ID002    
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> chr1     </span><span style='text-decoration: underline;'>639</span><span>932 </span><span style='text-decoration: underline;'>640</span><span>031   100 +      ID003    
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> chr1     </span><span style='text-decoration: underline;'>667</span><span>728 </span><span style='text-decoration: underline;'>667</span><span>827   100 +      ID004    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> chr1     </span><span style='text-decoration: underline;'>321</span><span>728 </span><span style='text-decoration: underline;'>321</span><span>827   100 +      ID005    
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> chr1     </span><span style='text-decoration: underline;'>792</span><span>394 </span><span style='text-decoration: underline;'>792</span><span>493   100 +      ID006    
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> chr1     </span><span style='text-decoration: underline;'>911</span><span>821 </span><span style='text-decoration: underline;'>911</span><span>920   100 +      ID007    
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> chr1     </span><span style='text-decoration: underline;'>778</span><span>975 </span><span style='text-decoration: underline;'>779</span><span>074   100 +      ID008    
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> chr1     </span><span style='text-decoration: underline;'>642</span><span>109 </span><span style='text-decoration: underline;'>642</span><span>208   100 -      ID009    
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> chr1     </span><span style='text-decoration: underline;'>394</span><span>973 </span><span style='text-decoration: underline;'>395</span><span>072   100 -      ID010    
+#&gt; </span><span style='color: #949494;'># … with 190 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#s-as-tibble-">S3 <code>as_tibble()</code></a></li>
 
       <li><a href="#s-as-">S4 <code>as()</code></a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
