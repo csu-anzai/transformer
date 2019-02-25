@@ -1,9 +1,13 @@
-## transformer 0.1.5 (2019-02-25)
+## transformer 0.1.6
+
+
+
+## transformer 0.1.5 (2019-02-18)
 
 ### Major changes
 
-- Added support for `data.table` interconversion with `DataFrame`.
-- Added support for `GRanges` interconversion with `tbl_df` and `data.table`.
+- Added support for coercion to `data.table` class. `DataFrame` and `GRanges`
+  class objects are initially supported.
 
 
 
