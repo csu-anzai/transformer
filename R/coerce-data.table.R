@@ -2,6 +2,14 @@
 #'
 #' @name coerce-data.table
 #'
+#' @details
+#' Our defined methods attempt to improve on the defaults in the data.table
+#' package to ensure that row names are not dropped by default, which is a poor
+#' default for bioinformatics. This is accomplished by setting
+#' `keep.rownames = "rowname"` by default instead of `keep.rownames = NULL`.
+#' Note that we're manually defining the "`rowname`" column instead of using
+#' `TRUE`, to match the conventions used in our `as_tibble()` methods.
+#'
 #' @section S3 `as.data.table()`:
 #'
 #' transformer extends [`as.data.table()`][data.table::as.data.table] method
@@ -17,6 +25,8 @@
 #' object to a `data.table`.
 #'
 #' See `getClass("data.table")` for details.
+#'
+#' @seealso [data.table::as.data.table()].
 #'
 #' @examples
 #' load(system.file("extdata", "rse.rda", package = "transformer"))
