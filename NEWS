@@ -1,4 +1,9 @@
-## transformer 0.1.6
+## transformer 0.1.6 (2019-02-25)
+
+### Minor changes
+
+- Improve documentation regarding default row name handling for `as_tibble`
+  and `as.data.table`.
 
 
 
