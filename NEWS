@@ -1,3 +1,11 @@
+## transformer 0.1.7 (2019-03-22)
+
+### Minor changes
+
+- Migrated code to [Acid Genomics].
+
+
+
 ## transformer 0.1.6 (2019-02-25)
 
 ### Minor changes
@@ -76,7 +84,7 @@ easier unit testing in a separate package.
 
 
 [AppVeyor CI]: https://www.appveyor.com/
-[basejump]: https://steinbaugh.com/basejump/
-[brio]: https://steinbaugh.com/brio/
+[basejump]: https://basejump.acidgenomics.com/
+[brio]: https://brio.acidgenomics.com/
 [Bioconductor]: https://bioconductor.org/
 [Travis CI]: https://travis-ci.com/

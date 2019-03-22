@@ -12,13 +12,19 @@ Bioconductor and tidyverse data classes.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/steinbaugh/transformer/}
-  \item Report bugs at \url{https://github.com/steinbaugh/transformer/issues/}
+  \item \url{https://transformer.acidgenomics.com/}
+  \item \url{https://github.com/acidgenomics/transformer/}
+  \item Report bugs at \url{https://github.com/acidgenomics/transformer/issues/}
 }
 
 }
 \author{
 \strong{Maintainer}: Michael Steinbaugh \email{mike@steinbaugh.com} (0000-0002-2403-2221)
+
+Other contributors:
+\itemize{
+  \item Acid Genomics [copyright holder, funder]
+}
 
 }
 \keyword{internal}
