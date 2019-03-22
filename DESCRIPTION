@@ -2,30 +2,38 @@ Package: transformer
 Title: Coercion methods for biological data
 Description: Additional S3 and S4 coercion methods for easy interconversion
     between Bioconductor and tidyverse data classes.
-Version: 0.1.6
-Date: 2019-02-25
-Authors@R: person(
-    "Michael", "Steinbaugh",
-    email = "mike@steinbaugh.com",
-    role = c("aut", "cre"),
-    comment = c(ORCID = "0000-0002-2403-2221"))
-URL: https://github.com/steinbaugh/transformer/
-BugReports: https://github.com/steinbaugh/transformer/issues/
+Version: 0.1.7
+Date: 2019-03-22
+Authors@R: c(
+    person(
+        "Michael", "Steinbaugh",
+        email = "mike@steinbaugh.com",
+        role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-2403-2221")
+    ),
+    person(
+        given = "Acid Genomics",
+        role = c("cph", "fnd")
+    ))
+URL:
+    https://transformer.acidgenomics.com/,
+    https://github.com/acidgenomics/transformer/
+BugReports: https://github.com/acidgenomics/transformer/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: false
 Depends: R (>= 3.4)
 Imports:
-    bioverbs (>= 0.1.8), goalie (>= 0.2.8),
+    bioverbs (>= 0.1.9), goalie (>= 0.2.12),
     BiocGenerics, GenomicRanges, S4Vectors, SummarizedExperiment,
-    Matrix (>= 1.2), data.table (>= 1.12), tibble (>= 2.0.1),
+    Matrix (>= 1.2), data.table (>= 1.12), tibble (>= 2.1),
     methods
 Suggests:
     patrick, testthat,
     datasets
 Remotes:
-    steinbaugh/bioverbs,
-    steinbaugh/goalie
+    acidgenomics/bioverbs,
+    acidgenomics/goalie
 biocViews: Infrastructure
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
