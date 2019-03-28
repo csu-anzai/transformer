@@ -24,6 +24,6 @@ x <- as(sparse, "DataFrame")
 ## tbl_df to DataFrame ====
 data(tbl, package = "acidtest")
 stopifnot(is(tbl, "tbl_df"))
-x <- as(tbl_df, "DataFrame")
+x <- as(tbl, "DataFrame")
 head(x)
 }

@@ -156,8 +156,7 @@ object to a <code>data.table</code>.</p>
 
 <span class='co'>## DataFrame to data.table ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>df</span>, <span class='st'>"data.table"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>df</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      rowname condition
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(df): could not find function "as.data.table"</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      rowname condition
 #&gt;  1: sample01         A
 #&gt;  2: sample02         A
 #&gt;  3: sample03         A
@@ -172,8 +171,7 @@ object to a <code>data.table</code>.</p>
 #&gt; 12: sample12         B</div><div class='input'>
 <span class='co'>## GRanges to data.table ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>gr</span>, <span class='st'>"data.table"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>gr</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      rowname seqnames     start       end  width strand          geneID
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>gr</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.table(gr): could not find function "as.data.table"</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      rowname seqnames     start       end  width strand          geneID
 #&gt;   1: gene001        X 100627109 100639991  12883      - ENSG00000000003
 #&gt;   2: gene002        X 100584802 100599885  15084      + ENSG00000000005
 #&gt;   3: gene003       20  50934867  50958555  23689      - ENSG00000000419

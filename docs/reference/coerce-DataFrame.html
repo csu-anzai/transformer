@@ -136,9 +136,10 @@
 <span class='co'>## tbl_df to DataFrame ====</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>tbl</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/stopifnot'>stopifnot</a></span>(<span class='fu'>is</span>(<span class='no'>tbl</span>, <span class='st'>"tbl_df"</span>))
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>tbl_df</span>, <span class='st'>"DataFrame"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .class1(object): object 'tbl_df' not found</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>tbl</span>, <span class='st'>"DataFrame"</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 4 columns
 #&gt;                   sample1   sample2   sample3   sample4
-#&gt;                 &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+#&gt;                 &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
 #&gt; ENSG00000000001         1         5         9        13
 #&gt; ENSG00000000002         2         6        10        14
 #&gt; ENSG00000000003         3         7        11        15
