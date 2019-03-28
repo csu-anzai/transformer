@@ -1,8 +1,6 @@
 context("Coercion methods")
 
-load(system.file("extdata", "rse.rda", package = "transformer"))
-load(system.file("extdata", "sparseMatrix.rda", package = "transformer"))
-load(system.file("extdata", "tbl_df.rda", package = "transformer"))
+data(rse, sparse, tbl, package = "acidtest", envir = environment())
 
 DataFrame <- S4Vectors::DataFrame  # nolint
 colData <- SummarizedExperiment::colData
@@ -22,10 +20,7 @@ with_parameters_test_that(
         x <- as.data.frame(object)
         expect_is(x, "data.frame")
     },
-    object = list(
-        sparseMatrix,
-        tbl_df
-    )
+    object = list(sparse, tbl)
 )
 
 
@@ -88,10 +83,7 @@ with_parameters_test_that(
         x <- as(object, "DataFrame")
         expect_s4_class(x, "DataFrame")
     },
-    object = list(
-        sparseMatrix,
-        tbl_df
-    )
+    object = list(sparse, tbl)
 )
 
 test_that("tbl_df to DataFrame", {
