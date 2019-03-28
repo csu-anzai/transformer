@@ -102,24 +102,21 @@ test_that("tbl_df to DataFrame", {
 # SummarizedExperiment =========================================================
 # This method improves rowData handling for classes that extend RSE.
 test_that("Extends RangedSummarizedExperiment", {
-    expect_identical(
-        object = as(rse, "SummarizedExperiment"),
-        expected = as.SummarizedExperiment(rse)
-    )
     x <- as.SummarizedExperiment(rse)
+    expect_s4_class(x, "SummarizedExperiment")
     # Check that rowData doesn't get dropped.
     expect_identical(
-        object = rowData(x)[["featureID"]][[1L]],
-        expected = "ID001"
+        object = as.character(rowData(x)[["geneID"]])[[1L]],
+        expected = "ENSG00000000003"
     )
 })
 
-# Easy way to text an S4 class that extends SE without importing?
+# Easy way to test an S4 class that extends SE without importing?
 test_that("Extends SummarizedExperiment", {
     se <- as(rse, "SummarizedExperiment")
     # Code coverage for `rowMeta` handling.
     data <- as.SummarizedExperiment(se)
-    expect_identical(names(rowData(data)), "featureID")
+    expect_identical(names(rowData(data))[[1L]], "geneID")
 })
 
 
