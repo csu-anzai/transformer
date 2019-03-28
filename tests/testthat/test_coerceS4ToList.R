@@ -1,6 +1,6 @@
 context("Coerce S4 to list")
 
-load(system.file("extdata", "rse.rda", package = "transformer"))
+data(rse, package = "acidtest", envir = environment())
 
 with_parameters_test_that(
     "Coerce S4 to list", {

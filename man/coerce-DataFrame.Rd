@@ -17,11 +17,13 @@ Coerce to \code{DataFrame}
 }
 \examples{
 ## sparseMatrix to DataFrame ====
-load(system.file("extdata", "sparseMatrix.rda", package = "transformer"))
-x <- as(sparseMatrix, "DataFrame")
+data(sparse, package = "acidtest")
+stopifnot(is(sparse, "sparseMatrix"))
+x <- as(sparse, "DataFrame")
 
 ## tbl_df to DataFrame ====
-load(system.file("extdata", "tbl_df.rda", package = "transformer"))
-x <- as(tbl_df, "DataFrame")
+data(tbl, package = "acidtest")
+stopifnot(is(tbl, "tbl_df"))
+x <- as(tbl, "DataFrame")
 head(x)
 }

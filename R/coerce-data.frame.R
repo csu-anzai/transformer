@@ -5,8 +5,9 @@
 #'
 #' @examples
 #' ## sparseMatrix to data.frame ====
-#' load(system.file("extdata", "sparseMatrix.rda", package = "transformer"))
-#' x <- as(sparseMatrix, "data.frame")
+#' data(sparse, package = "acidtest")
+#' stopifnot(is(sparse, "sparseMatrix"))
+#' x <- as(sparse, "data.frame")
 #' head(x)
 NULL
 

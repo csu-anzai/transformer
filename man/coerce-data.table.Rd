@@ -40,7 +40,8 @@ See \code{getClass("data.table")} for details.
 }
 
 \examples{
-load(system.file("extdata", "rse.rda", package = "transformer"))
+data(rse, package = "acidtest")
+stopifnot(is(rse, "RangedSummarizedExperiment"))
 
 df <- SummarizedExperiment::colData(rse)
 gr <- SummarizedExperiment::rowRanges(rse)

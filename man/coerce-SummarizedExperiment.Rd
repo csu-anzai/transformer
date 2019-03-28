@@ -16,6 +16,7 @@ Improved method for reliably coercing objects that extend
 doesn't drop \code{\link[SummarizedExperiment:rowData]{rowData()}}.
 }
 \examples{
-load(system.file("extdata", "rse.rda", package = "transformer"))
+data(rse, package = "acidtest")
+stopifnot(is(rse, "RangedSummarizedExperiment"))
 x <- as.SummarizedExperiment(rse)
 }
