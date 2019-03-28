@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.8</span>
       </span>
     </div>
 
@@ -148,7 +148,8 @@ object to a <code>data.table</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/load'>load</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"rse.rda"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"transformer"</span>))
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/stopifnot'>stopifnot</a></span>(<span class='fu'>is</span>(<span class='no'>rse</span>, <span class='st'>"RangedSummarizedExperiment"</span>))
 
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>colData</a></span>(<span class='no'>rse</span>)
 <span class='no'>gr</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/RangedSummarizedExperiment-class'>rowRanges</a></span>(<span class='no'>rse</span>)
@@ -156,28 +157,46 @@ object to a <code>data.table</code>.</p>
 <span class='co'>## DataFrame to data.table ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>df</span>, <span class='st'>"data.table"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>df</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    rowname treatment
-#&gt; 1:       A      ChIP
-#&gt; 2:       B     Input
-#&gt; 3:       C      ChIP
-#&gt; 4:       D     Input
-#&gt; 5:       E      ChIP
-#&gt; 6:       F     Input</div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      rowname condition
+#&gt;  1: sample01         A
+#&gt;  2: sample02         A
+#&gt;  3: sample03         A
+#&gt;  4: sample04         A
+#&gt;  5: sample05         A
+#&gt;  6: sample06         A
+#&gt;  7: sample07         B
+#&gt;  8: sample08         B
+#&gt;  9: sample09         B
+#&gt; 10: sample10         B
+#&gt; 11: sample11         B
+#&gt; 12: sample12         B</div><div class='input'>
 <span class='co'>## GRanges to data.table ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>gr</span>, <span class='st'>"data.table"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>gr</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      seqnames  start    end width strand featureID
-#&gt;   1:     chr1 248574 248673   100      -     ID001
-#&gt;   2:     chr1 128358 128457   100      +     ID002
-#&gt;   3:     chr1 639932 640031   100      +     ID003
-#&gt;   4:     chr1 667728 667827   100      +     ID004
-#&gt;   5:     chr1 321728 321827   100      +     ID005
-#&gt;  ---                                              
-#&gt; 196:     chr2 761878 761977   100      +     ID196
-#&gt; 197:     chr2 696888 696987   100      +     ID197
-#&gt; 198:     chr2 142223 142322   100      -     ID198
-#&gt; 199:     chr2 899770 899869   100      +     ID199
-#&gt; 200:     chr2 153317 153416   100      -     ID200</div></pre>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      rowname seqnames     start       end  width strand          geneID
+#&gt;   1: gene001        X 100627109 100639991  12883      - ENSG00000000003
+#&gt;   2: gene002        X 100584802 100599885  15084      + ENSG00000000005
+#&gt;   3: gene003       20  50934867  50958555  23689      - ENSG00000000419
+#&gt;   4: gene004        1 169849631 169894267  44637      - ENSG00000000457
+#&gt;   5: gene005        1 169662007 169854080 192074      + ENSG00000000460
+#&gt;  ---                                                                   
+#&gt; 496: gene496       13  20567069  20691437 124369      + ENSG00000032742
+#&gt; 497: gene497       16   5033960   5087379  53420      + ENSG00000033011
+#&gt; 498: gene498       12 122471600 122501073  29474      - ENSG00000033030
+#&gt; 499: gene499        7 151212490 151227230  14741      - ENSG00000033050
+#&gt; 500: gene500        7 151232489 151238827   6339      + ENSG00000033100
+#&gt;      geneName    geneBiotype broadClass entrezID
+#&gt;   1:   TSPAN6 protein_coding     coding     7105
+#&gt;   2:     TNMD protein_coding     coding    64102
+#&gt;   3:     DPM1 protein_coding     coding     8813
+#&gt;   4:    SCYL3 protein_coding     coding    57147
+#&gt;   5: C1orf112 protein_coding     coding    55732
+#&gt;  ---                                            
+#&gt; 496:    IFT88 protein_coding     coding     8100
+#&gt; 497:     ALG1 protein_coding     coding    56052
+#&gt; 498:   ZCCHC8 protein_coding     coding    55596
+#&gt; 499:    ABCF2 protein_coding     coding    10061
+#&gt; 500:    CHPF2 protein_coding     coding    54480</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
