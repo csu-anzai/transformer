@@ -2,7 +2,6 @@
 
 [![Travis CI build status](https://travis-ci.com/acidgenomics/transformer.svg?branch=master)](https://travis-ci.com/acidgenomics/transformer)
 [![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/is5x2avlk98hrhg5/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/transformer/branch/master)
-[![Codecov percent coverage](https://codecov.io/gh/acidgenomics/transformer/branch/master/graph/badge.svg)](https://codecov.io/gh/acidgenomics/transformer)
 [![Anaconda cloud version](https://anaconda.org/bioconda/r-transformer/badges/version.svg)](https://anaconda.org/bioconda/r-transformer)
 [![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
