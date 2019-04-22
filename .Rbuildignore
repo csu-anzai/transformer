@@ -4,7 +4,6 @@
 ^\.lintr$
 ^\.travis\.yml$
 ^_pkgdown\.yml$
-^_pkgdown\.yml$
 ^appveyor\.yml$
 ^data-raw$
 ^docs$
