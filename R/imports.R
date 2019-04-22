@@ -3,7 +3,7 @@
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #' @importClassesFrom tibble tbl_df
 #'
-#' @importFrom S4Vectors as.data.frame metadata metadata<-
+#' @importFrom S4Vectors as.data.frame merge metadata metadata<-
 #' @importFrom SummarizedExperiment rowData rowData<- rowRanges
 #' @importFrom goalie areDisjointSets assert hasLength hasRownames isCharacter
 #'   printString

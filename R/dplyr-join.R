@@ -1,7 +1,3 @@
-# FIXME Add method support for the other join operations.
-
-
-
 #' Join operations supporting S4 class objects
 #'
 #' @rdname join
@@ -21,8 +17,11 @@ NULL
 
 
 
+# inner_join
+# left_join
 # right_join
 # full_join
+
 # semi_join
 # nest_join
 # anti_join
@@ -31,14 +30,15 @@ NULL
 
 #' @rdname join
 #' @export
-left_join <- function(x, y, by) {
-    UseMethod("left_join")
-}
+left_join <-  # nolint
+    function(x, y, by) {
+        UseMethod("left_join")
+    }
 
 
 #' @rdname join
 #' @export
-left_join.DataFrame <-
+left_join.DataFrame <-  # nolint
     function(x, y, by) {
         assert(
             is(x, "DataFrame"),
@@ -48,10 +48,7 @@ left_join.DataFrame <-
         )
         # Setting internal `.idx` column here to avoid row reorders.
         x[[".idx"]] <- seq_len(nrow(x))
-        out <- S4Vectors::merge(
-            x = x, y = y, by = by,
-            all.x = TRUE, sort = FALSE
-        )
+        out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)
         # Now ensure original row order is preserved, using `.idx` values.
         out <- out[order(out[[".idx"]]), , drop = FALSE]
         assert(identical(x[[".idx"]], out[[".idx"]]))
