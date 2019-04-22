@@ -1,3 +1,7 @@
+# FIXME Add method support for the other join operations.
+
+
+
 #' Join operations supporting S4 class objects
 #'
 #' @rdname join
@@ -14,6 +18,10 @@
 #' - `dplyr::left_join()`.
 #' - `S4Vectors::merge()`.
 NULL
+
+
+
+# inner_join
 
 
 
@@ -44,9 +52,20 @@ left_join.DataFrame <-
 
 
 
-# left_join
 # right_join
+
+
+
 # full_join
+
+
+
 # semi_join
+
+
+
 # nest_join
+
+
+
 # anti_join
