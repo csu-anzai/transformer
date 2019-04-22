@@ -21,7 +21,23 @@ NULL
 
 
 
-# inner_join
+#' @rdname join
+#' @name inner_join
+#' @importFrom dplyr inner_join
+#' @export
+NULL
+
+#' @rdname join
+#' @name left_join
+#' @importFrom dplyr left_join
+#' @export
+NULL
+
+# right_join
+# full_join
+# semi_join
+# nest_join
+# anti_join
 
 
 
@@ -49,23 +65,3 @@ left_join.DataFrame <-
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
         out
     }
-
-
-
-# right_join
-
-
-
-# full_join
-
-
-
-# semi_join
-
-
-
-# nest_join
-
-
-
-# anti_join

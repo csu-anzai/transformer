@@ -2,6 +2,8 @@
 % Please edit documentation in R/join.R
 \name{join}
 \alias{join}
+\alias{inner_join}
+\alias{left_join}
 \alias{left_join.DataFrame}
 \title{Join operations supporting S4 class objects}
 \usage{
