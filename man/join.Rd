@@ -2,11 +2,12 @@
 % Please edit documentation in R/dplyr-join.R
 \name{join}
 \alias{join}
-\alias{inner_join}
 \alias{left_join}
 \alias{left_join.DataFrame}
 \title{Join operations supporting S4 class objects}
 \usage{
+left_join(x, y, by)
+
 \method{left_join}{DataFrame}(x, y, by)
 }
 \arguments{

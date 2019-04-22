@@ -25,7 +25,7 @@ Depends: R (>= 3.4)
 Imports:
     bioverbs (>= 0.1.9), goalie (>= 0.2.12),
     BiocGenerics, GenomicRanges, S4Vectors, SummarizedExperiment,
-    Matrix (>= 1.2), data.table (>= 1.12), dplyr (>= 0.8), tibble (>= 2.1),
+    Matrix (>= 1.2), data.table (>= 1.12), tibble (>= 2.1),
     methods
 Suggests:
     acidtest (>= 0.1),

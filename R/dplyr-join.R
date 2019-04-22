@@ -21,24 +21,19 @@ NULL
 
 
 
-#' @rdname join
-#' @name inner_join
-#' @importFrom dplyr inner_join
-#' @export
-NULL
-
-#' @rdname join
-#' @name left_join
-#' @importFrom dplyr left_join
-#' @export
-NULL
-
 # right_join
 # full_join
 # semi_join
 # nest_join
 # anti_join
 
+
+
+#' @rdname join
+#' @export
+left_join <- function(x, y, by) {
+    UseMethod("left_join")
+}
 
 
 #' @rdname join
