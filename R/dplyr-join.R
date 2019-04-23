@@ -17,6 +17,14 @@ NULL
 
 
 
+# Currently setting an internal `.idx` column that we can use to reorder the
+# rows after `merge()` operation.
+#
+# Alternatively, consider using Hervé Pagès's recommended approach.
+# https://support.bioconductor.org/p/120277/
+
+
+
 # inner_join
 # left_join
 # right_join
@@ -36,10 +44,6 @@ left_join <-  # nolint
     }
 
 
-# Using Hervé Pagès's recommended approach
-# https://support.bioconductor.org/p/120277/
-#
-# Alternatively, can set index column internally and use that for sorting.
 
 #' @rdname join
 #' @export
