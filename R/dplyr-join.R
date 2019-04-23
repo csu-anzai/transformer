@@ -36,6 +36,11 @@ left_join <-  # nolint
     }
 
 
+# Using Hervé Pagès's recommended approach
+# https://support.bioconductor.org/p/120277/
+#
+# Alternatively, can set index column internally and use that for sorting.
+
 #' @rdname join
 #' @export
 left_join.DataFrame <-  # nolint
