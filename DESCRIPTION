@@ -21,7 +21,7 @@ URL:
 BugReports: https://github.com/acidgenomics/transformer/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends: R (>= 3.4)
+Depends: R (>= 3.5)
 Imports:
     bioverbs (>= 0.1.9), goalie (>= 0.2.12),
     BiocGenerics, GenomicRanges, S4Vectors, SummarizedExperiment,
