@@ -23,14 +23,21 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    bioverbs (>= 0.1.9), goalie (>= 0.2.12),
-    BiocGenerics, GenomicRanges, S4Vectors, SummarizedExperiment,
-    Matrix (>= 1.2), data.table (>= 1.12), tibble (>= 2.1),
+    bioverbs (>= 0.1.9),
+    goalie (>= 0.2.12),
+    BiocGenerics,
+    GenomicRanges,
+    S4Vectors,
+    SummarizedExperiment,
+    Matrix (>= 1.2),
+    data.table (>= 1.12),
+    tibble (>= 2.1),
     methods
 Suggests:
     acidtest (>= 0.1),
-    patrick, testthat,
-    datasets
+    datasets,
+    patrick,
+    testthat
 Remotes:
     acidgenomics/acidtest,
     acidgenomics/bioverbs,
