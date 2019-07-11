@@ -41,8 +41,11 @@ See \code{getClass("data.table")} for details.
 }
 
 \examples{
-data(rse, package = "acidtest")
-stopifnot(is(rse, "RangedSummarizedExperiment"))
+data(ir, rse, package = "acidtest")
+stopifnot(
+    is(ir, "IRanges")
+    is(rse, "RangedSummarizedExperiment")
+)
 
 df <- SummarizedExperiment::colData(rse)
 gr <- SummarizedExperiment::rowRanges(rse)
@@ -55,6 +58,11 @@ print(x)
 ## GRanges to data.table ====
 x <- as(gr, "data.table")
 x <- as.data.table(gr)
+print(x)
+
+## IRanges to data.table ====
+x <- as(ir, "data.table")
+x <- as.data.table(ir)
 print(x)
 }
 \seealso{

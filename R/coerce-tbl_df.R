@@ -27,8 +27,11 @@
 #' @seealso [tibble::as_tibble()].
 #'
 #' @examples
-#' data(rse, package = "acidtest")
-#' stopifnot(is(rse, "RangedSummarizedExperiment"))
+#' data(ir, rse, package = "acidtest")
+#' stopifnot(
+#'     is(ir, "IRanges")
+#'     is(rse, "RangedSummarizedExperiment")
+#' )
 #'
 #' df <- SummarizedExperiment::colData(rse)
 #' gr <- SummarizedExperiment::rowRanges(rse)
@@ -41,6 +44,11 @@
 #' ## GRanges to tbl_df ====
 #' x <- as(gr, "tbl_df")
 #' x <- as_tibble(gr)
+#' print(x)
+#'
+#' ## IRanges to tbl_df ====
+#' x <- as(ir, "tbl_df")
+#' x <- as_tibble(ir)
 #' print(x)
 NULL
 

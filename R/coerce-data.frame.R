@@ -53,17 +53,20 @@ as.data.frame.IPosRanges <-  # nolint
         if (!is.null(names(x))) {
             names(x) <- NULL
         }
-        mcols_df <- as.data.frame(mcols(x, use.names = FALSE))
-        data.frame(
+        args <- list(
             start = start(x),
             end = end(x),
             width = width(x),
-            mcols_df,
             row.names = row.names,
             check.rows = TRUE,
             check.names = FALSE,
             stringsAsFactors = FALSE
         )
+        mcols <- mcols(x, use.names = FALSE)
+        if (!is.null(mcols)) {
+            args[["mcols"]] <- as.data.frame(mcols)
+        }
+        do.call(what = data.frame, args = args)
     }
 
 #' @rdname coerce-data.frame

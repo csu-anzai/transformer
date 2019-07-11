@@ -35,7 +35,7 @@ Imports:
     tibble (>= 2.1),
     methods
 Suggests:
-    acidtest (>= 0.1.2),
+    acidtest (>= 0.1.3),
     patrick,
     testthat,
     datasets

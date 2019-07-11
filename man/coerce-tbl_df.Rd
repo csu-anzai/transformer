@@ -39,8 +39,11 @@ See \code{getClass("tbl_df")} for details on how tibble is a virtual class.
 }
 
 \examples{
-data(rse, package = "acidtest")
-stopifnot(is(rse, "RangedSummarizedExperiment"))
+data(ir, rse, package = "acidtest")
+stopifnot(
+    is(ir, "IRanges")
+    is(rse, "RangedSummarizedExperiment")
+)
 
 df <- SummarizedExperiment::colData(rse)
 gr <- SummarizedExperiment::rowRanges(rse)
@@ -53,6 +56,11 @@ print(x)
 ## GRanges to tbl_df ====
 x <- as(gr, "tbl_df")
 x <- as_tibble(gr)
+print(x)
+
+## IRanges to tbl_df ====
+x <- as(ir, "tbl_df")
+x <- as_tibble(ir)
 print(x)
 }
 \seealso{
