@@ -1,4 +1,5 @@
 #' @importClassesFrom GenomicRanges GRanges
+#' @importClassesFrom IRanges IRanges
 #' @importClassesFrom Matrix sparseMatrix
 #' @importClassesFrom S4Vectors DataFrame
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment

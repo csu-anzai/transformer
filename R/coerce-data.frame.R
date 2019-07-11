@@ -22,14 +22,70 @@ NULL
 
 
 
+# Default coercion of IRanges to data.frame currently strips metadata in
+# `mcols()`. However, GenomicRanges preserves this information, so we're adding
+# a coerce method here to improve consistency.
+#
+# See also:
+# - https://github.com/Bioconductor/IRanges/issues/8
+#
+# Relevant methods:
+# > getMethod("as.data.frame", "GenomicRanges")
+# > getMethod("as.data.frame", "IRanges")  # Inherits from `IPosRanges`.
+# > getMethod("as.data.frame", "IPosRanges")
+
+#' @rdname coerce-data.frame
+#' @export
+as.data.frame.IPosRanges <-  # nolint
+    function(
+        x,
+        row.names = NULL,
+        optional = FALSE,
+        ...
+    ) {
+        if (!(is.null(row.names) || is.character(row.names))) {
+            stop("`row.names` must be NULL or a character vector.")
+        }
+        if (is.null(row.names)) {
+            row.names <- names(x)
+        }
+        if (!is.null(names(x))) {
+            names(x) <- NULL
+        }
+        mcols_df <- as.data.frame(mcols(x, use.names = FALSE))
+        data.frame(
+            start = start(x),
+            end = end(x),
+            width = width(x),
+            mcols_df,
+            row.names = row.names,
+            check.rows = TRUE,
+            check.names = FALSE,
+            stringsAsFactors = FALSE
+        )
+    }
+
+#' @rdname coerce-data.frame
+#' @export
+setMethod(
+    f = "as.data.frame",
+    signature = signature("IPosRanges"),
+    definition = as.data.frame.IPosRanges
+)
+
+
+
+as.data.frame.sparseMatrix <-  # nolint
+    function(x, ...) {
+        as.data.frame(as.matrix(x), ...)
+    }
+
 #' @rdname coerce-data.frame
 #' @export
 setMethod(
     f = "as.data.frame",
     signature = signature("sparseMatrix"),
-    definition = function(x, ...) {
-        as.data.frame(as.matrix(x), ...)
-    }
+    definition = as.data.frame.sparseMatrix
 )
 
 
@@ -39,6 +95,18 @@ setMethod(
 #' @name coerce,sparseMatrix,data.frame-method
 setAs(
     from = "sparseMatrix",
+    to = "data.frame",
+    def = function(from) {
+        as.data.frame(from)
+    }
+)
+
+
+
+#' @rdname coerce-data.frame
+#' @name coerce,IPosRanges,data.frame-method
+setAs(
+    from = "IPosRanges",
     to = "data.frame",
     def = function(from) {
         as.data.frame(from)

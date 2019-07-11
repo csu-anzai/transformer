@@ -6,6 +6,7 @@
 \alias{coerce,data.frame,tbl_df-method}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}
+\alias{coerce,IRanges,tbl_df-method}
 \title{Coerce to \code{tbl_df} (tibble)}
 \description{
 Coerce to \code{tbl_df} (tibble)

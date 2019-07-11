@@ -4,10 +4,18 @@
 \name{coerce-data.frame}
 \alias{coerce-data.frame}
 \alias{as.data.frame}
+\alias{as.data.frame.IPosRanges}
+\alias{as.data.frame,IPosRanges-method}
 \alias{as.data.frame,sparseMatrix-method}
 \alias{coerce,sparseMatrix,data.frame-method}
+\alias{coerce,IPosRanges,data.frame-method}
 \title{Coerce to \code{data.frame}}
 \usage{
+as.data.frame.IPosRanges(x, row.names = NULL, optional = FALSE, ...)
+
+\S4method{as.data.frame}{IPosRanges}(x, row.names = NULL,
+  optional = FALSE, ...)
+
 \S4method{as.data.frame}{sparseMatrix}(x, row.names = NULL,
   optional = FALSE, ...)
 }

@@ -53,15 +53,14 @@ NULL
 #' @export
 NULL
 
+rownames <- quote(pkgconfig::get_config("tibble::rownames", "rowname"))
+
 
 
 #' @method as_tibble DataFrame
 #' @export
 as_tibble.DataFrame <-  # nolint
-    function(
-        x, ...,
-        rownames = pkgconfig::get_config("tibble::rownames", "rowname")
-    ) {
+    function(x, ..., rownames) {
         x <- .coerceDataFrame(x)
         if (!hasRownames(x)) {
             rownames <- NULL
@@ -69,25 +68,31 @@ as_tibble.DataFrame <-  # nolint
         as_tibble(x = x, ..., rownames = rownames)
     }
 
+formals(as_tibble.DataFrame)[["rownames"]] <- rownames
+
 
 
 # The default handling from data.frame isn't clean, so add this.
 # Default method will warn: `Arguments in '...' ignored`.
+
 #' @method as_tibble GRanges
 #' @export
 as_tibble.GRanges <-  # nolint
-    function(
-        x, ...,
-        rownames = pkgconfig::get_config("tibble::rownames", "rowname")
-    ) {
-        names <- names(x)
+    function(x, ..., rownames) {
         x <- as(x, "data.frame")
-        rownames(x) <- names
         if (!hasRownames(x)) {
             rownames <- NULL
         }
         as_tibble(x = x, ..., rownames = rownames)
     }
+
+formals(as_tibble.GRanges)[["rownames"]] <- rownames
+
+
+
+#' @method as_tibble IRanges
+#' @export
+as_tibble.IRanges <- as_tibble.GRanges
 
 
 
@@ -120,6 +125,18 @@ setAs(
 #' @name coerce,GRanges,tbl_df-method
 setAs(
     from = "GRanges",
+    to = "tbl_df",
+    def = function(from) {
+        as_tibble(from)
+    }
+)
+
+
+
+#' @rdname coerce-tbl_df
+#' @name coerce,IRanges,tbl_df-method
+setAs(
+    from = "IRanges",
     to = "tbl_df",
     def = function(from) {
         as_tibble(from)
