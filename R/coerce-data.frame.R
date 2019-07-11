@@ -26,14 +26,15 @@ NULL
 # `mcols()`. However, GenomicRanges preserves this information, so we're adding
 # a coerce method here to improve consistency.
 #
-# See also:
-# - https://github.com/Bioconductor/IRanges/issues/8
-#
 # Relevant methods:
 # > getMethod("as.data.frame", "GenomicRanges")
 # > getMethod("as.data.frame", "IRanges")  # Inherits from `IPosRanges`.
 # > getMethod("as.data.frame", "IPosRanges")
-
+#
+# See also:
+# - https://github.com/Bioconductor/IRanges/issues/8
+#
+# Updated 2019-07-11.
 #' @rdname coerce-data.frame
 #' @export
 as.data.frame.IPosRanges <-  # nolint
@@ -75,6 +76,7 @@ setMethod(
 
 
 
+# Updated 2019-07-11.
 as.data.frame.sparseMatrix <-  # nolint
     function(x, ...) {
         as.data.frame(as.matrix(x), ...)
@@ -91,6 +93,7 @@ setMethod(
 
 
 # S4 ===========================================================================
+# Updated 2019-07-11.
 #' @rdname coerce-data.frame
 #' @name coerce,sparseMatrix,data.frame-method
 setAs(
@@ -103,6 +106,7 @@ setAs(
 
 
 
+# Updated 2019-07-11.
 #' @rdname coerce-data.frame
 #' @name coerce,IPosRanges,data.frame-method
 setAs(

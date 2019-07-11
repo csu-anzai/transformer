@@ -57,6 +57,7 @@ rownames <- quote(pkgconfig::get_config("tibble::rownames", "rowname"))
 
 
 
+# Updated 2019-07-11.
 #' @method as_tibble DataFrame
 #' @export
 as_tibble.DataFrame <-  # nolint
@@ -74,7 +75,7 @@ formals(as_tibble.DataFrame)[["rownames"]] <- rownames
 
 # The default handling from data.frame isn't clean, so add this.
 # Default method will warn: `Arguments in '...' ignored`.
-
+# Updated 2019-07-11.
 #' @method as_tibble GRanges
 #' @export
 as_tibble.GRanges <-  # nolint
@@ -90,6 +91,7 @@ formals(as_tibble.GRanges)[["rownames"]] <- rownames
 
 
 
+# Updated 2019-07-11.
 #' @method as_tibble IRanges
 #' @export
 as_tibble.IRanges <- as_tibble.GRanges
@@ -97,6 +99,7 @@ as_tibble.IRanges <- as_tibble.GRanges
 
 
 # S4 ===========================================================================
+# Updated 2019-07-11.
 #' @rdname coerce-tbl_df
 #' @name coerce,data.frame,tbl_df-method
 setAs(
@@ -109,6 +112,7 @@ setAs(
 
 
 
+# Updated 2019-07-11.
 #' @rdname coerce-tbl_df
 #' @name coerce,DataFrame,tbl_df-method
 setAs(
@@ -121,6 +125,7 @@ setAs(
 
 
 
+# Updated 2019-07-11.
 #' @rdname coerce-tbl_df
 #' @name coerce,GRanges,tbl_df-method
 setAs(
@@ -133,6 +138,7 @@ setAs(
 
 
 
+# Updated 2019-07-11.
 #' @rdname coerce-tbl_df
 #' @name coerce,IRanges,tbl_df-method
 setAs(

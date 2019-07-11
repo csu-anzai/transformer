@@ -6,6 +6,7 @@
 \alias{coerce,data.frame,data.table-method}
 \alias{coerce,DataFrame,data.table-method}
 \alias{coerce,GRanges,data.table-method}
+\alias{coerce,IPosRanges,data.table-method}
 \title{Coerce to \code{data.table}}
 \description{
 Coerce to \code{data.table}
