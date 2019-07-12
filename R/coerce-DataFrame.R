@@ -4,13 +4,18 @@
 #' @inheritParams params
 #'
 #' @examples
+#' data(dt, sparse, tbl, package = "acidtest")
+#'
+#' ## data.table to DataFrame ====
+#' stopifnot(is(dt, "data.table"))
+#' x <- as(dt, "DataFrame")
+#' head(x)
+#'
 #' ## sparseMatrix to DataFrame ====
-#' data(sparse, package = "acidtest")
 #' stopifnot(is(sparse, "sparseMatrix"))
 #' x <- as(sparse, "DataFrame")
 #'
 #' ## tbl_df to DataFrame ====
-#' data(tbl, package = "acidtest")
 #' stopifnot(is(tbl, "tbl_df"))
 #' x <- as(tbl, "DataFrame")
 #' head(x)
@@ -35,21 +40,13 @@ as.DataFrame.default <- function(x) {
     to <- as.data.frame(x, stringsAsFactors = FALSE)
     to <- as(to, "DataFrame")
 
-    # Automatically move row names column, if defined.
-    # Currently provides support for data.table and tibble.
-    # data.table: "rn"
-    # tibble: "rowname"
-    rncol <- na.omit(match(x = c("rowname", "rn"), table = colnames(to)))
-    if (length(rncol) == 1L) {
-        rownames <- as.character(to[[rncol]])
-        assert(hasNoDuplicates(rownames))
-        rownames(to) <- rownames
-        to[[rncol]] <- NULL
-    } else if (length(rncol) > 1L) {
-        stop(paste(
-            "Multiple row names columns detected:",
-            toString(colnames(to)[rncol])
-        ))
+    # Move row names automatically, if defined.
+    if (!hasRownames(to)) {
+        rncol <- matchRowNameColumn(to)
+        if (is.character(rncol) && length(rncol) == 1L) {
+            rownames(to) <- as.character(to[[rncol]])
+            to[[rncol]] <- NULL
+        }
     }
 
     to

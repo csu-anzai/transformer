@@ -17,13 +17,18 @@ as.DataFrame(x)
 Coerce to \code{DataFrame}
 }
 \examples{
+data(dt, sparse, tbl, package = "acidtest")
+
+## data.table to DataFrame ====
+stopifnot(is(dt, "data.table"))
+x <- as(dt, "DataFrame")
+head(x)
+
 ## sparseMatrix to DataFrame ====
-data(sparse, package = "acidtest")
 stopifnot(is(sparse, "sparseMatrix"))
 x <- as(sparse, "DataFrame")
 
 ## tbl_df to DataFrame ====
-data(tbl, package = "acidtest")
 stopifnot(is(tbl, "tbl_df"))
 x <- as(tbl, "DataFrame")
 head(x)
