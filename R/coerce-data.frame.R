@@ -27,9 +27,17 @@ NULL
 # a coerce method here to improve consistency.
 #
 # Relevant methods:
-# > getMethod("as.data.frame", "GenomicRanges")
-# > getMethod("as.data.frame", "IRanges")  # Inherits from `IPosRanges`.
-# > getMethod("as.data.frame", "IPosRanges")
+# > getMethod(
+# >     f = "as.data.frame",
+# >     signature = "GenomicRanges",
+# >     where = asNamespace("GenomicRanges")
+# > )
+# IRanges inherits from `IPosRanges`.
+# > getMethod(
+# >     f = "as.data.frame",
+# >     signature = "IPosRanges",
+# >     where = asNamespace("IRanges")
+# )
 #
 # See also:
 # - https://github.com/Bioconductor/IRanges/issues/8
@@ -44,10 +52,7 @@ as.data.frame.IPosRanges <-  # nolint
         optional = FALSE,
         ...
     ) {
-        if (!(is.null(row.names) || is.character(row.names))) {
-            stop("`row.names` must be NULL or a character vector.")
-        }
-        if (is.null(row.names)) {
+        if (missing(row.names)) {
             row.names <- names(x)
         }
         if (!is.null(names(x))) {
