@@ -99,10 +99,10 @@ formals(as_tibble.GRanges)[["rownames"]] <- rownames
 
 
 
-# Updated 2019-07-11.
+# Updated 2019-07-12.
 #' @method as_tibble IRanges
 #' @export
-as_tibble.IRanges <- as_tibble.GRanges
+as_tibble.IRanges <- as_tibble.GRanges  # nolint
 
 
 
