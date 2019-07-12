@@ -1,4 +1,4 @@
-context("coerce to data.table")
+context("Coerce to data.table")
 
 test_that("data.frame", {
     data <- data.frame()
@@ -43,8 +43,27 @@ test_that("DataFrame", {
     expect_identical(rownames(data), "1")
 })
 
-test_that("GRanges", {
-    data <- rowRanges(rse)
-    data <- as(data, "data.table")
-    expect_is(data, "data.table")
-})
+with_parameters_test_that(
+    "Ranges", {
+        expect_is(as.data.table(object), "data.table")
+        expect_is(as(object, "data.table"), "data.table")
+        expect_true(isSubset(
+            x = "rn",
+            y = colnames(as.data.table(object, keep.rownames = TRUE))
+        ))
+        expect_true(isSubset(
+            x = "rowname",
+            y = colnames(as.data.table(object, keep.rownames = "rowname"))
+        ))
+        expect_false(isSubset(
+            x = "rowname",
+            y = colnames(as.data.table(object, keep.rownames = FALSE))
+        ))
+        # Kill names and cover automatic rowname handling.
+        expect_false(isSubset(
+            x = "rn",
+            y = colnames(as.data.table(unname(object)))
+        ))
+    },
+    object = list(gr, ir)
+)

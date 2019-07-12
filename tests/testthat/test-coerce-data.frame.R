@@ -1,4 +1,4 @@
-context("coerce to data.frame")
+context("Coerce to data.frame")
 
 # Note that `as(object, "data.frame")` should keep `tbl_df` class here.
 

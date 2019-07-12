@@ -1,4 +1,4 @@
-context("coerce to DataFrame")
+context("Coerce to DataFrame")
 
 with_parameters_test_that(
     "S4 `as()` coercion", {

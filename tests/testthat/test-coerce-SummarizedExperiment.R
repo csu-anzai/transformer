@@ -1,4 +1,4 @@
-context("coerce to SummarizedExperiment")
+context("Coerce to SummarizedExperiment")
 
 # This method improves rowData handling for classes that extend RSE.
 test_that("Object extending RangedSummarizedExperiment", {

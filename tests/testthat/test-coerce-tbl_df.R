@@ -1,4 +1,4 @@
-context("coerce to tbl_df (tibble)")
+context("Coerce to tbl_df (tibble)")
 
 test_that("S4 `as()` on empty data.frame", {
     expect_is(as(data.frame(), "tbl_df"), "tbl_df")
@@ -43,11 +43,21 @@ test_that("DataFrame", {
 
 with_parameters_test_that(
     "Ranges", {
-        x <- as_tibble(object)
-        expect_is(x, "tbl_df")
-
-        x <- as(object, "tbl_df")
-        expect_is(x, "tbl_df")
+        expect_is(as_tibble(object), "tbl_df")
+        expect_is(as(object, "tbl_df"), "tbl_df")
+        expect_true(isSubset(
+            x = "rowname",
+            y = colnames(as_tibble(object))
+        ))
+        expect_false(isSubset(
+            x = "rowname",
+            y = colnames(as_tibble(object, rownames = NULL))
+        ))
+        # Kill names and cover automatic rowname handling.
+        expect_false(isSubset(
+            x = "rowname",
+            y = colnames(as_tibble(unname(object)))
+        ))
     },
     object = list(gr, ir)
 )
