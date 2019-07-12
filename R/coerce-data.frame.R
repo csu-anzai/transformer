@@ -45,8 +45,10 @@ NULL
 # Updated 2019-07-11.
 #' @rdname coerce-data.frame
 #' @export
-as.data.frame.IPosRanges <-  # nolint
-    function(
+setMethod(
+    f = "as.data.frame",
+    signature = signature("IPosRanges"),
+    definition = function(
         x,
         row.names = NULL,
         optional = FALSE,
@@ -73,29 +75,19 @@ as.data.frame.IPosRanges <-  # nolint
         }
         do.call(what = data.frame, args = args)
     }
-
-#' @rdname coerce-data.frame
-#' @export
-setMethod(
-    f = "as.data.frame",
-    signature = signature("IPosRanges"),
-    definition = as.data.frame.IPosRanges
 )
 
 
 
 # Updated 2019-07-11.
-as.data.frame.sparseMatrix <-  # nolint
-    function(x, ...) {
-        as.data.frame(as.matrix(x), ...)
-    }
-
 #' @rdname coerce-data.frame
 #' @export
 setMethod(
     f = "as.data.frame",
     signature = signature("sparseMatrix"),
-    definition = as.data.frame.sparseMatrix
+    definition = function(x, ...) {
+        as.data.frame(as.matrix(x), ...)
+    }
 )
 
 
