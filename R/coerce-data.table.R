@@ -72,7 +72,7 @@ NULL
 #' @method as.data.table DataFrame
 #' @export
 as.data.table.DataFrame <-  # nolint
-    function(x, keep.rownames = "rowname", ...) {  # nolint
+    function(x, keep.rownames = TRUE, ...) {  # nolint
         x <- .coerceDataFrame(x)
         if (!hasRownames(x)) {
             keep.rownames <- FALSE  # nolint
@@ -88,7 +88,7 @@ as.data.table.DataFrame <-  # nolint
 #' @method as.data.table GRanges
 #' @export
 as.data.table.GRanges <-  # nolint
-    function(x, keep.rownames = "rowname", ...) {  # nolint
+    function(x, keep.rownames = TRUE, ...) {  # nolint
         x <- as(x, "data.frame")
         if (!hasRownames(x)) {
             keep.rownames <- FALSE  # nolint
