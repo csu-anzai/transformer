@@ -15,10 +15,7 @@
 #' matchRowNameColumn(dt)
 #' matchRowNameColumn(tbl)
 matchRowNameColumn <- function(object) {
-    assert(
-        hasColnames(object),
-        !hasRownames(object)
-    )
+    assert(!hasRownames(object))
     match <- na.omit(match(
         x = c(
             "rn",
@@ -42,9 +39,9 @@ matchRowNameColumn <- function(object) {
         assert(validNames(rownames))
         col
     } else if (length(match) > 1L) {
-        stop(paste(
-            "Multiple row names columns detected:",
-            toString(colnames(object)[match])
+        stop(paste0(
+            "Multiple row names columns detected: ",
+            toString(colnames(object)[match]), "."
         ))
     }
 }
