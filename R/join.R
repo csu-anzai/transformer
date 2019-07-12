@@ -13,6 +13,20 @@
 #' @seealso
 #' - `dplyr::left_join()`.
 #' - `S4Vectors::merge()`.
+#'
+#' @examples
+#' ## DataFrame ====
+#' df1 <- DataFrame(
+#'     id = as.factor(seq(4L)),
+#'     genotype = as.factor(rep(x = c("wt", "ko"), each = 2L))
+#' )
+#' print(df1)
+#' df2 <- DataFrame(
+#'     id = as.factor(seq(4L)),
+#'     treatment = as.factor(rep(x = c("control", "expt"), times = 2L))
+#' )
+#' print(df2)
+#' left_join(df1, df2, by = "id")
 NULL
 
 
@@ -22,17 +36,16 @@ NULL
 #
 # Alternatively, consider using Hervé Pagès's recommended approach.
 # https://support.bioconductor.org/p/120277/
-
-
-
-# inner_join
-# left_join
-# right_join
-# full_join
-
-# semi_join
-# nest_join
-# anti_join
+#
+#
+# dplyr functions:
+# - `inner_join()`
+# - `left_join()`
+# - `right_join()`
+# - `full_join()`
+# - `semi_join()`
+# - `nest_join()`
+# - `anti_join()`
 
 
 
