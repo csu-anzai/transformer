@@ -1,6 +1,6 @@
-context("Join operations")
+context("left_join")
 
-test_that("left_join : Matched rows", {
+test_that("Matched rows", {
     df1 <- DataFrame(
         id = as.factor(seq(4L)),
         genotype = as.factor(rep(x = c("wt", "ko"), each = 2L))
@@ -19,7 +19,7 @@ test_that("left_join : Matched rows", {
     )
 })
 
-test_that("left_join : Unmatched rows", {
+test_that("Unmatched rows", {
     df1 <- DataFrame(
         id = as.factor(seq(4L)),
         genotype = as.factor(rep(x = c("wt", "ko"), each = 2L))
@@ -40,7 +40,7 @@ test_that("left_join : Unmatched rows", {
     )
 })
 
-test_that("left_join: Uneven rows", {
+test_that("Uneven rows", {
     df1 <- DataFrame(
         id = as.factor(seq(4L)),
         genotype = as.factor(rep(x = c("wt", "ko"), each = 2L))
