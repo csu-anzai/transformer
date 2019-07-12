@@ -37,15 +37,14 @@ NULL
 # Alternatively, consider using Hervé Pagès's recommended approach.
 # https://support.bioconductor.org/p/120277/
 #
-#
-# dplyr functions:
-# - `inner_join()`
-# - `left_join()`
-# - `right_join()`
-# - `full_join()`
-# - `semi_join()`
-# - `nest_join()`
-# - `anti_join()`
+# dplyr join functions, for reference:
+# - `inner_join`
+# - `left_join`
+# - `right_join`
+# - `full_join`
+# - `semi_join`
+# - `nest_join`
+# - `anti_join`
 
 
 
