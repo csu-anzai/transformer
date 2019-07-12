@@ -3,6 +3,7 @@
 \name{coerce-DataFrame}
 \alias{coerce-DataFrame}
 \alias{as.DataFrame}
+\alias{coerce,data.table,DataFrame-method}
 \alias{coerce,sparseMatrix,DataFrame-method}
 \alias{coerce,tbl_df,DataFrame-method}
 \title{Coerce to \code{DataFrame}}
