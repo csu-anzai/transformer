@@ -1,7 +1,7 @@
 Package: transformer
 Title: Coercion methods for biological data
 Description: Additional S3 and S4 coercion methods for easy interconversion
-    between Bioconductor and tidyverse data classes.
+    of Bioconductor data classes.
 Version: 0.1.12
 Date: 2019-07-12
 Authors@R: c(

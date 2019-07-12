@@ -5,7 +5,7 @@
 [![Anaconda cloud version](https://anaconda.org/bioconda/r-transformer/badges/version.svg)](https://anaconda.org/bioconda/r-transformer)
 [![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-Additional S3 and S4 coercion methods for easy interconversion between [Bioconductor][] and [tidyverse][] data classes.
+Additional S3 and S4 coercion methods for easy interconversion of [Bioconductor][] data classes.
 
 ## Installation
 
@@ -13,4 +13,3 @@ This package is part of the [basejump][] toolkit. Refer to its website for insta
 
 [basejump]: https://basejump.acidgenomics.com/
 [Bioconductor]: https://bioconductor.org/
-[tidyverse]: https://www.tidyverse.org/
