@@ -28,25 +28,50 @@ as.DataFrame <-  # nolint
 
 
 
+# Updated 2019-07-12.
 #' @method as.DataFrame default
 #' @export
 as.DataFrame.default <- function(x) {
     to <- as.data.frame(x, stringsAsFactors = FALSE)
     to <- as(to, "DataFrame")
-    rownames <- as.character(to[["rowname"]])
-    if (
-        length(rownames) > 0L &&
-        !any(duplicated(rownames))
-    ) {
+
+    # Automatically move row names column, if defined.
+    # Currently provides support for data.table and tibble.
+    # data.table: "rn"
+    # tibble: "rowname"
+    rncol <- na.omit(match(x = c("rowname", "rn"), table = colnames(to)))
+    if (length(rncol) == 1L) {
+        rownames <- as.character(to[[rncol]])
+        assert(hasNoDuplicates(rownames))
         rownames(to) <- rownames
-        to[["rowname"]] <- NULL
+        to[[rncol]] <- NULL
+    } else if (length(rncol) > 1L) {
+        stop(paste(
+            "Multiple row names columns detected:",
+            toString(colnames(to)[rncol])
+        ))
     }
+
     to
 }
 
 
 
 # S4 ===========================================================================
+# Updated 2019-07-12.
+#' @rdname coerce-DataFrame
+#' @name coerce,data.table,DataFrame-method
+setAs(
+    from = "data.table",
+    to = "DataFrame",
+    def = function(from) {
+        as.DataFrame(from)
+    }
+)
+
+
+
+# Updated 2019-07-12.
 #' @rdname coerce-DataFrame
 #' @name coerce,sparseMatrix,DataFrame-method
 setAs(
@@ -59,6 +84,7 @@ setAs(
 
 
 
+# Updated 2019-07-12.
 #' @rdname coerce-DataFrame
 #' @name coerce,tbl_df,DataFrame-method
 setAs(
