@@ -1,18 +1,15 @@
 context("Coerce to data.table")
 
 test_that("data.frame", {
-    data <- data.frame()
-    data <- as(data, "data.table")
-    expect_is(data, "data.table")
+    expect_is(as(data.frame(), "data.table"), "data.table")
 })
 
 test_that("DataFrame", {
-    data <- colData(rse)
-    x <- as(data, "data.table")
+    x <- as(df, "data.table")
     expect_is(x, "data.table")
 
     # Expect that rownames are automatically moved to first column.
-    expect_identical(colnames(x)[[1L]], "rowname")
+    expect_identical(colnames(x)[[1L]], "rn")
 
     # Early return if already data.table.
     x <- data.table()

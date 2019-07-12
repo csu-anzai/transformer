@@ -1,7 +1,17 @@
 data(
-    ir, gr, rse, sparse, tbl,
+    df, dt, ir, gr, rse, sparse, tbl,
     package = "acidtest",
     envir = environment()
+)
+
+stopifnot(
+    is(df, "DataFrame"),
+    is(dt, "data.table"),
+    is(ir, "IRanges"),
+    is(gr, "GRanges"),
+    is(rse, "RangedSummarizedExperiment"),
+    is(sparse, "sparseMatrix"),
+    is(tbl, "tbl_df")
 )
 
 DataFrame <- S4Vectors::DataFrame  # nolint
