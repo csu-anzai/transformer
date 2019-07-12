@@ -33,7 +33,8 @@ Imports:
     Matrix (>= 1.2),
     data.table (>= 1.12),
     tibble (>= 2.1),
-    methods
+    methods,
+    stats
 Suggests:
     acidtest (>= 0.1.3),
     patrick,
