@@ -4,10 +4,15 @@
 \name{coerce-data.frame}
 \alias{coerce-data.frame}
 \alias{as.data.frame}
+\alias{as.data.frame,IPosRanges-method}
 \alias{as.data.frame,sparseMatrix-method}
 \alias{coerce,sparseMatrix,data.frame-method}
+\alias{coerce,IPosRanges,data.frame-method}
 \title{Coerce to \code{data.frame}}
 \usage{
+\S4method{as.data.frame}{IPosRanges}(x, row.names = NULL,
+  optional = FALSE, ...)
+
 \S4method{as.data.frame}{sparseMatrix}(x, row.names = NULL,
   optional = FALSE, ...)
 }
@@ -31,9 +36,9 @@
 Coerce to \code{data.frame}
 }
 \examples{
-## sparseMatrix to data.frame ====
 data(sparse, package = "acidtest")
-stopifnot(is(sparse, "sparseMatrix"))
+
+## sparseMatrix to data.frame ====
 x <- as(sparse, "data.frame")
 head(x)
 }

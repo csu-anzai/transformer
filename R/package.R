@@ -1,6 +1,6 @@
 #' transformer
 #'
-#' Additional S3 and S4 coercion methods for easy interconversion between
+#' Additional S3 and S4 coercion methods for easy interconversion of
 #' Bioconductor and tidyverse data classes.
 #'
 #' @keywords internal

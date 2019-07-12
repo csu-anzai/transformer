@@ -22,8 +22,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -50,6 +51,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -66,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.12</span>
       </span>
     </div>
 
@@ -100,6 +102,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -129,16 +132,21 @@ Note that we're manually defining the "<code>rowname</code>" column instead of u
     <h2 class="hasAnchor" id="s-as-data-table-"><a class="anchor" href="#s-as-data-table-"></a>S3 <code>as.data.table()</code></h2>
 
     
-    <p>transformer extends <code><a href='https://rdrr.io/pkg/data.table/man/as.data.table.html'>as.data.table()</a></code> method
+
+
+<p>transformer extends <code><a href='https://rdrr.io/pkg/data.table/man/as.data.table.html'>as.data.table()</a></code> method
 support for these S4 classes:</p><ul>
 <li><p><code>DataFrame</code>.</p></li>
 <li><p><code>GRanges</code>.</p></li>
 </ul>
+
     
     <h2 class="hasAnchor" id="s-as-"><a class="anchor" href="#s-as-"></a>S4 <code>as()</code></h2>
 
     
-    <p>Since <code>data.table</code> is a class that extends <code>data.frame</code>, we need to define an
+
+
+<p>Since <code>data.table</code> is a class that extends <code>data.frame</code>, we need to define an
 S4 coercion method that allows us to use <code><a href='https://rdrr.io/r/methods/as.html'>as()</a></code> to coerce an
 object to a <code>data.table</code>.</p>
 <p>See <code>getClass("data.table")</code> for details.</p>
@@ -149,55 +157,37 @@ object to a <code>data.table</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span>(<span class='fu'>is</span>(<span class='no'>rse</span>, <span class='st'>"RangedSummarizedExperiment"</span>))
-
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span>(<span class='no'>rse</span>)
-<span class='no'>gr</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a></span>(<span class='no'>rse</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>df</span>, <span class='no'>gr</span>, <span class='no'>ir</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
 <span class='co'>## DataFrame to data.table ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>df</span>, <span class='st'>"data.table"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>df</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      rowname condition
-#&gt;  1: sample01         A
-#&gt;  2: sample02         A
-#&gt;  3: sample03         A
-#&gt;  4: sample04         A
-#&gt;  5: sample05         A
-#&gt;  6: sample06         A
-#&gt;  7: sample07         B
-#&gt;  8: sample08         B
-#&gt;  9: sample09         B
-#&gt; 10: sample10         B
-#&gt; 11: sample11         B
-#&gt; 12: sample12         B</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;            rowname sample1 sample2 sample3 sample4
+#&gt; 1: ENSG00000000001       1       5       9      13
+#&gt; 2: ENSG00000000002       2       6      10      14
+#&gt; 3: ENSG00000000003       3       7      11      15
+#&gt; 4: ENSG00000000004       4       8      12      16</div><div class='input'>
 <span class='co'>## GRanges to data.table ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>gr</span>, <span class='st'>"data.table"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>gr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;      rowname seqnames     start       end  width strand          geneID
-#&gt;   1: gene001        X 100627109 100639991  12883      - ENSG00000000003
-#&gt;   2: gene002        X 100584802 100599885  15084      + ENSG00000000005
-#&gt;   3: gene003       20  50934867  50958555  23689      - ENSG00000000419
-#&gt;   4: gene004        1 169849631 169894267  44637      - ENSG00000000457
-#&gt;   5: gene005        1 169662007 169854080 192074      + ENSG00000000460
-#&gt;  ---                                                                   
-#&gt; 496: gene496       13  20567069  20691437 124369      + ENSG00000032742
-#&gt; 497: gene497       16   5033960   5087379  53420      + ENSG00000033011
-#&gt; 498: gene498       12 122471600 122501073  29474      - ENSG00000033030
-#&gt; 499: gene499        7 151212490 151227230  14741      - ENSG00000033050
-#&gt; 500: gene500        7 151232489 151238827   6339      + ENSG00000033100
-#&gt;      geneName    geneBiotype broadClass entrezID
-#&gt;   1:   TSPAN6 protein_coding     coding     7105
-#&gt;   2:     TNMD protein_coding     coding    64102
-#&gt;   3:     DPM1 protein_coding     coding     8813
-#&gt;   4:    SCYL3 protein_coding     coding    57147
-#&gt;   5: C1orf112 protein_coding     coding    55732
-#&gt;  ---                                            
-#&gt; 496:    IFT88 protein_coding     coding     8100
-#&gt; 497:     ALG1 protein_coding     coding    56052
-#&gt; 498:   ZCCHC8 protein_coding     coding    55596
-#&gt; 499:    ABCF2 protein_coding     coding    10061
-#&gt; 500:    CHPF2 protein_coding     coding    54480</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;            rowname seqnames     start       end  width strand          geneID
+#&gt; 1: ENSG00000000003        X 100627109 100639991  12883      - ENSG00000000003
+#&gt; 2: ENSG00000000005        X 100584802 100599885  15084      + ENSG00000000005
+#&gt; 3: ENSG00000000419       20  50934867  50958555  23689      - ENSG00000000419
+#&gt; 4: ENSG00000000457        1 169849631 169894267  44637      - ENSG00000000457
+#&gt; 5: ENSG00000000460        1 169662007 169854080 192074      + ENSG00000000460
+#&gt;    geneName
+#&gt; 1:   TSPAN6
+#&gt; 2:     TNMD
+#&gt; 3:     DPM1
+#&gt; 4:    SCYL3
+#&gt; 5: C1orf112</div><div class='input'>
+<span class='co'>## IRanges to data.table ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>ir</span>, <span class='st'>"data.table"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as(ir, "data.table"): no method or default for coercing “IRanges” to “data.table”</span></div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>ir</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    start end width names
+#&gt; 1:     1   5     5     a
+#&gt; 2:    10  14     5     b
+#&gt; 3:    20  24     5     c</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -217,19 +207,23 @@ object to a <code>data.table</code>.</p>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

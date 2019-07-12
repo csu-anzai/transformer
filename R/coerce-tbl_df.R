@@ -27,11 +27,7 @@
 #' @seealso [tibble::as_tibble()].
 #'
 #' @examples
-#' data(rse, package = "acidtest")
-#' stopifnot(is(rse, "RangedSummarizedExperiment"))
-#'
-#' df <- SummarizedExperiment::colData(rse)
-#' gr <- SummarizedExperiment::rowRanges(rse)
+#' data(df, gr, ir, package = "acidtest")
 #'
 #' ## DataFrame to tbl_df ====
 #' x <- as(df, "tbl_df")
@@ -41,6 +37,11 @@
 #' ## GRanges to tbl_df ====
 #' x <- as(gr, "tbl_df")
 #' x <- as_tibble(gr)
+#' print(x)
+#'
+#' ## IRanges to tbl_df ====
+#' x <- as(ir, "tbl_df")
+#' x <- as_tibble(ir)
 #' print(x)
 NULL
 
@@ -53,15 +54,15 @@ NULL
 #' @export
 NULL
 
+rownames <- quote(pkgconfig::get_config("tibble::rownames", "rowname"))
 
 
+
+# Updated 2019-07-11.
 #' @method as_tibble DataFrame
 #' @export
 as_tibble.DataFrame <-  # nolint
-    function(
-        x, ...,
-        rownames = pkgconfig::get_config("tibble::rownames", "rowname")
-    ) {
+    function(x, ..., rownames) {
         x <- .coerceDataFrame(x)
         if (!hasRownames(x)) {
             rownames <- NULL
@@ -69,29 +70,37 @@ as_tibble.DataFrame <-  # nolint
         as_tibble(x = x, ..., rownames = rownames)
     }
 
+formals(as_tibble.DataFrame)[["rownames"]] <- rownames
+
 
 
 # The default handling from data.frame isn't clean, so add this.
 # Default method will warn: `Arguments in '...' ignored`.
+# Updated 2019-07-11.
 #' @method as_tibble GRanges
 #' @export
 as_tibble.GRanges <-  # nolint
-    function(
-        x, ...,
-        rownames = pkgconfig::get_config("tibble::rownames", "rowname")
-    ) {
-        names <- names(x)
+    function(x, ..., rownames) {
         x <- as(x, "data.frame")
-        rownames(x) <- names
         if (!hasRownames(x)) {
             rownames <- NULL
         }
         as_tibble(x = x, ..., rownames = rownames)
     }
 
+formals(as_tibble.GRanges)[["rownames"]] <- rownames
+
+
+
+# Updated 2019-07-12.
+#' @method as_tibble IRanges
+#' @export
+as_tibble.IRanges <- as_tibble.GRanges  # nolint
+
 
 
 # S4 ===========================================================================
+# Updated 2019-07-11.
 #' @rdname coerce-tbl_df
 #' @name coerce,data.frame,tbl_df-method
 setAs(
@@ -104,6 +113,7 @@ setAs(
 
 
 
+# Updated 2019-07-11.
 #' @rdname coerce-tbl_df
 #' @name coerce,DataFrame,tbl_df-method
 setAs(
@@ -116,10 +126,24 @@ setAs(
 
 
 
+# Updated 2019-07-11.
 #' @rdname coerce-tbl_df
 #' @name coerce,GRanges,tbl_df-method
 setAs(
     from = "GRanges",
+    to = "tbl_df",
+    def = function(from) {
+        as_tibble(from)
+    }
+)
+
+
+
+# Updated 2019-07-11.
+#' @rdname coerce-tbl_df
+#' @name coerce,IRanges,tbl_df-method
+setAs(
+    from = "IRanges",
     to = "tbl_df",
     def = function(from) {
         as_tibble(from)

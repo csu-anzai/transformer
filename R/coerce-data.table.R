@@ -29,11 +29,7 @@
 #' @seealso [data.table::as.data.table()].
 #'
 #' @examples
-#' data(rse, package = "acidtest")
-#' stopifnot(is(rse, "RangedSummarizedExperiment"))
-#'
-#' df <- SummarizedExperiment::colData(rse)
-#' gr <- SummarizedExperiment::rowRanges(rse)
+#' data(df, gr, ir, package = "acidtest")
 #'
 #' ## DataFrame to data.table ====
 #' x <- as(df, "data.table")
@@ -43,6 +39,11 @@
 #' ## GRanges to data.table ====
 #' x <- as(gr, "data.table")
 #' x <- as.data.table(gr)
+#' print(x)
+#'
+#' ## IRanges to data.table ====
+#' x <- as(ir, "data.table")
+#' x <- as.data.table(ir)
 #' print(x)
 NULL
 
@@ -60,11 +61,11 @@ NULL
 # Note that we're matching `as_tibble()` convention here, using "rowname" as
 # column for row names assignment. We also using similar internal assert checks
 # here, allowing atomic and/or list columns only.
-
+# Updated 2019-07-11.
 #' @method as.data.table DataFrame
 #' @export
 as.data.table.DataFrame <-  # nolint
-    function(x, keep.rownames = "rowname", ...) {  # nolint
+    function(x, keep.rownames = TRUE, ...) {  # nolint
         x <- .coerceDataFrame(x)
         if (!hasRownames(x)) {
             keep.rownames <- FALSE  # nolint
@@ -76,13 +77,12 @@ as.data.table.DataFrame <-  # nolint
 
 # The default handling from data.frame isn't clean, so add this.
 # Default method will warn: `Arguments in '...' ignored`.
+# Updated 2019-07-11.
 #' @method as.data.table GRanges
 #' @export
 as.data.table.GRanges <-  # nolint
-    function(x, keep.rownames = "rowname", ...) {  # nolint
-        names <- names(x)
+    function(x, keep.rownames = TRUE, ...) {  # nolint
         x <- as(x, "data.frame")
-        rownames(x) <- names
         if (!hasRownames(x)) {
             keep.rownames <- FALSE  # nolint
         }
@@ -91,7 +91,15 @@ as.data.table.GRanges <-  # nolint
 
 
 
+# Updated 2019-07-11.
+#' @method as.data.table IPosRanges
+#' @export
+as.data.table.IPosRanges <- as.data.table.GRanges
+
+
+
 # S4 ===========================================================================
+# Updated 2019-07-11.
 #' @rdname coerce-data.table
 #' @name coerce,data.frame,data.table-method
 setAs(
@@ -104,6 +112,7 @@ setAs(
 
 
 
+# Updated 2019-07-11.
 #' @rdname coerce-data.table
 #' @name coerce,DataFrame,data.table-method
 setAs(
@@ -116,10 +125,24 @@ setAs(
 
 
 
+# Updated 2019-07-11.
 #' @rdname coerce-data.table
 #' @name coerce,GRanges,data.table-method
 setAs(
     from = "GRanges",
+    to = "data.table",
+    def = function(from) {
+        as.data.table(from)
+    }
+)
+
+
+
+# Updated 2019-07-11.
+#' @rdname coerce-data.table
+#' @name coerce,IPosRanges,data.table-method
+setAs(
+    from = "IPosRanges",
     to = "data.table",
     def = function(from) {
         as.data.table(from)

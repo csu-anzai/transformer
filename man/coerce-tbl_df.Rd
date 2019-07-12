@@ -6,6 +6,7 @@
 \alias{coerce,data.frame,tbl_df-method}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}
+\alias{coerce,IRanges,tbl_df-method}
 \title{Coerce to \code{tbl_df} (tibble)}
 \description{
 Coerce to \code{tbl_df} (tibble)
@@ -38,11 +39,7 @@ See \code{getClass("tbl_df")} for details on how tibble is a virtual class.
 }
 
 \examples{
-data(rse, package = "acidtest")
-stopifnot(is(rse, "RangedSummarizedExperiment"))
-
-df <- SummarizedExperiment::colData(rse)
-gr <- SummarizedExperiment::rowRanges(rse)
+data(df, gr, ir, package = "acidtest")
 
 ## DataFrame to tbl_df ====
 x <- as(df, "tbl_df")
@@ -52,6 +49,11 @@ print(x)
 ## GRanges to tbl_df ====
 x <- as(gr, "tbl_df")
 x <- as_tibble(gr)
+print(x)
+
+## IRanges to tbl_df ====
+x <- as(ir, "tbl_df")
+x <- as_tibble(ir)
 print(x)
 }
 \seealso{
