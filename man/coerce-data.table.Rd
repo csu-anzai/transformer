@@ -41,14 +41,7 @@ See \code{getClass("data.table")} for details.
 }
 
 \examples{
-data(ir, rse, package = "acidtest")
-stopifnot(
-    is(ir, "IRanges")
-    is(rse, "RangedSummarizedExperiment")
-)
-
-df <- SummarizedExperiment::colData(rse)
-gr <- SummarizedExperiment::rowRanges(rse)
+data(df, gr, ir, package = "acidtest")
 
 ## DataFrame to data.table ====
 x <- as(df, "data.table")
