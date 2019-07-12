@@ -15,6 +15,8 @@
 #' - `S4Vectors::merge()`.
 #'
 #' @examples
+#' DataFrame <- S4Vectors::DataFrame
+#'
 #' ## DataFrame ====
 #' df1 <- DataFrame(
 #'     id = as.factor(seq(4L)),

@@ -7,16 +7,13 @@
 #' data(dt, sparse, tbl, package = "acidtest")
 #'
 #' ## data.table to DataFrame ====
-#' stopifnot(is(dt, "data.table"))
 #' x <- as(dt, "DataFrame")
 #' head(x)
 #'
 #' ## sparseMatrix to DataFrame ====
-#' stopifnot(is(sparse, "sparseMatrix"))
 #' x <- as(sparse, "DataFrame")
 #'
 #' ## tbl_df to DataFrame ====
-#' stopifnot(is(tbl, "tbl_df"))
 #' x <- as(tbl, "DataFrame")
 #' head(x)
 NULL

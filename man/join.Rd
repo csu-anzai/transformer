@@ -23,6 +23,8 @@ this is optional.}
 Join operations supporting S4 class objects
 }
 \examples{
+DataFrame <- S4Vectors::DataFrame
+
 ## DataFrame ====
 df1 <- DataFrame(
     id = as.factor(seq(4L)),

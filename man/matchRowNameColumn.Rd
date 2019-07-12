@@ -21,6 +21,10 @@ Automatically detect row names column, if defined.
 }
 \examples{
 data(dt, tbl, package = "acidtest")
+
+## data.table ====
 matchRowNameColumn(dt)
+
+## tbl_df ====
 matchRowNameColumn(tbl)
 }

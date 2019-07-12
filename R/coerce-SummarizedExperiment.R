@@ -10,8 +10,10 @@
 #'
 #' @examples
 #' data(rse, package = "acidtest")
-#' stopifnot(is(rse, "RangedSummarizedExperiment"))
+#'
+#' ## SummarizedExperiment ====
 #' x <- as.SummarizedExperiment(rse)
+#' x
 NULL
 
 

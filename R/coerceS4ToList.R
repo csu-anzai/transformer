@@ -10,7 +10,8 @@
 #'
 #' @examples
 #' data(rse, package = "acidtest")
-#' stopifnot(is(rse, "RangedSummarizedExperiment"))
+#'
+#' ## SummarizedExperiment ====
 #' x <- coerceS4ToList(rse)
 #' class(x)
 #' names(x)

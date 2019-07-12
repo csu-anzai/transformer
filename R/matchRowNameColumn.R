@@ -12,7 +12,11 @@
 #'
 #' @examples
 #' data(dt, tbl, package = "acidtest")
+#'
+#' ## data.table ====
 #' matchRowNameColumn(dt)
+#'
+#' ## tbl_df ====
 #' matchRowNameColumn(tbl)
 matchRowNameColumn <- function(object) {
     assert(!hasRownames(object))

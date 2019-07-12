@@ -36,9 +36,9 @@
 Coerce to \code{data.frame}
 }
 \examples{
-## sparseMatrix to data.frame ====
 data(sparse, package = "acidtest")
-stopifnot(is(sparse, "sparseMatrix"))
+
+## sparseMatrix to data.frame ====
 x <- as(sparse, "data.frame")
 head(x)
 }
