@@ -3,6 +3,7 @@
 \name{coerce-DataFrame}
 \alias{coerce-DataFrame}
 \alias{as.DataFrame}
+\alias{coerce,data.table,DataFrame-method}
 \alias{coerce,sparseMatrix,DataFrame-method}
 \alias{coerce,tbl_df,DataFrame-method}
 \title{Coerce to \code{DataFrame}}
@@ -16,14 +17,16 @@ as.DataFrame(x)
 Coerce to \code{DataFrame}
 }
 \examples{
+data(dt, sparse, tbl, package = "acidtest")
+
+## data.table to DataFrame ====
+x <- as(dt, "DataFrame")
+head(x)
+
 ## sparseMatrix to DataFrame ====
-data(sparse, package = "acidtest")
-stopifnot(is(sparse, "sparseMatrix"))
 x <- as(sparse, "DataFrame")
 
 ## tbl_df to DataFrame ====
-data(tbl, package = "acidtest")
-stopifnot(is(tbl, "tbl_df"))
 x <- as(tbl, "DataFrame")
 head(x)
 }

@@ -11,7 +11,8 @@
 #'
 #' @examples
 #' data(rse, package = "acidtest")
-#' stopifnot(is(rse, "RangedSummarizedExperiment"))
+#'
+#' ## SummarizedExperiment ====
 #' x <- flatFiles(rse)
 #' class(x)
 #' names(x)

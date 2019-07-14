@@ -6,6 +6,7 @@
 \alias{coerce,data.frame,data.table-method}
 \alias{coerce,DataFrame,data.table-method}
 \alias{coerce,GRanges,data.table-method}
+\alias{coerce,IPosRanges,data.table-method}
 \title{Coerce to \code{data.table}}
 \description{
 Coerce to \code{data.table}
@@ -40,11 +41,7 @@ See \code{getClass("data.table")} for details.
 }
 
 \examples{
-data(rse, package = "acidtest")
-stopifnot(is(rse, "RangedSummarizedExperiment"))
-
-df <- SummarizedExperiment::colData(rse)
-gr <- SummarizedExperiment::rowRanges(rse)
+data(df, gr, ir, package = "acidtest")
 
 ## DataFrame to data.table ====
 x <- as(df, "data.table")
@@ -54,6 +51,11 @@ print(x)
 ## GRanges to data.table ====
 x <- as(gr, "data.table")
 x <- as.data.table(gr)
+print(x)
+
+## IRanges to data.table ====
+x <- as(ir, "data.table")
+x <- as.data.table(ir)
 print(x)
 }
 \seealso{

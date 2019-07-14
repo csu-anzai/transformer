@@ -19,7 +19,8 @@ Coerce any S4 object to a list
 }
 \examples{
 data(rse, package = "acidtest")
-stopifnot(is(rse, "RangedSummarizedExperiment"))
+
+## SummarizedExperiment ====
 x <- flatFiles(rse)
 class(x)
 names(x)
