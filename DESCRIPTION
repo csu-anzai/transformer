@@ -3,7 +3,7 @@ Title: Coercion methods for biological data
 Description: Additional S3 and S4 coercion methods for easy interconversion
     of Bioconductor data classes.
 Version: 0.1.12
-Date: 2019-07-12
+Date: 2019-07-16
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -24,7 +24,7 @@ Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
     bioverbs (>= 0.1.19),
-    goalie (>= 0.2.16),
+    goalie (>= 0.2.17),
     BiocGenerics,
     GenomicRanges,
     IRanges,
@@ -36,7 +36,7 @@ Imports:
     methods,
     stats
 Suggests:
-    acidtest (>= 0.1.3),
+    acidtest (>= 0.1.5),
     patrick,
     testthat,
     datasets
