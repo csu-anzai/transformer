@@ -7,7 +7,7 @@
 \title{transformer}
 \description{
 Additional S3 and S4 coercion methods for easy interconversion of
-Bioconductor and tidyverse data classes.
+Bioconductor data classes.
 }
 \seealso{
 Useful links:
