@@ -22,21 +22,9 @@ NULL
 
 
 
-# S3 ===========================================================================
-#' @rdname coerce-DataFrame
-#' @export
-as.DataFrame <-  # nolint
-    function(x) {
-        UseMethod("as.DataFrame")
-    }
-
-
-
-#' @rdname coerce-DataFrame
-#' @export
 # Updated 2019-07-19.
-as.DataFrame.default <- function(x) {
-    to <- as.data.frame(x, stringsAsFactors = FALSE)
+`coerce,ANY,DataFrame` <- function(from) {
+    to <- as.data.frame(from, stringsAsFactors = FALSE)
     to <- as(to, "DataFrame")
 
     # Move row names automatically, if defined.
@@ -53,12 +41,9 @@ as.DataFrame.default <- function(x) {
 
 
 
-# S4 ===========================================================================
 # Updated 2019-07-12.
 `coerce,data.table,DataFrame` <-  # nolint
-    function(from) {
-        as.DataFrame(from)
-    }
+    `coerce,ANY,DataFrame`
 
 
 
@@ -74,7 +59,7 @@ setAs(
 
 # Updated 2019-07-12.
 `coerce,sparseMatrix,DataFrame` <-  # nolint
-    `coerce,data.table,DataFrame`
+    `coerce,ANY,DataFrame`
 
 
 
@@ -90,7 +75,7 @@ setAs(
 
 # Updated 2019-07-12.
 `coerce,tbl_df,DataFrame` <-  # nolint
-    `coerce,data.table,DataFrame`
+    `coerce,ANY,DataFrame`
 
 
 
