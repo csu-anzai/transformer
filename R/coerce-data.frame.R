@@ -1,7 +1,10 @@
-#' Coerce to `data.frame`
+#' Coerce to data frame
+#'
+#' Coerce to `data.frame`.
 #'
 #' @name coerce-data.frame
 #' @inheritParams base::as.data.frame
+#' @inheritParams params
 #'
 #' @examples
 #' data(sparse, package = "acidtest")
@@ -41,10 +44,10 @@ NULL
 #
 # See also:
 # - https://github.com/Bioconductor/IRanges/issues/8
-#
-# Updated 2019-07-11.
+
 #' @rdname coerce-data.frame
 #' @export
+# Updated 2019-07-11.
 setMethod(
     f = "as.data.frame",
     signature = signature("IPosRanges"),
@@ -79,9 +82,9 @@ setMethod(
 
 
 
-# Updated 2019-07-11.
 #' @rdname coerce-data.frame
 #' @export
+# Updated 2019-07-11.
 setMethod(
     f = "as.data.frame",
     signature = signature("sparseMatrix"),
@@ -93,9 +96,9 @@ setMethod(
 
 
 # S4 ===========================================================================
-# Updated 2019-07-11.
 #' @rdname coerce-data.frame
 #' @name coerce,sparseMatrix,data.frame-method
+# Updated 2019-07-11.
 setAs(
     from = "sparseMatrix",
     to = "data.frame",
@@ -106,9 +109,9 @@ setAs(
 
 
 
-# Updated 2019-07-11.
 #' @rdname coerce-data.frame
 #' @name coerce,IPosRanges,data.frame-method
+# Updated 2019-07-11.
 setAs(
     from = "IPosRanges",
     to = "data.frame",
