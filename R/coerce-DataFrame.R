@@ -1,4 +1,6 @@
-#' Coerce to `DataFrame`
+#' Coerce to data frame
+#'
+#' Coerce to `DataFrame`.
 #'
 #' @name coerce-DataFrame
 #' @inheritParams params
@@ -20,21 +22,9 @@ NULL
 
 
 
-# S3 ===========================================================================
-#' @rdname coerce-DataFrame
-#' @export
-as.DataFrame <-  # nolint
-    function(x) {
-        UseMethod("as.DataFrame")
-    }
-
-
-
-# Updated 2019-07-12.
-#' @method as.DataFrame default
-#' @export
-as.DataFrame.default <- function(x) {
-    to <- as.data.frame(x, stringsAsFactors = FALSE)
+# Updated 2019-07-19.
+`coerce,ANY,DataFrame` <- function(from) {
+    to <- as.data.frame(from, stringsAsFactors = FALSE)
     to <- as(to, "DataFrame")
 
     # Move row names automatically, if defined.
@@ -51,40 +41,48 @@ as.DataFrame.default <- function(x) {
 
 
 
-# S4 ===========================================================================
 # Updated 2019-07-12.
+`coerce,data.table,DataFrame` <-  # nolint
+    `coerce,ANY,DataFrame`
+
+
+
 #' @rdname coerce-DataFrame
 #' @name coerce,data.table,DataFrame-method
 setAs(
     from = "data.table",
     to = "DataFrame",
-    def = function(from) {
-        as.DataFrame(from)
-    }
+    def = `coerce,data.table,DataFrame`
 )
 
 
 
 # Updated 2019-07-12.
+`coerce,sparseMatrix,DataFrame` <-  # nolint
+    `coerce,ANY,DataFrame`
+
+
+
 #' @rdname coerce-DataFrame
 #' @name coerce,sparseMatrix,DataFrame-method
 setAs(
     from = "sparseMatrix",
     to = "DataFrame",
-    def = function(from) {
-        as.DataFrame(from)
-    }
+    def = `coerce,sparseMatrix,DataFrame`
 )
 
 
 
 # Updated 2019-07-12.
+`coerce,tbl_df,DataFrame` <-  # nolint
+    `coerce,ANY,DataFrame`
+
+
+
 #' @rdname coerce-DataFrame
 #' @name coerce,tbl_df,DataFrame-method
 setAs(
     from = "tbl_df",
     to = "DataFrame",
-    def = function(from) {
-        as.DataFrame(from)
-    }
+    def = `coerce,tbl_df,DataFrame`
 )

@@ -15,6 +15,8 @@
 #' x <- coerceS4ToList(rse)
 #' class(x)
 #' names(x)
+
+# Updated 2019-07-19.
 coerceS4ToList <- function(from) {
     assert(isS4(from))
     to <- lapply(slotNames(from), function(slot) {

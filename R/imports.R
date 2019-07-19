@@ -2,15 +2,18 @@
 #' @importClassesFrom IRanges IRanges
 #' @importClassesFrom Matrix sparseMatrix
 #' @importClassesFrom S4Vectors DataFrame
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
+#' @importClassesFrom SummarizedExperiment RangedSummarizedExperiment
+#'   SummarizedExperiment
 #' @importClassesFrom tibble tbl_df
 #'
 #' @importFrom IRanges end start width
-#' @importFrom S4Vectors as.data.frame mcols merge metadata metadata<-
+#' @importFrom S4Vectors DataFrame Rle as.data.frame decode mcols mcols<- merge
+#'   metadata metadata<-
 #' @importFrom SummarizedExperiment rowData rowData<- rowRanges
 #' @importFrom goalie areDisjointSets assert hasLength hasRownames isCharacter
 #'   printString validNames
-#' @importFrom methods as is setAs setMethod signature slotNames .hasSlot
+#' @importFrom methods as getMethod is setAs setMethod signature slotNames
+#'   .hasSlot
 #' @importFrom stats na.omit
 #' @importFrom tibble as_tibble
 NULL

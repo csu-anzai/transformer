@@ -3,22 +3,37 @@
 \name{coerce-SummarizedExperiment}
 \alias{coerce-SummarizedExperiment}
 \alias{as.SummarizedExperiment}
-\title{Coerce to \code{SummarizedExperiment}}
+\alias{as.SummarizedExperiment.RangedSummarizedExperiment}
+\alias{as.SummarizedExperiment.SummarizedExperiment}
+\title{Coerce to summarized experiment}
 \usage{
 as.SummarizedExperiment(x)
+
+\method{as.SummarizedExperiment}{RangedSummarizedExperiment}(x)
+
+\method{as.SummarizedExperiment}{SummarizedExperiment}(x)
 }
 \arguments{
 \item{x}{Object.}
 }
 \description{
-Improved method for reliably coercing objects that extend
+Coerce to \code{SummarizedExperiment}.
+}
+\details{
+Improved S3 methods for reliably coercing objects that extend
 \code{RangedSummarizedExperiment} to a standard \code{SummarizedExperiment}, that
 doesn't drop \code{\link[SummarizedExperiment:rowData]{rowData()}}.
 }
 \examples{
+suppressPackageStartupMessages(library(SummarizedExperiment))
 data(rse, package = "acidtest")
 
-## SummarizedExperiment ====
-x <- as.SummarizedExperiment(rse)
-x
+## RangedSummarizedExperiment ===
+## Current S4 coercion drops row metadata.
+names(metadata(rowRanges(rse)))
+se <- as(rse, "SummarizedExperiment")
+names(metadata(rowData(se)))
+## Our alternate S3 method preserves the metadata.
+se <- as.SummarizedExperiment(rse)
+names(metadata(rowData(se)))
 }

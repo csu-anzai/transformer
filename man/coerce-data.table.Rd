@@ -3,13 +3,32 @@
 \name{coerce-data.table}
 \alias{coerce-data.table}
 \alias{as.data.table}
+\alias{as.data.table.DataFrame}
+\alias{as.data.table.GRanges}
+\alias{as.data.table.IPosRanges}
 \alias{coerce,data.frame,data.table-method}
 \alias{coerce,DataFrame,data.table-method}
 \alias{coerce,GRanges,data.table-method}
 \alias{coerce,IPosRanges,data.table-method}
-\title{Coerce to \code{data.table}}
+\title{Coerce to data table}
+\usage{
+as.data.table(x, keep.rownames = FALSE, ...)
+
+\method{as.data.table}{DataFrame}(x, keep.rownames = TRUE, ...)
+
+\method{as.data.table}{GRanges}(x, keep.rownames = TRUE, ...)
+
+\method{as.data.table}{IPosRanges}(x, keep.rownames = TRUE, ...)
+}
+\arguments{
+\item{x}{An R object.}
+
+\item{keep.rownames}{Default is \code{FALSE}. If \code{TRUE}, adds the input object's names as a separate column named \code{"rn"}. \code{keep.rownames = "id"} names the column \code{"id"} instead.}
+
+\item{...}{Additional arguments to be passed to or from other methods.}
+}
 \description{
-Coerce to \code{data.table}
+Coerce to \code{data.table}.
 }
 \details{
 Our defined methods attempt to improve on the defaults in the data.table

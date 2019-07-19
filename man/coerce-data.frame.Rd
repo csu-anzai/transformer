@@ -8,8 +8,10 @@
 \alias{as.data.frame,sparseMatrix-method}
 \alias{coerce,sparseMatrix,data.frame-method}
 \alias{coerce,IPosRanges,data.frame-method}
-\title{Coerce to \code{data.frame}}
+\title{Coerce to data frame}
 \usage{
+as.data.frame(x, row.names = NULL, optional = FALSE, ...)
+
 \S4method{as.data.frame}{IPosRanges}(x, row.names = NULL,
   optional = FALSE, ...)
 
@@ -33,7 +35,7 @@
 \item{...}{additional arguments to be passed to or from methods.}
 }
 \description{
-Coerce to \code{data.frame}
+Coerce to \code{data.frame}.
 }
 \examples{
 data(sparse, package = "acidtest")

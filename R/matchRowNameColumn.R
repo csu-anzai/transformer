@@ -18,6 +18,8 @@
 #'
 #' ## tbl_df ====
 #' matchRowNameColumn(tbl)
+
+# Updated 2019-07-19.
 matchRowNameColumn <- function(object) {
     assert(!hasRownames(object))
     match <- na.omit(match(

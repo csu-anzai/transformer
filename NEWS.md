@@ -1,3 +1,21 @@
+## transformer 0.1.13 (2019-07-19)
+
+### New methods
+
+- `relevel`: Added S3 method support for `DataFrame` and `GRanges` objects
+  containing factor columns.
+
+### Major changes
+
+- Removed `as.DataFrame` S3 method in favor of simply using S4 `as` coercion.
+- Tightened up `as.SummarizedExperiment` S3 methods to support
+  `SummarizedExperiment` and `RangedSummarizedExperiment` specifically.
+
+### Minor changes
+
+- Improved S3 method documentation. Use `rdname` tag instead of `method`
+  (or legacy `s3method`).
+
 ## transformer 0.1.12 (2019-07-12)
 
 ### Major changes

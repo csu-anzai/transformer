@@ -1,7 +1,10 @@
-#' Coerce to `data.frame`
+#' Coerce to data frame
+#'
+#' Coerce to `data.frame`.
 #'
 #' @name coerce-data.frame
 #' @inheritParams base::as.data.frame
+#' @inheritParams params
 #'
 #' @examples
 #' data(sparse, package = "acidtest")
@@ -17,6 +20,7 @@ NULL
 #' @rdname coerce-data.frame
 #' @name as.data.frame
 #' @importFrom BiocGenerics as.data.frame
+#' @usage as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 #' @export
 NULL
 
@@ -43,12 +47,8 @@ NULL
 # - https://github.com/Bioconductor/IRanges/issues/8
 #
 # Updated 2019-07-11.
-#' @rdname coerce-data.frame
-#' @export
-setMethod(
-    f = "as.data.frame",
-    signature = signature("IPosRanges"),
-    definition = function(
+`as.data.frame,IPosRanges` <-  # nolint
+    function(
         x,
         row.names = NULL,
         optional = FALSE,
@@ -75,44 +75,71 @@ setMethod(
         }
         do.call(what = data.frame, args = args)
     }
+
+
+
+#' @rdname coerce-data.frame
+#' @export
+setMethod(
+    f = "as.data.frame",
+    signature = signature("IPosRanges"),
+    definition = `as.data.frame,IPosRanges`
 )
 
 
 
 # Updated 2019-07-11.
+`as.data.frame,sparseMatrix` <-  # nolint
+    function(x, ...) {
+        as.data.frame(as.matrix(x), ...)
+    }
+
+
+
 #' @rdname coerce-data.frame
 #' @export
 setMethod(
     f = "as.data.frame",
     signature = signature("sparseMatrix"),
-    definition = function(x, ...) {
-        as.data.frame(as.matrix(x), ...)
-    }
+    definition = `as.data.frame,sparseMatrix`
 )
 
 
 
 # S4 ===========================================================================
-# Updated 2019-07-11.
+`coerce,ANY,data.frame` <-  # nolint
+    function(from) {
+        as.data.frame(from)
+    }
+
+
+
+# Updated 2019-07-19.
+`coerce,sparseMatrix,data.frame` <-  # nolint
+    `coerce,ANY,data.frame`
+
+
+
 #' @rdname coerce-data.frame
 #' @name coerce,sparseMatrix,data.frame-method
 setAs(
     from = "sparseMatrix",
     to = "data.frame",
-    def = function(from) {
-        as.data.frame(from)
-    }
+    def = `coerce,sparseMatrix,data.frame`
 )
 
 
 
-# Updated 2019-07-11.
+# Updated 2019-07-19.
+`coerce,IPosRanges,data.frame` <-  # nolint
+    `coerce,ANY,data.frame`
+
+
+
 #' @rdname coerce-data.frame
 #' @name coerce,IPosRanges,data.frame-method
 setAs(
     from = "IPosRanges",
     to = "data.frame",
-    def = function(from) {
-        as.data.frame(from)
-    }
+    def = `coerce,IPosRanges,data.frame`
 )
