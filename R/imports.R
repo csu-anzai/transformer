@@ -2,7 +2,8 @@
 #' @importClassesFrom IRanges IRanges
 #' @importClassesFrom Matrix sparseMatrix
 #' @importClassesFrom S4Vectors DataFrame
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
+#' @importClassesFrom SummarizedExperiment RangedSummarizedExperiment
+#'   SummarizedExperiment
 #' @importClassesFrom tibble tbl_df
 #'
 #' @importFrom IRanges end start width

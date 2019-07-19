@@ -1,7 +1,3 @@
-# Consider soft deprecating in favor of `coerceS4ToList()`.
-
-
-
 #' @name flatFiles
 #' @inherit bioverbs::flatFiles
 #'
@@ -28,7 +24,8 @@ NULL
 
 
 
-flatFiles.SummarizedExperiment <-  # nolint
+# Updated 2019-07-19.
+`flatFiles,SummarizedExperiment` <-  # nolint
     function(object) {
         coerceS4ToList(object)
 }
@@ -40,5 +37,5 @@ flatFiles.SummarizedExperiment <-  # nolint
 setMethod(
     f = "flatFiles",
     signature = signature("SummarizedExperiment"),
-    definition = flatFiles.SummarizedExperiment
+    definition = `flatFiles,SummarizedExperiment`
 )

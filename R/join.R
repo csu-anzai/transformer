@@ -61,6 +61,7 @@ left_join <-  # nolint
 
 #' @rdname join
 #' @export
+# Updated 2019-07-19.
 left_join.DataFrame <-  # nolint
     function(x, y, by) {
         assert(
