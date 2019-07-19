@@ -107,7 +107,7 @@ as.data.table.IPosRanges <- as.data.table.GRanges
 
 # S4 ===========================================================================
 # Updated 2019-07-11.
-`coerce.data.frame,data.table` <-  # nolint
+`coerce,data.frame,data.table` <-  # nolint
     function(from) {
         as.data.table(from)
     }
@@ -119,13 +119,13 @@ as.data.table.IPosRanges <- as.data.table.GRanges
 setAs(
     from = "data.frame",
     to = "data.table",
-    def = `coerce.data.frame,data.table`
+    def = `coerce,data.frame,data.table`
 )
 
 
 
 # Updated 2019-07-11.
-`coerce.DataFrame,data.table` <-  # nolint
+`coerce,DataFrame,data.table` <-  # nolint
     function(from) {
         as.data.table(from)
     }
@@ -137,13 +137,13 @@ setAs(
 setAs(
     from = "DataFrame",
     to = "data.table",
-    def = `coerce.DataFrame,data.table`
+    def = `coerce,DataFrame,data.table`
 )
 
 
 
 # Updated 2019-07-11.
-`coerce.GRanges,data.table` <-  # nolint
+`coerce,GRanges,data.table` <-  # nolint
     function(from) {
         as.data.table(from)
     }
@@ -155,13 +155,13 @@ setAs(
 setAs(
     from = "GRanges",
     to = "data.table",
-    def = `coerce.GRanges,data.table`
+    def = `coerce,GRanges,data.table`
 )
 
 
 
 # Updated 2019-07-11.
-`coerce.IPosRanges,data.table` <-  # nolint
+`coerce,IPosRanges,data.table` <-  # nolint
     function(from) {
         as.data.table(from)
     }
@@ -173,5 +173,5 @@ setAs(
 setAs(
     from = "IPosRanges",
     to = "data.table",
-    def = `coerce.IPosRanges,data.table`
+    def = `coerce,IPosRanges,data.table`
 )

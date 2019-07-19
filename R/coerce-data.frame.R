@@ -47,7 +47,7 @@ NULL
 # - https://github.com/Bioconductor/IRanges/issues/8
 #
 # Updated 2019-07-11.
-as.data.frame.IPosRanges <-  # nolint
+`as.data.frame,IPosRanges` <-  # nolint
     function(
         x,
         row.names = NULL,
@@ -83,13 +83,13 @@ as.data.frame.IPosRanges <-  # nolint
 setMethod(
     f = "as.data.frame",
     signature = signature("IPosRanges"),
-    definition = as.data.frame.IPosRanges
+    definition = `as.data.frame,IPosRanges`
 )
 
 
 
 # Updated 2019-07-11.
-as.data.frame.sparseMatrix <-  # nolint
+`as.data.frame,sparseMatrix` <-  # nolint
     function(x, ...) {
         as.data.frame(as.matrix(x), ...)
     }
@@ -101,14 +101,14 @@ as.data.frame.sparseMatrix <-  # nolint
 setMethod(
     f = "as.data.frame",
     signature = signature("sparseMatrix"),
-    definition = as.data.frame.sparseMatrix
+    definition = `as.data.frame,sparseMatrix`
 )
 
 
 
 # S4 ===========================================================================
 # Updated 2019-07-19.
-`coerce.sparseMatrix,data.frame` <-  # nolint
+`coerce,sparseMatrix,data.frame` <-  # nolint
     function(from) {
         as.data.frame(from)
     }
@@ -120,13 +120,13 @@ setMethod(
 setAs(
     from = "sparseMatrix",
     to = "data.frame",
-    def = `coerce.sparseMatrix,data.frame`
+    def = `coerce,sparseMatrix,data.frame`
 )
 
 
 
 # Updated 2019-07-19.
-`coerce.IPosRanges,data.frame` <-  # nolint
+`coerce,IPosRanges,data.frame` <-  # nolint
     function(from) {
         as.data.frame(from)
     }
@@ -138,5 +138,5 @@ setAs(
 setAs(
     from = "IPosRanges",
     to = "data.frame",
-    def = `coerce.IPosRanges,data.frame`
+    def = `coerce,IPosRanges,data.frame`
 )
