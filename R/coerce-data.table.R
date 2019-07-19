@@ -72,7 +72,7 @@ NULL
 # Updated 2019-07-19.
 as.data.table.DataFrame <-  # nolint
     function(x, keep.rownames = TRUE, ...) {  # nolint
-        x <- `.coerce.DataFrame,data.frame`(x)
+        x <- `.coerce,DataFrame,data.frame`(x)
         if (!hasRownames(x)) {
             keep.rownames <- FALSE  # nolint
         }

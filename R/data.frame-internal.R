@@ -1,7 +1,10 @@
 # Coerce an S4 DataFrame to a standard data.frame.
-# This functional will return an informative error if an S4 DataFrame contains
+#
+# This function will return an informative error if an S4 DataFrame contains
 # complex columns that can't be coerced to atomic or list.
-.coerceDataFrame <- function(x) {
+#
+# Updated 2019-07-19.
+`.coerce,DataFrame,data.frame` <- function(x) {
     # Check for valid columns (atomic, list).
     valid <- vapply(
         X = x,

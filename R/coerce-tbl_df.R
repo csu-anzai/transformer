@@ -65,7 +65,7 @@ rownames <- quote(pkgconfig::get_config("tibble::rownames", "rowname"))
 # Updated 2019-07-19.
 as_tibble.DataFrame <-  # nolint
     function(x, ..., rownames) {
-        x <- `.coerce.DataFrame,data.frame`(x)
+        x <- `.coerce,DataFrame,data.frame`(x)
         if (!hasRownames(x)) {
             rownames <- NULL
         }
