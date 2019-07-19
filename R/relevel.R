@@ -2,7 +2,7 @@
 #'
 #' @name relevel
 #' @inheritParams params
-#' @param ... Additional arguments
+#' @param ... Additional arguments.
 #'
 #' @param ref `NULL`.
 #'   Unsupported argument that is part of S3 generic.

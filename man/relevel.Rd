@@ -18,7 +18,7 @@ relevel(x, ref, ...)
 \item{ref}{\code{NULL}.
 Unsupported argument that is part of S3 generic.}
 
-\item{...}{Additional arguments}
+\item{...}{Additional arguments.}
 }
 \value{
 Modified object.
