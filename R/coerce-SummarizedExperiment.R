@@ -11,6 +11,7 @@
 #' @inheritParams params
 #'
 #' @examples
+#' suppressPackageStartupMessages(library(SummarizedExperiment))
 #' data(rse, sce, package = "acidtest")
 #'
 #' ## RangedSummarizedExperiment ===
@@ -48,12 +49,23 @@ as.SummarizedExperiment <-  # nolint
 #' @export
 as.SummarizedExperiment.RangedSummarizedExperiment <-  # nolint
     function(x) {
-        `.coerce,RangedSummarizedExperiment,SummarizedExperiment`(x)
+        `coerce,RangedSummarizedExperiment,SummarizedExperiment`(x)
+    }
+
+
+
+#' @rdname coerce-SummarizedExperiment
+#' @export
+as.SummarizedExperiment.SummarizedExperiment <-  # nolint
+    function(x) {
+        `coerce,SummarizedExperiment,SummarizedExperiment`(x)
     }
 
 
 
 # S4 ===========================================================================
+# Can't set S4 coercion methods because RSE and SE aren't local, modifiable.
+
 # Coercion methods of interest:
 # - from="RangedSummarizedExperiment", to="SummarizedExperiment"
 # - from="SingleCellExperiment", to="RangedSummarizedExperiment"
@@ -62,48 +74,22 @@ as.SummarizedExperiment.RangedSummarizedExperiment <-  # nolint
 
 
 # Updated 2019-07-19.
-`.coerce,RangedSummarizedExperiment,SummarizedExperiment` <-  # nolint
+`coerce,RangedSummarizedExperiment,SummarizedExperiment` <-  # nolint
     function(from) {
-        # Keep track of row metadata.
         rowMeta <- metadata(rowRanges(from))
-
-        # Default coercion method in SummarizedExperiment package.
-        method <- getMethod(
-            f = "coerce",
-            signature = signature(
-                from = "RangedSummarizedExperiment",
-                to = "SummarizedExperiment"
-            ),
-            where = asNamespace("SummarizedExperiment")
-        )
-        to <- method(from)
-
-        # Reslot the row metadata.
+        to <- as(from, "RangedSummarizedExperiment")
+        to <- as(from, "SummarizedExperiment")
         metadata(rowData(to)) <- rowMeta
-
         to
     }
 
 
 
-# nolint start
-
-# Can't set this as S4 coercion method because RSE and SE aren't local,
-# modifiable classes in the package.
-#
-# If you attempt to define `coerce` method with `setAs()`, this will error:
-#
-# > Error in setIs(from, to, test = test, coerce = def, replace = replace,  :
-# >   cannot create a 'setIs' relation when neither of the classes
-# >   (“RangedSummarizedExperiment” and “SummarizedExperiment”) is local and
-# >   modifiable in this package
-
-# #' @rdname coerce-SummarizedExperiment
-# #' @name coerce,RangedSummarizedExperiment,SummarizedExperiment-method
-# setAs(
-#     from = "RangedSummarizedExperiment",
-#     to = "SummarizedExperiment",
-#     def = `.coerce,RangedSummarizedExperiment,SummarizedExperiment`
-# )
-
-# nolint end
+# Updated 2019-07-19.
+`coerce,SummarizedExperiment,SummarizedExperiment` <-  # nolint
+    function(from) {
+        rowMeta <- metadata(rowData(from))
+        to <- as(from, "SummarizedExperiment")
+        metadata(rowData(to)) <- rowMeta
+        to
+    }
