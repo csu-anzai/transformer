@@ -3,22 +3,42 @@
 \name{coerce-SummarizedExperiment}
 \alias{coerce-SummarizedExperiment}
 \alias{as.SummarizedExperiment}
-\title{Coerce to \code{SummarizedExperiment}}
+\alias{as.SummarizedExperiment.RangedSummarizedExperiment}
+\title{Coerce to summarized experiment}
 \usage{
 as.SummarizedExperiment(x)
+
+\method{as.SummarizedExperiment}{RangedSummarizedExperiment}(x)
 }
 \arguments{
 \item{x}{Object.}
 }
 \description{
-Improved method for reliably coercing objects that extend
+Coerce to \code{SummarizedExperiment}.
+}
+\details{
+Improved S3 methods for reliably coercing objects that extend
 \code{RangedSummarizedExperiment} to a standard \code{SummarizedExperiment}, that
 doesn't drop \code{\link[SummarizedExperiment:rowData]{rowData()}}.
 }
 \examples{
-data(rse, package = "acidtest")
+data(rse, sce, package = "acidtest")
 
-## SummarizedExperiment ====
-x <- as.SummarizedExperiment(rse)
-x
+## RangedSummarizedExperiment ===
+## Current S4 coercion drops row metadata.
+names(metadata(rowRanges(rse)))
+se <- as(rse, "SummarizedExperiment")
+names(metadata(rowData(se)))
+## Our alternate S3 method preserves the metadata.
+se <- as.SummarizedExperiment(rse)
+names(metadata(rowData(se)))
+
+## Extends RangedSummarizedExperiment ====
+is(sce, "RangedSummarizedExperiment")
+## Current S4 coercion drops row data.
+se <- as(sce, "SummarizedExperiment")
+rowData(se)
+## Our alternate S3 method preserves the row data.
+se <- as.SummarizedExperiment(sce)
+rowData(se)
 }

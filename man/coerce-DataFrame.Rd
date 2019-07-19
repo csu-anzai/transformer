@@ -2,19 +2,12 @@
 % Please edit documentation in R/coerce-DataFrame.R
 \name{coerce-DataFrame}
 \alias{coerce-DataFrame}
-\alias{as.DataFrame}
 \alias{coerce,data.table,DataFrame-method}
 \alias{coerce,sparseMatrix,DataFrame-method}
 \alias{coerce,tbl_df,DataFrame-method}
-\title{Coerce to \code{DataFrame}}
-\usage{
-as.DataFrame(x)
-}
-\arguments{
-\item{x}{Object.}
-}
+\title{Coerce to data frame}
 \description{
-Coerce to \code{DataFrame}
+Coerce to \code{DataFrame}.
 }
 \examples{
 data(dt, sparse, tbl, package = "acidtest")

@@ -12,6 +12,8 @@
 \alias{coerce,IPosRanges,data.table-method}
 \title{Coerce to data table}
 \usage{
+as.data.table(x, keep.rownames = FALSE, ...)
+
 \method{as.data.table}{DataFrame}(x, keep.rownames = TRUE, ...)
 
 \method{as.data.table}{GRanges}(x, keep.rownames = TRUE, ...)

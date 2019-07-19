@@ -10,6 +10,8 @@
 \alias{coerce,IPosRanges,data.frame-method}
 \title{Coerce to data frame}
 \usage{
+as.data.frame(x, row.names = NULL, optional = FALSE, ...)
+
 \S4method{as.data.frame}{IPosRanges}(x, row.names = NULL,
   optional = FALSE, ...)
 

@@ -3,13 +3,26 @@
 \name{coerce-tbl_df}
 \alias{coerce-tbl_df}
 \alias{as_tibble}
+\alias{as_tibble.DataFrame}
+\alias{as_tibble.GRanges}
+\alias{as_tibble.IRanges}
 \alias{coerce,data.frame,tbl_df-method}
 \alias{coerce,DataFrame,tbl_df-method}
 \alias{coerce,GRanges,tbl_df-method}
 \alias{coerce,IRanges,tbl_df-method}
-\title{Coerce to \code{tbl_df} (tibble)}
+\title{Coerce to tibble}
+\usage{
+\method{as_tibble}{DataFrame}(x, ...,
+  rownames = pkgconfig::get_config("tibble::rownames", "rowname"))
+
+\method{as_tibble}{GRanges}(x, ...,
+  rownames = pkgconfig::get_config("tibble::rownames", "rowname"))
+
+\method{as_tibble}{IRanges}(x, ...,
+  rownames = pkgconfig::get_config("tibble::rownames", "rowname"))
+}
 \description{
-Coerce to \code{tbl_df} (tibble)
+Coerce to \code{tbl_df}.
 }
 \details{
 Our defined methods attempt to improve on the defaults in the tibble package
