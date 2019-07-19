@@ -4,11 +4,14 @@
 \alias{coerce-SummarizedExperiment}
 \alias{as.SummarizedExperiment}
 \alias{as.SummarizedExperiment.RangedSummarizedExperiment}
+\alias{as.SummarizedExperiment.SummarizedExperiment}
 \title{Coerce to summarized experiment}
 \usage{
 as.SummarizedExperiment(x)
 
 \method{as.SummarizedExperiment}{RangedSummarizedExperiment}(x)
+
+\method{as.SummarizedExperiment}{SummarizedExperiment}(x)
 }
 \arguments{
 \item{x}{Object.}
@@ -22,6 +25,7 @@ Improved S3 methods for reliably coercing objects that extend
 doesn't drop \code{\link[SummarizedExperiment:rowData]{rowData()}}.
 }
 \examples{
+suppressPackageStartupMessages(library(SummarizedExperiment))
 data(rse, sce, package = "acidtest")
 
 ## RangedSummarizedExperiment ===

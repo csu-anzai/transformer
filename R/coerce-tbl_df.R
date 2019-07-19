@@ -3,6 +3,8 @@
 #' Coerce to `tbl_df`.
 #'
 #' @name coerce-tbl_df
+#' @inheritParams tibble::as_tibble
+#' @inheritParams params
 #'
 #' @details
 #' Our defined methods attempt to improve on the defaults in the tibble package

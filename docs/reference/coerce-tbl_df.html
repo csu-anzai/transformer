@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce to <code>tbl_df</code> (tibble) — coerce-tbl_df • transformer</title>
+<title>Coerce to tibble — coerce-tbl_df • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce to <code>tbl_df</code> (tibble) — coerce-tbl_df" />
+<meta property="og:title" content="Coerce to tibble — coerce-tbl_df" />
 
-<meta property="og:description" content="Coerce to tbl_df (tibble)" />
+<meta property="og:description" content="Coerce to tbl_df." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.13</span>
       </span>
     </div>
 
@@ -108,18 +108,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Coerce to <code>tbl_df</code> (tibble)</h1>
+    <h1>Coerce to tibble</h1>
     <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-tbl_df.R'><code>R/coerce-tbl_df.R</code></a></small>
     <div class="hidden name"><code>coerce-tbl_df.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Coerce to <code>tbl_df</code> (tibble)</p>
+    <p>Coerce to <code>tbl_df</code>.</p>
     
     </div>
 
-        
+    <pre class="usage"><span class='co'># S3 method for DataFrame</span>
+<span class='fu'>as_tibble</span>(<span class='no'>x</span>, <span class='no'>...</span>,
+  <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='kw pkg'>pkgconfig</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pkgconfig/man/get_config.html'>get_config</a></span>(<span class='st'>"tibble::rownames"</span>, <span class='st'>"rowname"</span>))
+
+<span class='co'># S3 method for GRanges</span>
+<span class='fu'>as_tibble</span>(<span class='no'>x</span>, <span class='no'>...</span>,
+  <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='kw pkg'>pkgconfig</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pkgconfig/man/get_config.html'>get_config</a></span>(<span class='st'>"tibble::rownames"</span>, <span class='st'>"rowname"</span>))
+
+<span class='co'># S3 method for IRanges</span>
+<span class='fu'>as_tibble</span>(<span class='no'>x</span>, <span class='no'>...</span>,
+  <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='kw pkg'>pkgconfig</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pkgconfig/man/get_config.html'>get_config</a></span>(<span class='st'>"tibble::rownames"</span>, <span class='st'>"rowname"</span>))</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A data frame, list, matrix, or other object that could reasonably be
+coerced to a tibble.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments passed on to individual methods.</p></td>
+    </tr>
+    <tr>
+      <th>rownames</th>
+      <td><p>How to treat existing row names of a data frame or matrix:</p><ul>
+<li><p><code>NULL</code>: remove row names. This is the default.</p></li>
+<li><p><code>NA</code>: keep row names.</p></li>
+<li><p>A string: the name of a new column. Existing rownames are transferred
+into this column and the <code>row.names</code> attribute is deleted.
+Read more in <a href='https://rdrr.io/r/base/colnames.html'>rownames</a>.</p></li>
+</ul></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Our defined methods attempt to improve on the defaults in the tibble package
@@ -179,17 +214,19 @@ need to define an S4 coercion method that allows us to use
 #&gt; </span><span style='color: #BCBCBC;'>4</span><span> ENSG000000004… 1          1.70</span><span style='color: #949494;'>e</span><span>8   1.70</span><span style='color: #949494;'>e</span><span>8  </span><span style='text-decoration: underline;'>44</span><span>637 -      ENSG00000000… SCYL3   
 #&gt; </span><span style='color: #BCBCBC;'>5</span><span> ENSG000000004… 1          1.70</span><span style='color: #949494;'>e</span><span>8   1.70</span><span style='color: #949494;'>e</span><span>8 </span><span style='text-decoration: underline;'>192</span><span>074 +      ENSG00000000… C1orf112</div><div class='input'>
 <span class='co'>## IRanges to tbl_df ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>ir</span>, <span class='st'>"tbl_df"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as(ir, "tbl_df"): no method or default for coercing “IRanges” to “tbl_df”</span></div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as_tibble</span>(<span class='no'>ir</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 3 x 4</span><span>
-#&gt;   start   end width names
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1     5     5 a    
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>    10    14     5 b    
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span>    20    24     5 c    </div></span></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>ir</span>, <span class='st'>"tbl_df"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as_tibble</span>(<span class='no'>ir</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 3 x 5</span><span>
+#&gt;   rowname start   end width score
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> a           1     5     5     1
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> b          10    14     5     2
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> c          20    24     5     3</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#details">Details</a></li>
 

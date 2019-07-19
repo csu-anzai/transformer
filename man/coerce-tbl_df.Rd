@@ -21,6 +21,21 @@
 \method{as_tibble}{IRanges}(x, ...,
   rownames = pkgconfig::get_config("tibble::rownames", "rowname"))
 }
+\arguments{
+\item{x}{A data frame, list, matrix, or other object that could reasonably be
+coerced to a tibble.}
+
+\item{...}{Other arguments passed on to individual methods.}
+
+\item{rownames}{How to treat existing row names of a data frame or matrix:
+\itemize{
+\item \code{NULL}: remove row names. This is the default.
+\item \code{NA}: keep row names.
+\item A string: the name of a new column. Existing rownames are transferred
+into this column and the \code{row.names} attribute is deleted.
+Read more in \link{rownames}.
+}}
+}
 \description{
 Coerce to \code{tbl_df}.
 }

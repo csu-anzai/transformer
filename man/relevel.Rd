@@ -6,12 +6,17 @@
 \alias{relevel.GRanges}
 \title{Reorder factor levels}
 \usage{
-\method{relevel}{DataFrame}(object)
+relevel(x, ref, ...)
 
-\method{relevel}{GRanges}(object)
+\method{relevel}{DataFrame}(x, ref = NULL, ...)
+
+\method{relevel}{GRanges}(x, ref = NULL, ...)
 }
 \arguments{
-\item{object}{Object.}
+\item{x}{Object.}
+
+\item{ref}{\code{NULL}.
+Unsupported argument that is part of S3 generic.}
 }
 \value{
 Modified object.
