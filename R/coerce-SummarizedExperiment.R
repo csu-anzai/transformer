@@ -48,7 +48,7 @@ as.SummarizedExperiment <-  # nolint
 #' @export
 as.SummarizedExperiment.RangedSummarizedExperiment <-  # nolint
     function(x) {
-        `.coerce.RangedSummarizedExperiment,SummarizedExperiment`(x)
+        `.coerce,RangedSummarizedExperiment,SummarizedExperiment`(x)
     }
 
 
@@ -62,7 +62,7 @@ as.SummarizedExperiment.RangedSummarizedExperiment <-  # nolint
 
 
 # Updated 2019-07-19.
-`.coerce.RangedSummarizedExperiment,SummarizedExperiment` <-  # nolint
+`.coerce,RangedSummarizedExperiment,SummarizedExperiment` <-  # nolint
     function(from) {
         # Keep track of row metadata.
         rowMeta <- metadata(rowRanges(from))
@@ -103,7 +103,7 @@ as.SummarizedExperiment.RangedSummarizedExperiment <-  # nolint
 # setAs(
 #     from = "RangedSummarizedExperiment",
 #     to = "SummarizedExperiment",
-#     def = `.coerce.RangedSummarizedExperiment,SummarizedExperiment`
+#     def = `.coerce,RangedSummarizedExperiment,SummarizedExperiment`
 # )
 
 # nolint end
