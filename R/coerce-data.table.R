@@ -57,6 +57,7 @@ NULL
 #' @rdname coerce-data.table
 #' @name as.data.table
 #' @importFrom data.table as.data.table
+#' @usage as.data.table(x, keep.rownames = FALSE, ...)
 #' @export
 NULL
 
@@ -105,52 +106,72 @@ as.data.table.IPosRanges <- as.data.table.GRanges
 
 
 # S4 ===========================================================================
+# Updated 2019-07-11.
+`coerce.data.frame,data.table` <-  # nolint
+    function(from) {
+        as.data.table(from)
+    }
+
+
+
 #' @rdname coerce-data.table
 #' @name coerce,data.frame,data.table-method
-# Updated 2019-07-11.
 setAs(
     from = "data.frame",
     to = "data.table",
-    def = function(from) {
+    def = `coerce.data.frame,data.table`
+)
+
+
+
+# Updated 2019-07-11.
+`coerce.DataFrame,data.table` <-  # nolint
+    function(from) {
         as.data.table(from)
     }
-)
 
 
 
 #' @rdname coerce-data.table
 #' @name coerce,DataFrame,data.table-method
-# Updated 2019-07-11.
 setAs(
     from = "DataFrame",
     to = "data.table",
-    def = function(from) {
+    def = `coerce.DataFrame,data.table`
+)
+
+
+
+# Updated 2019-07-11.
+`coerce.GRanges,data.table` <-  # nolint
+    function(from) {
         as.data.table(from)
     }
-)
 
 
 
 #' @rdname coerce-data.table
 #' @name coerce,GRanges,data.table-method
-# Updated 2019-07-11.
 setAs(
     from = "GRanges",
     to = "data.table",
-    def = function(from) {
+    def = `coerce.GRanges,data.table`
+)
+
+
+
+# Updated 2019-07-11.
+`coerce.IPosRanges,data.table` <-  # nolint
+    function(from) {
         as.data.table(from)
     }
-)
 
 
 
 #' @rdname coerce-data.table
 #' @name coerce,IPosRanges,data.table-method
-# Updated 2019-07-11.
 setAs(
     from = "IPosRanges",
     to = "data.table",
-    def = function(from) {
-        as.data.table(from)
-    }
+    def = `coerce.IPosRanges,data.table`
 )
