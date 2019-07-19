@@ -107,11 +107,16 @@ setMethod(
 
 
 # S4 ===========================================================================
-# Updated 2019-07-19.
-`coerce,sparseMatrix,data.frame` <-  # nolint
+`coerce,ANY,data.frame` <-  # nolint
     function(from) {
         as.data.frame(from)
     }
+
+
+
+# Updated 2019-07-19.
+`coerce,sparseMatrix,data.frame` <-  # nolint
+    `coerce,ANY,data.frame`
 
 
 
@@ -127,9 +132,7 @@ setAs(
 
 # Updated 2019-07-19.
 `coerce,IPosRanges,data.frame` <-  # nolint
-    function(from) {
-        as.data.frame(from)
-    }
+    `coerce,ANY,data.frame`
 
 
 

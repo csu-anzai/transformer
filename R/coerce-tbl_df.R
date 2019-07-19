@@ -1,4 +1,6 @@
-#' Coerce to `tbl_df` (tibble)
+#' Coerce to tibble
+#'
+#' Coerce to `tbl_df`.
 #'
 #' @name coerce-tbl_df
 #'
@@ -58,12 +60,12 @@ rownames <- quote(pkgconfig::get_config("tibble::rownames", "rowname"))
 
 
 
-# Updated 2019-07-11.
-#' @method as_tibble DataFrame
+#' @rdname coerce-tbl_df
 #' @export
+# Updated 2019-07-19.
 as_tibble.DataFrame <-  # nolint
     function(x, ..., rownames) {
-        x <- .coerceDataFrame(x)
+        x <- `.coerce.DataFrame,data.frame`(x)
         if (!hasRownames(x)) {
             rownames <- NULL
         }
@@ -76,9 +78,10 @@ formals(as_tibble.DataFrame)[["rownames"]] <- rownames
 
 # The default handling from data.frame isn't clean, so add this.
 # Default method will warn: `Arguments in '...' ignored`.
-# Updated 2019-07-11.
-#' @method as_tibble GRanges
+
+#' @rdname coerce-tbl_df
 #' @export
+# Updated 2019-07-19.
 as_tibble.GRanges <-  # nolint
     function(x, ..., rownames) {
         x <- as(x, "data.frame")
@@ -92,60 +95,80 @@ formals(as_tibble.GRanges)[["rownames"]] <- rownames
 
 
 
-# Updated 2019-07-12.
-#' @method as_tibble IRanges
+#' @rdname coerce-tbl_df
 #' @export
+# Updated 2019-07-12.
 as_tibble.IRanges <- as_tibble.GRanges  # nolint
 
 
 
 # S4 ===========================================================================
-# Updated 2019-07-11.
+# Updated 2019-07-19.
+`coerce,ANY,tbl_df` <-  # nolint
+    function(from) {
+        as_tibble(from)
+    }
+
+
+
+# Updated 2019-07-19.
+`coerce,data.frame,tbl_df` <-  # nolint
+    `coerce,ANY,tbl_df`
+
+
+
 #' @rdname coerce-tbl_df
 #' @name coerce,data.frame,tbl_df-method
 setAs(
     from = "data.frame",
     to = "tbl_df",
-    def = function(from) {
-        as_tibble(from)
-    }
+    def = `coerce,data.frame,tbl_df`
 )
 
 
 
-# Updated 2019-07-11.
+# Updated 2019-07-19.
+`coerce,DataFrame,tbl_df` <-  # nolint
+    `coerce,ANY,tbl_df`
+
+
+
 #' @rdname coerce-tbl_df
 #' @name coerce,DataFrame,tbl_df-method
 setAs(
     from = "DataFrame",
     to = "tbl_df",
-    def = function(from) {
-        as_tibble(from)
-    }
+    def = `coerce,DataFrame,tbl_df`
 )
 
 
 
-# Updated 2019-07-11.
+# Updated 2019-07-19.
+`coerce,GRanges,tbl_df` <-  # nolint
+    `coerce,ANY,tbl_df`
+
+
+
 #' @rdname coerce-tbl_df
 #' @name coerce,GRanges,tbl_df-method
 setAs(
     from = "GRanges",
     to = "tbl_df",
-    def = function(from) {
-        as_tibble(from)
-    }
+    def = `coerce,GRanges,tbl_df`
 )
 
 
 
-# Updated 2019-07-11.
+# Updated 2019-07-19.
+`coerce,IRanges,tbl_df` <-  # nolint
+    `coerce,ANY,tbl_df`
+
+
+
 #' @rdname coerce-tbl_df
 #' @name coerce,IRanges,tbl_df-method
 setAs(
     from = "IRanges",
     to = "tbl_df",
-    def = function(from) {
-        as_tibble(from)
-    }
+    def = `coerce,IRanges,tbl_df`
 )

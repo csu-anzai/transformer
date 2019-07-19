@@ -106,11 +106,16 @@ as.data.table.IPosRanges <- as.data.table.GRanges
 
 
 # S4 ===========================================================================
-# Updated 2019-07-11.
-`coerce,data.frame,data.table` <-  # nolint
+# Updated 2019-07-19.
+`coerce,ANY,data.table` <-  # nolint
     function(from) {
         as.data.table(from)
     }
+
+
+# Updated 2019-07-19.
+`coerce,data.frame,data.table` <-  # nolint
+    `coerce,ANY,data.table`
 
 
 
@@ -124,11 +129,9 @@ setAs(
 
 
 
-# Updated 2019-07-11.
+# Updated 2019-07-19.
 `coerce,DataFrame,data.table` <-  # nolint
-    function(from) {
-        as.data.table(from)
-    }
+    `coerce,ANY,data.table`
 
 
 
@@ -142,11 +145,9 @@ setAs(
 
 
 
-# Updated 2019-07-11.
+# Updated 2019-07-19.
 `coerce,GRanges,data.table` <-  # nolint
-    function(from) {
-        as.data.table(from)
-    }
+    `coerce,ANY,data.table`
 
 
 
@@ -160,11 +161,9 @@ setAs(
 
 
 
-# Updated 2019-07-11.
+# Updated 2019-07-19.
 `coerce,IPosRanges,data.table` <-  # nolint
-    function(from) {
-        as.data.table(from)
-    }
+    `coerce,ANY,data.table`
 
 
 
