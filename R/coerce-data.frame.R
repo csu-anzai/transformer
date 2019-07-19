@@ -98,6 +98,9 @@ setMethod(
 # S4 ===========================================================================
 #' @rdname coerce-data.frame
 #' @name coerce,sparseMatrix,data.frame-method
+#' @usage
+#' ## S4 method for signature 'sparseMatrix'
+#' as(object, Class = "data.frame")
 # Updated 2019-07-11.
 setAs(
     from = "sparseMatrix",
@@ -111,6 +114,9 @@ setAs(
 
 #' @rdname coerce-data.frame
 #' @name coerce,IPosRanges,data.frame-method
+#' @usage
+#' ## S4 method for signature 'IPosRanges'
+#' as(object, Class = "data.frame")
 # Updated 2019-07-11.
 setAs(
     from = "IPosRanges",
