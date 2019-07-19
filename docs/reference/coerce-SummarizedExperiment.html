@@ -145,7 +145,7 @@ doesn't drop <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/Summari
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/message.html'>suppressPackageStartupMessages</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>SummarizedExperiment</span>))
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
 <span class='co'>## RangedSummarizedExperiment ===</span>
 <span class='co'>## Current S4 coercion drops row metadata.</span>
@@ -156,39 +156,7 @@ doesn't drop <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/Summari
 <span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='fu'>as.SummarizedExperiment</span>(<span class='no'>rse</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='fu'>metadata</span>(<span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData</a></span>(<span class='no'>se</span>)))</div><div class='output co'>#&gt; [1] "package"        "version"        "date"           "organism"      
 #&gt; [5] "genomeBuild"    "ensemblRelease" "ensembldb"      "level"         
-#&gt; [9] "id"            </div><div class='input'>
-<span class='co'>## Extends RangedSummarizedExperiment ====</span>
-<span class='fu'>is</span>(<span class='no'>sce</span>, <span class='st'>"RangedSummarizedExperiment"</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: SingleCellExperiment</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'>## Current S4 coercion drops row data.</span>
-<span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>sce</span>, <span class='st'>"SummarizedExperiment"</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData</a></span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; DataFrame with 230 rows and 0 columns</div><div class='input'><span class='co'>## Our alternate S3 method preserves the row data.</span>
-<span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='fu'>as.SummarizedExperiment</span>(<span class='no'>sce</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData</a></span>(<span class='no'>se</span>)</div><div class='output co'>#&gt; DataFrame with 230 rows and 6 columns
-#&gt;                 broadClass            entrezID    geneBiotype          geneID
-#&gt;                      &lt;Rle&gt;              &lt;list&gt;          &lt;Rle&gt;           &lt;Rle&gt;
-#&gt; ENSG00000156738     coding                 931 protein_coding ENSG00000156738
-#&gt; ENSG00000007312     coding                 974 protein_coding ENSG00000007312
-#&gt; ENSG00000105369     coding                 973 protein_coding ENSG00000105369
-#&gt; ENSG00000204287     coding                3122 protein_coding ENSG00000204287
-#&gt; ENSG00000100721     coding                8115 protein_coding ENSG00000100721
-#&gt; ...                    ...                 ...            ...             ...
-#&gt; ENSG00000133321     coding                5920 protein_coding ENSG00000133321
-#&gt; ENSG00000120265     coding                5110 protein_coding ENSG00000120265
-#&gt; ENSG00000185896     coding                3916 protein_coding ENSG00000185896
-#&gt; ENSG00000159674     coding c(100130872, 10417) protein_coding ENSG00000159674
-#&gt; ENSG00000160307     coding                6285 protein_coding ENSG00000160307
-#&gt;                 geneName seqCoordSystem
-#&gt;                    &lt;Rle&gt;          &lt;Rle&gt;
-#&gt; ENSG00000156738    MS4A1     chromosome
-#&gt; ENSG00000007312    CD79B     chromosome
-#&gt; ENSG00000105369    CD79A     chromosome
-#&gt; ENSG00000204287  HLA-DRA     chromosome
-#&gt; ENSG00000100721    TCL1A     chromosome
-#&gt; ...                  ...            ...
-#&gt; ENSG00000133321  RARRES3     chromosome
-#&gt; ENSG00000120265    PCMT1     chromosome
-#&gt; ENSG00000185896    LAMP1     chromosome
-#&gt; ENSG00000159674    SPON2     chromosome
-#&gt; ENSG00000160307    S100B     chromosome</div></pre>
+#&gt; [9] "id"            </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
