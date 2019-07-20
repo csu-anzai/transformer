@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
       </span>
     </div>
 
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Coerce to data table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-data.table.R'><code>R/coerce-data.table.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-data.table-S3methods.R'><code>R/coerce-data.table-S3methods.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-data.table-S4methods.R'><code>R/coerce-data.table-S4methods.R</code></a></small>
     <div class="hidden name"><code>coerce-data.table.Rd</code></div>
     </div>
 
@@ -124,10 +124,10 @@
 <span class='co'># S3 method for DataFrame</span>
 <span class='fu'>as.data.table</span>(<span class='no'>x</span>, <span class='kw'>keep.rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
-<span class='co'># S3 method for GRanges</span>
+<span class='co'># S3 method for IPosRanges</span>
 <span class='fu'>as.data.table</span>(<span class='no'>x</span>, <span class='kw'>keep.rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
-<span class='co'># S3 method for IPosRanges</span>
+<span class='co'># S3 method for GenomicRanges</span>
 <span class='fu'>as.data.table</span>(<span class='no'>x</span>, <span class='kw'>keep.rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -164,7 +164,7 @@ Note that we're manually defining the "<code>rowname</code>" column instead of u
 <p>transformer extends <code><a href='https://rdrr.io/pkg/data.table/man/as.data.table.html'>as.data.table()</a></code> method
 support for these S4 classes:</p><ul>
 <li><p><code>DataFrame</code>.</p></li>
-<li><p><code>GRanges</code>.</p></li>
+<li><p><code>GenomicRanges</code>.</p></li>
 </ul>
 
     
@@ -194,7 +194,7 @@ object to a <code>data.table</code>.</p>
 #&gt; 2: ENSG00000000002       2       6      10      14
 #&gt; 3: ENSG00000000003       3       7      11      15
 #&gt; 4: ENSG00000000004       4       8      12      16</div><div class='input'>
-<span class='co'>## GRanges to data.table ====</span>
+<span class='co'>## GenomicRanges to data.table ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>gr</span>, <span class='st'>"data.table"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>gr</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;                 rn seqnames     start       end  width strand          geneID

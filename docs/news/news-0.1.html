@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@
 <h3 class="hasAnchor">
 <a href="#major-changes-4" class="anchor"></a>Major changes</h3>
 <ul>
-<li>Migrated <code>decode()</code> and <code>encode()</code> S4 methods from <a href="https://basejump.acidgenomics.com/">basejump</a>.</li>
+<li>Migrated <code><a href="../reference/decode.html">decode()</a></code> and <code><a href="../reference/encode.html">encode()</a></code> S4 methods from <a href="https://basejump.acidgenomics.com/">basejump</a>.</li>
 <li>Improved <code>atomize()</code> compatibility with <a href="https://bioconductor.org/">Bioconductor</a> 3.7 release. Now DataFrame objects containing Rle columns will get decoded consistently without applying stringsAsFactors in an unexpected fashion. This works correctly in Bioconductor 3.8 simply using <code><a href="../reference/coerce-data.frame.html">as.data.frame()</a></code> internally, but has unwanted coercion of <code>character</code> to <code>factor</code> columns for Rle-encoded data when using the Bioconductor 3.7 release.</li>
 </ul>
 </div>
@@ -162,7 +162,7 @@
 <h3 class="hasAnchor">
 <a href="#major-changes-3" class="anchor"></a>Major changes</h3>
 <ul>
-<li>Migrated these functions to <a href="https://brio.acidgenomics.com/">brio</a> package: <code>atomize()</code>, <code>factorize()</code>, <code>encode()</code>, <code>decode()</code>.</li>
+<li>Migrated these functions to <a href="https://brio.acidgenomics.com/">brio</a> package: <code>atomize()</code>, <code>factorize()</code>, <code><a href="../reference/encode.html">encode()</a></code>, <code><a href="../reference/decode.html">decode()</a></code>.</li>
 </ul>
 </div>
 </div>

@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
       </span>
     </div>
 
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Coerce to tibble</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-tbl_df.R'><code>R/coerce-tbl_df.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-tbl_df-S3methods.R'><code>R/coerce-tbl_df-S3methods.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-tbl_df-S4methods.R'><code>R/coerce-tbl_df-S4methods.R</code></a></small>
     <div class="hidden name"><code>coerce-tbl_df.Rd</code></div>
     </div>
 
@@ -123,11 +123,11 @@
 <span class='fu'>as_tibble</span>(<span class='no'>x</span>, <span class='no'>...</span>,
   <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='kw pkg'>pkgconfig</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pkgconfig/man/get_config.html'>get_config</a></span>(<span class='st'>"tibble::rownames"</span>, <span class='st'>"rowname"</span>))
 
-<span class='co'># S3 method for GRanges</span>
+<span class='co'># S3 method for IPosRanges</span>
 <span class='fu'>as_tibble</span>(<span class='no'>x</span>, <span class='no'>...</span>,
   <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='kw pkg'>pkgconfig</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pkgconfig/man/get_config.html'>get_config</a></span>(<span class='st'>"tibble::rownames"</span>, <span class='st'>"rowname"</span>))
 
-<span class='co'># S3 method for IRanges</span>
+<span class='co'># S3 method for GenomicRanges</span>
 <span class='fu'>as_tibble</span>(<span class='no'>x</span>, <span class='no'>...</span>,
   <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='kw pkg'>pkgconfig</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pkgconfig/man/get_config.html'>get_config</a></span>(<span class='st'>"tibble::rownames"</span>, <span class='st'>"rowname"</span>))</pre>
     
@@ -202,7 +202,7 @@ need to define an S4 coercion method that allows us to use
 #&gt; </span><span style='color: #BCBCBC;'>2</span><span> ENSG00000000002       2       6      10      14
 #&gt; </span><span style='color: #BCBCBC;'>3</span><span> ENSG00000000003       3       7      11      15
 #&gt; </span><span style='color: #BCBCBC;'>4</span><span> ENSG00000000004       4       8      12      16</div><div class='input'>
-<span class='co'>## GRanges to tbl_df ====</span>
+<span class='co'>## GenomicRanges to tbl_df ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>gr</span>, <span class='st'>"tbl_df"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as_tibble</span>(<span class='no'>gr</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5 x 8</span><span>
