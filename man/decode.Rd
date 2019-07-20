@@ -5,6 +5,7 @@
 \alias{decode}
 \alias{decode,DataFrame-method}
 \alias{decode,Ranges-method}
+\alias{decode,SummarizedExperiment-method}
 \title{Decode column data that uses run-length encoding}
 \usage{
 decode(x, ...)
@@ -12,6 +13,8 @@ decode(x, ...)
 \S4method{decode}{DataFrame}(x)
 
 \S4method{decode}{Ranges}(x)
+
+\S4method{decode}{SummarizedExperiment}(x)
 }
 \arguments{
 \item{x}{Object.}
@@ -33,8 +36,13 @@ data(rse, package = "acidtest")
 ## DataFrame ====
 df <- SummarizedExperiment::rowData(rse)
 lapply(df, class)
-x <- decode(mcols)
+x <- decode(df)
 lapply(x, class)
+
+## SummarizedExperiment ====
+## This works on rowData and colData.
+x <- decode(rse)
+lapply(rowData(x), class)
 }
 \seealso{
 \code{\link[S4Vectors:decode]{S4Vectors::decode()}}.
