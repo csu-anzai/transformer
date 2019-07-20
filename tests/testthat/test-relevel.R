@@ -13,6 +13,13 @@ test_that("DataFrame", {
     )
 })
 
+test_that("Early return on empty DataFrame", {
+    expect_identical(relevel(DataFrame()), DataFrame())
+})
+
+test_that("IRanges", {
+    expect_identical(relevel(ir), ir)
+})
 
 test_that("GRanges", {
     rr <- rowRanges(rse)
@@ -34,4 +41,22 @@ test_that("GRanges", {
             entrezID = AsIs
         )
     )
+})
+
+test_that("SummarizedExperiment", {
+    x <- relevel(rse)
+    expect_s4_class(x, "RangedSummarizedExperiment")
+    # Check for factor columns.
+    ok <- any(vapply(
+        X = decode(rowData(x)),
+        FUN = is.factor,
+        FUN.VALUE = logical(1L)
+    ))
+    expect_true(ok)
+    ok <- any(vapply(
+        X = decode(colData(x)),
+        FUN = is.factor,
+        FUN.VALUE = logical(1L)
+    ))
+    expect_true(ok)
 })
