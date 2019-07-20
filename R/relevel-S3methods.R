@@ -80,3 +80,16 @@ relevel.Ranges <-  # nolint
         }
         x
     }
+
+
+
+#' @rdname relevel
+#' @export
+# Updated 2019-07-20.
+relevel.SummarizedExperiment <-  # nolint
+    function(x, ref = NULL, ...) {
+        assert(is.null(ref))
+        rowData(x) <- relevel(rowData(x))
+        colData(x) <- relevel(colData(x))
+        x
+    }
