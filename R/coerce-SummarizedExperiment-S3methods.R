@@ -69,11 +69,9 @@ as.SummarizedExperiment.RangedSummarizedExperiment <-  # nolint
 #' @export
 as.SummarizedExperiment.SummarizedExperiment <-  # nolint
     function(x) {
-        function(x) {
-            from <- x
-            rowMeta <- metadata(rowData(from))
-            to <- as(from, "SummarizedExperiment")
-            metadata(rowData(to)) <- rowMeta
-            to
-        }
+        from <- x
+        rowMeta <- metadata(rowData(from))
+        to <- as(from, "SummarizedExperiment")
+        metadata(rowData(to)) <- rowMeta
+        to
     }
