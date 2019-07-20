@@ -30,8 +30,8 @@ The Rle class is a general container for storing an atomic vector
 \examples{
 data(rse, package = "acidtest")
 
-## DataFrame
-df <- S4Vectors::rowData(rse)
+## DataFrame ====
+df <- SummarizedExperiment::rowData(rse)
 lapply(df, class)
 x <- decode(mcols)
 lapply(x, class)
