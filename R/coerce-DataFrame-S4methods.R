@@ -12,7 +12,7 @@
 #' x <- as(dt, "DataFrame")
 #' head(x)
 #'
-#' ## sparseMatrix to DataFrame ====
+#' ## Matrix to DataFrame ====
 #' x <- as(sparse, "DataFrame")
 #'
 #' ## tbl_df to DataFrame ====
@@ -58,17 +58,17 @@ setAs(
 
 
 # Updated 2019-07-12.
-`coerce,sparseMatrix,DataFrame` <-  # nolint
+`coerce,Matrix,DataFrame` <-  # nolint
     `coerce,ANY,DataFrame`
 
 
 
 #' @rdname coerce-DataFrame
-#' @name coerce,sparseMatrix,DataFrame-method
+#' @name coerce,Matrix,DataFrame-method
 setAs(
-    from = "sparseMatrix",
+    from = "Matrix",
     to = "DataFrame",
-    def = `coerce,sparseMatrix,DataFrame`
+    def = `coerce,Matrix,DataFrame`
 )
 
 
