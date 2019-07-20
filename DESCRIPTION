@@ -37,8 +37,8 @@ Imports:
     stats
 Suggests:
     acidtest (>= 0.1.5),
-    patrick,
-    testthat,
+    patrick (>= 0.0.1),
+    testthat (>= 2.1),
     datasets
 Remotes:
     acidgenomics/acidtest,
