@@ -32,7 +32,7 @@ NULL
 
 
 
-# Updated 2019-07-19.
+# Updated 2019-07-20.
 `encode,DataFrame` <-  # nolint
     function(x) {
         DataFrame(
@@ -88,4 +88,30 @@ setMethod(
     f = "encode",
     signature = signature("Ranges"),
     definition = `encode,Ranges`
+)
+
+
+
+# Updated 2019-07-20.
+`encode,SummarizedExperiment` <-  # nolint
+    function(x) {
+        validObject(x)
+        if (!is.null(rowData(x))) {
+            rowData(x) <- encode(rowData(x))
+        }
+        if (!is.null(colData(x))) {
+            colData(x) <- encode(colData(x))
+        }
+        validObject(x)
+        x
+    }
+
+
+
+#' @rdname encode
+#' @export
+setMethod(
+    f = "encode",
+    signature = signature("SummarizedExperiment"),
+    definition = `encode,SummarizedExperiment`
 )

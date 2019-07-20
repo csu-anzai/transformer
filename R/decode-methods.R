@@ -17,8 +17,13 @@
 #' ## DataFrame ====
 #' df <- SummarizedExperiment::rowData(rse)
 #' lapply(df, class)
-#' x <- decode(mcols)
+#' x <- decode(df)
 #' lapply(x, class)
+#'
+#' ## SummarizedExperiment ====
+#' ## This works on rowData and colData.
+#' x <- decode(rse)
+#' lapply(rowData(x), class)
 NULL
 
 
@@ -85,4 +90,30 @@ setMethod(
     f = "decode",
     signature = signature("Ranges"),
     definition = `decode,Ranges`
+)
+
+
+
+# Updated 2019-07-20.
+`decode,SummarizedExperiment` <-  # nolint
+    function(x) {
+        validObject(x)
+        if (!is.null(rowData(x))) {
+            rowData(x) <- decode(rowData(x))
+        }
+        if (!is.null(colData(x))) {
+            colData(x) <- decode(colData(x))
+        }
+        validObject(x)
+        x
+    }
+
+
+
+#' @rdname decode
+#' @export
+setMethod(
+    f = "decode",
+    signature = signature("SummarizedExperiment"),
+    definition = `decode,SummarizedExperiment`
 )
