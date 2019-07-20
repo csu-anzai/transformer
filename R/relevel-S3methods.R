@@ -13,12 +13,12 @@
 #' @examples
 #' data(rse, package = "acidtest")
 #'
-#' ## DataFrame
+#' ## DataFrame ====
 #' df <- SummarizedExperiment::rowData(rse)
 #' x <- relevel(df)
 #' summary(x)
 #'
-#' ## GRanges
+#' ## GenomicRanges ====
 #' gr <- SummarizedExperiment::rowRanges(rse)
 #' x <- relevel(gr)
 #' summary(x)
@@ -41,6 +41,7 @@ NULL
 relevel.DataFrame <-  # nolint
     function(x, ref = NULL, ...) {
         assert(is.null(ref))
+        if (!hasRows(x)) return(x)
         DataFrame(
             lapply(
                 X = x,
@@ -63,13 +64,19 @@ relevel.DataFrame <-  # nolint
     }
 
 
+# Note that GenomicRanges and IRanges extend this virtual class. Releveling the
+# factors inside of `mcols()` is particularly useful when subsetting large
+# genomic ranges, reducing the memory overhead associated with storing
+# irrelevant factor levels (e.g. gene metadata no longer in object).
 
 #' @rdname relevel
 #' @export
-# Updated 2019-07-19.
-relevel.GRanges <-  # nolint
+# Updated 2019-07-20.
+relevel.Ranges <-  # nolint
     function(x, ref = NULL, ...) {
         assert(is.null(ref))
-        mcols(x) <- relevel(mcols(x))
+        if (!is.null(mcols(x))) {
+            mcols(x) <- relevel(mcols(x))
+        }
         x
     }
