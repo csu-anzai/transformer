@@ -11,8 +11,8 @@
 #'   this is optional.
 #'
 #' @seealso
-#' - `dplyr::left_join()`.
-#' - `S4Vectors::merge()`.
+#' - `help(topic = "join", package = "dplyr")`.
+#' - `help(topic = "merge", package = "S4Vectors")`.
 #'
 #' @examples
 #' DataFrame <- S4Vectors::DataFrame
@@ -33,12 +33,6 @@ NULL
 
 
 
-# Currently setting an internal `.idx` column that we can use to reorder the
-# rows after `merge()` operation.
-#
-# Alternatively, consider using Hervé Pagès's recommended approach.
-# https://support.bioconductor.org/p/120277/
-#
 # dplyr join functions, for reference:
 # - `inner_join`
 # - `left_join`
@@ -47,6 +41,16 @@ NULL
 # - `semi_join`
 # - `nest_join`
 # - `anti_join`
+
+# Currently setting an internal `.idx` column that we can use to reorder the
+# rows after `merge()` operation.
+
+# Can consider using Hervé Pagès's recommended approach instead.
+# https://support.bioconductor.org/p/120277/
+
+# Consider importing dplyr and reexporting the S3 generics defined there
+# instead. Note that those contain additional arguments, such as "copy" and
+# "suffix".
 
 
 
