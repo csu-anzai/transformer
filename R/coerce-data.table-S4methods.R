@@ -38,22 +38,6 @@ setAs(
 
 
 # Updated 2019-07-19.
-`coerce,GRanges,data.table` <-  # nolint
-    `coerce,ANY,data.table`
-
-
-
-#' @rdname coerce-data.table
-#' @name coerce,GRanges,data.table-method
-setAs(
-    from = "GRanges",
-    to = "data.table",
-    def = `coerce,GRanges,data.table`
-)
-
-
-
-# Updated 2019-07-19.
 `coerce,IPosRanges,data.table` <-  # nolint
     `coerce,ANY,data.table`
 
@@ -65,4 +49,20 @@ setAs(
     from = "IPosRanges",
     to = "data.table",
     def = `coerce,IPosRanges,data.table`
+)
+
+
+
+# Updated 2019-07-20.
+`coerce,GenomicRanges,data.table` <-  # nolint
+    `coerce,ANY,data.table`
+
+
+
+#' @rdname coerce-data.table
+#' @name coerce,GenomicRanges,data.table-method
+setAs(
+    from = "GenomicRanges",
+    to = "data.table",
+    def = `coerce,GenomicRanges,data.table`
 )

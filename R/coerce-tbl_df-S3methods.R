@@ -38,7 +38,7 @@
 #' x <- as_tibble(df)
 #' print(x)
 #'
-#' ## GRanges to tbl_df ====
+#' ## GenomicRanges to tbl_df ====
 #' x <- as(gr, "tbl_df")
 #' x <- as_tibble(gr)
 #' print(x)
@@ -79,13 +79,10 @@ formals(as_tibble.DataFrame)[["rownames"]] <- rownames
 
 
 
-# The default handling from data.frame isn't clean, so add this.
-# Default method will warn: `Arguments in '...' ignored`.
-
 #' @rdname coerce-tbl_df
 #' @export
-# Updated 2019-07-19.
-as_tibble.GRanges <-  # nolint
+# Updated 2019-07-20.
+as_tibble.IPosRanges <-  # nolint
     function(x, ..., rownames) {
         x <- as(x, "data.frame")
         if (!hasRownames(x)) {
@@ -94,14 +91,14 @@ as_tibble.GRanges <-  # nolint
         as_tibble(x = x, ..., rownames = rownames)
     }
 
-formals(as_tibble.GRanges)[["rownames"]] <- rownames
+formals(as_tibble.IPosRanges)[["rownames"]] <- rownames
 
 
 
 #' @rdname coerce-tbl_df
 #' @export
-# Updated 2019-07-12.
-as_tibble.IRanges <- as_tibble.GRanges  # nolint
+# Updated 2019-07-20.
+as_tibble.GenomicRanges <- as_tibble.IPosRanges  # nolint
 
 
 

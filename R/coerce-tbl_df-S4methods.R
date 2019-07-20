@@ -1,4 +1,3 @@
-# S4 ===========================================================================
 # Updated 2019-07-19.
 `coerce,ANY,tbl_df` <-  # nolint
     function(from) {
@@ -39,32 +38,32 @@ setAs(
 
 
 
-# Updated 2019-07-19.
-`coerce,GRanges,tbl_df` <-  # nolint
+# Updated 2019-07-20.
+`coerce,GenomicRanges,tbl_df` <-  # nolint
     `coerce,ANY,tbl_df`
 
 
 
 #' @rdname coerce-tbl_df
-#' @name coerce,GRanges,tbl_df-method
+#' @name coerce,GenomicRanges,tbl_df-method
 setAs(
-    from = "GRanges",
+    from = "GenomicRanges",
     to = "tbl_df",
-    def = `coerce,GRanges,tbl_df`
+    def = `coerce,GenomicRanges,tbl_df`
 )
 
 
 
-# Updated 2019-07-19.
-`coerce,IRanges,tbl_df` <-  # nolint
+# Updated 2019-07-20.
+`coerce,IPosRanges,tbl_df` <-  # nolint
     `coerce,ANY,tbl_df`
 
 
 
 #' @rdname coerce-tbl_df
-#' @name coerce,IRanges,tbl_df-method
+#' @name coerce,IPosRanges,tbl_df-method
 setAs(
-    from = "IRanges",
+    from = "IPosRanges",
     to = "tbl_df",
-    def = `coerce,IRanges,tbl_df`
+    def = `coerce,IPosRanges,tbl_df`
 )

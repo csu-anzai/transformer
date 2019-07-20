@@ -20,7 +20,7 @@
 #' support for these S4 classes:
 #'
 #' - `DataFrame`.
-#' - `GRanges`.
+#' - `GenomicRanges`.
 #'
 #' @section S4 `as()`:
 #'
@@ -40,7 +40,7 @@
 #' x <- as.data.table(df)
 #' print(x)
 #'
-#' ## GRanges to data.table ====
+#' ## GenomicRanges to data.table ====
 #' x <- as(gr, "data.table")
 #' x <- as.data.table(gr)
 #' print(x)
@@ -86,7 +86,7 @@ as.data.table.DataFrame <-  # nolint
 #' @rdname coerce-data.table
 #' @export
 # Updated 2019-07-19.
-as.data.table.GRanges <-  # nolint
+as.data.table.IPosRanges <-  # nolint
     function(x, keep.rownames = TRUE, ...) {  # nolint
         x <- as(x, "data.frame")
         if (!hasRownames(x)) {
@@ -99,5 +99,5 @@ as.data.table.GRanges <-  # nolint
 
 #' @rdname coerce-data.table
 #' @export
-# Updated 2019-07-19.
-as.data.table.IPosRanges <- as.data.table.GRanges
+# Updated 2019-07-20.
+as.data.table.GenomicRanges <- as.data.table.IPosRanges

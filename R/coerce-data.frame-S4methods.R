@@ -26,9 +26,9 @@ NULL
 
 
 # `as.data.frame()` ============================================================
-# Default coercion of IRanges to data.frame currently strips metadata in
-# `mcols()`. However, GenomicRanges preserves this information, so we're adding
-# a coerce method here to improve consistency.
+# Default coercion of IPosRanges (i.e. IRanges) to data.frame currently strips
+# metadata in `mcols()`. However, GenomicRanges preserves this information, so
+# we're adding a tweaked coercion method here to improve consistency.
 #
 # Relevant methods:
 # > getMethod(
@@ -41,12 +41,12 @@ NULL
 # >     f = "as.data.frame",
 # >     signature = "IPosRanges",
 # >     where = asNamespace("IRanges")
-# )
+# > )
 #
 # See also:
 # - https://github.com/Bioconductor/IRanges/issues/8
 #
-# Updated 2019-07-11.
+# Updated 2019-07-20.
 `as.data.frame,IPosRanges` <-  # nolint
     function(
         x,
