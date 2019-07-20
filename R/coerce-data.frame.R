@@ -9,7 +9,7 @@
 #' @examples
 #' data(sparse, package = "acidtest")
 #'
-#' ## sparseMatrix to data.frame ====
+#' ## Matrix to data.frame ====
 #' x <- as(sparse, "data.frame")
 #' head(x)
 NULL
@@ -88,8 +88,8 @@ setMethod(
 
 
 
-# Updated 2019-07-11.
-`as.data.frame,sparseMatrix` <-  # nolint
+# Updated 2019-07-20.
+`as.data.frame,Matrix` <-  # nolint
     function(x, ...) {
         as.data.frame(as.matrix(x), ...)
     }
@@ -100,8 +100,8 @@ setMethod(
 #' @export
 setMethod(
     f = "as.data.frame",
-    signature = signature("sparseMatrix"),
-    definition = `as.data.frame,sparseMatrix`
+    signature = signature("Matrix"),
+    definition = `as.data.frame,Matrix`
 )
 
 
@@ -111,22 +111,6 @@ setMethod(
     function(from) {
         as.data.frame(from)
     }
-
-
-
-# Updated 2019-07-19.
-`coerce,sparseMatrix,data.frame` <-  # nolint
-    `coerce,ANY,data.frame`
-
-
-
-#' @rdname coerce-data.frame
-#' @name coerce,sparseMatrix,data.frame-method
-setAs(
-    from = "sparseMatrix",
-    to = "data.frame",
-    def = `coerce,sparseMatrix,data.frame`
-)
 
 
 
@@ -142,4 +126,20 @@ setAs(
     from = "IPosRanges",
     to = "data.frame",
     def = `coerce,IPosRanges,data.frame`
+)
+
+
+
+# Updated 2019-07-20.
+`coerce,Matrix,data.frame` <-  # nolint
+    `coerce,ANY,data.frame`
+
+
+
+#' @rdname coerce-data.frame
+#' @name coerce,Matrix,data.frame-method
+setAs(
+    from = "Matrix",
+    to = "data.frame",
+    def = `coerce,Matrix,data.frame`
 )
