@@ -16,7 +16,6 @@ NULL
 
 
 
-# S3(ish) ======================================================================
 #' @rdname coerce-data.frame
 #' @name as.data.frame
 #' @importFrom BiocGenerics as.data.frame
@@ -26,6 +25,7 @@ NULL
 
 
 
+# `as.data.frame()` ============================================================
 # Default coercion of IRanges to data.frame currently strips metadata in
 # `mcols()`. However, GenomicRanges preserves this information, so we're adding
 # a coerce method here to improve consistency.
@@ -106,7 +106,7 @@ setMethod(
 
 
 
-# S4 ===========================================================================
+# `as()` =======================================================================
 `coerce,ANY,data.frame` <-  # nolint
     function(from) {
         as.data.frame(from)

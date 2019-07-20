@@ -6,6 +6,22 @@
 #' `RangedSummarizedExperiment` to a standard `SummarizedExperiment`, that
 #' doesn't drop [`rowData()`][SummarizedExperiment::rowData].
 #'
+#' We can't set S4 coercion methods here because RangedSummarizedExperiment and
+#' SummarizedExperiment aren't local, modifiable.
+#'
+#' Related S4 coercion method of interest:
+#'
+#' ```
+#' getMethod(
+#'     f = "coerce",
+#'     signature = signature(
+#'         from = "RangedSummarizedExperiment",
+#'         to = "SummarizedExperiment"
+#'     ),
+#'     where = asNamespace("SummarizedExperiment")
+#' )
+#' ```
+#'
 #' @name coerce-SummarizedExperiment
 #'
 #' @inheritParams params
@@ -26,7 +42,6 @@ NULL
 
 
 
-# S3 ===========================================================================
 #' @rdname coerce-SummarizedExperiment
 #' @export
 as.SummarizedExperiment <-  # nolint
@@ -40,33 +55,7 @@ as.SummarizedExperiment <-  # nolint
 #' @export
 as.SummarizedExperiment.RangedSummarizedExperiment <-  # nolint
     function(x) {
-        `coerce,RangedSummarizedExperiment,SummarizedExperiment`(x)
-    }
-
-
-
-#' @rdname coerce-SummarizedExperiment
-#' @export
-as.SummarizedExperiment.SummarizedExperiment <-  # nolint
-    function(x) {
-        `coerce,SummarizedExperiment,SummarizedExperiment`(x)
-    }
-
-
-
-# S4 ===========================================================================
-# Can't set S4 coercion methods because RSE and SE aren't local, modifiable.
-
-# Coercion methods of interest:
-# - from="RangedSummarizedExperiment", to="SummarizedExperiment"
-# - from="SingleCellExperiment", to="RangedSummarizedExperiment"
-# - from="SingleCellExperiment", to="SummarizedExperiment"
-
-
-
-# Updated 2019-07-19.
-`coerce,RangedSummarizedExperiment,SummarizedExperiment` <-  # nolint
-    function(from) {
+        from <- x
         rowMeta <- metadata(rowRanges(from))
         to <- as(from, "RangedSummarizedExperiment")
         to <- as(from, "SummarizedExperiment")
@@ -76,11 +65,15 @@ as.SummarizedExperiment.SummarizedExperiment <-  # nolint
 
 
 
-# Updated 2019-07-19.
-`coerce,SummarizedExperiment,SummarizedExperiment` <-  # nolint
-    function(from) {
-        rowMeta <- metadata(rowData(from))
-        to <- as(from, "SummarizedExperiment")
-        metadata(rowData(to)) <- rowMeta
-        to
+#' @rdname coerce-SummarizedExperiment
+#' @export
+as.SummarizedExperiment.SummarizedExperiment <-  # nolint
+    function(x) {
+        function(x) {
+            from <- x
+            rowMeta <- metadata(rowData(from))
+            to <- as(from, "SummarizedExperiment")
+            metadata(rowData(to)) <- rowMeta
+            to
+        }
     }
