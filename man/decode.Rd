@@ -32,9 +32,10 @@ The Rle class is a general container for storing an atomic vector
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
+rowData <- SummarizedExperiment::rowData
 
 ## DataFrame ====
-df <- SummarizedExperiment::rowData(RangedSummarizedExperiment)
+df <- rowData(RangedSummarizedExperiment)
 lapply(df, class)
 x <- decode(df)
 lapply(x, class)
