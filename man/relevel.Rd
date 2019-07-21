@@ -31,15 +31,16 @@ Factor levels will be readjusted (i.e. superfluous levels are dropped).
 Reorder factor levels
 }
 \examples{
-data(rse, package = "acidtest")
+library(SummarizedExperiment)
+data(RangedSummarizedExperiment, package = "acidtest")
 
 ## DataFrame ====
-df <- SummarizedExperiment::rowData(rse)
+df <- rowData(RangedSummarizedExperiment)
 x <- relevel(df)
 summary(x)
 
 ## GenomicRanges ====
-gr <- SummarizedExperiment::rowRanges(rse)
+gr <- rowRanges(RangedSummarizedExperiment)
 x <- relevel(gr)
 summary(x)
 }

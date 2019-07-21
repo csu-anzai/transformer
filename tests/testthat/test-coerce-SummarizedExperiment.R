@@ -1,6 +1,6 @@
 context("Coerce to SummarizedExperiment")
 
-# Easy way to test an S4 class that extends SE without importing?
+## Easy way to test an S4 class that extends SE without importing?
 with_parameters_test_that(
     "S3 coercion that preserves row data", {
         object <- as.SummarizedExperiment(object)

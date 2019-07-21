@@ -31,21 +31,21 @@
 #' @seealso [tibble::as_tibble()].
 #'
 #' @examples
-#' data(df, gr, ir, package = "acidtest")
+#' data(DataFrame, GRanges, IRanges, package = "acidtest")
 #'
 #' ## DataFrame to tbl_df ====
-#' x <- as(df, "tbl_df")
-#' x <- as_tibble(df)
+#' x <- as(DataFrame, "tbl_df")
+#' x <- as_tibble(DataFrame)
 #' print(x)
 #'
 #' ## GenomicRanges to tbl_df ====
-#' x <- as(gr, "tbl_df")
-#' x <- as_tibble(gr)
+#' x <- as(GRanges, "tbl_df")
+#' x <- as_tibble(GRanges)
 #' print(x)
 #'
 #' ## IRanges to tbl_df ====
-#' x <- as(ir, "tbl_df")
-#' x <- as_tibble(ir)
+#' x <- as(IRanges, "tbl_df")
+#' x <- as_tibble(IRanges)
 #' print(x)
 NULL
 
@@ -65,7 +65,7 @@ NULL
 
 #' @rdname coerce-tbl_df
 #' @export
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 as_tibble.DataFrame <-  # nolint
     function(x, ..., rownames) {
         x <- `.coerce,DataFrame,data.frame`(x)
@@ -81,7 +81,7 @@ formals(as_tibble.DataFrame)[["rownames"]] <- rownames
 
 #' @rdname coerce-tbl_df
 #' @export
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 as_tibble.IPosRanges <-  # nolint
     function(x, ..., rownames) {
         x <- as(x, "data.frame")
@@ -97,7 +97,7 @@ formals(as_tibble.IPosRanges)[["rownames"]] <- rownames
 
 #' @rdname coerce-tbl_df
 #' @export
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 as_tibble.GenomicRanges <- as_tibble.IPosRanges  # nolint
 
 

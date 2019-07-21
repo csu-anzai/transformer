@@ -11,17 +11,17 @@
 #'   metadata metadata<-
 #' @importFrom SummarizedExperiment colData colData<- rowData rowData<-
 #'   rowRanges
-#' @importFrom goalie areDisjointSets assert hasLength hasRows hasRownames
-#'   isCharacter printString validNames
+#' @importFrom goalie areDisjointSets assert hasLength hasNames hasRows
+#'   hasRownames isCharacter printString validNames
 #' @importFrom methods as getMethod is setAs setMethod signature slotNames
-#'   .hasSlot
+#'   validObject .hasSlot
 #' @importFrom stats na.omit
 #' @importFrom tibble as_tibble
 NULL
 
 
 
-# This is needed to properly declare S4 `as()` coercion methods.
+## This is needed to properly declare S4 `as()` coercion methods.
 #' @importFrom methods coerce
 #' @exportMethod coerce
 NULL

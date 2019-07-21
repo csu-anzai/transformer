@@ -1,11 +1,11 @@
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `coerce,ANY,data.table` <-  # nolint
     function(from) {
         as.data.table(from)
     }
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `coerce,data.frame,data.table` <-  # nolint
     `coerce,ANY,data.table`
 
@@ -21,7 +21,7 @@ setAs(
 
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `coerce,DataFrame,data.table` <-  # nolint
     `coerce,ANY,data.table`
 
@@ -37,7 +37,7 @@ setAs(
 
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `coerce,IPosRanges,data.table` <-  # nolint
     `coerce,ANY,data.table`
 
@@ -53,7 +53,7 @@ setAs(
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `coerce,GenomicRanges,data.table` <-  # nolint
     `coerce,ANY,data.table`
 

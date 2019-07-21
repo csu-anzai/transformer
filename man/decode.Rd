@@ -31,17 +31,17 @@ The Rle class is a general container for storing an atomic vector
   \code{\link[base]{rle}} function from the base package.
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
 
 ## DataFrame ====
-df <- SummarizedExperiment::rowData(rse)
+df <- SummarizedExperiment::rowData(RangedSummarizedExperiment)
 lapply(df, class)
 x <- decode(df)
 lapply(x, class)
 
 ## SummarizedExperiment ====
 ## This works on rowData and colData.
-x <- decode(rse)
+x <- decode(RangedSummarizedExperiment)
 lapply(rowData(x), class)
 }
 \seealso{

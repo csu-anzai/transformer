@@ -68,21 +68,21 @@ See \code{getClass("tbl_df")} for details on how tibble is a virtual class.
 }
 
 \examples{
-data(df, gr, ir, package = "acidtest")
+data(DataFrame, GRanges, IRanges, package = "acidtest")
 
 ## DataFrame to tbl_df ====
-x <- as(df, "tbl_df")
-x <- as_tibble(df)
+x <- as(DataFrame, "tbl_df")
+x <- as_tibble(DataFrame)
 print(x)
 
 ## GenomicRanges to tbl_df ====
-x <- as(gr, "tbl_df")
-x <- as_tibble(gr)
+x <- as(GRanges, "tbl_df")
+x <- as_tibble(GRanges)
 print(x)
 
 ## IRanges to tbl_df ====
-x <- as(ir, "tbl_df")
-x <- as_tibble(ir)
+x <- as(IRanges, "tbl_df")
+x <- as_tibble(IRanges)
 print(x)
 }
 \seealso{

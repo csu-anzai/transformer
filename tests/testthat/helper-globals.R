@@ -1,23 +1,39 @@
 data(
-    df, dt, ir, gr, rse, sparse, tbl,
+    DataFrame,
+    data.table,
+    IRanges,
+    GRanges,
+    RangedSummarizedExperiment,
+    sparseMatrix,
+    tbl_df,
     package = "acidtest",
     envir = environment()
 )
 
 stopifnot(
-    is(df, "DataFrame"),
-    is(dt, "data.table"),
-    is(ir, "IRanges"),
-    is(gr, "GRanges"),
-    is(rse, "RangedSummarizedExperiment"),
-    is(sparse, "sparseMatrix"),
-    is(tbl, "tbl_df")
+    is(DataFrame, "DataFrame"),
+    is(data.table, "data.table"),
+    is(IRanges, "IRanges"),
+    is(GRanges, "GRanges"),
+    is(RangedSummarizedExperiment, "RangedSummarizedExperiment"),
+    is(sparseMatrix, "sparseMatrix"),
+    is(tbl_df, "tbl_df")
 )
 
-DataFrame <- S4Vectors::DataFrame  # nolint
+df <- DataFrame
+dt <- data.table
+ir <- IRanges
+gr <- GRanges
+rse <- RangedSummarizedExperiment
+sparse <- sparseMatrix
+tbl <- tbl_df
+
+## nolint start
+DataFrame <- S4Vectors::DataFrame
 colData <- SummarizedExperiment::colData
-data.table <- data.table::data.table  # nolint
+data.table <- data.table::data.table
 isSubset <- goalie::isSubset
 rowData <- SummarizedExperiment::rowData
 rowRanges <- SummarizedExperiment::rowRanges
 tibble <- tibble::tibble
+## nolint end

@@ -7,10 +7,10 @@
 #' @inheritParams params
 #'
 #' @examples
-#' data(sparse, package = "acidtest")
+#' data(sparseMatrix, package = "acidtest")
 #'
 #' ## Matrix to data.frame ====
-#' x <- as(sparse, "data.frame")
+#' x <- as(sparseMatrix, "data.frame")
 #' head(x)
 NULL
 
@@ -25,28 +25,25 @@ NULL
 
 
 
-# `as.data.frame()` ============================================================
-# Default coercion of IPosRanges (i.e. IRanges) to data.frame currently strips
-# metadata in `mcols()`. However, GenomicRanges preserves this information, so
-# we're adding a tweaked coercion method here to improve consistency.
-#
-# Relevant methods:
-# > getMethod(
-# >     f = "as.data.frame",
-# >     signature = "GenomicRanges",
-# >     where = asNamespace("GenomicRanges")
-# > )
-# IRanges inherits from `IPosRanges`.
-# > getMethod(
-# >     f = "as.data.frame",
-# >     signature = "IPosRanges",
-# >     where = asNamespace("IRanges")
-# > )
-#
-# See also:
-# - https://github.com/Bioconductor/IRanges/issues/8
-#
-# Updated 2019-07-20.
+## `as.data.frame()` ============================================================
+## Default coercion of IPosRanges (i.e. IRanges) to data.frame currently strips
+## metadata in `mcols()`. However, GenomicRanges preserves this information, so
+## we're adding a tweaked coercion method here to improve consistency.
+## ## Relevant methods:
+## > getMethod(
+## >     f = "as.data.frame",
+## >     signature = "GenomicRanges",
+## >     where = asNamespace("GenomicRanges")
+## > )
+## IRanges inherits from `IPosRanges`.
+## > getMethod(
+## >     f = "as.data.frame",
+## >     signature = "IPosRanges",
+## >     where = asNamespace("IRanges")
+## > )
+## ## See also:
+## - https://github.com/Bioconductor/IRanges/issues/8
+## ## Updated 2019-07-20.
 `as.data.frame,IPosRanges` <-  # nolint
     function(
         x,
@@ -88,7 +85,7 @@ setMethod(
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `as.data.frame,Matrix` <-  # nolint
     function(x, ...) {
         as.data.frame(as.matrix(x), ...)
@@ -106,7 +103,7 @@ setMethod(
 
 
 
-# `as()` =======================================================================
+## `as()` =======================================================================
 `coerce,ANY,data.frame` <-  # nolint
     function(from) {
         as.data.frame(from)
@@ -114,7 +111,7 @@ setMethod(
 
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `coerce,IPosRanges,data.frame` <-  # nolint
     `coerce,ANY,data.frame`
 
@@ -130,7 +127,7 @@ setAs(
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `coerce,Matrix,data.frame` <-  # nolint
     `coerce,ANY,data.frame`
 

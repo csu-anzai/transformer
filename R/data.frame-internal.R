@@ -1,11 +1,9 @@
-# Coerce an S4 DataFrame to a standard data.frame.
-#
-# This function will return an informative error if an S4 DataFrame contains
-# complex columns that can't be coerced to atomic or list.
-#
-# Updated 2019-07-19.
+## Coerce an S4 DataFrame to a standard data.frame.
+## ## This function will return an informative error if an S4 DataFrame contains
+## complex columns that can't be coerced to atomic or list.
+## ## Updated 2019-07-19.
 `.coerce,DataFrame,data.frame` <- function(x) {
-    # Check for valid columns (atomic, list).
+    ## Check for valid columns (atomic, list).
     valid <- vapply(
         X = x,
         FUN = function(x) {
@@ -14,7 +12,7 @@
         FUN.VALUE = logical(1L),
         USE.NAMES = TRUE
     )
-    # Error if S4 columns are nested.
+    ## Error if S4 columns are nested.
     if (!all(valid)) {
         invalid <- x[, names(valid[!valid]), drop = FALSE]
         invalid <- vapply(
@@ -29,7 +27,7 @@
             sep = "\n"
         ))
     }
-    # Don't use `as.data.frame()` here. It can unexpectedly sanitize row
-    # names (e.g. gene symbols), whereas the `as()` method does not.
+    ## Don't use `as.data.frame()` here. It can unexpectedly sanitize row
+    ## names (e.g. gene symbols), whereas the `as()` method does not.
     as(x, "data.frame")
 }

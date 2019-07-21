@@ -10,16 +10,16 @@
 Coerce to \code{DataFrame}.
 }
 \examples{
-data(dt, sparse, tbl, package = "acidtest")
+data(data.table, sparseMatrix, tbl_df, package = "acidtest")
 
 ## data.table to DataFrame ====
-x <- as(dt, "DataFrame")
+x <- as(data.table, "DataFrame")
 head(x)
 
 ## Matrix to DataFrame ====
-x <- as(sparse, "DataFrame")
+x <- as(sparseMatrix, "DataFrame")
 
 ## tbl_df to DataFrame ====
-x <- as(tbl, "DataFrame")
+x <- as(tbl_df, "DataFrame")
 head(x)
 }

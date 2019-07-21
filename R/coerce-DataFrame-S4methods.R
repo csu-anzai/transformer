@@ -6,28 +6,28 @@
 #' @inheritParams params
 #'
 #' @examples
-#' data(dt, sparse, tbl, package = "acidtest")
+#' data(data.table, sparseMatrix, tbl_df, package = "acidtest")
 #'
 #' ## data.table to DataFrame ====
-#' x <- as(dt, "DataFrame")
+#' x <- as(data.table, "DataFrame")
 #' head(x)
 #'
 #' ## Matrix to DataFrame ====
-#' x <- as(sparse, "DataFrame")
+#' x <- as(sparseMatrix, "DataFrame")
 #'
 #' ## tbl_df to DataFrame ====
-#' x <- as(tbl, "DataFrame")
+#' x <- as(tbl_df, "DataFrame")
 #' head(x)
 NULL
 
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `coerce,ANY,DataFrame` <- function(from) {
     to <- as.data.frame(from, stringsAsFactors = FALSE)
     to <- as(to, "DataFrame")
 
-    # Move row names automatically, if defined.
+    ## Move row names automatically, if defined.
     if (!hasRownames(to)) {
         rncol <- matchRowNameColumn(to)
         if (is.character(rncol) && length(rncol) == 1L) {
@@ -41,7 +41,7 @@ NULL
 
 
 
-# Updated 2019-07-12.
+## Updated 2019-07-12.
 `coerce,data.table,DataFrame` <-  # nolint
     `coerce,ANY,DataFrame`
 
@@ -57,7 +57,7 @@ setAs(
 
 
 
-# Updated 2019-07-12.
+## Updated 2019-07-12.
 `coerce,Matrix,DataFrame` <-  # nolint
     `coerce,ANY,DataFrame`
 
@@ -73,7 +73,7 @@ setAs(
 
 
 
-# Updated 2019-07-12.
+## Updated 2019-07-12.
 `coerce,tbl_df,DataFrame` <-  # nolint
     `coerce,ANY,DataFrame`
 

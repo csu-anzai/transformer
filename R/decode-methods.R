@@ -12,17 +12,17 @@
 #' @seealso [S4Vectors::decode()].
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
 #'
 #' ## DataFrame ====
-#' df <- SummarizedExperiment::rowData(rse)
+#' df <- SummarizedExperiment::rowData(RangedSummarizedExperiment)
 #' lapply(df, class)
 #' x <- decode(df)
 #' lapply(x, class)
 #'
 #' ## SummarizedExperiment ====
 #' ## This works on rowData and colData.
-#' x <- decode(rse)
+#' x <- decode(RangedSummarizedExperiment)
 #' lapply(rowData(x), class)
 NULL
 
@@ -37,7 +37,7 @@ NULL
 
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `decode,DataFrame` <-  # nolint
     function(x) {
         DataFrame(
@@ -73,7 +73,7 @@ setMethod(
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `decode,Ranges` <-  # nolint
     function(x) {
         if (!is.null(mcols(x))) {
@@ -94,7 +94,7 @@ setMethod(
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `decode,SummarizedExperiment` <-  # nolint
     function(x) {
         validObject(x)

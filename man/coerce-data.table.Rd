@@ -61,21 +61,21 @@ See \code{getClass("data.table")} for details.
 }
 
 \examples{
-data(df, gr, ir, package = "acidtest")
+data(DataFrame, GRanges, IRanges, package = "acidtest")
 
 ## DataFrame to data.table ====
-x <- as(df, "data.table")
-x <- as.data.table(df)
+x <- as(DataFrame, "data.table")
+x <- as.data.table(DataFrame)
 print(x)
 
 ## GenomicRanges to data.table ====
-x <- as(gr, "data.table")
-x <- as.data.table(gr)
+x <- as(GRanges, "data.table")
+x <- as.data.table(GRanges)
 print(x)
 
 ## IRanges to data.table ====
-x <- as(ir, "data.table")
-x <- as.data.table(ir)
+x <- as(IRanges, "data.table")
+x <- as.data.table(IRanges)
 print(x)
 }
 \seealso{

@@ -1,6 +1,6 @@
 context("Coerce to data.frame")
 
-# Note that `as(object, "data.frame")` should keep `tbl_df` class here.
+## Note that `as(object, "data.frame")` should keep `tbl_df` class here.
 
 with_parameters_test_that(
     "S3(ish) and S4", {

@@ -46,7 +46,7 @@ test_that("GRanges", {
 test_that("SummarizedExperiment", {
     x <- relevel(rse)
     expect_s4_class(x, "RangedSummarizedExperiment")
-    # Check for factor columns.
+    ## Check for factor columns.
     ok <- any(vapply(
         X = decode(rowData(x)),
         FUN = is.factor,

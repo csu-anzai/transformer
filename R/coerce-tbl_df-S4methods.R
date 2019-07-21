@@ -1,4 +1,4 @@
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `coerce,ANY,tbl_df` <-  # nolint
     function(from) {
         as_tibble(from)
@@ -6,7 +6,7 @@
 
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `coerce,data.frame,tbl_df` <-  # nolint
     `coerce,ANY,tbl_df`
 
@@ -22,7 +22,7 @@ setAs(
 
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `coerce,DataFrame,tbl_df` <-  # nolint
     `coerce,ANY,tbl_df`
 
@@ -38,7 +38,7 @@ setAs(
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `coerce,GenomicRanges,tbl_df` <-  # nolint
     `coerce,ANY,tbl_df`
 
@@ -54,7 +54,7 @@ setAs(
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `coerce,IPosRanges,tbl_df` <-  # nolint
     `coerce,ANY,tbl_df`
 

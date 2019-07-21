@@ -32,22 +32,22 @@ NULL
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `encode,DataFrame` <-  # nolint
     function(x) {
         DataFrame(
             lapply(
                 X = x,
                 FUN = function(x) {
-                    # Decode Rle, if necessary.
+                    ## Decode Rle, if necessary.
                     if (is(x, "Rle")) {
                         x <- decode(x)
                     }
-                    # Adjust (drop) factor levels, if necessary.
+                    ## Adjust (drop) factor levels, if necessary.
                     if (is.factor(x)) {
                         x <- droplevels(x)
                     }
-                    # Use run-length encoding on atomics.
+                    ## Use run-length encoding on atomics.
                     if (is.atomic(x)) {
                         Rle(x)
                     } else {
@@ -71,7 +71,7 @@ setMethod(
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `encode,Ranges` <-  # nolint
     function(x) {
         if (!is.null(mcols(x))) {
@@ -92,7 +92,7 @@ setMethod(
 
 
 
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 `encode,SummarizedExperiment` <-  # nolint
     function(x) {
         validObject(x)

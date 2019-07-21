@@ -11,15 +11,15 @@
 #'   - tibble: `"rowname"`.
 #'
 #' @examples
-#' data(dt, tbl, package = "acidtest")
+#' data(data.table, tbl_df, package = "acidtest")
 #'
 #' ## data.table ====
-#' matchRowNameColumn(dt)
+#' matchRowNameColumn(data.table)
 #'
 #' ## tbl_df ====
-#' matchRowNameColumn(tbl)
+#' matchRowNameColumn(tbl_df)
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 matchRowNameColumn <- function(object) {
     assert(!hasRownames(object))
     match <- na.omit(match(

@@ -33,24 +33,24 @@ NULL
 
 
 
-# dplyr join functions, for reference:
-# - `inner_join`
-# - `left_join`
-# - `right_join`
-# - `full_join`
-# - `semi_join`
-# - `nest_join`
-# - `anti_join`
+## dplyr join functions, for reference:
+## - `inner_join`
+## - `left_join`
+## - `right_join`
+## - `full_join`
+## - `semi_join`
+## - `nest_join`
+## - `anti_join`
 
-# Currently setting an internal `.idx` column that we can use to reorder the
-# rows after `merge()` operation.
+## Currently setting an internal `.idx` column that we can use to reorder the
+## rows after `merge()` operation.
 
-# Can consider using Hervé Pagès's recommended approach instead.
-# https://support.bioconductor.org/p/120277/
+## Can consider using Hervé Pagès's recommended approach instead.
+## https://support.bioconductor.org/p/120277/
 
-# Consider importing dplyr and reexporting the S3 generics defined there
-# instead. Note that those contain additional arguments, such as "copy" and
-# "suffix".
+## Consider importing dplyr and reexporting the S3 generics defined there
+## instead. Note that those contain additional arguments, such as "copy" and
+## "suffix".
 
 
 
@@ -65,7 +65,7 @@ left_join <-  # nolint
 
 #' @rdname join
 #' @export
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 left_join.DataFrame <-  # nolint
     function(x, y, by) {
         assert(
@@ -74,14 +74,14 @@ left_join.DataFrame <-  # nolint
             isCharacter(by),
             areDisjointSets(".idx", colnames(x))
         )
-        # Setting internal `.idx` column here to avoid row reorders.
+        ## Setting internal `.idx` column here to avoid row reorders.
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)
-        # Now ensure original row order is preserved, using `.idx` values.
+        ## Now ensure original row order is preserved, using `.idx` values.
         out <- out[order(out[[".idx"]]), , drop = FALSE]
         assert(identical(x[[".idx"]], out[[".idx"]]))
-        # Don't use `NULL` assignment on S4 columns.
-        # This isn't backward compatible with BioC 3.6.
+        ## Don't use `NULL` assignment on S4 columns.
+        ## This isn't backward compatible with BioC 3.6.
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
         out
     }

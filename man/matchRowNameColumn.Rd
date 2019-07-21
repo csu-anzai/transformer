@@ -20,11 +20,11 @@ matchRowNameColumn(object)
 Automatically detect row names column, if defined.
 }
 \examples{
-data(dt, tbl, package = "acidtest")
+data(data.table, tbl_df, package = "acidtest")
 
 ## data.table ====
-matchRowNameColumn(dt)
+matchRowNameColumn(data.table)
 
 ## tbl_df ====
-matchRowNameColumn(tbl)
+matchRowNameColumn(tbl_df)
 }

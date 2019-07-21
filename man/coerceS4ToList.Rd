@@ -18,10 +18,10 @@ coerceS4ToList(from)
 Coerce any S4 object to a list
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
 
 ## SummarizedExperiment ====
-x <- coerceS4ToList(rse)
+x <- coerceS4ToList(RangedSummarizedExperiment)
 class(x)
 names(x)
 }

@@ -11,15 +11,16 @@
 #' Factor levels will be readjusted (i.e. superfluous levels are dropped).
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' library(SummarizedExperiment)
+#' data(RangedSummarizedExperiment, package = "acidtest")
 #'
 #' ## DataFrame ====
-#' df <- SummarizedExperiment::rowData(rse)
+#' df <- rowData(RangedSummarizedExperiment)
 #' x <- relevel(df)
 #' summary(x)
 #'
 #' ## GenomicRanges ====
-#' gr <- SummarizedExperiment::rowRanges(rse)
+#' gr <- rowRanges(RangedSummarizedExperiment)
 #' x <- relevel(gr)
 #' summary(x)
 NULL
@@ -37,7 +38,7 @@ NULL
 
 #' @rdname relevel
 #' @export
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 relevel.DataFrame <-  # nolint
     function(x, ref = NULL, ...) {
         assert(is.null(ref))
@@ -64,14 +65,14 @@ relevel.DataFrame <-  # nolint
     }
 
 
-# Note that GenomicRanges and IRanges extend this virtual class. Releveling the
-# factors inside of `mcols()` is particularly useful when subsetting large
-# genomic ranges, reducing the memory overhead associated with storing
-# irrelevant factor levels (e.g. gene metadata no longer in object).
+## Note that GenomicRanges and IRanges extend this virtual class. Releveling the
+## factors inside of `mcols()` is particularly useful when subsetting large
+## genomic ranges, reducing the memory overhead associated with storing
+## irrelevant factor levels (e.g. gene metadata no longer in object).
 
 #' @rdname relevel
 #' @export
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 relevel.Ranges <-  # nolint
     function(x, ref = NULL, ...) {
         assert(is.null(ref))
@@ -85,7 +86,7 @@ relevel.Ranges <-  # nolint
 
 #' @rdname relevel
 #' @export
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 relevel.SummarizedExperiment <-  # nolint
     function(x, ref = NULL, ...) {
         assert(is.null(ref))

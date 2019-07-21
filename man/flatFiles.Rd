@@ -18,10 +18,10 @@
 Coerce any S4 object to a list
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
 
 ## SummarizedExperiment ====
-x <- flatFiles(rse)
+x <- flatFiles(RangedSummarizedExperiment)
 class(x)
 names(x)
 }

@@ -38,9 +38,9 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 Coerce to \code{data.frame}.
 }
 \examples{
-data(sparse, package = "acidtest")
+data(sparseMatrix, package = "acidtest")
 
 ## Matrix to data.frame ====
-x <- as(sparse, "data.frame")
+x <- as(sparseMatrix, "data.frame")
 head(x)
 }

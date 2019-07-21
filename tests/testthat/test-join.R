@@ -28,7 +28,7 @@ test_that("Unmatched rows", {
         id = as.factor(seq(4L)),
         treatment = as.factor(rep(x = c("control", "expt"), times = 2L))
     )
-    # Reverse the row order of df2.
+    ## Reverse the row order of df2.
     df2 <- df2[rev(seq_len(nrow(df2))), ]
     expect_identical(
         object = left_join(df1, df2, by = "id"),

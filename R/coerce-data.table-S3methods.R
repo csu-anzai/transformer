@@ -33,21 +33,21 @@
 #' @seealso [data.table::as.data.table()].
 #'
 #' @examples
-#' data(df, gr, ir, package = "acidtest")
+#' data(DataFrame, GRanges, IRanges, package = "acidtest")
 #'
 #' ## DataFrame to data.table ====
-#' x <- as(df, "data.table")
-#' x <- as.data.table(df)
+#' x <- as(DataFrame, "data.table")
+#' x <- as.data.table(DataFrame)
 #' print(x)
 #'
 #' ## GenomicRanges to data.table ====
-#' x <- as(gr, "data.table")
-#' x <- as.data.table(gr)
+#' x <- as(GRanges, "data.table")
+#' x <- as.data.table(GRanges)
 #' print(x)
 #'
 #' ## IRanges to data.table ====
-#' x <- as(ir, "data.table")
-#' x <- as.data.table(ir)
+#' x <- as(IRanges, "data.table")
+#' x <- as.data.table(IRanges)
 #' print(x)
 NULL
 
@@ -62,13 +62,13 @@ NULL
 
 
 
-# Note that we're matching `as_tibble()` convention here, using "rowname" as
-# column for row names assignment. We also using similar internal assert checks
-# here, allowing atomic and/or list columns only.
+## Note that we're matching `as_tibble()` convention here, using "rowname" as
+## column for row names assignment. We also using similar internal assert checks
+## here, allowing atomic and/or list columns only.
 
 #' @rdname coerce-data.table
 #' @export
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 as.data.table.DataFrame <-  # nolint
     function(x, keep.rownames = TRUE, ...) {  # nolint
         x <- `.coerce,DataFrame,data.frame`(x)
@@ -80,12 +80,12 @@ as.data.table.DataFrame <-  # nolint
 
 
 
-# The default handling from data.frame isn't clean, so add this.
-# Default method will warn: `Arguments in '...' ignored`.
+## The default handling from data.frame isn't clean, so add this.
+## Default method will warn: `Arguments in '...' ignored`.
 
 #' @rdname coerce-data.table
 #' @export
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 as.data.table.IPosRanges <-  # nolint
     function(x, keep.rownames = TRUE, ...) {  # nolint
         x <- as(x, "data.frame")
@@ -99,5 +99,5 @@ as.data.table.IPosRanges <-  # nolint
 
 #' @rdname coerce-data.table
 #' @export
-# Updated 2019-07-20.
+## Updated 2019-07-20.
 as.data.table.GenomicRanges <- as.data.table.IPosRanges

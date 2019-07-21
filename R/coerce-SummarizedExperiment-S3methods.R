@@ -28,15 +28,15 @@
 #'
 #' @examples
 #' suppressPackageStartupMessages(library(SummarizedExperiment))
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
 #'
 #' ## RangedSummarizedExperiment ===
 #' ## Current S4 coercion drops row metadata.
-#' names(metadata(rowRanges(rse)))
-#' se <- as(rse, "SummarizedExperiment")
+#' names(metadata(rowRanges(RangedSummarizedExperiment)))
+#' se <- as(RangedSummarizedExperiment, "SummarizedExperiment")
 #' names(metadata(rowData(se)))
 #' ## Our alternate S3 method preserves the metadata.
-#' se <- as.SummarizedExperiment(rse)
+#' se <- as.SummarizedExperiment(RangedSummarizedExperiment)
 #' names(metadata(rowData(se)))
 NULL
 
