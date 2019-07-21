@@ -25,7 +25,7 @@ NULL
 
 
 
-## `as.data.frame()` ============================================================
+## `as.data.frame()` ===========================================================
 ## Default coercion of IPosRanges (i.e. IRanges) to data.frame currently strips
 ## metadata in `mcols()`. However, GenomicRanges preserves this information, so
 ## we're adding a tweaked coercion method here to improve consistency.
@@ -103,7 +103,7 @@ setMethod(
 
 
 
-## `as()` =======================================================================
+## `as()` ======================================================================
 `coerce,ANY,data.frame` <-  # nolint
     function(from) {
         as.data.frame(from)
