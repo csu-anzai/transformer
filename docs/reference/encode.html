@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -125,6 +125,9 @@
 <span class='fu'>encode</span>(<span class='no'>x</span>)
 
 <span class='co'># S4 method for Ranges</span>
+<span class='fu'>encode</span>(<span class='no'>x</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>encode</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -162,7 +165,17 @@ All <code>atomic</code> columns will be encoded to <code>Rle</code> S4 class.</p
 #&gt; 
 #&gt; $b
 #&gt; [1] "integer"
-#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>encode</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt; <span class='error'>Error in encode(df): could not find function "encode"</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; <span class='error'>Error in lapply(x, class): object 'x' not found</span></div></pre>
+#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>encode</span>(<span class='no'>df</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $a
+#&gt; [1] "Rle"
+#&gt; attr(,"package")
+#&gt; [1] "S4Vectors"
+#&gt; 
+#&gt; $b
+#&gt; [1] "Rle"
+#&gt; attr(,"package")
+#&gt; [1] "S4Vectors"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

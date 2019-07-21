@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -129,6 +129,9 @@
 <span class='fu'>decode</span>(<span class='no'>x</span>)
 
 <span class='co'># S4 method for Ranges</span>
+<span class='fu'>decode</span>(<span class='no'>x</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>decode</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -155,10 +158,10 @@ Columns will be decoded and no longer <code>Rle</code> class.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>RangedSummarizedExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
 <span class='co'>## DataFrame ====</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData</a></span>(<span class='no'>rse</span>)
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData</a></span>(<span class='no'>RangedSummarizedExperiment</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>df</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $geneID
 #&gt; [1] "Rle"
 #&gt; attr(,"package")
@@ -181,18 +184,39 @@ Columns will be decoded and no longer <code>Rle</code> class.</p>
 #&gt; 
 #&gt; $entrezID
 #&gt; [1] "list"
-#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>decode</span>(<span class='no'>mcols</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $x
-#&gt; [1] "name"
+#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>decode</span>(<span class='no'>df</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $geneID
+#&gt; [1] "character"
 #&gt; 
-#&gt; $use.names
-#&gt; [1] "logical"
+#&gt; $geneName
+#&gt; [1] "factor"
 #&gt; 
-#&gt; $...
-#&gt; [1] "name"
+#&gt; $geneBiotype
+#&gt; [1] "factor"
 #&gt; 
-#&gt; [[4]]
-#&gt; [1] "call"
+#&gt; $broadClass
+#&gt; [1] "factor"
+#&gt; 
+#&gt; $entrezID
+#&gt; [1] "list"
+#&gt; </div><div class='input'>
+<span class='co'>## SummarizedExperiment ====</span>
+<span class='co'>## This works on rowData and colData.</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>decode</span>(<span class='no'>RangedSummarizedExperiment</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'>rowData</span>(<span class='no'>x</span>), <span class='no'>class</span>)</div><div class='output co'>#&gt; $geneID
+#&gt; [1] "character"
+#&gt; 
+#&gt; $geneName
+#&gt; [1] "factor"
+#&gt; 
+#&gt; $geneBiotype
+#&gt; [1] "factor"
+#&gt; 
+#&gt; $broadClass
+#&gt; [1] "factor"
+#&gt; 
+#&gt; $entrezID
+#&gt; [1] "list"
 #&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
