@@ -53,25 +53,27 @@ as.SummarizedExperiment <-  # nolint
 
 #' @rdname coerce-SummarizedExperiment
 #' @export
+## Updated 2019-07-22.
 as.SummarizedExperiment.RangedSummarizedExperiment <-  # nolint
     function(x) {
-        from <- x
-        rowMeta <- metadata(rowRanges(from))
-        to <- as(from, "RangedSummarizedExperiment")
-        to <- as(from, "SummarizedExperiment")
-        metadata(rowData(to)) <- rowMeta
-        to
+        rowMeta <- metadata(rowRanges(x))
+        y <- x
+        y <- as(y, "RangedSummarizedExperiment")
+        y <- as(y, "SummarizedExperiment")
+        metadata(rowData(y)) <- rowMeta
+        y
     }
 
 
 
 #' @rdname coerce-SummarizedExperiment
 #' @export
+## Updated 2019-07-22.
 as.SummarizedExperiment.SummarizedExperiment <-  # nolint
     function(x) {
-        from <- x
-        rowMeta <- metadata(rowData(from))
-        to <- as(from, "SummarizedExperiment")
-        metadata(rowData(to)) <- rowMeta
-        to
+        rowMeta <- metadata(rowData(x))
+        y <- x
+        y <- as(y, "SummarizedExperiment")
+        metadata(rowData(y)) <- rowMeta
+        y
     }
