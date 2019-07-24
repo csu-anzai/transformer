@@ -11,7 +11,7 @@
 #'   metadata metadata<-
 #' @importFrom SummarizedExperiment colData colData<- rowData rowData<-
 #'   rowRanges
-#' @importFrom goalie areDisjointSets assert hasLength hasNames hasRows
+#' @importFrom goalie areDisjointSets assert hasCols hasLength hasNames hasRows
 #'   hasRownames isCharacter printString validNames
 #' @importFrom methods as getMethod is setAs setMethod signature slotNames
 #'   validObject .hasSlot
