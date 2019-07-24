@@ -42,7 +42,7 @@ NULL
 relevel.DataFrame <-  # nolint
     function(x, ref = NULL, ...) {
         assert(is.null(ref))
-        if (!hasRows(x)) return(x)
+        if (!hasRows(x) || !hasCols(x)) return(x)
         DataFrame(
             lapply(
                 X = x,
@@ -77,7 +77,9 @@ relevel.Ranges <-  # nolint
     function(x, ref = NULL, ...) {
         assert(is.null(ref))
         if (!is.null(mcols(x))) {
-            mcols(x) <- relevel(mcols(x))
+            mcols <- mcols(x)
+            mcols <- relevel(mcols)
+            mcols(x) <- mcols
         }
         x
     }
