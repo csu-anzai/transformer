@@ -1,4 +1,4 @@
-## transformer 0.1.13 (2019-07-19)
+## transformer 0.2.0 (2019-07-19)
 
 ### New methods
 
@@ -7,6 +7,7 @@
 
 ### Major changes
 
+- Migraged `atomize`, `decode`, and `encode` from brio here.
 - Removed `as.DataFrame` S3 method in favor of simply using S4 `as` coercion.
 - Tightened up `as.SummarizedExperiment` S3 methods to support
   `SummarizedExperiment` and `RangedSummarizedExperiment` specifically.

@@ -6,10 +6,10 @@
 #' @return `list`.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
-#' x <- flatFiles(rse)
+#' x <- flatFiles(RangedSummarizedExperiment)
 #' class(x)
 #' names(x)
 NULL
@@ -24,7 +24,7 @@ NULL
 
 
 
-# Updated 2019-07-19.
+## Updated 2019-07-19.
 `flatFiles,SummarizedExperiment` <-  # nolint
     function(object) {
         coerceS4ToList(object)

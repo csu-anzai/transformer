@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Coerce to data table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-data.table.R'><code>R/coerce-data.table.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-data.table-S3methods.R'><code>R/coerce-data.table-S3methods.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-data.table-S4methods.R'><code>R/coerce-data.table-S4methods.R</code></a></small>
     <div class="hidden name"><code>coerce-data.table.Rd</code></div>
     </div>
 
@@ -124,10 +124,10 @@
 <span class='co'># S3 method for DataFrame</span>
 <span class='fu'>as.data.table</span>(<span class='no'>x</span>, <span class='kw'>keep.rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
-<span class='co'># S3 method for GRanges</span>
+<span class='co'># S3 method for IPosRanges</span>
 <span class='fu'>as.data.table</span>(<span class='no'>x</span>, <span class='kw'>keep.rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
-<span class='co'># S3 method for IPosRanges</span>
+<span class='co'># S3 method for GenomicRanges</span>
 <span class='fu'>as.data.table</span>(<span class='no'>x</span>, <span class='kw'>keep.rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -164,7 +164,7 @@ Note that we're manually defining the "<code>rowname</code>" column instead of u
 <p>transformer extends <code><a href='https://rdrr.io/pkg/data.table/man/as.data.table.html'>as.data.table()</a></code> method
 support for these S4 classes:</p><ul>
 <li><p><code>DataFrame</code>.</p></li>
-<li><p><code>GRanges</code>.</p></li>
+<li><p><code>GenomicRanges</code>.</p></li>
 </ul>
 
     
@@ -184,19 +184,19 @@ object to a <code>data.table</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>df</span>, <span class='no'>gr</span>, <span class='no'>ir</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>DataFrame</span>, <span class='no'>GRanges</span>, <span class='no'>IRanges</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
 <span class='co'>## DataFrame to data.table ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>df</span>, <span class='st'>"data.table"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>df</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;                 rn sample1 sample2 sample3 sample4
-#&gt; 1: ENSG00000000001       1       5       9      13
-#&gt; 2: ENSG00000000002       2       6      10      14
-#&gt; 3: ENSG00000000003       3       7      11      15
-#&gt; 4: ENSG00000000004       4       8      12      16</div><div class='input'>
-<span class='co'>## GRanges to data.table ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>gr</span>, <span class='st'>"data.table"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>gr</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>DataFrame</span>, <span class='st'>"data.table"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>DataFrame</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;        rn sample01 sample02 sample03 sample04
+#&gt; 1: gene01        1        2        3        4
+#&gt; 2: gene02        5        6        7        8
+#&gt; 3: gene03        9       10       11       12
+#&gt; 4: gene04       13       14       15       16</div><div class='input'>
+<span class='co'>## GenomicRanges to data.table ====</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>GRanges</span>, <span class='st'>"data.table"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>GRanges</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;                 rn seqnames     start       end  width strand          geneID
 #&gt; 1: ENSG00000000003        X 100627109 100639991  12883      - ENSG00000000003
 #&gt; 2: ENSG00000000005        X 100584802 100599885  15084      + ENSG00000000005
@@ -210,8 +210,8 @@ object to a <code>data.table</code>.</p>
 #&gt; 4:    SCYL3
 #&gt; 5: C1orf112</div><div class='input'>
 <span class='co'>## IRanges to data.table ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>ir</span>, <span class='st'>"data.table"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>ir</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>IRanges</span>, <span class='st'>"data.table"</span>)
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as.data.table</span>(<span class='no'>IRanges</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    rn start end width score
 #&gt; 1:  a     1   5     5     1
 #&gt; 2:  b    10  14     5     2
