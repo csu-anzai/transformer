@@ -30,6 +30,7 @@ Configure [conda][] to use the [bioconda][] channels.
 conda install -c bioconda r-transformer
 ```
 
+[Bioconductor]: https://bioconductor.org/
 [R]: https://www.r-project.org/
 [basejump]: https://basejump.acidgenomics.com/
 [bioconda]: https://bioconda.github.io/
