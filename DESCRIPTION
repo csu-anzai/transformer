@@ -2,8 +2,8 @@ Package: transformer
 Title: Coercion methods for biological data
 Description: Additional S3 and S4 coercion methods for easy interconversion
     of Bioconductor data classes.
-Version: 0.2.0
-Date: 2019-07-21
+Version: 0.2.1
+Date: 2019-08-05
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -36,11 +36,13 @@ Imports:
     methods,
     stats
 Suggests:
+    acidroxygen (>= 0.0.1),
     acidtest (>= 0.2.0),
     patrick (>= 0.0.1),
     testthat (>= 2.1),
     datasets
 Remotes:
+    acidgenomics/acidroxygen,
     acidgenomics/acidtest,
     acidgenomics/bioverbs,
     acidgenomics/goalie

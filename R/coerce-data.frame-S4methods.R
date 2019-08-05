@@ -4,7 +4,7 @@
 #'
 #' @name coerce-data.frame
 #' @inheritParams base::as.data.frame
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @examples
 #' data(sparseMatrix, package = "acidtest")

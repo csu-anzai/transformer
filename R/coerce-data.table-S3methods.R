@@ -4,7 +4,7 @@
 #'
 #' @name coerce-data.table
 #' @inheritParams data.table::as.data.table
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @details
 #' Our defined methods attempt to improve on the defaults in the data.table

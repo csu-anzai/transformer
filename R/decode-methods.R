@@ -3,7 +3,7 @@
 #' @name decode
 #' @inherit S4Vectors::decode description return
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @return Modified object.

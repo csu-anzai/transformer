@@ -3,7 +3,7 @@
 #' Coerce to `DataFrame`.
 #'
 #' @name coerce-DataFrame
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @examples
 #' data(data.table, sparseMatrix, tbl_df, package = "acidtest")
