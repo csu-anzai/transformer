@@ -3,7 +3,7 @@
 #' Automatically detect row names column, if defined.
 #'
 #' @export
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @return `character(1)` or `NULL`.
 #'

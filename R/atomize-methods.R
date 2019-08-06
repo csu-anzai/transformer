@@ -1,7 +1,7 @@
 #' @name atomize
 #' @inherit bioverbs::atomize
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @seealso

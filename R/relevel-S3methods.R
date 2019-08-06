@@ -1,7 +1,7 @@
 #' Reorder factor levels
 #'
 #' @name relevel
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @param ref `NULL`.

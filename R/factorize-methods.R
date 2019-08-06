@@ -1,7 +1,7 @@
 #' @name factorize
 #' @inherit bioverbs::factorize
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples

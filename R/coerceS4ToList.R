@@ -2,7 +2,7 @@
 #'
 #' @export
 #' @inheritParams methods::coerce
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @seealso `methods::coerce()`.
 #'

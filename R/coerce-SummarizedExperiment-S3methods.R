@@ -24,7 +24,7 @@
 #'
 #' @name coerce-SummarizedExperiment
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @examples
 #' suppressPackageStartupMessages(library(SummarizedExperiment))

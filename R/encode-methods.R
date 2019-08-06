@@ -1,7 +1,7 @@
 #' @name encode
 #' @inherit bioverbs::encode
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @seealso [S4Vectors::Rle()].

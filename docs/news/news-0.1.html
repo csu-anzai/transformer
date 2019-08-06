@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -125,9 +125,9 @@
 <li>Migrated <code><a href="../reference/atomize.html">atomize()</a></code> and <code><a href="../reference/factorize.html">factorize()</a></code> from <a href="https://basejump.acidgenomics.com/">basejump</a>.</li>
 </ul>
 </div>
-<div id="minor-changes-8" class="section level3">
+<div id="minor-changes-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-8" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-9" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Ensuring <code><a href="https://tibble.tidyverse.org/reference/as_tibble.html">tibble::as_tibble()</a></code> gets reexported.</li>
 <li>Now exporting <code>as.DataFrame()</code> S3 coercion methods, for consistency.</li>
@@ -147,9 +147,9 @@
 <li>Improved <code><a href="../reference/atomize.html">atomize()</a></code> compatibility with <a href="https://bioconductor.org/">Bioconductor</a> 3.7 release. Now DataFrame objects containing Rle columns will get decoded consistently without applying stringsAsFactors in an unexpected fashion. This works correctly in Bioconductor 3.8 simply using <code><a href="../reference/coerce-data.frame.html">as.data.frame()</a></code> internally, but has unwanted coercion of <code>character</code> to <code>factor</code> columns for Rle-encoded data when using the Bioconductor 3.7 release.</li>
 </ul>
 </div>
-<div id="minor-changes-7" class="section level3">
+<div id="minor-changes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-8" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved code coverage to 100%.</li>
 </ul>
@@ -169,9 +169,9 @@
     <div id="transformer-0-1-4-2019-01-23" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-1-4-2019-01-23" class="anchor"></a>transformer 0.1.4 (2019-01-23)</h2>
-<div id="minor-changes-6" class="section level3">
+<div id="minor-changes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Fix for <code>DataFrame</code> to <code>tbl_df</code> coercion that doesn’t make names syntactically valid during internal <code><a href="../reference/coerce-data.frame.html">as.data.frame()</a></code> call.</li>
 </ul>
@@ -191,9 +191,9 @@
     <div id="transformer-0-1-6-2019-02-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-1-6-2019-02-25" class="anchor"></a>transformer 0.1.6 (2019-02-25)</h2>
-<div id="minor-changes-5" class="section level3">
+<div id="minor-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improve documentation regarding default row name handling for <code>as_tibble</code> and <code>as.data.table</code>.</li>
 </ul>
@@ -202,9 +202,9 @@
     <div id="transformer-0-1-7-2019-03-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-1-7-2019-03-22" class="anchor"></a>transformer 0.1.7 (2019-03-22)</h2>
-<div id="minor-changes-4" class="section level3">
+<div id="minor-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Migrated code to [Acid Genomics].</li>
 </ul>
@@ -220,9 +220,9 @@
     <div id="transformer-0-1-9-2019-04-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-1-9-2019-04-22" class="anchor"></a>transformer 0.1.9 (2019-04-22)</h2>
-<div id="minor-changes-3" class="section level3">
+<div id="minor-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Initial <code>DataFrame</code> S4 method support for <code>left_join</code>.</li>
 </ul>
@@ -231,9 +231,9 @@
     <div id="transformer-0-1-10-2019-04-25" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-1-10-2019-04-25" class="anchor"></a>transformer 0.1.10 (2019-04-25)</h2>
-<div id="minor-changes-2" class="section level3">
+<div id="minor-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>S4 generic reexport documentation fixes.</li>
 </ul>
@@ -242,9 +242,9 @@
     <div id="transformer-0-1-11-2019-05-04" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-1-11-2019-05-04" class="anchor"></a>transformer 0.1.11 (2019-05-04)</h2>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Importing <code>GRanges</code> class from GenomicRanges package.</li>
 <li>Improved Travis CI and AppVeyor configuration.</li>

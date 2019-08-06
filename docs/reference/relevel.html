@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -162,11 +162,11 @@ Factor levels will be readjusted (i.e. superfluous levels are dropped).</p>
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData</a></span>(<span class='no'>RangedSummarizedExperiment</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevel</span>(<span class='no'>df</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    Length     Class      Mode 
-#&gt;         5 DataFrame        S4 </div><div class='input'>
+#&gt;         8 DataFrame        S4 </div><div class='input'>
 <span class='co'>## GenomicRanges ====</span>
 <span class='no'>gr</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a></span>(<span class='no'>RangedSummarizedExperiment</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevel</span>(<span class='no'>gr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 500 ranges and 5 metadata columns"</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 500 ranges and 8 metadata columns"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -4,7 +4,7 @@
 #'
 #' @name coerce-tbl_df
 #' @inheritParams tibble::as_tibble
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #'
 #' @details
 #' Our defined methods attempt to improve on the defaults in the tibble package

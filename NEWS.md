@@ -1,3 +1,9 @@
+## transformer 0.2.1 (2019-08-05)
+
+### Minor changes
+
+- Improved documentation consistency, using new acidroxygen package.
+
 ## transformer 0.2.0 (2019-07-19)
 
 ### New methods
