@@ -5,7 +5,8 @@
 \alias{left_join.DataFrame}
 \title{Join operations supporting S4 class objects}
 \usage{
-\method{left_join}{DataFrame}(x, y, by)
+\method{left_join}{DataFrame}(x, y, by, copy = FALSE, suffix = NULL,
+  ...)
 }
 \arguments{
 \item{x, y}{\code{DataFrame}.
@@ -15,6 +16,8 @@ Data frames, or objects, to be coerced into a single object.}
 Column names to use for merge operation.
 Note that this is always required, unlike the dplyr \code{tbl_df} method, where
 this is optional.}
+
+\item{copy, suffix, ...}{Disabled for \code{DataFrame} method.}
 }
 \description{
 Join operations supporting S4 class objects
