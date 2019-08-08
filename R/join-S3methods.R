@@ -48,24 +48,17 @@ NULL
 ## Can consider using Hervé Pagès's recommended approach instead.
 ## https://support.bioconductor.org/p/120277/
 
-## Consider importing dplyr and reexporting the S3 generics defined there
-## instead. Note that those contain additional arguments, such as "copy" and
-## "suffix".
+
+
+#' @importFrom dplyr left_join
+#' @export
+dplyr::left_join
 
 
 
 #' @rdname join
 #' @export
-left_join <-  # nolint
-    function(x, y, by) {
-        UseMethod("left_join")
-    }
-
-
-
-#' @rdname join
-#' @export
-## Updated 2019-07-19.
+## Updated 2019-08-07.
 left_join.DataFrame <-  # nolint
     function(x, y, by) {
         assert(
@@ -83,5 +76,7 @@ left_join.DataFrame <-  # nolint
         ## Don't use `NULL` assignment on S4 columns.
         ## This isn't backward compatible with BioC 3.6.
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
+        ## Ensure rownames are preserved.
+        rownames(out) <- rownames(x)
         out
     }

@@ -2,8 +2,8 @@ Package: transformer
 Title: Coercion methods for biological data
 Description: Additional S3 and S4 coercion methods for easy interconversion
     of Bioconductor data classes.
-Version: 0.2.1
-Date: 2019-08-05
+Version: 0.2.2
+Date: 2019-08-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -32,6 +32,7 @@ Imports:
     SummarizedExperiment,
     Matrix (>= 1.2),
     data.table (>= 1.12),
+    dplyr (>= 0.8),
     tibble (>= 2.1),
     methods,
     stats

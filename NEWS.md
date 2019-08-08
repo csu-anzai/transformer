@@ -1,3 +1,10 @@
+## transformer 0.2.2 (2019-08-08)
+
+### Minor changes
+
+- Reexporting dplyr `left_join` generic. Improved `DataFrame` method for
+  `left_join` to keep row names, which correspond to the `x` object.
+
 ## transformer 0.2.1 (2019-08-05)
 
 ### Minor changes
