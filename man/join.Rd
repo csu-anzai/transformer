@@ -2,12 +2,9 @@
 % Please edit documentation in R/join-S3methods.R
 \name{join}
 \alias{join}
-\alias{left_join}
 \alias{left_join.DataFrame}
 \title{Join operations supporting S4 class objects}
 \usage{
-left_join(x, y, by)
-
 \method{left_join}{DataFrame}(x, y, by)
 }
 \arguments{
