@@ -3,8 +3,13 @@
 ## This function will return an informative error if an S4 DataFrame contains
 ## complex columns that can't be coerced to atomic or list.
 ##
-## Updated 2019-07-19.
+## Not exporting this method because we don't want to mask the default
+## conventions currently used by Bioconductor.
+##
+## Updated 2019-08-08.
 `.coerce,DataFrame,data.frame` <- function(x) {
+    ## Decode Rle columns, which can be coerced.
+    x <- decode(x)
     ## Check for valid columns (atomic, list).
     valid <- vapply(
         X = x,
