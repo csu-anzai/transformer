@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
 
@@ -129,9 +129,9 @@
 <li>Tightened up <code>as.SummarizedExperiment</code> S3 methods to support <code>SummarizedExperiment</code> and <code>RangedSummarizedExperiment</code> specifically.</li>
 </ul>
 </div>
-<div id="minor-changes-2" class="section level3">
+<div id="minor-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved S3 method documentation. Use <code>rdname</code> tag instead of <code>method</code> (or legacy <code>s3method</code>).</li>
 </ul>
@@ -140,9 +140,9 @@
     <div id="transformer-0-2-1-2019-08-05" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-2-1-2019-08-05" class="anchor"></a>transformer 0.2.1 (2019-08-05)</h2>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved documentation consistency, using new acidroxygen package.</li>
 </ul>
@@ -151,11 +151,22 @@
     <div id="transformer-0-2-2-2019-08-08" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-2-2-2019-08-08" class="anchor"></a>transformer 0.2.2 (2019-08-08)</h2>
+<div id="minor-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Reexporting dplyr <code>left_join</code> generic. Improved <code>DataFrame</code> method for <code>left_join</code> to keep row names, which correspond to the <code>x</code> object.</li>
+</ul>
+</div>
+</div>
+    <div id="transformer-0-2-3-2019-08-12" class="section level2">
+<h2 class="hasAnchor">
+<a href="#transformer-0-2-3-2019-08-12" class="anchor"></a>transformer 0.2.3 (2019-08-12)</h2>
 <div id="minor-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h3>
 <ul>
-<li>Reexporting dplyr <code>left_join</code> generic. Improved <code>DataFrame</code> method for <code>left_join</code> to keep row names, which correspond to the <code>x</code> object.</li>
+<li>Fix for automatic decoding of <code>Rle</code> columns, which will error otherwise when attempting to coerce from <code>DataFrame</code> to <code>data.frame</code>.</li>
 </ul>
 </div>
 </div>
@@ -168,6 +179,7 @@
         <li><a href="#transformer-0-2-0-2019-07-19">0.2.0</a></li>
         <li><a href="#transformer-0-2-1-2019-08-05">0.2.1</a></li>
         <li><a href="#transformer-0-2-2-2019-08-08">0.2.2</a></li>
+        <li><a href="#transformer-0-2-3-2019-08-12">0.2.3</a></li>
       </ul>
     </div>
   </div>
