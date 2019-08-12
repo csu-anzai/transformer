@@ -9,6 +9,7 @@
 #'   Column names to use for merge operation.
 #'   Note that this is always required, unlike the dplyr `tbl_df` method, where
 #'   this is optional.
+#' @param copy,suffix,... Disabled for `DataFrame` method.
 #'
 #' @seealso
 #' - `help(topic = "join", package = "dplyr")`.
@@ -60,13 +61,24 @@ dplyr::left_join
 #' @export
 ## Updated 2019-08-07.
 left_join.DataFrame <-  # nolint
-    function(x, y, by) {
+    function(
+        x,
+        y,
+        by,
+        copy = FALSE,
+        suffix = NULL,
+        ...
+    ) {
         assert(
             is(x, "DataFrame"),
             is(y, "DataFrame"),
             isCharacter(by),
-            areDisjointSets(".idx", colnames(x))
+            areDisjointSets(".idx", colnames(x)),
+            identical(copy, FALSE),
+            is.null(suffix),
+            !hasLength(list(...))
         )
+
         ## Setting internal `.idx` column here to avoid row reorders.
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)

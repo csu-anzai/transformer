@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
 
@@ -119,10 +119,9 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>left_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
-
-<span class='co'># S3 method for DataFrame</span>
-<span class='fu'>left_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for DataFrame</span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/join.html'>left_join</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='kw'>copy</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,6 +137,10 @@ Data frames, or objects, to be coerced into a single object.</p></td>
 Column names to use for merge operation.
 Note that this is always required, unlike the dplyr <code>tbl_df</code> method, where
 this is optional.</p></td>
+    </tr>
+    <tr>
+      <th>copy, suffix, ...</th>
+      <td><p>Disabled for <code>DataFrame</code> method.</p></td>
     </tr>
     </table>
     
@@ -175,7 +178,7 @@ this is optional.</p></td>
 #&gt; 1        1   control
 #&gt; 2        2      expt
 #&gt; 3        3   control
-#&gt; 4        4      expt</div><div class='input'><span class='fu'>left_join</span>(<span class='no'>df1</span>, <span class='no'>df2</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
+#&gt; 4        4      expt</div><div class='input'><span class='fu'><a href='https://dplyr.tidyverse.org/reference/join.html'>left_join</a></span>(<span class='no'>df1</span>, <span class='no'>df2</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
 #&gt;         id genotype treatment
 #&gt;   &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
 #&gt; 1        1       wt   control

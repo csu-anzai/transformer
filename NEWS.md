@@ -1,3 +1,10 @@
+## transformer 0.2.3 (2019-08-12)
+
+### Minor changes
+
+- Fix for automatic decoding of `Rle` columns, which will error otherwise when
+  attempting to coerce from `DataFrame` to `data.frame`.
+
 ## transformer 0.2.2 (2019-08-08)
 
 ### Minor changes
