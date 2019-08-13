@@ -45,9 +45,9 @@ matchRowNameColumn <- function(object) {
         assert(validNames(rownames))
         col
     } else if (length(match) > 1L) {
-        stop(paste0(
-            "Multiple row names columns detected: ",
-            toString(colnames(object)[match]), "."
+        stop(sprintf(
+            "Multiple row names columns detected: %s.",
+            toString(colnames(object)[match], width = 100L)
         ))
     }
 }
