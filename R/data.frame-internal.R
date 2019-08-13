@@ -27,12 +27,10 @@
             FUN = class,
             FUN.VALUE = character(1L)
         )
-        stop(paste(
-            "Only atomic and list columns are supported.",
-            "Invalid columns:",
-            printString(invalid),
-            sep = "\n"
-        ))
+        stop(
+            "Only atomic and list columns are supported.\n",
+            sprintf("Invalid columns: %s.", toString(invalid, width = 100L))
+        )
     }
     ## Don't use `as.data.frame()` here. It can unexpectedly sanitize row
     ## names (e.g. gene symbols), whereas the `as()` method does not.
