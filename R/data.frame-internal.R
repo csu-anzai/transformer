@@ -27,9 +27,13 @@
             FUN = class,
             FUN.VALUE = character(1L)
         )
+        invalid <- sprintf("%s (%s)", names(invalid), invalid)
         stop(
             "Only atomic and list columns are supported.\n",
-            sprintf("Invalid columns: %s.", toString(invalid, width = 100L))
+            sprintf(
+                "Invalid columns: %s.",
+                toString(invalid, width = 100L)
+            )
         )
     }
     ## Don't use `as.data.frame()` here. It can unexpectedly sanitize row
