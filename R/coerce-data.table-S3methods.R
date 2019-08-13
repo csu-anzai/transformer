@@ -11,7 +11,7 @@
 #' package to ensure that row names are not dropped by default, which is a poor
 #' default for bioinformatics. This is accomplished by setting
 #' `keep.rownames = "rowname"` by default instead of `keep.rownames = NULL`.
-#' Note that we're manually defining the "`rowname`" column instead of using
+#' Note that we're manually defining the `"rowname"` column instead of using
 #' `TRUE`, to match the conventions used in our `as_tibble()` methods.
 #'
 #' @section S3 `as.data.table()`:

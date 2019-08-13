@@ -1,6 +1,6 @@
 context("Coerce to tbl_df (tibble)")
 
-test_that("S4 `as()` on empty data.frame", {
+test_that("S4 'as()' on empty data.frame", {
     expect_is(as(data.frame(), "tbl_df"), "tbl_df")
 })
 
