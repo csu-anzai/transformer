@@ -36,9 +36,9 @@ NULL
         ## Inform the user about which columns to drop.
         drop <- names(keep)[!keep]
         if (hasLength(drop)) {
-            message(paste(
-                "Dropping non-atomic columns:",
-                toString(drop, width = 200L)
+            message(sprintf(
+                "Dropping non-atomic columns: %s.",
+                toString(drop, width = 100L)
             ))
         }
 
