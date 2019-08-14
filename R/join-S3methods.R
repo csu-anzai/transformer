@@ -1,3 +1,7 @@
+## FIXME Consider switching to S4 method, so we can nuke dplyr import.
+
+
+
 #' Join operations supporting S4 class objects
 #'
 #' @rdname join
