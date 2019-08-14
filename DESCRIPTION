@@ -32,13 +32,13 @@ Imports:
     SummarizedExperiment,
     Matrix (>= 1.2),
     data.table (>= 1.12),
-    dplyr (>= 0.8),
     tibble (>= 2.1),
     methods,
     stats
 Suggests:
     acidroxygen (>= 0.1),
     acidtest (>= 0.2.2),
+    dplyr (>= 0.8),
     patrick (>= 0.0.1),
     testthat (>= 2.1),
     datasets

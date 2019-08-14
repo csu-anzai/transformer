@@ -36,7 +36,7 @@ Our defined methods attempt to improve on the defaults in the data.table
 package to ensure that row names are not dropped by default, which is a poor
 default for bioinformatics. This is accomplished by setting
 \code{keep.rownames = "rowname"} by default instead of \code{keep.rownames = NULL}.
-Note that we're manually defining the "\code{rowname}" column instead of using
+Note that we're manually defining the \code{"rowname"} column instead of using
 \code{TRUE}, to match the conventions used in our \code{as_tibble()} methods.
 }
 \section{S3 \code{as.data.table()}}{

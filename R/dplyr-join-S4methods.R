@@ -1,11 +1,8 @@
-## FIXME Consider switching to S4 method, so we can nuke dplyr import.
-
-
-
 #' Join operations supporting S4 class objects
 #'
 #' @rdname join
 #' @name join
+#' @note Updated 2019-08-14.
 #'
 #' @param x,y `DataFrame`.
 #'   Data frames, or objects, to be coerced into a single object.
@@ -38,6 +35,17 @@ NULL
 
 
 
+#' @rdname join
+#' @export
+setGeneric(
+    name = "left_join",
+    def = function(x, y, ...) {
+        standardGeneric("left_join")
+    }
+)
+
+
+
 ## dplyr join functions, for reference:
 ## - `inner_join`
 ## - `left_join`
@@ -47,24 +55,35 @@ NULL
 ## - `nest_join`
 ## - `anti_join`
 
-## Currently setting an internal `.idx` column that we can use to reorder the
-## rows after `merge()` operation.
-
-## Can consider using Hervé Pagès's recommended approach instead.
-## https://support.bioconductor.org/p/120277/
 
 
-
-#' @importFrom dplyr left_join
-#' @export
-dplyr::left_join
+## Updated 2019-08-14.
+`left_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::left_join(x = x, y = y, ...)
+    }
 
 
 
 #' @rdname join
 #' @export
-## Updated 2019-08-07.
-left_join.DataFrame <-  # nolint
+setMethod(
+    f = "left_join",
+    signature = signature("data.frame"),
+    definition = `left_join,data.frame`
+)
+
+
+
+## Currently setting an internal `.idx` column that we can use to reorder the
+## rows after `merge()` operation.
+##
+## Can consider using Hervé Pagès's recommended approach instead.
+## https://support.bioconductor.org/p/120277/
+##
+## Updated 2019-08-14.
+`left_join,DataFrame` <-  # nolint
     function(
         x,
         y,
@@ -82,7 +101,6 @@ left_join.DataFrame <-  # nolint
             is.null(suffix),
             !hasLength(list(...))
         )
-
         ## Setting internal `.idx` column here to avoid row reorders.
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)
@@ -96,3 +114,13 @@ left_join.DataFrame <-  # nolint
         rownames(out) <- rownames(x)
         out
     }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "left_join",
+    signature = signature("DataFrame"),
+    definition = `left_join,DataFrame`
+)
