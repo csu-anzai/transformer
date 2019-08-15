@@ -141,27 +141,6 @@ setMethod(
 
 
 
-`nest_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
-        dplyr::nest_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "nest_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `nest_join,data.frame`
-)
-
-
-
 `anti_join,data.frame` <-  # nolint
     function(x, y, ...) {
         requireNamespace("dplyr", quietly = TRUE)
@@ -190,8 +169,8 @@ setMethod(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
-            areDisjointSets(".idx", colnames(x)),
-            areDisjointSets(".idx", colnames(y)),
+            areDisjointSets(c(".idx", ".idy"), colnames(x)),
+            areDisjointSets(c(".idx", ".idy"), colnames(y)),
             isFlag(rownames)
         )
         x[[".idx"]] <- seq_len(nrow(x))
@@ -225,8 +204,8 @@ setMethod(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
-            areDisjointSets(".idx", colnames(x)),
-            areDisjointSets(".idx", colnames(y)),
+            areDisjointSets(c(".idx", ".idy"), colnames(x)),
+            areDisjointSets(c(".idx", ".idy"), colnames(y)),
             isFlag(rownames)
         )
         x[[".idx"]] <- seq_len(nrow(x))
@@ -281,8 +260,8 @@ setMethod(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
-            areDisjointSets(".idx", colnames(x)),
-            areDisjointSets(".idx", colnames(y)),
+            areDisjointSets(c(".idx", ".idy"), colnames(x)),
+            areDisjointSets(c(".idx", ".idy"), colnames(y)),
             isFlag(rownames)
         )
         x[[".idx"]] <- seq_len(nrow(x))
@@ -292,9 +271,9 @@ setMethod(
         if (isTRUE(rownames)) {
             rnx <- rownames(x)[na.omit(out[[".idx"]])]
             rny <- rownames(y)[na.omit(out[[".idy"]])]
-            rownames <- unique(c(rnx, rny))
-            assert(hasLength(rownames, n = nrow(out)))
-            rownames(out) <- rownames
+            rn <- unique(c(rnx, rny))
+            assert(hasLength(rn, n = nrow(out)))
+            rownames(out) <- rn
         }
         out <- out[, setdiff(colnames(out), c(".idx", ".idy")), drop = FALSE]
         out
@@ -315,6 +294,70 @@ setMethod(
 
 
 
-## FIXME semi
-## FIXME nest
-## FIXME anti
+`semi_join,DataFrame` <-  # nolint
+    function(x, y, by, rownames = TRUE) {
+        assert(
+            isCharacter(by),
+            isSubset(by, colnames(x)),
+            isSubset(by, colnames(y)),
+            areDisjointSets(c(".idx", ".idy"), colnames(x)),
+            areDisjointSets(c(".idx", ".idy"), colnames(y)),
+            isFlag(rownames)
+        )
+        x[[".idx"]] <- seq_len(nrow(x))
+        m <- merge(x = x, y = y, by = by, all = FALSE, sort = FALSE)
+        which <- order(m[[".idx"]])
+        out <- x[which, setdiff(colnames(x), ".idx"), drop = FALSE]
+        if (!isTRUE(rownames)) {
+            rownames(out) <- NULL
+        }
+        out
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "semi_join",
+    signature = signature(
+        x = "DataFrame",
+        y = "DataFrame"
+    ),
+    definition = `semi_join,DataFrame`
+)
+
+
+
+`anti_join,DataFrame` <-  # nolint
+    function(x, y, by, rownames = TRUE) {
+        assert(
+            isCharacter(by),
+            isSubset(by, colnames(x)),
+            isSubset(by, colnames(y)),
+            areDisjointSets(c(".idx", ".idy"), colnames(x)),
+            areDisjointSets(c(".idx", ".idy"), colnames(y)),
+            isFlag(rownames)
+        )
+        x[[".idx"]] <- seq_len(nrow(x))
+        m <- merge(x = x, y = y, by = by, all = FALSE, sort = FALSE)
+        which <- order(setdiff(x[[".idx"]], m[[".idx"]]))
+        out <- x[which, setdiff(colnames(x), ".idx"), drop = FALSE]
+        if (!isTRUE(rownames)) {
+            rownames(out) <- NULL
+        }
+        out
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "anti_join",
+    signature = signature(
+        x = "DataFrame",
+        y = "DataFrame"
+    ),
+    definition = `anti_join,DataFrame`
+)

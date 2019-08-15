@@ -52,6 +52,26 @@ test_that("full_join", {
     expect_identical(object, expected)
 })
 
+test_that("semi_join", {
+    object <- semi_join(x = band_members, y = band_instruments, by = "name")
+    expected <- DataFrame(
+        name = c("John", "Paul"),
+        band = c("Beatles", "Beatles"),
+        row.names = c("John", "Paul")
+    )
+    expect_identical(object, expected)
+})
+
+test_that("anti_join", {
+    object <- anti_join(x = band_members, y = band_instruments, by = "name")
+    expected <- DataFrame(
+        name = "Mick",
+        band = "Stones",
+        row.names = "Mick"
+    )
+    expect_identical(object, expected)
+})
+
 
 
 context("joins : left_join")

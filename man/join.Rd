@@ -7,7 +7,6 @@
 \alias{right_join}
 \alias{full_join}
 \alias{semi_join}
-\alias{nest_join}
 \alias{anti_join}
 \alias{join}
 \alias{inner_join,data.frame,data.frame-method}
@@ -15,12 +14,12 @@
 \alias{right_join,data.frame,data.frame-method}
 \alias{full_join,data.frame,data.frame-method}
 \alias{semi_join,data.frame,data.frame-method}
-\alias{nest_join,data.frame,data.frame-method}
 \alias{anti_join,data.frame,data.frame-method}
 \alias{inner_join,DataFrame,DataFrame-method}
 \alias{left_join,DataFrame,DataFrame-method}
 \alias{right_join,DataFrame,DataFrame-method}
 \alias{full_join,DataFrame,DataFrame-method}
+\alias{semi_join,DataFrame,DataFrame-method}
 \title{Join operations supporting S4 class objects}
 \usage{
 inner_join(x, y, ...)
@@ -32,8 +31,6 @@ right_join(x, y, ...)
 full_join(x, y, ...)
 
 semi_join(x, y, ...)
-
-nest_join(x, y, ...)
 
 anti_join(x, y, ...)
 
@@ -47,8 +44,6 @@ anti_join(x, y, ...)
 
 \S4method{semi_join}{data.frame,data.frame}(x, y, ...)
 
-\S4method{nest_join}{data.frame,data.frame}(x, y, ...)
-
 \S4method{anti_join}{data.frame,data.frame}(x, y, ...)
 
 \S4method{inner_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
@@ -58,6 +53,8 @@ anti_join(x, y, ...)
 \S4method{right_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 
 \S4method{full_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+
+\S4method{semi_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 }
 \arguments{
 \item{x, y}{\code{DataFrame}.

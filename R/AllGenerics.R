@@ -56,17 +56,6 @@ setGeneric(
 #' @rdname join
 #' @export
 setGeneric(
-    name = "nest_join",
-    def = function(x, y, ...) {
-        standardGeneric("nest_join")
-    }
-)
-
-
-
-#' @rdname join
-#' @export
-setGeneric(
     name = "anti_join",
     def = function(x, y, ...) {
         standardGeneric("anti_join")
