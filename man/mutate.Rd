@@ -5,6 +5,8 @@
 \alias{mutate_all}
 \alias{mutate_at}
 \alias{mutate_if}
+\alias{transmute_at}
+\alias{transmute_if}
 \alias{mutate}
 \alias{mutate_all,data.frame-method}
 \alias{mutate_all,DataFrame-method}
@@ -12,6 +14,10 @@
 \alias{mutate_at,DataFrame-method}
 \alias{mutate_if,data.frame-method}
 \alias{mutate_if,DataFrame-method}
+\alias{transmute_at,data.frame-method}
+\alias{transmute_at,DataFrame-method}
+\alias{transmute_if,data.frame-method}
+\alias{transmute_if,DataFrame-method}
 \title{Mutate multiple columns}
 \usage{
 mutate_all(.tbl, ...)
@@ -19,6 +25,10 @@ mutate_all(.tbl, ...)
 mutate_at(.tbl, ...)
 
 mutate_if(.tbl, ...)
+
+transmute_at(.tbl, ...)
+
+transmute_if(.tbl, ...)
 
 \S4method{mutate_all}{data.frame}(.tbl, .funs, ...)
 
@@ -31,6 +41,14 @@ mutate_if(.tbl, ...)
 \S4method{mutate_if}{data.frame}(.tbl, .predicate, .funs, ...)
 
 \S4method{mutate_if}{DataFrame}(.tbl, .predicate, .funs, ...)
+
+\S4method{transmute_at}{data.frame}(.tbl, .vars, .funs, ...)
+
+\S4method{transmute_at}{DataFrame}(.tbl, .vars, .funs, ...)
+
+\S4method{transmute_if}{data.frame}(.tbl, .predicate, .funs, ...)
+
+\S4method{transmute_if}{DataFrame}(.tbl, .predicate, .funs, ...)
 }
 \value{
 Modified object.
@@ -63,8 +81,9 @@ data(mtcars, package = "datasets")
 
 ## DataFrame ====
 x <- as(mtcars, "DataFrame")
-print(x)
-x \%>\% mutate_all(log, base = 2L)
-x \%>\% mutate_if(is.double, as.integer)
-x \%>\% mutate_at(c("mpg", "cyl"), log, base = 2L)
+mutate_all(x, .funs = log, base = 2L)
+mutate_at(x, .vars = c("mpg", "cyl"), log, base = 2L)
+mutate_if(x, .predicate = is.double, .funs = as.integer)
+transmute_at(x, .vars = c("mpg", "cyl"), log, base = 2L)
+transmute_if(x, .predicate = is.double, .funs = as.integer)
 }

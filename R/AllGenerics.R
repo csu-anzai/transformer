@@ -1,32 +1,3 @@
-#' @rdname arrange
-#' @export
-setGeneric(
-    name = "arrange_all",
-    def = function(.tbl, ...) {
-        standardGeneric("arrange_all")
-    }
-)
-
-#' @rdname arrange
-#' @export
-setGeneric(
-    name = "arrange_at",
-    def = function(.tbl, ...) {
-        standardGeneric("arrange_at")
-    }
-)
-
-#' @rdname arrange
-#' @export
-setGeneric(
-    name = "arrange_if",
-    def = function(.tbl, ...) {
-        standardGeneric("arrange_if")
-    }
-)
-
-
-
 #' @rdname join
 #' @export
 setGeneric(
@@ -110,33 +81,21 @@ setGeneric(
     }
 )
 
-
-
-
-#' @rdname rename
+#' @rdname mutate
 #' @export
 setGeneric(
-    name = "rename_all",
+    name = "transmute_at",
     def = function(.tbl, ...) {
-        standardGeneric("rename_all")
+        standardGeneric("transmute_at")
     }
 )
 
-#' @rdname rename
+#' @rdname mutate
 #' @export
 setGeneric(
-    name = "rename_at",
+    name = "transmute_if",
     def = function(.tbl, ...) {
-        standardGeneric("rename_at")
-    }
-)
-
-#' @rdname rename
-#' @export
-setGeneric(
-    name = "rename_if",
-    def = function(.tbl, ...) {
-        standardGeneric("rename_if")
+        standardGeneric("transmute_if")
     }
 )
 

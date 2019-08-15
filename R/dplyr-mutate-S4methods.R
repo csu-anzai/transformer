@@ -19,10 +19,11 @@
 #'
 #' ## DataFrame ====
 #' x <- as(mtcars, "DataFrame")
-#' print(x)
-#' x %>% mutate_all(log, base = 2L)
-#' x %>% mutate_if(is.double, as.integer)
-#' x %>% mutate_at(c("mpg", "cyl"), log, base = 2L)
+#' mutate_all(x, .funs = log, base = 2L)
+#' mutate_at(x, .vars = c("mpg", "cyl"), log, base = 2L)
+#' mutate_if(x, .predicate = is.double, .funs = as.integer)
+#' transmute_at(x, .vars = c("mpg", "cyl"), log, base = 2L)
+#' transmute_if(x, .predicate = is.double, .funs = as.integer)
 NULL
 
 
@@ -165,4 +166,100 @@ setMethod(
     f = "mutate_if",
     signature = signature("DataFrame"),
     definition = `mutate_if,DataFrame`
+)
+
+
+
+`transmute_at,data.frame` <-  # nolint
+    function(.tbl, .vars, .funs, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::transmute_at(
+            .tbl = .tbl,
+            .vars = .vars,
+            .funs = .funs,
+            ...
+        )
+    }
+
+
+
+#' @rdname mutate
+#' @export
+setMethod(
+    f = "transmute_at",
+    signature = signature("data.frame"),
+    definition = `transmute_at,data.frame`
+)
+
+
+
+`transmute_at,DataFrame` <-  # nolint
+    function(.tbl, .vars, .funs, ...) {
+        tbl <- transmute_at(
+            .tbl = as_tibble(.tbl, rownames = NULL),
+            .vars = .vars,
+            .funs = .funs,
+            ...
+        )
+        out <- as(tbl, "DataFrame")
+        rownames(out) <- rownames(.tbl)
+        out
+    }
+
+
+
+#' @rdname mutate
+#' @export
+setMethod(
+    f = "transmute_at",
+    signature = signature("DataFrame"),
+    definition = `transmute_at,DataFrame`
+)
+
+
+
+`transmute_if,data.frame` <-  # nolint
+    function(.tbl, .predicate, .funs, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::transmute_if(
+            .tbl = .tbl,
+            .predicate = .predicate,
+            .funs = .funs,
+            ...
+        )
+    }
+
+
+
+#' @rdname mutate
+#' @export
+setMethod(
+    f = "transmute_if",
+    signature = signature("data.frame"),
+    definition = `transmute_if,data.frame`
+)
+
+
+
+`transmute_if,DataFrame` <-  # nolint
+    function(.tbl, .predicate, .funs, ...) {
+        tbl <- transmute_if(
+            .tbl = as_tibble(.tbl, rownames = NULL),
+            .predicate = .predicate,
+            .funs = .funs,
+            ...
+        )
+        out <- as(tbl, "DataFrame")
+        rownames(out) <- rownames(.tbl)
+        out
+    }
+
+
+
+#' @rdname mutate
+#' @export
+setMethod(
+    f = "transmute_if",
+    signature = signature("DataFrame"),
+    definition = `transmute_if,DataFrame`
 )

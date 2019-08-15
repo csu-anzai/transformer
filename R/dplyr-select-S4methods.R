@@ -1,38 +1,35 @@
-#' @inherit dplyr::arrange_all title description details
-#'
-#' @note These functions will drop row names, intentionally.
+#' @inherit dplyr::select_all title description details
 #'
 #' @section `data.frame` methods:
 #'
 #' Since we are defining S4 methods in this package, we are providing
 #' passthrough support to dplyr for `data.frame` class objects. Our generic
-#' methods pass through to dplyr arrange functions, which are optimized for
+#' methods pass through to dplyr select functions, which are optimized for
 #' `tbl_df` class.
 #'
-#' Refer to `help(topic = "arrange_all", package = "dplyr")` for details.
+#' Refer to `help(topic = "select_all", package = "dplyr")` for details.
 #'
-#' @name arrange
+#' @name select
 #' @note Updated 2019-08-15.
 #'
-#' @return Modified object, with rows variably sorted per column.
+#' @return Modified object.
 #'
 #' @examples
 #' data(mtcars, package = "datasets")
 #'
 #' ## DataFrame ====
 #' x <- as(mtcars, "DataFrame")
-#' print(x)
-#' x %>% arrange_all(desc)
-#' x %>% arrange_if(is.integer, desc)
-#' x %>% arrange_at(c("mpg", "cyl"), desc)
+#' select_all(x, .funs = toupper)
+#' select_at(x, .vars = c("mpg", "cyl"))
+#' select_if(x, .predicate = is.double)
 NULL
 
 
 
-`arrange_all,data.frame` <-  # nolint
+`select_all,data.frame` <-  # nolint
     function(.tbl, .funs = list(), ...) {
         requireNamespace("dplyr", quietly = TRUE)
-        dplyr::arrange_all(
+        dplyr::select_all(
             .tbl = .tbl,
             .funs = .funs,
             ...
@@ -41,43 +38,44 @@ NULL
 
 
 
-#' @rdname arrange
+#' @rdname select
 #' @export
 setMethod(
-    f = "arrange_all",
+    f = "select_all",
     signature = signature("data.frame"),
-    definition = `arrange_all,data.frame`
+    definition = `select_all,data.frame`
 )
 
 
 
-`arrange_all,DataFrame` <-  # nolint
+`select_all,DataFrame` <-  # nolint
     function(.tbl, .funs = list(), ...) {
-        tbl <- arrange_all(
+        tbl <- select_all(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .funs = .funs,
             ...
         )
         out <- as(tbl, "DataFrame")
+        rownames(out) <- rownames(.tbl)
         out
     }
 
 
 
-#' @rdname arrange
+#' @rdname select
 #' @export
 setMethod(
-    f = "arrange_all",
+    f = "select_all",
     signature = signature("DataFrame"),
-    definition = `arrange_all,DataFrame`
+    definition = `select_all,DataFrame`
 )
 
 
 
-`arrange_at,data.frame` <-  # nolint
+`select_at,data.frame` <-  # nolint
     function(.tbl, .vars, .funs = list(), ...) {
         requireNamespace("dplyr", quietly = TRUE)
-        dplyr::arrange_at(
+        dplyr::select_at(
             .tbl = .tbl,
             .vars = .vars,
             .funs = .funs,
@@ -87,44 +85,45 @@ setMethod(
 
 
 
-#' @rdname arrange
+#' @rdname select
 #' @export
 setMethod(
-    f = "arrange_at",
+    f = "select_at",
     signature = signature("data.frame"),
-    definition = `arrange_at,data.frame`
+    definition = `select_at,data.frame`
 )
 
 
 
-`arrange_at,DataFrame` <-  # nolint
+`select_at,DataFrame` <-  # nolint
     function(.tbl, .vars, .funs = list(), ...) {
-        tbl <- arrange_at(
+        tbl <- select_at(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .vars = .vars,
             .funs = .funs,
             ...
         )
         out <- as(tbl, "DataFrame")
+        rownames(out) <- rownames(.tbl)
         out
     }
 
 
 
-#' @rdname arrange
+#' @rdname select
 #' @export
 setMethod(
-    f = "arrange_at",
+    f = "select_at",
     signature = signature("DataFrame"),
-    definition = `arrange_at,DataFrame`
+    definition = `select_at,DataFrame`
 )
 
 
 
-`arrange_if,data.frame` <-  # nolint
+`select_if,data.frame` <-  # nolint
     function(.tbl, .predicate, .funs = list(), ...) {
         requireNamespace("dplyr", quietly = TRUE)
-        dplyr::arrange_if(
+        dplyr::select_if(
             .tbl = .tbl,
             .predicate = .predicate,
             .funs = .funs,
@@ -134,34 +133,35 @@ setMethod(
 
 
 
-#' @rdname arrange
+#' @rdname select
 #' @export
 setMethod(
-    f = "arrange_if",
+    f = "select_if",
     signature = signature("data.frame"),
-    definition = `arrange_if,data.frame`
+    definition = `select_if,data.frame`
 )
 
 
 
-`arrange_if,DataFrame` <-  # nolint
+`select_if,DataFrame` <-  # nolint
     function(.tbl, .predicate, .funs = list(), ...) {
-        tbl <- arrange_if(
+        tbl <- select_if(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .predicate = .predicate,
             .funs = .funs,
             ...
         )
         out <- as(tbl, "DataFrame")
+        rownames(out) <- rownames(.tbl)
         out
     }
 
 
 
-#' @rdname arrange
+#' @rdname select
 #' @export
 setMethod(
-    f = "arrange_if",
+    f = "select_if",
     signature = signature("DataFrame"),
-    definition = `arrange_if,DataFrame`
+    definition = `select_if,DataFrame`
 )
