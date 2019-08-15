@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -120,9 +120,9 @@
 <code>relevel</code>: Added S3 method support for <code>DataFrame</code> and <code>GRanges</code> objects containing factor columns.</li>
 </ul>
 </div>
-<div id="major-changes" class="section level3">
+<div id="major-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Migraged <code>atomize</code>, <code>decode</code>, and <code>encode</code> from brio here.</li>
 <li>Removed <code>as.DataFrame</code> S3 method in favor of simply using S4 <code>as</code> coercion.</li>
@@ -170,6 +170,27 @@
 </ul>
 </div>
 </div>
+    <div id="transformer-0-2-4-2019-08-15" class="section level2">
+<h2 class="hasAnchor">
+<a href="#transformer-0-2-4-2019-08-15" class="anchor"></a>transformer 0.2.4 (2019-08-15)</h2>
+<div id="new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h3>
+<p>Improved S4 method support for dplyr verbs working on <code>DataFrame</code> class.</p>
+<ul>
+<li>Joins: <code>inner_join</code>, <code>left_join</code> (already defined), <code>right_join</code>, <code>full_join</code>, <code>semi_join</code>, and <code>anti_join</code>. These methods use <code>merge</code> internally but ensure that rows are not unexpectedly reordered.</li>
+<li>Scoped variants of <code>mutate</code> and <code>select</code>: <code>mutate_all</code>, <code>mutate_at</code>, <code>mutate_if</code>, <code>transmute_at</code>, <code>transmute_if</code>; <code>select_all</code>, <code>select_at</code>, <code>select_if</code>. These variants keep track of row names. Internally, these functions coerce to <code>tbl_df</code> and then call the dplyr function. Return is coerced back to <code>DataFrame</code>, with row names preserved.</li>
+</ul>
+</div>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>
+<code>relevel:</code> Made S3 methods for <code>relevel</code> defunct of favor of recommend S4 method usage of <code>droplevels</code> instead. S4 method support for <code>droplevels</code> is already provided in S4Vectors (i.e. <code>List</code>, <code>DataFrame)</code>. Here we are improving <code>droplevels</code> functionality by adding additional method support for <code>Ranges</code> (to support <code>IRanges</code>, <code>GRanges</code>) as well as <code>SummarizedExperiment</code>, which enables automatic leveling of factors in <code>colData</code> or <code>rowData</code>.</li>
+</ul>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -180,6 +201,7 @@
         <li><a href="#transformer-0-2-1-2019-08-05">0.2.1</a></li>
         <li><a href="#transformer-0-2-2-2019-08-08">0.2.2</a></li>
         <li><a href="#transformer-0-2-3-2019-08-13">0.2.3</a></li>
+        <li><a href="#transformer-0-2-4-2019-08-15">0.2.4</a></li>
       </ul>
     </div>
   </div>

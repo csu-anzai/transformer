@@ -28,6 +28,9 @@ rse <- RangedSummarizedExperiment
 sparse <- sparseMatrix
 tbl <- tbl_df
 
+data(mtcars, package = "datasets", envir = environment())
+mtcars <- as(mtcars, "DataFrame")
+
 ## nolint start
 DataFrame <- S4Vectors::DataFrame
 colData <- SummarizedExperiment::colData

@@ -2,8 +2,8 @@ Package: transformer
 Title: Coercion methods for biological data
 Description: Additional S3 and S4 coercion methods for easy interconversion
     of Bioconductor data classes.
-Version: 0.2.3
-Date: 2019-08-13
+Version: 0.2.4
+Date: 2019-08-15
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -23,8 +23,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    bioverbs (>= 0.2.4),
-    goalie (>= 0.3.3),
+    bioverbs (>= 0.2.5),
+    goalie (>= 0.3.5),
     BiocGenerics,
     GenomicRanges,
     IRanges,
@@ -32,13 +32,13 @@ Imports:
     SummarizedExperiment,
     Matrix (>= 1.2),
     data.table (>= 1.12),
-    dplyr (>= 0.8),
     tibble (>= 2.1),
     methods,
     stats
 Suggests:
     acidroxygen (>= 0.1),
     acidtest (>= 0.2.2),
+    dplyr (>= 0.8),
     patrick (>= 0.0.1),
     testthat (>= 2.1),
     datasets
