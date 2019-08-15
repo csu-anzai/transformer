@@ -1,4 +1,4 @@
-context("joins : Beatles vs. Stones (from dplyr)")
+context("join : Beatles vs. Stones (from dplyr)")
 
 ## nolint start
 ## Compare with `data.frame` objects:
@@ -20,6 +20,7 @@ test_that("inner_join", {
         plays = c("guitar", "bass"),
         row.names = c("John", "Paul")
     )
+    expect_identical(object, expected)
 })
 
 test_that("left_join", {
@@ -77,7 +78,7 @@ test_that("anti_join", {
 
 
 
-context("joins : left_join")
+context("join : left_join")
 
 test_that("Matched rows", {
     df1 <- DataFrame(
