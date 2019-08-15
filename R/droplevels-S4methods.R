@@ -2,6 +2,9 @@
 #'
 #' @name droplevels
 #' @inherit base::droplevels description
+#' @note Updated 2019-08-15.
+#'
+#' @inheritParams acidroxygen::params
 #'
 #' @return Modified object.
 #'
@@ -9,7 +12,8 @@
 #' data(RangedSummarizedExperiment, package = "acidtest")
 #'
 #' ## Ranges ====
-#' object <- rowRanges(RangedSummarizedExperiment)
+#' rse <- RangedSummarizedExperiment
+#' object <- SummarizedExperiment::rowRanges(rse)
 #' droplevels(object)
 #'
 #' ## SummarizedExperiment ====

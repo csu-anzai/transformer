@@ -27,6 +27,7 @@
 #'   Column names to use for merge operation.
 #'   Note that this is always required, unlike the dplyr `tbl_df` method, where
 #'   this is optional.
+#' @param ... Additional arguments.
 #'
 #' @seealso
 #' - `help(topic = "join", package = "dplyr")`.
@@ -174,8 +175,8 @@ setMethod(
 
 
 `right_join,DataFrame` <-  # nolint
-    function(x, y, by, rownames = TRUE) {
-        left_join(x = y, y = x, by = by, rownames = rownames)
+    function(x, y, by) {
+        left_join(x = y, y = x, by = by)
     }
 
 

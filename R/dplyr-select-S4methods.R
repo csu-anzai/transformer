@@ -1,4 +1,4 @@
-#' @inherit dplyr::select_all title description details params
+#' @inherit dplyr::select_all title
 #'
 #' @section `data.frame` methods:
 #'
@@ -11,6 +11,8 @@
 #'
 #' @name select
 #' @note Updated 2019-08-15.
+#'
+#' @inheritParams mutate
 #'
 #' @return Modified object.
 #'

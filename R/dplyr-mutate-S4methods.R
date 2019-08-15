@@ -1,4 +1,4 @@
-#' @inherit dplyr::mutate_all title description details params
+#' @inherit dplyr::mutate_all title
 #'
 #' @section `data.frame` methods:
 #'
@@ -11,6 +11,12 @@
 #'
 #' @name mutate
 #' @note Updated 2019-08-15.
+#'
+#' @param .tbl Object.
+#' @param .funs,.predicate `function`.
+#'   Refer to dplyr documentation for details.
+#' @param .vars `character`.
+#'   Column names.
 #'
 #' @return Modified object.
 #'

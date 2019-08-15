@@ -37,38 +37,38 @@ anti_join(x, y, ...)
 
 \S4method{inner_join}{data.frame,data.frame}(x, y, ...)
 
-\S4method{inner_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+\S4method{inner_join}{DataFrame,DataFrame}(x, y, by)
 
 \S4method{left_join}{data.frame,data.frame}(x, y, ...)
 
-\S4method{left_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+\S4method{left_join}{DataFrame,DataFrame}(x, y, by)
 
-\S4method{right_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+\S4method{right_join}{DataFrame,DataFrame}(x, y, by)
 
 \S4method{right_join}{data.frame,data.frame}(x, y, ...)
 
-\S4method{full_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+\S4method{full_join}{DataFrame,DataFrame}(x, y, by)
 
 \S4method{full_join}{data.frame,data.frame}(x, y, ...)
 
 \S4method{semi_join}{data.frame,data.frame}(x, y, ...)
 
-\S4method{semi_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+\S4method{semi_join}{DataFrame,DataFrame}(x, y, by)
 
 \S4method{anti_join}{data.frame,data.frame}(x, y, ...)
 
-\S4method{anti_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+\S4method{anti_join}{DataFrame,DataFrame}(x, y, by)
 }
 \arguments{
 \item{x, y}{\code{DataFrame}.
 Data frames, or objects, to be coerced into a single object.}
 
+\item{...}{Additional arguments.}
+
 \item{by}{\code{character}.
 Column names to use for merge operation.
 Note that this is always required, unlike the dplyr \code{tbl_df} method, where
 this is optional.}
-
-\item{copy, suffix, ...}{Disabled for \code{DataFrame} method.}
 }
 \value{
 Merge of \code{x} and \code{y} objects.
