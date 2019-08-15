@@ -1,4 +1,4 @@
-context("join : dplyr examples")
+context("dplyr : join : Beatles vs. Stones")
 
 ## nolint start
 ## Compare with `data.frame` objects:
@@ -78,7 +78,7 @@ test_that("anti_join", {
 
 
 
-context("join : left_join bioinfo")
+context("dplyr : join : left_join with bioinfo")
 
 test_that("Matched rows", {
     df1 <- DataFrame(
