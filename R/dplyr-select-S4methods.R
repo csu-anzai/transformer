@@ -1,4 +1,4 @@
-#' @inherit dplyr::select_all title description details
+#' @inherit dplyr::select_all title description details params
 #'
 #' @section `data.frame` methods:
 #'

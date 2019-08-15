@@ -1,4 +1,4 @@
-#' @inherit dplyr::mutate_all title description details
+#' @inherit dplyr::mutate_all title description details params
 #'
 #' @section `data.frame` methods:
 #'
