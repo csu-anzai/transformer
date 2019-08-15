@@ -7,8 +7,6 @@ setGeneric(
     }
 )
 
-
-
 #' @rdname join
 #' @export
 setGeneric(
@@ -17,8 +15,6 @@ setGeneric(
         standardGeneric("left_join")
     }
 )
-
-
 
 #' @rdname join
 #' @export
@@ -29,8 +25,6 @@ setGeneric(
     }
 )
 
-
-
 #' @rdname join
 #' @export
 setGeneric(
@@ -39,8 +33,6 @@ setGeneric(
         standardGeneric("full_join")
     }
 )
-
-
 
 #' @rdname join
 #' @export
@@ -51,13 +43,44 @@ setGeneric(
     }
 )
 
-
-
 #' @rdname join
 #' @export
 setGeneric(
     name = "anti_join",
     def = function(x, y, ...) {
         standardGeneric("anti_join")
+    }
+)
+
+
+
+#' @rdname mutate
+#' @export
+setGeneric(
+    name = "mutate_all",
+    def = function(.tbl, ...) {
+        standardGeneric("mutate_all")
+    }
+)
+
+
+
+#' @rdname mutate
+#' @export
+setGeneric(
+    name = "mutate_at",
+    def = function(.tbl, ...) {
+        standardGeneric("mutate_at")
+    }
+)
+
+
+
+#' @rdname mutate
+#' @export
+setGeneric(
+    name = "mutate_if",
+    def = function(.tbl, ...) {
+        standardGeneric("mutate_if")
     }
 )

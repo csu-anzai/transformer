@@ -11,7 +11,13 @@
 #' Unlike the S3 methods defined in dplyr, the join methods defined here for
 #' `DataFrame` always preserve row names.
 #'
-#' @rdname join
+#' @section `data.frame` methods:
+#'
+#' Since we are defining S4 methods in this package, we are providing
+#' passthrough support to dplyr for `data.frame` class objects.
+#'
+#' Refer to `help(topic = "join", package = "dplyr")` for details.
+#'
 #' @name join
 #' @note Updated 2019-08-15.
 #'
@@ -28,14 +34,17 @@
 #' - `help(topic = "merge", package = "S4Vectors")`.
 #' - https://support.bioconductor.org/p/120277/
 #'
+#' @return Merge of `x` and `y` objects.
+#'
 #' @examples
 #' data(band_members, band_instruments)
+#'
+#' ## DataFrame ====
 #' x <- band_members
 #' print(x)
 #' y <- band_instruments
 #' print(y)
 #' by <- "name"
-#'
 #' inner_join(x = x, y = y, by = by)
 #' left_join(x = x, y = y, by = by)
 #' right_join(x = x, y = y, by = by)
@@ -46,7 +55,6 @@ NULL
 
 
 
-## data.frame ==================================================================
 `inner_join,data.frame` <-  # nolint
     function(x, y, ...) {
         requireNamespace("dplyr", quietly = TRUE)
@@ -68,112 +76,6 @@ setMethod(
 
 
 
-`left_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
-        dplyr::left_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "left_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `left_join,data.frame`
-)
-
-
-
-`right_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
-        dplyr::right_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "right_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `right_join,data.frame`
-)
-
-
-
-`full_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
-        dplyr::full_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "full_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `full_join,data.frame`
-)
-
-
-
-`semi_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
-        dplyr::semi_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "semi_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `semi_join,data.frame`
-)
-
-
-
-`anti_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
-        dplyr::anti_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "anti_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `anti_join,data.frame`
-)
-
-
-
-## DataFrame ===================================================================
 `inner_join,DataFrame` <-  # nolint
     function(x, y, by, rownames = TRUE) {
         assert(
@@ -205,6 +107,27 @@ setMethod(
         y = "DataFrame"
     ),
     definition = `inner_join,DataFrame`
+)
+
+
+
+`left_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::left_join(x = x, y = y, ...)
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "left_join",
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
+    definition = `left_join,data.frame`
 )
 
 
@@ -245,6 +168,14 @@ setMethod(
 
 
 
+`right_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::right_join(x = x, y = y, ...)
+    }
+
+
+
 `right_join,DataFrame` <-  # nolint
     function(x, y, by, rownames = TRUE) {
         left_join(x = y, y = x, by = by, rownames = rownames)
@@ -262,6 +193,27 @@ setMethod(
     ),
     definition = `right_join,DataFrame`
 )
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "right_join",
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
+    definition = `right_join,data.frame`
+)
+
+
+
+`full_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::full_join(x = x, y = y, ...)
+    }
 
 
 
@@ -305,6 +257,40 @@ setMethod(
 
 
 
+#' @rdname join
+#' @export
+setMethod(
+    f = "full_join",
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
+    definition = `full_join,data.frame`
+)
+
+
+
+`semi_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::semi_join(x = x, y = y, ...)
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "semi_join",
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
+    definition = `semi_join,data.frame`
+)
+
+
+
 `semi_join,DataFrame` <-  # nolint
     function(x, y, by, rownames = TRUE) {
         assert(
@@ -336,6 +322,27 @@ setMethod(
         y = "DataFrame"
     ),
     definition = `semi_join,DataFrame`
+)
+
+
+
+`anti_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::anti_join(x = x, y = y, ...)
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "anti_join",
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
+    definition = `anti_join,data.frame`
 )
 
 

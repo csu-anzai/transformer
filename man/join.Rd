@@ -10,16 +10,16 @@
 \alias{anti_join}
 \alias{join}
 \alias{inner_join,data.frame,data.frame-method}
-\alias{left_join,data.frame,data.frame-method}
-\alias{right_join,data.frame,data.frame-method}
-\alias{full_join,data.frame,data.frame-method}
-\alias{semi_join,data.frame,data.frame-method}
-\alias{anti_join,data.frame,data.frame-method}
 \alias{inner_join,DataFrame,DataFrame-method}
+\alias{left_join,data.frame,data.frame-method}
 \alias{left_join,DataFrame,DataFrame-method}
 \alias{right_join,DataFrame,DataFrame-method}
+\alias{right_join,data.frame,data.frame-method}
 \alias{full_join,DataFrame,DataFrame-method}
+\alias{full_join,data.frame,data.frame-method}
+\alias{semi_join,data.frame,data.frame-method}
 \alias{semi_join,DataFrame,DataFrame-method}
+\alias{anti_join,data.frame,data.frame-method}
 \alias{anti_join,DataFrame,DataFrame-method}
 \title{Join operations supporting S4 class objects}
 \usage{
@@ -37,25 +37,25 @@ anti_join(x, y, ...)
 
 \S4method{inner_join}{data.frame,data.frame}(x, y, ...)
 
-\S4method{left_join}{data.frame,data.frame}(x, y, ...)
-
-\S4method{right_join}{data.frame,data.frame}(x, y, ...)
-
-\S4method{full_join}{data.frame,data.frame}(x, y, ...)
-
-\S4method{semi_join}{data.frame,data.frame}(x, y, ...)
-
-\S4method{anti_join}{data.frame,data.frame}(x, y, ...)
-
 \S4method{inner_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+
+\S4method{left_join}{data.frame,data.frame}(x, y, ...)
 
 \S4method{left_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 
 \S4method{right_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 
+\S4method{right_join}{data.frame,data.frame}(x, y, ...)
+
 \S4method{full_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 
+\S4method{full_join}{data.frame,data.frame}(x, y, ...)
+
+\S4method{semi_join}{data.frame,data.frame}(x, y, ...)
+
 \S4method{semi_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+
+\S4method{anti_join}{data.frame,data.frame}(x, y, ...)
 
 \S4method{anti_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 }
@@ -69,6 +69,9 @@ Note that this is always required, unlike the dplyr \code{tbl_df} method, where
 this is optional.}
 
 \item{copy, suffix, ...}{Disabled for \code{DataFrame} method.}
+}
+\value{
+Merge of \code{x} and \code{y} objects.
 }
 \description{
 Join operations supporting S4 class objects
@@ -91,14 +94,24 @@ Unlike the S3 methods defined in dplyr, the join methods defined here for
 \code{DataFrame} always preserve row names.
 }
 
+\section{\code{data.frame} methods}{
+
+
+Since we are defining S4 methods in this package, we are providing
+passthrough support to dplyr for \code{data.frame} class objects.
+
+Refer to \code{help(topic = "join", package = "dplyr")} for details.
+}
+
 \examples{
 data(band_members, band_instruments)
+
+## DataFrame ====
 x <- band_members
 print(x)
 y <- band_instruments
 print(y)
 by <- "name"
-
 inner_join(x = x, y = y, by = by)
 left_join(x = x, y = y, by = by)
 right_join(x = x, y = y, by = by)
