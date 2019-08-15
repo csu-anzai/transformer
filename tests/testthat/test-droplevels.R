@@ -1,11 +1,12 @@
-context("relevel")
+context("droplevels")
 
 Rle <- structure("Rle", package = "S4Vectors")  # nolint
 
+## This is defined in S4Vectors.
 test_that("DataFrame", {
     cd <- colData(rse)
     expect_s4_class(cd, "DataFrame")
-    x <- relevel(cd)
+    x <- droplevels(cd)
     expect_s4_class(x, "DataFrame")
     expect_identical(
         object = lapply(x, class),
@@ -14,17 +15,17 @@ test_that("DataFrame", {
 })
 
 test_that("Early return on empty DataFrame", {
-    expect_identical(relevel(DataFrame()), DataFrame())
+    expect_identical(droplevels(DataFrame()), DataFrame())
 })
 
 test_that("IRanges", {
-    expect_identical(relevel(ir), ir)
+    expect_identical(droplevels(ir), ir)
 })
 
 test_that("GRanges", {
     rr <- rowRanges(rse)
     expect_s4_class(rr, "GRanges")
-    x <- relevel(rr)
+    x <- droplevels(rr)
     expect_s4_class(x, "GRanges")
     if (packageVersion("GenomicRanges") < "1.31") {
         AsIs <- "AsIs"  # nolint
@@ -47,7 +48,7 @@ test_that("GRanges", {
 })
 
 test_that("SummarizedExperiment", {
-    x <- relevel(rse)
+    x <- droplevels(rse)
     expect_s4_class(x, "RangedSummarizedExperiment")
     ## Check for factor columns.
     ok <- any(vapply(
