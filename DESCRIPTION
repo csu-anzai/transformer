@@ -23,8 +23,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5)
 Imports:
-    bioverbs (>= 0.2.4),
-    goalie (>= 0.3.3),
+    bioverbs (>= 0.2.5),
+    goalie (>= 0.3.5),
     BiocGenerics,
     GenomicRanges,
     IRanges,
