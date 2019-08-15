@@ -30,6 +30,10 @@
 #'
 #' @examples
 #' data(band_members, band_instruments)
+#'
+#' print(band_members)
+#' print(band_instruments)
+#'
 #' inner_join(band_members, band_instruments, by = "name")
 #' left_join(band_members, band_instruments, by = "name")
 #' right_join(band_members, band_instruments, by = "name")
@@ -181,7 +185,7 @@ setMethod(
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all = FALSE, sort = FALSE)
         out <- out[order(out[[".idx"]]), , drop = FALSE]
-        if (isTRUE(rownames)) {
+        if (isTRUE(rownames) && hasRownames(x)) {
             rownames(out) <- rownames(x)[out[[".idx"]]]
         }
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
@@ -217,7 +221,7 @@ setMethod(
         out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)
         out <- out[order(out[[".idx"]]), , drop = FALSE]
         assert(identical(x[[".idx"]], out[[".idx"]]))
-        if (isTRUE(rownames)) {
+        if (isTRUE(rownames) && hasRownames(x)) {
             rownames(out) <- rownames(x)
         }
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
@@ -273,7 +277,7 @@ setMethod(
         y[[".idy"]] <- seq_len(nrow(y))
         out <- merge(x = x, y = y, by = by, all = TRUE, sort = FALSE)
         out <- out[order(out[[".idx"]], out[[".idy"]]), , drop = FALSE]
-        if (isTRUE(rownames)) {
+        if (isTRUE(rownames) && hasRownames(x) && hasRownames(y)) {
             rnx <- rownames(x)[na.omit(out[[".idx"]])]
             rny <- rownames(y)[na.omit(out[[".idy"]])]
             rn <- unique(c(rnx, rny))
