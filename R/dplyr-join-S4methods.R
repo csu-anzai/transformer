@@ -263,8 +263,23 @@ setMethod(
 
 
 
+`right_join,DataFrame` <-  # nolint
+    function(x, y, by) {
+        left_join(x = y, y = x, by = by)
+    }
 
-## FIXME right
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "right_join",
+    signature = signature("DataFrame"),
+    definition = `right_join,DataFrame`
+)
+
+
+
 ## FIXME full
 ## FIXME semi
 ## FIXME nest
