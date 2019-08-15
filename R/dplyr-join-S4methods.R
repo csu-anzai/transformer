@@ -290,9 +290,9 @@ setMethod(
         out <- merge(x = x, y = y, by = by, all = TRUE, sort = FALSE)
         out <- out[order(out[[".idx"]], out[[".idy"]]), , drop = FALSE]
         if (isTRUE(rownames)) {
-            rownamesX <- rownames(x)[na.omit(out[[".idx"]])]
-            rownamesY <- rownames(y)[na.omit(out[[".idy"]])]
-            rownames <- unique(c(rownamesX, rownamesY))
+            rnx <- rownames(x)[na.omit(out[[".idx"]])]
+            rny <- rownames(y)[na.omit(out[[".idy"]])]
+            rownames <- unique(c(rnx, rny))
             assert(hasLength(rownames, n = nrow(out)))
             rownames(out) <- rownames
         }
