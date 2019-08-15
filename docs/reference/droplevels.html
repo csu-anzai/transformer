@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reorder factor levels — relevel • transformer</title>
+<title>Drop unused levels from factors — droplevels • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Reorder factor levels — relevel" />
+<meta property="og:title" content="Drop unused levels from factors — droplevels" />
 
-<meta property="og:description" content="Reorder factor levels" />
+<meta property="og:description" content="The function droplevels is used to drop unused levels from a
+  factor or, more commonly, from factors in a data frame." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -68,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -108,27 +109,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reorder factor levels</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/relevel-S3methods.R'><code>R/relevel-S3methods.R</code></a></small>
-    <div class="hidden name"><code>relevel.Rd</code></div>
+    <h1>Drop unused levels from factors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/droplevels-S4methods.R'><code>R/droplevels-S4methods.R</code></a></small>
+    <div class="hidden name"><code>droplevels.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Reorder factor levels</p>
+    <p>The function <code>droplevels</code> is used to drop unused levels from a
+  <code><a href='https://rdrr.io/r/base/factor.html'>factor</a></code> or, more commonly, from factors in a data frame.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>relevel</span>(<span class='no'>x</span>, <span class='no'>ref</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='co'># S4 method for Ranges</span>
+<span class='fu'>droplevels</span>(<span class='no'>x</span>)
 
-<span class='co'># S3 method for DataFrame</span>
-<span class='fu'>relevel</span>(<span class='no'>x</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for Ranges</span>
-<span class='fu'>relevel</span>(<span class='no'>x</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for SummarizedExperiment</span>
-<span class='fu'>relevel</span>(<span class='no'>x</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='co'># S4 method for SummarizedExperiment</span>
+<span class='fu'>droplevels</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,36 +134,27 @@
       <th>x</th>
       <td><p>Object.</p></td>
     </tr>
-    <tr>
-      <th>ref</th>
-      <td><p><code>NULL</code>.
-Unsupported argument that is part of S3 generic.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Modified object.
-Factor levels will be readjusted (i.e. superfluous levels are dropped).</p>
+    <p>Modified object.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Updated 2019-08-15.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>SummarizedExperiment</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>RangedSummarizedExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>RangedSummarizedExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
-<span class='co'>## DataFrame ====</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData</a></span>(<span class='no'>RangedSummarizedExperiment</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevel</span>(<span class='no'>df</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;    Length     Class      Mode 
-#&gt;         8 DataFrame        S4 </div><div class='input'>
-<span class='co'>## GenomicRanges ====</span>
-<span class='no'>gr</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a></span>(<span class='no'>RangedSummarizedExperiment</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>relevel</span>(<span class='no'>gr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "GRanges object with 500 ranges and 8 metadata columns"</div></pre>
+<span class='co'>## Ranges ====</span>
+<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a></span>(<span class='no'>rse</span>)
+<span class='fu'>droplevels</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in getListElement(x, i, ...): GRanges objects don't support [[, as.list(), lapply(), or unlist() at</span>
+#&gt; <span class='error'>  the moment</span></div><div class='input'>
+<span class='co'>## SummarizedExperiment ====</span>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -174,6 +162,8 @@ Factor levels will be readjusted (i.e. superfluous levels are dropped).</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

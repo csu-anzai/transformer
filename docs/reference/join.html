@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Join operations supporting S4 class objects — join • transformer</title>
+<title>Join operations supporting S4 class objects — inner_join • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Join operations supporting S4 class objects — join" />
+<meta property="og:title" content="Join operations supporting S4 class objects — inner_join" />
 
 <meta property="og:description" content="Join operations supporting S4 class objects" />
 <meta name="twitter:card" content="summary" />
@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Join operations supporting S4 class objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/join-S3methods.R'><code>R/join-S3methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/dplyr-join-S4methods.R'><code>R/dplyr-join-S4methods.R</code></a></small>
     <div class="hidden name"><code>join.Rd</code></div>
     </div>
 
@@ -119,9 +119,53 @@
     
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for DataFrame</span>
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/join.html'>left_join</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='kw'>copy</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>inner_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>left_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>right_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>full_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>semi_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='fu'>anti_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'>inner_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='fu'>inner_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'>left_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='fu'>left_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+
+<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='fu'>right_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'>right_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='fu'>full_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'>full_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'>semi_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='fu'>semi_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+
+<span class='co'># S4 method for data.frame,data.frame</span>
+<span class='fu'>anti_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='fu'>anti_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -132,17 +176,51 @@
 Data frames, or objects, to be coerced into a single object.</p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    <tr>
       <th>by</th>
       <td><p><code>character</code>.
 Column names to use for merge operation.
 Note that this is always required, unlike the dplyr <code>tbl_df</code> method, where
 this is optional.</p></td>
     </tr>
-    <tr>
-      <th>copy, suffix, ...</th>
-      <td><p>Disabled for <code>DataFrame</code> method.</p></td>
-    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Merge of <code>x</code> and <code>y</code> objects.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Updated 2019-08-15.</p>
+    
+    <h2 class="hasAnchor" id="ordering"><a class="anchor" href="#ordering"></a>Ordering</h2>
+
+    
+
+
+<p>The join functions never rearrange rows. To accomplish this, we're currently
+setting an internal <code>.idx</code> column that we can use to reorder the rows after
+<code><a href='https://rdrr.io/r/base/merge.html'>merge()</a></code> operation.</p>
+    
+    <h2 class="hasAnchor" id="row-names"><a class="anchor" href="#row-names"></a>Row names</h2>
+
+    
+
+
+<p>Unlike the S3 methods defined in dplyr, the join methods defined here for
+<code>DataFrame</code> always preserve row names.</p>
+    
+    <h2 class="hasAnchor" id="data-frame-methods"><a class="anchor" href="#data-frame-methods"></a><code>data.frame</code> methods</h2>
+
+    
+
+
+<p>Since we are defining S4 methods in this package, we are providing
+passthrough support to dplyr for <code>data.frame</code> class objects.</p>
+<p>Refer to <code><a href='https://rdrr.io/r/utils/help.html'>help(topic = "join", package = "dplyr")</a></code> for details.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -150,47 +228,32 @@ this is optional.</p></td>
 <ul>
 <li><p><code><a href='https://rdrr.io/r/utils/help.html'>help(topic = "join", package = "dplyr")</a></code>.</p></li>
 <li><p><code><a href='https://rdrr.io/r/utils/help.html'>help(topic = "merge", package = "S4Vectors")</a></code>.</p></li>
+<li><p>https://support.bioconductor.org/p/120277/</p></li>
 </ul>
 </div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>DataFrame</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>S4Vectors</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html'>DataFrame</a></span>
-
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>band_members</span>, <span class='no'>band_instruments</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: data set ‘band_members’ not found</span></div><div class='output co'>#&gt; <span class='warning'>Warning: data set ‘band_instruments’ not found</span></div><div class='input'>
 <span class='co'>## DataFrame ====</span>
-<span class='no'>df1</span> <span class='kw'>&lt;-</span> <span class='fu'>DataFrame</span>(
-    <span class='kw'>id</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>4L</span>)),
-    <span class='kw'>genotype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"wt"</span>, <span class='st'>"ko"</span>), <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>2L</span>))
-)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>df1</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;         id genotype
-#&gt;   &lt;factor&gt; &lt;factor&gt;
-#&gt; 1        1       wt
-#&gt; 2        2       wt
-#&gt; 3        3       ko
-#&gt; 4        4       ko</div><div class='input'><span class='no'>df2</span> <span class='kw'>&lt;-</span> <span class='fu'>DataFrame</span>(
-    <span class='kw'>id</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>4L</span>)),
-    <span class='kw'>treatment</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"control"</span>, <span class='st'>"expt"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>2L</span>))
-)
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>df2</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 2 columns
-#&gt;         id treatment
-#&gt;   &lt;factor&gt;  &lt;factor&gt;
-#&gt; 1        1   control
-#&gt; 2        2      expt
-#&gt; 3        3   control
-#&gt; 4        4      expt</div><div class='input'><span class='fu'><a href='https://dplyr.tidyverse.org/reference/join.html'>left_join</a></span>(<span class='no'>df1</span>, <span class='no'>df2</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"id"</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
-#&gt;         id genotype treatment
-#&gt;   &lt;factor&gt; &lt;factor&gt;  &lt;factor&gt;
-#&gt; 1        1       wt   control
-#&gt; 2        2       wt      expt
-#&gt; 3        3       ko   control
-#&gt; 4        4       ko      expt</div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>band_members</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'band_members' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div><div class='input'><span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>band_instruments</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'band_instruments' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(y): object 'y' not found</span></div><div class='input'><span class='no'>by</span> <span class='kw'>&lt;-</span> <span class='st'>"name"</span>
+<span class='fu'>inner_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in inner_join(x = x, y = y, by = by): could not find function "inner_join"</span></div><div class='input'><span class='fu'>left_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in left_join(x = x, y = y, by = by): object 'x' not found</span></div><div class='input'><span class='fu'>right_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in right_join(x = x, y = y, by = by): could not find function "right_join"</span></div><div class='input'><span class='fu'>full_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in full_join(x = x, y = y, by = by): could not find function "full_join"</span></div><div class='input'><span class='fu'>semi_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in semi_join(x = x, y = y, by = by): could not find function "semi_join"</span></div><div class='input'><span class='fu'>anti_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in anti_join(x = x, y = y, by = by): could not find function "anti_join"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#ordering">Ordering</a></li>
+
+      <li><a href="#row-names">Row names</a></li>
+
+      <li><a href="#data-frame-methods"><code>data.frame</code> methods</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

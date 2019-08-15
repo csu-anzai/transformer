@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Decode column data that uses run-length encoding — decode • transformer</title>
+<title>Select and rename a selection of variables — select_all • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,11 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Decode column data that uses run-length encoding — decode" />
+<meta property="og:title" content="Select and rename a selection of variables — select_all" />
 
-<meta property="og:description" content="The Rle class is a general container for storing an atomic vector
-  that is stored in a run-length encoding format. It is based on the
-  rle function from the base package." />
+<meta property="og:description" content="Select and rename a selection of variables" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -110,148 +108,95 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Decode column data that uses run-length encoding</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/decode-S4methods.R'><code>R/decode-S4methods.R</code></a></small>
-    <div class="hidden name"><code>decode.Rd</code></div>
+    <h1>Select and rename a selection of variables</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/dplyr-select-S4methods.R'><code>R/dplyr-select-S4methods.R</code></a></small>
+    <div class="hidden name"><code>select.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The Rle class is a general container for storing an atomic vector
-  that is stored in a run-length encoding format. It is based on the
-  <code><a href='https://rdrr.io/r/base/rle.html'>rle</a></code> function from the base package.</p>
+    <p>Select and rename a selection of variables</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>decode</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>select_all</span>(<span class='no'>.tbl</span>, <span class='no'>...</span>)
+
+<span class='fu'>select_at</span>(<span class='no'>.tbl</span>, <span class='no'>...</span>)
+
+<span class='fu'>select_if</span>(<span class='no'>.tbl</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>select_all</span>(<span class='no'>.tbl</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>decode</span>(<span class='no'>x</span>)
+<span class='fu'>select_all</span>(<span class='no'>.tbl</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)
 
-<span class='co'># S4 method for Ranges</span>
-<span class='fu'>decode</span>(<span class='no'>x</span>)
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>select_at</span>(<span class='no'>.tbl</span>, <span class='no'>.vars</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)
 
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>decode</span>(<span class='no'>x</span>)</pre>
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>select_at</span>(<span class='no'>.tbl</span>, <span class='no'>.vars</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)
+
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>select_if</span>(<span class='no'>.tbl</span>, <span class='no'>.predicate</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)
+
+<span class='co'># S4 method for DataFrame</span>
+<span class='fu'>select_if</span>(<span class='no'>.tbl</span>, <span class='no'>.predicate</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
+      <th>.tbl</th>
       <td><p>Object.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <td><p>Additional argument.</p></td>
+    </tr>
+    <tr>
+      <th>.funs</th>
+      <td><p><code>function</code>.
+Refer to dplyr documentation for details.</p></td>
+    </tr>
+    <tr>
+      <th>.vars</th>
+      <td><p><code>character</code>.
+Column names.</p></td>
+    </tr>
+    <tr>
+      <th>.predicate</th>
+      <td><p><code>function</code>.
+Refer to dplyr documentation for details.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Modified object.
-Columns will be decoded and no longer <code>Rle</code> class.</p>
+    <p>Modified object.</p>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/S4Vectors/man/Rle-class.html'>S4Vectors::decode()</a></code>.</p></div>
+    <p>Updated 2019-08-15.</p>
+    
+    <h2 class="hasAnchor" id="data-frame-methods"><a class="anchor" href="#data-frame-methods"></a><code>data.frame</code> methods</h2>
+
+    
+
+
+<p>Since we are defining S4 methods in this package, we are providing
+passthrough support to dplyr for <code>data.frame</code> class objects. Our generic
+methods pass through to dplyr select functions, which are optimized for
+<code>tbl_df</code> class.</p>
+<p>Refer to <code><a href='https://rdrr.io/r/utils/help.html'>help(topic = "select_all", package = "dplyr")</a></code> for details.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>RangedSummarizedExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='no'>rowData</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData</a></span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>mtcars</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"datasets"</span>)
 
 <span class='co'>## DataFrame ====</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>rowData</span>(<span class='no'>RangedSummarizedExperiment</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>df</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $broadClass
-#&gt; [1] "Rle"
-#&gt; attr(,"package")
-#&gt; [1] "S4Vectors"
-#&gt; 
-#&gt; $description
-#&gt; [1] "Rle"
-#&gt; attr(,"package")
-#&gt; [1] "S4Vectors"
-#&gt; 
-#&gt; $entrezID
-#&gt; [1] "list"
-#&gt; 
-#&gt; $geneBiotype
-#&gt; [1] "Rle"
-#&gt; attr(,"package")
-#&gt; [1] "S4Vectors"
-#&gt; 
-#&gt; $geneID
-#&gt; [1] "Rle"
-#&gt; attr(,"package")
-#&gt; [1] "S4Vectors"
-#&gt; 
-#&gt; $geneIDVersion
-#&gt; [1] "Rle"
-#&gt; attr(,"package")
-#&gt; [1] "S4Vectors"
-#&gt; 
-#&gt; $geneName
-#&gt; [1] "Rle"
-#&gt; attr(,"package")
-#&gt; [1] "S4Vectors"
-#&gt; 
-#&gt; $seqCoordSystem
-#&gt; [1] "Rle"
-#&gt; attr(,"package")
-#&gt; [1] "S4Vectors"
-#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>decode</span>(<span class='no'>df</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>x</span>, <span class='no'>class</span>)</div><div class='output co'>#&gt; $broadClass
-#&gt; [1] "factor"
-#&gt; 
-#&gt; $description
-#&gt; [1] "factor"
-#&gt; 
-#&gt; $entrezID
-#&gt; [1] "list"
-#&gt; 
-#&gt; $geneBiotype
-#&gt; [1] "factor"
-#&gt; 
-#&gt; $geneID
-#&gt; [1] "character"
-#&gt; 
-#&gt; $geneIDVersion
-#&gt; [1] "character"
-#&gt; 
-#&gt; $geneName
-#&gt; [1] "factor"
-#&gt; 
-#&gt; $seqCoordSystem
-#&gt; [1] "factor"
-#&gt; </div><div class='input'>
-<span class='co'>## SummarizedExperiment ====</span>
-<span class='co'>## This works on rowData and colData.</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>decode</span>(<span class='no'>RangedSummarizedExperiment</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'>rowData</span>(<span class='no'>x</span>), <span class='no'>class</span>)</div><div class='output co'>#&gt; $broadClass
-#&gt; [1] "factor"
-#&gt; 
-#&gt; $description
-#&gt; [1] "factor"
-#&gt; 
-#&gt; $entrezID
-#&gt; [1] "list"
-#&gt; 
-#&gt; $geneBiotype
-#&gt; [1] "factor"
-#&gt; 
-#&gt; $geneID
-#&gt; [1] "character"
-#&gt; 
-#&gt; $geneIDVersion
-#&gt; [1] "character"
-#&gt; 
-#&gt; $geneName
-#&gt; [1] "factor"
-#&gt; 
-#&gt; $seqCoordSystem
-#&gt; [1] "factor"
-#&gt; </div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>mtcars</span>, <span class='st'>"DataFrame"</span>)
+<span class='fu'>select_all</span>(<span class='no'>x</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='no'>toupper</span>)</div><div class='output co'>#&gt; <span class='error'>Error in select_all(x, .funs = toupper): could not find function "select_all"</span></div><div class='input'><span class='fu'>select_at</span>(<span class='no'>x</span>, <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='st'>"cyl"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in select_at(x, .vars = c("mpg", "cyl")): could not find function "select_at"</span></div><div class='input'><span class='fu'>select_if</span>(<span class='no'>x</span>, <span class='kw'>.predicate</span> <span class='kw'>=</span> <span class='no'>is.double</span>)</div><div class='output co'>#&gt; <span class='error'>Error in select_if(x, .predicate = is.double): could not find function "select_if"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -260,7 +205,9 @@ Columns will be decoded and no longer <code>Rle</code> class.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#data-frame-methods"><code>data.frame</code> methods</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

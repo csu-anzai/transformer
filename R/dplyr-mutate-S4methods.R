@@ -17,6 +17,7 @@
 #'   Refer to dplyr documentation for details.
 #' @param .vars `character`.
 #'   Column names.
+#' @param ... Additional argument.
 #'
 #' @return Modified object.
 #'

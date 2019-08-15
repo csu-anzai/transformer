@@ -1,3 +1,28 @@
+## transformer 0.2.4 (2019-08-15)
+
+### New functions
+
+Improved S4 method support for dplyr verbs working on `DataFrame` class.
+
+- Joins: `inner_join`, `left_join` (already defined), `right_join`, `full_join`,
+  `semi_join`, and `anti_join`. These methods use `merge` internally but
+  ensure that rows are not unexpectedly reordered.
+- Scoped variants of `mutate` and `select`: `mutate_all`, `mutate_at`,
+  `mutate_if`, `transmute_at`, `transmute_if`; `select_all`, `select_at`,
+  `select_if`. These variants keep track of row names. Internally, these
+  functions coerce to `tbl_df` and then call the dplyr function. Return is
+  coerced back to `DataFrame`, with row names preserved.
+
+### Major changes
+
+- `relevel:` Made S3 methods for `relevel` defunct of favor of recommend S4
+  method usage of `droplevels` instead. S4 method support for `droplevels` is
+  already provided in S4Vectors (i.e. `List`, `DataFrame)`. Here we are
+  improving `droplevels` functionality by adding additional method support
+  for `Ranges` (to support `IRanges`, `GRanges`) as well as
+  `SummarizedExperiment`, which enables automatic leveling of factors in
+  `colData` or `rowData`.
+
 ## transformer 0.2.3 (2019-08-13)
 
 ### Minor changes

@@ -35,6 +35,8 @@ select_if(.tbl, ...)
 \arguments{
 \item{.tbl}{Object.}
 
+\item{...}{Additional argument.}
+
 \item{.funs}{\code{function}.
 Refer to dplyr documentation for details.}
 
