@@ -51,13 +51,13 @@ anti_join(x, y, ...)
 
 \S4method{anti_join}{data.frame,data.frame}(x, y, ...)
 
-\S4method{inner_join}{DataFrame,DataFrame}(x, y, by)
+\S4method{inner_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 
-\S4method{left_join}{DataFrame,DataFrame}(x, y, by)
+\S4method{left_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 
-\S4method{right_join}{DataFrame,DataFrame}(x, y, by)
+\S4method{right_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 
-\S4method{full_join}{DataFrame,DataFrame}(x, y, by)
+\S4method{full_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 }
 \arguments{
 \item{x, y}{\code{DataFrame}.

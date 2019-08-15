@@ -185,19 +185,22 @@ setMethod(
 
 ## DataFrame ===================================================================
 `inner_join,DataFrame` <-  # nolint
-    function(x, y, by) {
+    function(x, y, by, rownames = TRUE) {
         assert(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(".idx", colnames(x)),
-            areDisjointSets(".idx", colnames(y))
+            areDisjointSets(".idx", colnames(y)),
+            isFlag(rownames)
         )
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all = FALSE, sort = FALSE)
         out <- out[order(out[[".idx"]]), , drop = FALSE]
+        if (isTRUE(rownames)) {
+            rownames(out) <- rownames(x)[out[[".idx"]]]
+        }
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
-        rownames(out) <- rownames(x)
         out
     }
 
@@ -217,20 +220,23 @@ setMethod(
 
 
 `left_join,DataFrame` <-  # nolint
-    function(x, y, by) {
+    function(x, y, by, rownames = TRUE) {
         assert(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(".idx", colnames(x)),
-            areDisjointSets(".idx", colnames(y))
+            areDisjointSets(".idx", colnames(y)),
+            isFlag(rownames)
         )
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)
         out <- out[order(out[[".idx"]]), , drop = FALSE]
         assert(identical(x[[".idx"]], out[[".idx"]]))
+        if (isTRUE(rownames)) {
+            rownames(out) <- rownames(x)
+        }
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
-        rownames(out) <- rownames(x)
         out
     }
 
@@ -250,8 +256,8 @@ setMethod(
 
 
 `right_join,DataFrame` <-  # nolint
-    function(x, y, by) {
-        left_join(x = y, y = x, by = by)
+    function(x, y, by, rownames = TRUE) {
+        left_join(x = y, y = x, by = by, rownames = rownames)
     }
 
 
@@ -270,19 +276,27 @@ setMethod(
 
 
 `full_join,DataFrame` <-  # nolint
-    function(x, y, by) {
+    function(x, y, by, rownames = TRUE) {
         assert(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(".idx", colnames(x)),
-            areDisjointSets(".idx", colnames(y))
+            areDisjointSets(".idx", colnames(y)),
+            isFlag(rownames)
         )
         x[[".idx"]] <- seq_len(nrow(x))
+        y[[".idy"]] <- seq_len(nrow(y))
         out <- merge(x = x, y = y, by = by, all = TRUE, sort = FALSE)
-        out <- out[order(out[[".idx"]]), , drop = FALSE]
-        out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
-        rownames(out) <- rownames(x)
+        out <- out[order(out[[".idx"]], out[[".idy"]]), , drop = FALSE]
+        if (isTRUE(rownames)) {
+            rownamesX <- rownames(x)[na.omit(out[[".idx"]])]
+            rownamesY <- rownames(y)[na.omit(out[[".idy"]])]
+            rownames <- unique(c(rownamesX, rownamesY))
+            assert(hasLength(rownames, n = nrow(out)))
+            rownames(out) <- rownames
+        }
+        out <- out[, setdiff(colnames(out), c(".idx", ".idy")), drop = FALSE]
         out
     }
 

@@ -41,6 +41,17 @@ test_that("right_join", {
     expect_identical(object, expected)
 })
 
+test_that("full_join", {
+    object <- full_join(x = band_members, y = band_instruments, by = "name")
+    expected <- DataFrame(
+        name = c("Mick", "John", "Paul", "Keith"),
+        band = c("Stones", "Beatles", "Beatles", NA),
+        plays = c(NA, "guitar", "bass", "guitar"),
+        row.names = c("Mick", "John", "Paul", "Keith")
+    )
+    expect_identical(object, expected)
+})
+
 
 
 context("joins : left_join")
