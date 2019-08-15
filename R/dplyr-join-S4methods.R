@@ -1,5 +1,16 @@
 #' Join operations supporting S4 class objects
 #'
+#' @section Ordering:
+#'
+#' The join functions never rearrange rows. To accomplish this, we're currently
+#' setting an internal `.idx` column that we can use to reorder the rows after
+#' [`merge()`][base::merge] operation.
+#'
+#' @section Row names:
+#'
+#' Unlike the S3 methods defined in dplyr, the join methods defined here for
+#' `DataFrame` always preserve row names.
+#'
 #' @rdname join
 #' @name join
 #' @note Updated 2019-08-15.
@@ -15,77 +26,12 @@
 #' @seealso
 #' - `help(topic = "join", package = "dplyr")`.
 #' - `help(topic = "merge", package = "S4Vectors")`.
+#' - https://support.bioconductor.org/p/120277/
 #'
 #' @examples
 #' data(band_members, band_instruments)
 #' left_join(band_members, band_instruments, by = "name")
 NULL
-
-
-
-## Generics ====================================================================
-#' @rdname join
-#' @export
-setGeneric(
-    name = "inner_join",
-    def = function(x, y, ...) {
-        standardGeneric("inner_join")
-    }
-)
-
-#' @rdname join
-#' @export
-setGeneric(
-    name = "left_join",
-    def = function(x, y, ...) {
-        standardGeneric("left_join")
-    }
-)
-
-#' @rdname join
-#' @export
-setGeneric(
-    name = "right_join",
-    def = function(x, y, ...) {
-        standardGeneric("right_join")
-    }
-)
-
-#' @rdname join
-#' @export
-setGeneric(
-    name = "full_join",
-    def = function(x, y, ...) {
-        standardGeneric("full_join")
-    }
-)
-
-#' @rdname join
-#' @export
-setGeneric(
-    name = "semi_join",
-    def = function(x, y, ...) {
-        standardGeneric("semi_join")
-    }
-)
-
-#' @rdname join
-#' @export
-setGeneric(
-    name = "nest_join",
-    def = function(x, y, ...) {
-        standardGeneric("nest_join")
-    }
-)
-
-#' @rdname join
-#' @export
-setGeneric(
-    name = "anti_join",
-    def = function(x, y, ...) {
-        standardGeneric("anti_join")
-    }
-)
 
 
 
@@ -238,39 +184,52 @@ setMethod(
 
 
 ## DataFrame ===================================================================
-## Currently setting an internal `.idx` column that we can use to reorder the
-## rows after `merge()` operation.
-##
-## Can consider using Hervé Pagès's recommended approach instead.
-## https://support.bioconductor.org/p/120277/
-
-
-
 `inner_join,DataFrame` <-  # nolint
     function(x, y, by) {
-
+        assert(
+            isCharacter(by),
+            isSubset(by, colnames(x)),
+            isSubset(by, colnames(y)),
+            areDisjointSets(".idx", colnames(x)),
+            areDisjointSets(".idx", colnames(y))
+        )
+        x[[".idx"]] <- seq_len(nrow(x))
+        out <- merge(x = x, y = y, by = by, all = FALSE, sort = FALSE)
+        out <- out[order(out[[".idx"]]), , drop = FALSE]
+        out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
+        rownames(out) <- rownames(x)
+        out
     }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "inner_join",
+    signature = signature(
+        x = "DataFrame",
+        y = "DataFrame"
+    ),
+    definition = `inner_join,DataFrame`
+)
 
 
 
 `left_join,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
-            is(x, "DataFrame"),
-            is(y, "DataFrame"),
             isCharacter(by),
-            areDisjointSets(".idx", colnames(x))
+            isSubset(by, colnames(x)),
+            isSubset(by, colnames(y)),
+            areDisjointSets(".idx", colnames(x)),
+            areDisjointSets(".idx", colnames(y))
         )
-        ## Setting internal `.idx` column here to avoid row reorders.
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)
-        ## Now ensure original row order is preserved, using `.idx` values.
         out <- out[order(out[[".idx"]]), , drop = FALSE]
         assert(identical(x[[".idx"]], out[[".idx"]]))
-        ## Don't use `NULL` assignment on S4 columns.
-        ## This isn't backward compatible with BioC 3.6.
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
-        ## Ensure rownames are preserved.
         rownames(out) <- rownames(x)
         out
     }
@@ -310,7 +269,38 @@ setMethod(
 
 
 
-## FIXME full
+`full_join,DataFrame` <-  # nolint
+    function(x, y, by) {
+        assert(
+            isCharacter(by),
+            isSubset(by, colnames(x)),
+            isSubset(by, colnames(y)),
+            areDisjointSets(".idx", colnames(x)),
+            areDisjointSets(".idx", colnames(y))
+        )
+        x[[".idx"]] <- seq_len(nrow(x))
+        out <- merge(x = x, y = y, by = by, all = TRUE, sort = FALSE)
+        out <- out[order(out[[".idx"]]), , drop = FALSE]
+        out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
+        rownames(out) <- rownames(x)
+        out
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "full_join",
+    signature = signature(
+        x = "DataFrame",
+        y = "DataFrame"
+    ),
+    definition = `full_join,DataFrame`
+)
+
+
+
 ## FIXME semi
 ## FIXME nest
 ## FIXME anti
