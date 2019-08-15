@@ -102,7 +102,10 @@ setGeneric(
 #' @export
 setMethod(
     f = "inner_join",
-    signature = signature("data.frame"),
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
     definition = `inner_join,data.frame`
 )
 
@@ -120,7 +123,10 @@ setMethod(
 #' @export
 setMethod(
     f = "left_join",
-    signature = signature("data.frame"),
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
     definition = `left_join,data.frame`
 )
 
@@ -138,7 +144,10 @@ setMethod(
 #' @export
 setMethod(
     f = "right_join",
-    signature = signature("data.frame"),
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
     definition = `right_join,data.frame`
 )
 
@@ -156,7 +165,10 @@ setMethod(
 #' @export
 setMethod(
     f = "full_join",
-    signature = signature("data.frame"),
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
     definition = `full_join,data.frame`
 )
 
@@ -174,7 +186,10 @@ setMethod(
 #' @export
 setMethod(
     f = "semi_join",
-    signature = signature("data.frame"),
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
     definition = `semi_join,data.frame`
 )
 
@@ -192,7 +207,10 @@ setMethod(
 #' @export
 setMethod(
     f = "nest_join",
-    signature = signature("data.frame"),
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
     definition = `nest_join,data.frame`
 )
 
@@ -210,7 +228,10 @@ setMethod(
 #' @export
 setMethod(
     f = "anti_join",
-    signature = signature("data.frame"),
+    signature = signature(
+        x = "data.frame",
+        y = "data.frame"
+    ),
     definition = `anti_join,data.frame`
 )
 
@@ -225,7 +246,10 @@ setMethod(
 
 
 
-## FIXME inner
+`inner_join,DataFrame` <-  # nolint
+    function(x, y, by) {
+
+    }
 
 
 
@@ -257,7 +281,10 @@ setMethod(
 #' @export
 setMethod(
     f = "left_join",
-    signature = signature("DataFrame"),
+    signature = signature(
+        x = "DataFrame",
+        y = "DataFrame"
+    ),
     definition = `left_join,DataFrame`
 )
 
@@ -274,7 +301,10 @@ setMethod(
 #' @export
 setMethod(
     f = "right_join",
-    signature = signature("DataFrame"),
+    signature = signature(
+        x = "DataFrame",
+        y = "DataFrame"
+    ),
     definition = `right_join,DataFrame`
 )
 

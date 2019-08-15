@@ -1,4 +1,4 @@
-context("joins : Beatles vs. Stones")
+context("joins : Beatles vs. Stones (from dplyr)")
 
 ## nolint start
 ## Compare with data.frame original:
@@ -8,6 +8,16 @@ context("joins : Beatles vs. Stones")
 data(band_members, band_instruments, envir = environment())
 rownames(band_members) <- band_members[["name"]]
 rownames(band_instruments) <- band_instruments[["name"]]
+
+test_that("inner_join", {
+    object <- inner_join(x = band_members, y = band_instruments, by = "name")
+    expected <- DataFrame(
+        name = c("John", "Paul"),
+        band = c("Beatles", "Beatles"),
+        plays = c("guitar", "bass"),
+        row.names = c("John", "Paul")
+    )
+})
 
 test_that("left_join", {
     object <- left_join(x = band_members, y = band_instruments, by = "name")
@@ -33,18 +43,7 @@ test_that("right_join", {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-context("left_join")
+context("joins : left_join")
 
 test_that("Matched rows", {
     df1 <- DataFrame(
