@@ -20,6 +20,7 @@
 \alias{right_join,DataFrame,DataFrame-method}
 \alias{full_join,DataFrame,DataFrame-method}
 \alias{semi_join,DataFrame,DataFrame-method}
+\alias{anti_join,DataFrame,DataFrame-method}
 \title{Join operations supporting S4 class objects}
 \usage{
 inner_join(x, y, ...)
@@ -55,6 +56,8 @@ anti_join(x, y, ...)
 \S4method{full_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 
 \S4method{semi_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
+
+\S4method{anti_join}{DataFrame,DataFrame}(x, y, by, rownames = TRUE)
 }
 \arguments{
 \item{x, y}{\code{DataFrame}.
@@ -90,7 +93,12 @@ Unlike the S3 methods defined in dplyr, the join methods defined here for
 
 \examples{
 data(band_members, band_instruments)
+inner_join(band_members, band_instruments, by = "name")
 left_join(band_members, band_instruments, by = "name")
+right_join(band_members, band_instruments, by = "name")
+full_join(band_members, band_instruments, by = "name")
+semi_join(band_members, band_instruments, by = "name")
+anti_join(band_members, band_instruments, by = "name")
 }
 \seealso{
 \itemize{
