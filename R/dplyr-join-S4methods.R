@@ -27,7 +27,6 @@
 #'   Column names to use for merge operation.
 #'   Note that this is always required, unlike the dplyr `tbl_df` method, where
 #'   this is optional.
-#' @param copy,suffix,... Disabled for `DataFrame` method.
 #'
 #' @seealso
 #' - `help(topic = "join", package = "dplyr")`.
@@ -77,19 +76,18 @@ setMethod(
 
 
 `inner_join,DataFrame` <-  # nolint
-    function(x, y, by, rownames = TRUE) {
+    function(x, y, by) {
         assert(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
-            areDisjointSets(c(".idx", ".idy"), colnames(y)),
-            isFlag(rownames)
+            areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all = FALSE, sort = FALSE)
         out <- out[order(out[[".idx"]]), , drop = FALSE]
-        if (isTRUE(rownames) && hasRownames(x)) {
+        if (hasRownames(x)) {
             rownames(out) <- rownames(x)[out[[".idx"]]]
         }
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
@@ -133,20 +131,19 @@ setMethod(
 
 
 `left_join,DataFrame` <-  # nolint
-    function(x, y, by, rownames = TRUE) {
+    function(x, y, by) {
         assert(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
-            areDisjointSets(c(".idx", ".idy"), colnames(y)),
-            isFlag(rownames)
+            areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)
         out <- out[order(out[[".idx"]]), , drop = FALSE]
         assert(identical(x[[".idx"]], out[[".idx"]]))
-        if (isTRUE(rownames) && hasRownames(x)) {
+        if (hasRownames(x)) {
             rownames(out) <- rownames(x)
         }
         out <- out[, setdiff(colnames(out), ".idx"), drop = FALSE]
@@ -218,20 +215,19 @@ setMethod(
 
 
 `full_join,DataFrame` <-  # nolint
-    function(x, y, by, rownames = TRUE) {
+    function(x, y, by) {
         assert(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
-            areDisjointSets(c(".idx", ".idy"), colnames(y)),
-            isFlag(rownames)
+            areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
         x[[".idx"]] <- seq_len(nrow(x))
         y[[".idy"]] <- seq_len(nrow(y))
         out <- merge(x = x, y = y, by = by, all = TRUE, sort = FALSE)
         out <- out[order(out[[".idx"]], out[[".idy"]]), , drop = FALSE]
-        if (isTRUE(rownames) && hasRownames(x) && hasRownames(y)) {
+        if (hasRownames(x) && hasRownames(y)) {
             rnx <- rownames(x)[na.omit(out[[".idx"]])]
             rny <- rownames(y)[na.omit(out[[".idy"]])]
             rn <- unique(c(rnx, rny))
@@ -292,22 +288,18 @@ setMethod(
 
 
 `semi_join,DataFrame` <-  # nolint
-    function(x, y, by, rownames = TRUE) {
+    function(x, y, by) {
         assert(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
-            areDisjointSets(c(".idx", ".idy"), colnames(y)),
-            isFlag(rownames)
+            areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
         x[[".idx"]] <- seq_len(nrow(x))
         m <- merge(x = x, y = y, by = by, all = FALSE, sort = FALSE)
         which <- m[[".idx"]]
         out <- x[which, setdiff(colnames(x), ".idx"), drop = FALSE]
-        if (!isTRUE(rownames)) {
-            rownames(out) <- NULL
-        }
         out
     }
 
@@ -348,22 +340,18 @@ setMethod(
 
 
 `anti_join,DataFrame` <-  # nolint
-    function(x, y, by, rownames = TRUE) {
+    function(x, y, by) {
         assert(
             isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
-            areDisjointSets(c(".idx", ".idy"), colnames(y)),
-            isFlag(rownames)
+            areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
         x[[".idx"]] <- seq_len(nrow(x))
         m <- merge(x = x, y = y, by = by, all = FALSE, sort = FALSE)
         which <- order(setdiff(x[[".idx"]], m[[".idx"]]))
         out <- x[which, setdiff(colnames(x), ".idx"), drop = FALSE]
-        if (!isTRUE(rownames)) {
-            rownames(out) <- NULL
-        }
         out
     }
 
