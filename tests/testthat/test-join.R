@@ -1,16 +1,19 @@
 context("joins : Beatles vs. Stones (from dplyr)")
 
 ## nolint start
-## Compare with data.frame original:
+## Compare with `data.frame` objects:
 ## > data(band_members, band_instruments, package = "dplyr")
 ## nolint end
 
 data(band_members, band_instruments, envir = environment())
-rownames(band_members) <- band_members[["name"]]
-rownames(band_instruments) <- band_instruments[["name"]]
+x <- band_members
+rownames(x) <- x[["name"]]
+y <- band_instruments
+rownames(y) <- y[["name"]]
+by <- "name"
 
 test_that("inner_join", {
-    object <- inner_join(x = band_members, y = band_instruments, by = "name")
+    object <- inner_join(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("John", "Paul"),
         band = c("Beatles", "Beatles"),
@@ -20,7 +23,7 @@ test_that("inner_join", {
 })
 
 test_that("left_join", {
-    object <- left_join(x = band_members, y = band_instruments, by = "name")
+    object <- left_join(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("Mick", "John", "Paul"),
         band = c("Stones", "Beatles", "Beatles"),
@@ -31,7 +34,7 @@ test_that("left_join", {
 })
 
 test_that("right_join", {
-    object <- right_join(x = band_members, y = band_instruments, by = "name")
+    object <- right_join(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("John", "Paul", "Keith"),
         plays = c("guitar", "bass", "guitar"),
@@ -42,7 +45,7 @@ test_that("right_join", {
 })
 
 test_that("full_join", {
-    object <- full_join(x = band_members, y = band_instruments, by = "name")
+    object <- full_join(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("Mick", "John", "Paul", "Keith"),
         band = c("Stones", "Beatles", "Beatles", NA),
@@ -53,7 +56,7 @@ test_that("full_join", {
 })
 
 test_that("semi_join", {
-    object <- semi_join(x = band_members, y = band_instruments, by = "name")
+    object <- semi_join(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("John", "Paul"),
         band = c("Beatles", "Beatles"),
@@ -63,7 +66,7 @@ test_that("semi_join", {
 })
 
 test_that("anti_join", {
-    object <- anti_join(x = band_members, y = band_instruments, by = "name")
+    object <- anti_join(x = x, y = y, by = by)
     expected <- DataFrame(
         name = "Mick",
         band = "Stones",

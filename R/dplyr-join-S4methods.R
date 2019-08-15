@@ -30,16 +30,18 @@
 #'
 #' @examples
 #' data(band_members, band_instruments)
+#' x <- band_members
+#' print(x)
+#' y <- band_instruments
+#' print(y)
+#' by <- "name"
 #'
-#' print(band_members)
-#' print(band_instruments)
-#'
-#' inner_join(band_members, band_instruments, by = "name")
-#' left_join(band_members, band_instruments, by = "name")
-#' right_join(band_members, band_instruments, by = "name")
-#' full_join(band_members, band_instruments, by = "name")
-#' semi_join(band_members, band_instruments, by = "name")
-#' anti_join(band_members, band_instruments, by = "name")
+#' inner_join(x = x, y = y, by = by)
+#' left_join(x = x, y = y, by = by)
+#' right_join(x = x, y = y, by = by)
+#' full_join(x = x, y = y, by = by)
+#' semi_join(x = x, y = y, by = by)
+#' anti_join(x = x, y = y, by = by)
 NULL
 
 
@@ -315,7 +317,7 @@ setMethod(
         )
         x[[".idx"]] <- seq_len(nrow(x))
         m <- merge(x = x, y = y, by = by, all = FALSE, sort = FALSE)
-        which <- order(m[[".idx"]])
+        which <- m[[".idx"]]
         out <- x[which, setdiff(colnames(x), ".idx"), drop = FALSE]
         if (!isTRUE(rownames)) {
             rownames(out) <- NULL
