@@ -2,7 +2,7 @@
 #'
 #' @rdname join
 #' @name join
-#' @note Updated 2019-08-14.
+#' @note Updated 2019-08-15.
 #'
 #' @param x,y `DataFrame`.
 #'   Data frames, or objects, to be coerced into a single object.
@@ -17,23 +17,21 @@
 #' - `help(topic = "merge", package = "S4Vectors")`.
 #'
 #' @examples
-#' DataFrame <- S4Vectors::DataFrame
-#'
-#' ## DataFrame ====
-#' df1 <- DataFrame(
-#'     id = as.factor(seq(4L)),
-#'     genotype = as.factor(rep(x = c("wt", "ko"), each = 2L))
-#' )
-#' print(df1)
-#' df2 <- DataFrame(
-#'     id = as.factor(seq(4L)),
-#'     treatment = as.factor(rep(x = c("control", "expt"), times = 2L))
-#' )
-#' print(df2)
-#' left_join(df1, df2, by = "id")
+#' data(band_members, band_instruments)
+#' left_join(band_members, band_instruments, by = "name")
 NULL
 
 
+
+## Generics ====================================================================
+#' @rdname join
+#' @export
+setGeneric(
+    name = "inner_join",
+    def = function(x, y, ...) {
+        standardGeneric("inner_join")
+    }
+)
 
 #' @rdname join
 #' @export
@@ -44,20 +42,72 @@ setGeneric(
     }
 )
 
+#' @rdname join
+#' @export
+setGeneric(
+    name = "right_join",
+    def = function(x, y, ...) {
+        standardGeneric("right_join")
+    }
+)
+
+#' @rdname join
+#' @export
+setGeneric(
+    name = "full_join",
+    def = function(x, y, ...) {
+        standardGeneric("full_join")
+    }
+)
+
+#' @rdname join
+#' @export
+setGeneric(
+    name = "semi_join",
+    def = function(x, y, ...) {
+        standardGeneric("semi_join")
+    }
+)
+
+#' @rdname join
+#' @export
+setGeneric(
+    name = "nest_join",
+    def = function(x, y, ...) {
+        standardGeneric("nest_join")
+    }
+)
+
+#' @rdname join
+#' @export
+setGeneric(
+    name = "anti_join",
+    def = function(x, y, ...) {
+        standardGeneric("anti_join")
+    }
+)
 
 
-## dplyr join functions, for reference:
-## - `inner_join`
-## - `left_join`
-## - `right_join`
-## - `full_join`
-## - `semi_join`
-## - `nest_join`
-## - `anti_join`
+
+## data.frame ==================================================================
+`inner_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::inner_join(x = x, y = y, ...)
+    }
 
 
 
-## Updated 2019-08-14.
+#' @rdname join
+#' @export
+setMethod(
+    f = "inner_join",
+    signature = signature("data.frame"),
+    definition = `inner_join,data.frame`
+)
+
+
+
 `left_join,data.frame` <-  # nolint
     function(x, y, ...) {
         requireNamespace("dplyr", quietly = TRUE)
@@ -76,30 +126,116 @@ setMethod(
 
 
 
+`right_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::right_join(x = x, y = y, ...)
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "right_join",
+    signature = signature("data.frame"),
+    definition = `right_join,data.frame`
+)
+
+
+
+`full_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::full_join(x = x, y = y, ...)
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "full_join",
+    signature = signature("data.frame"),
+    definition = `full_join,data.frame`
+)
+
+
+
+`semi_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::semi_join(x = x, y = y, ...)
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "semi_join",
+    signature = signature("data.frame"),
+    definition = `semi_join,data.frame`
+)
+
+
+
+`nest_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::nest_join(x = x, y = y, ...)
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "nest_join",
+    signature = signature("data.frame"),
+    definition = `nest_join,data.frame`
+)
+
+
+
+`anti_join,data.frame` <-  # nolint
+    function(x, y, ...) {
+        requireNamespace("dplyr", quietly = TRUE)
+        dplyr::anti_join(x = x, y = y, ...)
+    }
+
+
+
+#' @rdname join
+#' @export
+setMethod(
+    f = "anti_join",
+    signature = signature("data.frame"),
+    definition = `anti_join,data.frame`
+)
+
+
+
+## DataFrame ===================================================================
 ## Currently setting an internal `.idx` column that we can use to reorder the
 ## rows after `merge()` operation.
 ##
 ## Can consider using Hervé Pagès's recommended approach instead.
 ## https://support.bioconductor.org/p/120277/
-##
-## Updated 2019-08-14.
+
+
+
+## FIXME inner
+
+
+
 `left_join,DataFrame` <-  # nolint
-    function(
-        x,
-        y,
-        by,
-        copy = FALSE,
-        suffix = NULL,
-        ...
-    ) {
+    function(x, y, by) {
         assert(
             is(x, "DataFrame"),
             is(y, "DataFrame"),
             isCharacter(by),
-            areDisjointSets(".idx", colnames(x)),
-            identical(copy, FALSE),
-            is.null(suffix),
-            !hasLength(list(...))
+            areDisjointSets(".idx", colnames(x))
         )
         ## Setting internal `.idx` column here to avoid row reorders.
         x[[".idx"]] <- seq_len(nrow(x))
@@ -124,3 +260,12 @@ setMethod(
     signature = signature("DataFrame"),
     definition = `left_join,DataFrame`
 )
+
+
+
+
+## FIXME right
+## FIXME full
+## FIXME semi
+## FIXME nest
+## FIXME anti

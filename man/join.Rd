@@ -3,17 +3,52 @@
 \docType{methods}
 \name{join}
 \alias{join}
+\alias{inner_join}
 \alias{left_join}
+\alias{right_join}
+\alias{full_join}
+\alias{semi_join}
+\alias{nest_join}
+\alias{anti_join}
+\alias{inner_join,data.frame-method}
 \alias{left_join,data.frame-method}
+\alias{right_join,data.frame-method}
+\alias{full_join,data.frame-method}
+\alias{semi_join,data.frame-method}
+\alias{nest_join,data.frame-method}
+\alias{anti_join,data.frame-method}
 \alias{left_join,DataFrame-method}
 \title{Join operations supporting S4 class objects}
 \usage{
+inner_join(x, y, ...)
+
 left_join(x, y, ...)
+
+right_join(x, y, ...)
+
+full_join(x, y, ...)
+
+semi_join(x, y, ...)
+
+nest_join(x, y, ...)
+
+anti_join(x, y, ...)
+
+\S4method{inner_join}{data.frame}(x, y, ...)
 
 \S4method{left_join}{data.frame}(x, y, ...)
 
-\S4method{left_join}{DataFrame}(x, y, by, copy = FALSE, suffix = NULL,
-  ...)
+\S4method{right_join}{data.frame}(x, y, ...)
+
+\S4method{full_join}{data.frame}(x, y, ...)
+
+\S4method{semi_join}{data.frame}(x, y, ...)
+
+\S4method{nest_join}{data.frame}(x, y, ...)
+
+\S4method{anti_join}{data.frame}(x, y, ...)
+
+\S4method{left_join}{DataFrame}(x, y, by)
 }
 \arguments{
 \item{x, y}{\code{DataFrame}.
@@ -30,23 +65,11 @@ this is optional.}
 Join operations supporting S4 class objects
 }
 \note{
-Updated 2019-08-14.
+Updated 2019-08-15.
 }
 \examples{
-DataFrame <- S4Vectors::DataFrame
-
-## DataFrame ====
-df1 <- DataFrame(
-    id = as.factor(seq(4L)),
-    genotype = as.factor(rep(x = c("wt", "ko"), each = 2L))
-)
-print(df1)
-df2 <- DataFrame(
-    id = as.factor(seq(4L)),
-    treatment = as.factor(rep(x = c("control", "expt"), times = 2L))
-)
-print(df2)
-left_join(df1, df2, by = "id")
+data(band_members, band_instruments)
+left_join(band_members, band_instruments, by = "name")
 }
 \seealso{
 \itemize{
