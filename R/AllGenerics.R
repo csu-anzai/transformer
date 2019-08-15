@@ -1,3 +1,32 @@
+#' @rdname arrange
+#' @export
+setGeneric(
+    name = "arrange_all",
+    def = function(.tbl, ...) {
+        standardGeneric("arrange_all")
+    }
+)
+
+#' @rdname arrange
+#' @export
+setGeneric(
+    name = "arrange_at",
+    def = function(.tbl, ...) {
+        standardGeneric("arrange_at")
+    }
+)
+
+#' @rdname arrange
+#' @export
+setGeneric(
+    name = "arrange_if",
+    def = function(.tbl, ...) {
+        standardGeneric("arrange_if")
+    }
+)
+
+
+
 #' @rdname join
 #' @export
 setGeneric(
@@ -63,8 +92,6 @@ setGeneric(
     }
 )
 
-
-
 #' @rdname mutate
 #' @export
 setGeneric(
@@ -74,13 +101,70 @@ setGeneric(
     }
 )
 
-
-
 #' @rdname mutate
 #' @export
 setGeneric(
     name = "mutate_if",
     def = function(.tbl, ...) {
         standardGeneric("mutate_if")
+    }
+)
+
+
+
+
+#' @rdname rename
+#' @export
+setGeneric(
+    name = "rename_all",
+    def = function(.tbl, ...) {
+        standardGeneric("rename_all")
+    }
+)
+
+#' @rdname rename
+#' @export
+setGeneric(
+    name = "rename_at",
+    def = function(.tbl, ...) {
+        standardGeneric("rename_at")
+    }
+)
+
+#' @rdname rename
+#' @export
+setGeneric(
+    name = "rename_if",
+    def = function(.tbl, ...) {
+        standardGeneric("rename_if")
+    }
+)
+
+
+
+#' @rdname select
+#' @export
+setGeneric(
+    name = "select_all",
+    def = function(.tbl, ...) {
+        standardGeneric("select_all")
+    }
+)
+
+#' @rdname select
+#' @export
+setGeneric(
+    name = "select_at",
+    def = function(.tbl, ...) {
+        standardGeneric("select_at")
+    }
+)
+
+#' @rdname select
+#' @export
+setGeneric(
+    name = "select_if",
+    def = function(.tbl, ...) {
+        standardGeneric("select_if")
     }
 )
