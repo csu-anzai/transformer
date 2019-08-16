@@ -2,23 +2,7 @@
 % Please edit documentation in R/deprecated.R
 \name{defunct}
 \alias{defunct}
-\alias{relevel}
-\alias{relevel.DataFrame}
-\alias{relevel.Ranges}
-\alias{relevel.SummarizedExperiment}
 \title{Defunct functions}
-\usage{
-\method{relevel}{DataFrame}(x, ref = NULL, ...)
-
-\method{relevel}{Ranges}(x, ref = NULL, ...)
-
-\method{relevel}{SummarizedExperiment}(x, ref = NULL, ...)
-}
-\arguments{
-\item{x}{Object.}
-
-\item{...}{Additional arguments.}
-}
 \value{
 \code{.Defunct}.
 }

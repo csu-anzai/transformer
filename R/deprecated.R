@@ -19,30 +19,5 @@ NULL
 
 
 
-## v0.2.4 =======================================================================
-#' @rdname defunct
-#' @name relevel
-#' @importFrom stats relevel
-#' @usage NULL
-#' @export
-NULL
-
-#' @rdname defunct
-#' @export
-relevel.DataFrame <-
-    function(x, ref = NULL, ...) {
-        .Defunct("droplevels")
-    }
-
-#' @rdname defunct
-#' @export
-relevel.Ranges <- relevel.DataFrame
-
-#' @rdname defunct
-#' @export
-relevel.SummarizedExperiment <- relevel.DataFrame
-
-
-
 ## nolint end
 ## nocov end
