@@ -151,8 +151,61 @@
 <span class='co'>## Ranges ====</span>
 <span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>SummarizedExperiment</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>rowRanges</a></span>(<span class='no'>rse</span>)
-<span class='fu'>droplevels</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='error'>Error in getListElement(x, i, ...): GRanges objects don't support [[, as.list(), lapply(), or unlist() at</span>
-#&gt; <span class='error'>  the moment</span></div><div class='input'>
+<span class='fu'>droplevels</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; GRanges object with 500 ranges and 8 metadata columns:
+#&gt;           seqnames              ranges strand | broadClass
+#&gt;              &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt; |      &lt;Rle&gt;
+#&gt;   gene001        X 100627109-100639991      - |     coding
+#&gt;   gene002        X 100584802-100599885      + |     coding
+#&gt;   gene003       20   50934867-50958555      - |     coding
+#&gt;   gene004        1 169849631-169894267      - |     coding
+#&gt;   gene005        1 169662007-169854080      + |     coding
+#&gt;       ...      ...                 ...    ... .        ...
+#&gt;   gene496       13   20567069-20691437      + |     coding
+#&gt;   gene497       16     5033960-5087379      + |     coding
+#&gt;   gene498       12 122471600-122501073      - |     coding
+#&gt;   gene499        7 151212490-151227230      - |     coding
+#&gt;   gene500        7 151232489-151238827      + |     coding
+#&gt;                                                                                               description
+#&gt;                                                                                                     &lt;Rle&gt;
+#&gt;   gene001                                               tetraspanin 6 [Source:HGNC Symbol;Acc:HGNC:11858]
+#&gt;   gene002                                                 tenomodulin [Source:HGNC Symbol;Acc:HGNC:17757]
+#&gt;   gene003  dolichyl-phosphate mannosyltransferase subunit 1, catalytic [Source:HGNC Symbol;Acc:HGNC:3005]
+#&gt;   gene004                                    SCY1 like pseudokinase 3 [Source:HGNC Symbol;Acc:HGNC:19285]
+#&gt;   gene005                         chromosome 1 open reading frame 112 [Source:HGNC Symbol;Acc:HGNC:25565]
+#&gt;       ...                                                                                             ...
+#&gt;   gene496                                 intraflagellar transport 88 [Source:HGNC Symbol;Acc:HGNC:20606]
+#&gt;   gene497 ALG1, chitobiosyldiphosphodolichol beta-mannosyltransferase [Source:HGNC Symbol;Acc:HGNC:18294]
+#&gt;   gene498                          zinc finger CCHC-type containing 8 [Source:HGNC Symbol;Acc:HGNC:25265]
+#&gt;   gene499                      ATP binding cassette subfamily F member 2 [Source:HGNC Symbol;Acc:HGNC:71]
+#&gt;   gene500                           chondroitin polymerizing factor 2 [Source:HGNC Symbol;Acc:HGNC:29270]
+#&gt;           entrezID    geneBiotype          geneID      geneIDVersion geneName
+#&gt;             &lt;list&gt;          &lt;Rle&gt;           &lt;Rle&gt;              &lt;Rle&gt;    &lt;Rle&gt;
+#&gt;   gene001     7105 protein_coding ENSG00000000003 ENSG00000000003.14   TSPAN6
+#&gt;   gene002    64102 protein_coding ENSG00000000005  ENSG00000000005.5     TNMD
+#&gt;   gene003     8813 protein_coding ENSG00000000419 ENSG00000000419.12     DPM1
+#&gt;   gene004    57147 protein_coding ENSG00000000457 ENSG00000000457.13    SCYL3
+#&gt;   gene005    55732 protein_coding ENSG00000000460 ENSG00000000460.16 C1orf112
+#&gt;       ...      ...            ...             ...                ...      ...
+#&gt;   gene496     8100 protein_coding ENSG00000032742 ENSG00000032742.17    IFT88
+#&gt;   gene497    56052 protein_coding ENSG00000033011 ENSG00000033011.11     ALG1
+#&gt;   gene498    55596 protein_coding ENSG00000033030 ENSG00000033030.13   ZCCHC8
+#&gt;   gene499    10061 protein_coding ENSG00000033050  ENSG00000033050.8    ABCF2
+#&gt;   gene500    54480 protein_coding ENSG00000033100 ENSG00000033100.16    CHPF2
+#&gt;           seqCoordSystem
+#&gt;                    &lt;Rle&gt;
+#&gt;   gene001     chromosome
+#&gt;   gene002     chromosome
+#&gt;   gene003     chromosome
+#&gt;   gene004     chromosome
+#&gt;   gene005     chromosome
+#&gt;       ...            ...
+#&gt;   gene496     chromosome
+#&gt;   gene497     chromosome
+#&gt;   gene498     chromosome
+#&gt;   gene499     chromosome
+#&gt;   gene500     chromosome
+#&gt;   -------
+#&gt;   seqinfo: 423 sequences from GRCh38 genome</div><div class='input'>
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span></div></pre>
   </div>

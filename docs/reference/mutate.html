@@ -207,7 +207,163 @@ methods pass through to dplyr mutate functions, which are optimized for
 
 <span class='co'>## DataFrame ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>mtcars</span>, <span class='st'>"DataFrame"</span>)
-<span class='fu'>mutate_all</span>(<span class='no'>x</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; <span class='error'>Error in mutate_all(x, .funs = log, base = 2L): could not find function "mutate_all"</span></div><div class='input'><span class='fu'>mutate_at</span>(<span class='no'>x</span>, <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='st'>"cyl"</span>), <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; <span class='error'>Error in mutate_at(x, .vars = c("mpg", "cyl"), log, base = 2L): could not find function "mutate_at"</span></div><div class='input'><span class='fu'>mutate_if</span>(<span class='no'>x</span>, <span class='kw'>.predicate</span> <span class='kw'>=</span> <span class='no'>is.double</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='no'>as.integer</span>)</div><div class='output co'>#&gt; <span class='error'>Error in mutate_if(x, .predicate = is.double, .funs = as.integer): could not find function "mutate_if"</span></div><div class='input'><span class='fu'>transmute_at</span>(<span class='no'>x</span>, <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='st'>"cyl"</span>), <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; <span class='error'>Error in transmute_at(x, .vars = c("mpg", "cyl"), log, base = 2L): could not find function "transmute_at"</span></div><div class='input'><span class='fu'>transmute_if</span>(<span class='no'>x</span>, <span class='kw'>.predicate</span> <span class='kw'>=</span> <span class='no'>is.double</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='no'>as.integer</span>)</div><div class='output co'>#&gt; <span class='error'>Error in transmute_if(x, .predicate = is.double, .funs = as.integer): could not find function "transmute_if"</span></div></pre>
+<span class='fu'>mutate_all</span>(<span class='no'>x</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
+#&gt;                                mpg              cyl             disp
+#&gt;                          &lt;numeric&gt;        &lt;numeric&gt;        &lt;numeric&gt;
+#&gt; Mazda RX4         4.39231742277876 2.58496250072116 7.32192809488736
+#&gt; Mazda RX4 Wag     4.39231742277876 2.58496250072116 7.32192809488736
+#&gt; Datsun 710        4.51096191927738                2 6.75488750216347
+#&gt; Hornet 4 Drive    4.41953889151378 2.58496250072116 8.01122725542325
+#&gt; Hornet Sportabout 4.22496636500027                3 8.49185309632967
+#&gt; ...                            ...              ...              ...
+#&gt; Lotus Europa      4.92599941855622                2  6.5713734359732
+#&gt; Ford Pantera L    3.98185265328974                3 8.45532722030456
+#&gt; Ferrari Dino      4.30012372456901 2.58496250072116 7.17990909001493
+#&gt; Maserati Bora     3.90689059560852                3  8.2336196767597
+#&gt; Volvo 142E        4.41953889151378                2 6.91886323727459
+#&gt;                                 hp             drat               wt
+#&gt;                          &lt;numeric&gt;        &lt;numeric&gt;        &lt;numeric&gt;
+#&gt; Mazda RX4         6.78135971352466 1.96347412397489 1.38956681176273
+#&gt; Mazda RX4 Wag     6.78135971352466 1.96347412397489 1.52356195605701
+#&gt; Datsun 710        6.53915881110803 1.94485844580754 1.21412480535285
+#&gt; Hornet 4 Drive    6.78135971352466 1.62293035092018 1.68481873755322
+#&gt; Hornet Sportabout 7.45121111183233 1.65535182861255 1.78240856492737
+#&gt; ...                            ...              ...              ...
+#&gt; Lotus Europa      6.82017896241519 1.91456452349394 0.59741198755465
+#&gt; Ford Pantera L    8.04439411935845 2.07724299893246 1.66448284036468
+#&gt; Ferrari Dino      7.45121111183233 1.85598969730848 1.46988597627446
+#&gt; Maserati Bora     8.38801728534514 1.82374936030827 1.83592407425437
+#&gt; Volvo 142E        6.76818432477693 2.03913839390696 1.47508488294878
+#&gt;                               qsec        vs        am             gear
+#&gt;                          &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;        &lt;numeric&gt;
+#&gt; Mazda RX4          4.0408924306469      -Inf         0                2
+#&gt; Mazda RX4 Wag     4.08915913191124      -Inf         0                2
+#&gt; Datsun 710        4.21800615028443         0         0                2
+#&gt; Hornet 4 Drive    4.28095631383106         0      -Inf 1.58496250072116
+#&gt; Hornet Sportabout 4.08915913191124      -Inf      -Inf 1.58496250072116
+#&gt; ...                            ...       ...       ...              ...
+#&gt; Lotus Europa      4.07895134139482         0         0 2.32192809488736
+#&gt; Ford Pantera L    3.85798099512757      -Inf         0 2.32192809488736
+#&gt; Ferrari Dino      3.95419631038688      -Inf         0 2.32192809488736
+#&gt; Maserati Bora     3.86789646399265      -Inf         0 2.32192809488736
+#&gt; Volvo 142E        4.21723071622067         0         0                2
+#&gt;                               carb
+#&gt;                          &lt;numeric&gt;
+#&gt; Mazda RX4                        2
+#&gt; Mazda RX4 Wag                    2
+#&gt; Datsun 710                       0
+#&gt; Hornet 4 Drive                   0
+#&gt; Hornet Sportabout                1
+#&gt; ...                            ...
+#&gt; Lotus Europa                     1
+#&gt; Ford Pantera L                   2
+#&gt; Ferrari Dino      2.58496250072116
+#&gt; Maserati Bora                    3
+#&gt; Volvo 142E                       1</div><div class='input'><span class='fu'>mutate_at</span>(<span class='no'>x</span>, <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='st'>"cyl"</span>), <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
+#&gt;                                mpg              cyl      disp        hp
+#&gt;                          &lt;numeric&gt;        &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+#&gt; Mazda RX4         4.39231742277876 2.58496250072116       160       110
+#&gt; Mazda RX4 Wag     4.39231742277876 2.58496250072116       160       110
+#&gt; Datsun 710        4.51096191927738                2       108        93
+#&gt; Hornet 4 Drive    4.41953889151378 2.58496250072116       258       110
+#&gt; Hornet Sportabout 4.22496636500027                3       360       175
+#&gt; ...                            ...              ...       ...       ...
+#&gt; Lotus Europa      4.92599941855622                2      95.1       113
+#&gt; Ford Pantera L    3.98185265328974                3       351       264
+#&gt; Ferrari Dino      4.30012372456901 2.58496250072116       145       175
+#&gt; Maserati Bora     3.90689059560852                3       301       335
+#&gt; Volvo 142E        4.41953889151378                2       121       109
+#&gt;                        drat        wt      qsec        vs        am      gear
+#&gt;                   &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+#&gt; Mazda RX4               3.9      2.62     16.46         0         1         4
+#&gt; Mazda RX4 Wag           3.9     2.875     17.02         0         1         4
+#&gt; Datsun 710             3.85      2.32     18.61         1         1         4
+#&gt; Hornet 4 Drive         3.08     3.215     19.44         1         0         3
+#&gt; Hornet Sportabout      3.15      3.44     17.02         0         0         3
+#&gt; ...                     ...       ...       ...       ...       ...       ...
+#&gt; Lotus Europa           3.77     1.513      16.9         1         1         5
+#&gt; Ford Pantera L         4.22      3.17      14.5         0         1         5
+#&gt; Ferrari Dino           3.62      2.77      15.5         0         1         5
+#&gt; Maserati Bora          3.54      3.57      14.6         0         1         5
+#&gt; Volvo 142E             4.11      2.78      18.6         1         1         4
+#&gt;                        carb
+#&gt;                   &lt;numeric&gt;
+#&gt; Mazda RX4                 4
+#&gt; Mazda RX4 Wag             4
+#&gt; Datsun 710                1
+#&gt; Hornet 4 Drive            1
+#&gt; Hornet Sportabout         2
+#&gt; ...                     ...
+#&gt; Lotus Europa              2
+#&gt; Ford Pantera L            4
+#&gt; Ferrari Dino              6
+#&gt; Maserati Bora             8
+#&gt; Volvo 142E                2</div><div class='input'><span class='fu'>mutate_if</span>(<span class='no'>x</span>, <span class='kw'>.predicate</span> <span class='kw'>=</span> <span class='no'>is.double</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='no'>as.integer</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
+#&gt;                         mpg       cyl      disp        hp      drat        wt
+#&gt;                   &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
+#&gt; Mazda RX4                21         6       160       110         3         2
+#&gt; Mazda RX4 Wag            21         6       160       110         3         2
+#&gt; Datsun 710               22         4       108        93         3         2
+#&gt; Hornet 4 Drive           21         6       258       110         3         3
+#&gt; Hornet Sportabout        18         8       360       175         3         3
+#&gt; ...                     ...       ...       ...       ...       ...       ...
+#&gt; Lotus Europa             30         4        95       113         3         1
+#&gt; Ford Pantera L           15         8       351       264         4         3
+#&gt; Ferrari Dino             19         6       145       175         3         2
+#&gt; Maserati Bora            15         8       301       335         3         3
+#&gt; Volvo 142E               21         4       121       109         4         2
+#&gt;                        qsec        vs        am      gear      carb
+#&gt;                   &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
+#&gt; Mazda RX4                16         0         1         4         4
+#&gt; Mazda RX4 Wag            17         0         1         4         4
+#&gt; Datsun 710               18         1         1         4         1
+#&gt; Hornet 4 Drive           19         1         0         3         1
+#&gt; Hornet Sportabout        17         0         0         3         2
+#&gt; ...                     ...       ...       ...       ...       ...
+#&gt; Lotus Europa             16         1         1         5         2
+#&gt; Ford Pantera L           14         0         1         5         4
+#&gt; Ferrari Dino             15         0         1         5         6
+#&gt; Maserati Bora            14         0         1         5         8
+#&gt; Volvo 142E               18         1         1         4         2</div><div class='input'><span class='fu'>transmute_at</span>(<span class='no'>x</span>, <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='st'>"cyl"</span>), <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 2 columns
+#&gt;                                mpg              cyl
+#&gt;                          &lt;numeric&gt;        &lt;numeric&gt;
+#&gt; Mazda RX4         4.39231742277876 2.58496250072116
+#&gt; Mazda RX4 Wag     4.39231742277876 2.58496250072116
+#&gt; Datsun 710        4.51096191927738                2
+#&gt; Hornet 4 Drive    4.41953889151378 2.58496250072116
+#&gt; Hornet Sportabout 4.22496636500027                3
+#&gt; ...                            ...              ...
+#&gt; Lotus Europa      4.92599941855622                2
+#&gt; Ford Pantera L    3.98185265328974                3
+#&gt; Ferrari Dino      4.30012372456901 2.58496250072116
+#&gt; Maserati Bora     3.90689059560852                3
+#&gt; Volvo 142E        4.41953889151378                2</div><div class='input'><span class='fu'>transmute_if</span>(<span class='no'>x</span>, <span class='kw'>.predicate</span> <span class='kw'>=</span> <span class='no'>is.double</span>, <span class='kw'>.funs</span> <span class='kw'>=</span> <span class='no'>as.integer</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
+#&gt;                         mpg       cyl      disp        hp      drat        wt
+#&gt;                   &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
+#&gt; Mazda RX4                21         6       160       110         3         2
+#&gt; Mazda RX4 Wag            21         6       160       110         3         2
+#&gt; Datsun 710               22         4       108        93         3         2
+#&gt; Hornet 4 Drive           21         6       258       110         3         3
+#&gt; Hornet Sportabout        18         8       360       175         3         3
+#&gt; ...                     ...       ...       ...       ...       ...       ...
+#&gt; Lotus Europa             30         4        95       113         3         1
+#&gt; Ford Pantera L           15         8       351       264         4         3
+#&gt; Ferrari Dino             19         6       145       175         3         2
+#&gt; Maserati Bora            15         8       301       335         3         3
+#&gt; Volvo 142E               21         4       121       109         4         2
+#&gt;                        qsec        vs        am      gear      carb
+#&gt;                   &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
+#&gt; Mazda RX4                16         0         1         4         4
+#&gt; Mazda RX4 Wag            17         0         1         4         4
+#&gt; Datsun 710               18         1         1         4         1
+#&gt; Hornet 4 Drive           19         1         0         3         1
+#&gt; Hornet Sportabout        17         0         0         3         2
+#&gt; ...                     ...       ...       ...       ...       ...
+#&gt; Lotus Europa             16         1         1         5         2
+#&gt; Ford Pantera L           14         0         1         5         4
+#&gt; Ferrari Dino             15         0         1         5         6
+#&gt; Maserati Bora            14         0         1         5         8
+#&gt; Volvo 142E               18         1         1         4         2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

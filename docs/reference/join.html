@@ -234,10 +234,50 @@ passthrough support to dplyr for <code>data.frame</code> class objects.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>band_members</span>, <span class='no'>band_instruments</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: data set ‘band_members’ not found</span></div><div class='output co'>#&gt; <span class='warning'>Warning: data set ‘band_instruments’ not found</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>band_members</span>, <span class='no'>band_instruments</span>)
+
 <span class='co'>## DataFrame ====</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>band_members</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'band_members' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(x): object 'x' not found</span></div><div class='input'><span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>band_instruments</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'band_instruments' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; <span class='error'>Error in print(y): object 'y' not found</span></div><div class='input'><span class='no'>by</span> <span class='kw'>&lt;-</span> <span class='st'>"name"</span>
-<span class='fu'>inner_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in inner_join(x = x, y = y, by = by): could not find function "inner_join"</span></div><div class='input'><span class='fu'>left_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in left_join(x = x, y = y, by = by): object 'x' not found</span></div><div class='input'><span class='fu'>right_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in right_join(x = x, y = y, by = by): could not find function "right_join"</span></div><div class='input'><span class='fu'>full_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in full_join(x = x, y = y, by = by): could not find function "full_join"</span></div><div class='input'><span class='fu'>semi_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in semi_join(x = x, y = y, by = by): could not find function "semi_join"</span></div><div class='input'><span class='fu'>anti_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='error'>Error in anti_join(x = x, y = y, by = by): could not find function "anti_join"</span></div></pre>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>band_members</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 2 columns
+#&gt;          name        band
+#&gt;   &lt;character&gt; &lt;character&gt;
+#&gt; 1        Mick      Stones
+#&gt; 2        John     Beatles
+#&gt; 3        Paul     Beatles</div><div class='input'><span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='no'>band_instruments</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>y</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 2 columns
+#&gt;          name       plays
+#&gt;   &lt;character&gt; &lt;character&gt;
+#&gt; 1        John      guitar
+#&gt; 2        Paul        bass
+#&gt; 3       Keith      guitar</div><div class='input'><span class='no'>by</span> <span class='kw'>&lt;-</span> <span class='st'>"name"</span>
+<span class='fu'>inner_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 3 columns
+#&gt;          name        band       plays
+#&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
+#&gt; 1        John     Beatles      guitar
+#&gt; 2        Paul     Beatles        bass</div><div class='input'><span class='fu'>left_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
+#&gt;          name        band       plays
+#&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
+#&gt; 1        Mick      Stones          NA
+#&gt; 2        John     Beatles      guitar
+#&gt; 3        Paul     Beatles        bass</div><div class='input'><span class='fu'>right_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
+#&gt;          name       plays        band
+#&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
+#&gt; 1        John      guitar     Beatles
+#&gt; 2        Paul        bass     Beatles
+#&gt; 3       Keith      guitar          NA</div><div class='input'><span class='fu'>full_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
+#&gt;          name        band       plays
+#&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
+#&gt; 1        Mick      Stones          NA
+#&gt; 2        John     Beatles      guitar
+#&gt; 3        Paul     Beatles        bass
+#&gt; 4       Keith          NA      guitar</div><div class='input'><span class='fu'>semi_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+#&gt;          name        band
+#&gt;   &lt;character&gt; &lt;character&gt;
+#&gt; 1        John     Beatles
+#&gt; 2        Paul     Beatles</div><div class='input'><span class='fu'>anti_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 1 row and 2 columns
+#&gt;          name        band
+#&gt;   &lt;character&gt; &lt;character&gt;
+#&gt; 1        Mick      Stones</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
