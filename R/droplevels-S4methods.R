@@ -1,8 +1,10 @@
 #' Drop unused levels from factors
 #'
 #' @name droplevels
+#' @exportMethod droplevels
+#' @importFrom S4Vectors droplevels
 #' @inherit base::droplevels description
-#' @note Updated 2019-08-15.
+#' @note Updated 2019-08-19.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -22,14 +24,6 @@ NULL
 
 
 
-#' @rdname droplevels
-#' @name droplevels
-#' @importFrom S4Vectors droplevels
-#' @export
-NULL
-
-
-
 `droplevels,Ranges` <-  # nolint
     function(x) {
         mcols <- mcols(x)
@@ -44,7 +38,6 @@ NULL
 
 
 #' @rdname droplevels
-#' @export
 setMethod(
     f = "droplevels",
     signature = signature("Ranges"),
@@ -73,7 +66,6 @@ setMethod(
 
 
 #' @rdname droplevels
-#' @export
 setMethod(
     f = "droplevels",
     signature = signature("SummarizedExperiment"),
