@@ -22,7 +22,7 @@ The function \code{droplevels} is used to drop unused levels from a
   \code{\link{factor}} or, more commonly, from factors in a data frame.
 }
 \note{
-Updated 2019-08-15.
+Updated 2019-08-19.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
