@@ -30,7 +30,7 @@ NULL
 
 `select_all,data.frame` <-  # nolint
     function(.tbl, .funs = list(), ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::select_all(
             .tbl = .tbl,
             .funs = .funs,
@@ -76,7 +76,7 @@ setMethod(
 
 `select_at,data.frame` <-  # nolint
     function(.tbl, .vars, .funs = list(), ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::select_at(
             .tbl = .tbl,
             .vars = .vars,
@@ -124,7 +124,7 @@ setMethod(
 
 `select_if,data.frame` <-  # nolint
     function(.tbl, .predicate, .funs = list(), ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::select_if(
             .tbl = .tbl,
             .predicate = .predicate,

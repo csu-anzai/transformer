@@ -57,7 +57,7 @@ NULL
 
 `inner_join,data.frame` <-  # nolint
     function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::inner_join(x = x, y = y, ...)
     }
 
@@ -112,7 +112,7 @@ setMethod(
 
 `left_join,data.frame` <-  # nolint
     function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::left_join(x = x, y = y, ...)
     }
 
@@ -168,7 +168,7 @@ setMethod(
 
 `right_join,data.frame` <-  # nolint
     function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::right_join(x = x, y = y, ...)
     }
 
@@ -209,7 +209,7 @@ setMethod(
 
 `full_join,data.frame` <-  # nolint
     function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::full_join(x = x, y = y, ...)
     }
 
@@ -269,7 +269,7 @@ setMethod(
 
 `semi_join,data.frame` <-  # nolint
     function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::semi_join(x = x, y = y, ...)
     }
 
@@ -321,7 +321,7 @@ setMethod(
 
 `anti_join,data.frame` <-  # nolint
     function(x, y, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::anti_join(x = x, y = y, ...)
     }
 

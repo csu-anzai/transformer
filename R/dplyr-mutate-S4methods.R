@@ -37,7 +37,7 @@ NULL
 
 `mutate_all,data.frame` <-  # nolint
     function(.tbl, .funs, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::mutate_all(
             .tbl = .tbl,
             .funs = .funs,
@@ -83,7 +83,7 @@ setMethod(
 
 `mutate_at,data.frame` <-  # nolint
     function(.tbl, .vars, .funs, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::mutate_at(
             .tbl = .tbl,
             .vars = .vars,
@@ -131,7 +131,7 @@ setMethod(
 
 `mutate_if,data.frame` <-  # nolint
     function(.tbl, .predicate, .funs, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::mutate_if(
             .tbl = .tbl,
             .predicate = .predicate,
@@ -179,7 +179,7 @@ setMethod(
 
 `transmute_at,data.frame` <-  # nolint
     function(.tbl, .vars, .funs, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::transmute_at(
             .tbl = .tbl,
             .vars = .vars,
@@ -227,7 +227,7 @@ setMethod(
 
 `transmute_if,data.frame` <-  # nolint
     function(.tbl, .predicate, .funs, ...) {
-        requireNamespace("dplyr", quietly = TRUE)
+        assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::transmute_if(
             .tbl = .tbl,
             .predicate = .predicate,
