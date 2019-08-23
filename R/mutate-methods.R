@@ -1,4 +1,5 @@
 ## FIXME Rework and rename the formals.
+## FIXME How to support `funs()` here?
 
 
 
@@ -16,10 +17,10 @@
 #' @name mutate
 #' @note Updated 2019-08-15.
 #'
-#' @param .tbl Object.
-#' @param .funs,.predicate `function`.
+#' @inheritParams acidroxygen::params
+#' @param funs,predicate `function`.
 #'   Refer to dplyr documentation for details.
-#' @param .vars `character`.
+#' @param vars `character`.
 #'   Column names.
 #' @param ... Additional argument.
 #'
@@ -30,46 +31,24 @@
 #'
 #' ## DataFrame ====
 #' x <- as(mtcars, "DataFrame")
-#' mutateAll(x, .funs = log, base = 2L)
-#' mutateAt(x, .vars = c("mpg", "cyl"), log, base = 2L)
-#' mutateIf(x, .predicate = is.double, .funs = as.integer)
-#' transmuteAt(x, .vars = c("mpg", "cyl"), log, base = 2L)
-#' transmuteIf(x, .predicate = is.double, .funs = as.integer)
+#' mutateAll(x, funs = log, base = 2L)
+#' mutateAt(x, vars = c("mpg", "cyl"), log, base = 2L)
+#' mutateIf(x, predicate = is.double, funs = as.integer)
+#' transmuteAt(x, vars = c("mpg", "cyl"), log, base = 2L)
+#' transmuteIf(x, predicate = is.double, funs = as.integer)
 NULL
 
 
 
-`mutateAll,data.frame` <-  # nolint
-    function(.tbl, .funs, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::mutate_all(
-            .tbl = .tbl,
-            .funs = .funs,
-            ...
-        )
-    }
-
-
-
-#' @rdname mutate
-#' @export
-setMethod(
-    f = "mutateAll",
-    signature = signature("data.frame"),
-    definition = `mutateAll,data.frame`
-)
-
-
-
 `mutateAll,DataFrame` <-  # nolint
-    function(.tbl, .funs, ...) {
-        tbl <- mutateAll(
-            .tbl = as_tibble(.tbl, rownames = NULL),
-            .funs = .funs,
+    function(object, funs, ...) {
+        object <- mutateAll(
+            object = as_tibble(object, rownames = NULL),
+            funs = funs,
             ...
         )
-        out <- as(tbl, "DataFrame")
-        rownames(out) <- rownames(.tbl)
+        out <- as(object, "DataFrame")
+        rownames(out) <- rownames(object)
         out
     }
 
@@ -85,40 +64,10 @@ setMethod(
 
 
 
-`mutateAt,data.frame` <-  # nolint
-    function(.tbl, .vars, .funs, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::mutate_at(
-            .tbl = .tbl,
-            .vars = .vars,
-            .funs = .funs,
-            ...
-        )
-    }
-
-
-
-#' @rdname mutate
-#' @export
-setMethod(
-    f = "mutateAt",
-    signature = signature("data.frame"),
-    definition = `mutateAt,data.frame`
-)
-
-
-
 `mutateAt,DataFrame` <-  # nolint
-    function(.tbl, .vars, .funs, ...) {
-        tbl <- mutateAt(
-            .tbl = as_tibble(.tbl, rownames = NULL),
-            .vars = .vars,
-            .funs = .funs,
-            ...
-        )
-        out <- as(tbl, "DataFrame")
-        rownames(out) <- rownames(.tbl)
-        out
+    function(object, vars, funs, ...) {
+        ## FIXME
+        stop("REWORK")
     }
 
 
@@ -133,40 +82,10 @@ setMethod(
 
 
 
-`mutateIf,data.frame` <-  # nolint
-    function(.tbl, .predicate, .funs, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::mutate_if(
-            .tbl = .tbl,
-            .predicate = .predicate,
-            .funs = .funs,
-            ...
-        )
-    }
-
-
-
-#' @rdname mutate
-#' @export
-setMethod(
-    f = "mutateIf",
-    signature = signature("data.frame"),
-    definition = `mutateIf,data.frame`
-)
-
-
-
 `mutateIf,DataFrame` <-  # nolint
-    function(.tbl, .predicate, .funs, ...) {
-        tbl <- mutateIf(
-            .tbl = as_tibble(.tbl, rownames = NULL),
-            .predicate = .predicate,
-            .funs = .funs,
-            ...
-        )
-        out <- as(tbl, "DataFrame")
-        rownames(out) <- rownames(.tbl)
-        out
+    function(object, predicate, funs, ...) {
+        ## FIXME
+        stop("REWORK")
     }
 
 
@@ -181,40 +100,10 @@ setMethod(
 
 
 
-`transmuteAt,data.frame` <-  # nolint
-    function(.tbl, .vars, .funs, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::transmuteAt(
-            .tbl = .tbl,
-            .vars = .vars,
-            .funs = .funs,
-            ...
-        )
-    }
-
-
-
-#' @rdname mutate
-#' @export
-setMethod(
-    f = "transmuteAt",
-    signature = signature("data.frame"),
-    definition = `transmuteAt,data.frame`
-)
-
-
-
 `transmuteAt,DataFrame` <-  # nolint
-    function(.tbl, .vars, .funs, ...) {
-        tbl <- transmuteAt(
-            .tbl = as_tibble(.tbl, rownames = NULL),
-            .vars = .vars,
-            .funs = .funs,
-            ...
-        )
-        out <- as(tbl, "DataFrame")
-        rownames(out) <- rownames(.tbl)
-        out
+    function(object, vars, funs, ...) {
+        ## FIXME
+        stop("REWORK")
     }
 
 
@@ -229,40 +118,10 @@ setMethod(
 
 
 
-`transmuteIf,data.frame` <-  # nolint
-    function(.tbl, .predicate, .funs, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::transmute_if(
-            .tbl = .tbl,
-            .predicate = .predicate,
-            .funs = .funs,
-            ...
-        )
-    }
-
-
-
-#' @rdname mutate
-#' @export
-setMethod(
-    f = "transmuteIf",
-    signature = signature("data.frame"),
-    definition = `transmuteIf,data.frame`
-)
-
-
-
 `transmuteIf,DataFrame` <-  # nolint
-    function(.tbl, .predicate, .funs, ...) {
-        tbl <- transmuteIf(
-            .tbl = as_tibble(.tbl, rownames = NULL),
-            .predicate = .predicate,
-            .funs = .funs,
-            ...
-        )
-        out <- as(tbl, "DataFrame")
-        rownames(out) <- rownames(.tbl)
-        out
+    function(object, predicate, funs, ...) {
+        ## FIXME
+        stop("REWORK")
     }
 
 

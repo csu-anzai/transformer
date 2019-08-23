@@ -69,7 +69,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "mutateAll",
-    def = function(.tbl, ...) {
+    def = function(object, ...) {
         standardGeneric("mutateAll")
     }
 )
@@ -78,7 +78,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "mutateAt",
-    def = function(.tbl, ...) {
+    def = function(object, ...) {
         standardGeneric("mutateAt")
     }
 )
@@ -87,7 +87,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "mutateIf",
-    def = function(.tbl, ...) {
+    def = function(object, ...) {
         standardGeneric("mutateIf")
     }
 )
@@ -96,7 +96,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "transmuteAt",
-    def = function(.tbl, ...) {
+    def = function(object, ...) {
         standardGeneric("transmuteAt")
     }
 )
@@ -105,7 +105,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "transmuteIf",
-    def = function(.tbl, ...) {
+    def = function(object, ...) {
         standardGeneric("transmuteIf")
     }
 )
@@ -116,7 +116,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "selectAll",
-    def = function(.tbl, ...) {
+    def = function(object, ...) {
         standardGeneric("selectAll")
     }
 )
@@ -125,7 +125,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "selectAt",
-    def = function(.tbl, ...) {
+    def = function(object, ...) {
         standardGeneric("selectAt")
     }
 )
@@ -134,7 +134,7 @@ setGeneric(
 #' @export
 setGeneric(
     name = "selectIf",
-    def = function(.tbl, ...) {
+    def = function(object, ...) {
         standardGeneric("selectIf")
     }
 )

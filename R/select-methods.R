@@ -25,45 +25,17 @@
 #'
 #' ## DataFrame ====
 #' x <- as(mtcars, "DataFrame")
-#' selectAll(x, .funs = toupper)
+#' selectAll(x, funs = toupper)
 #' selectAt(x, .vars = c("mpg", "cyl"))
-#' selectIf(x, .predicate = is.double)
+#' selectIf(x, predicate = is.double)
 NULL
 
 
 
-`selectAll,data.frame` <-  # nolint
-    function(.tbl, .funs = list(), ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::select_all(
-            .tbl = .tbl,
-            .funs = .funs,
-            ...
-        )
-    }
-
-
-
-#' @rdname select
-#' @export
-setMethod(
-    f = "selectAll",
-    signature = signature("data.frame"),
-    definition = `selectAll,data.frame`
-)
-
-
-
 `selectAll,DataFrame` <-  # nolint
-    function(.tbl, .funs = list(), ...) {
-        tbl <- selectAll(
-            .tbl = as_tibble(.tbl, rownames = NULL),
-            .funs = .funs,
-            ...
-        )
-        out <- as(tbl, "DataFrame")
-        rownames(out) <- rownames(.tbl)
-        out
+    function(object, funs = list(), ...) {
+        ## FIXME
+        stop("REWORK")
     }
 
 
@@ -78,40 +50,10 @@ setMethod(
 
 
 
-`selectAt,data.frame` <-  # nolint
-    function(.tbl, .vars, .funs = list(), ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::select_at(
-            .tbl = .tbl,
-            .vars = .vars,
-            .funs = .funs,
-            ...
-        )
-    }
-
-
-
-#' @rdname select
-#' @export
-setMethod(
-    f = "selectAt",
-    signature = signature("data.frame"),
-    definition = `selectAt,data.frame`
-)
-
-
-
 `selectAt,DataFrame` <-  # nolint
-    function(.tbl, .vars, .funs = list(), ...) {
-        tbl <- selectAt(
-            .tbl = as_tibble(.tbl, rownames = NULL),
-            .vars = .vars,
-            .funs = .funs,
-            ...
-        )
-        out <- as(tbl, "DataFrame")
-        rownames(out) <- rownames(.tbl)
-        out
+    function(object, .vars, funs = list(), ...) {
+        ## FIXME
+        stop("REWORK")
     }
 
 
@@ -126,40 +68,10 @@ setMethod(
 
 
 
-`selectIf,data.frame` <-  # nolint
-    function(.tbl, .predicate, .funs = list(), ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::select_if(
-            .tbl = .tbl,
-            .predicate = .predicate,
-            .funs = .funs,
-            ...
-        )
-    }
-
-
-
-#' @rdname select
-#' @export
-setMethod(
-    f = "selectIf",
-    signature = signature("data.frame"),
-    definition = `selectIf,data.frame`
-)
-
-
-
 `selectIf,DataFrame` <-  # nolint
-    function(.tbl, .predicate, .funs = list(), ...) {
-        tbl <- selectIf(
-            .tbl = as_tibble(.tbl, rownames = NULL),
-            .predicate = .predicate,
-            .funs = .funs,
-            ...
-        )
-        out <- as(tbl, "DataFrame")
-        rownames(out) <- rownames(.tbl)
-        out
+    function(object, predicate, funs = list(), ...) {
+        ## FIXME
+        stop("REWORK")
     }
 
 

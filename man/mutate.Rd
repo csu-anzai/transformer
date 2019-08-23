@@ -8,57 +8,42 @@
 \alias{transmuteAt}
 \alias{transmuteIf}
 \alias{mutate}
-\alias{mutateAll,data.frame-method}
 \alias{mutateAll,DataFrame-method}
-\alias{mutateAt,data.frame-method}
 \alias{mutateAt,DataFrame-method}
-\alias{mutateIf,data.frame-method}
 \alias{mutateIf,DataFrame-method}
-\alias{transmuteAt,data.frame-method}
 \alias{transmuteAt,DataFrame-method}
-\alias{transmuteIf,data.frame-method}
 \alias{transmuteIf,DataFrame-method}
 \title{Mutate multiple columns}
 \usage{
-mutateAll(.tbl, ...)
+mutateAll(object, ...)
 
-mutateAt(.tbl, ...)
+mutateAt(object, ...)
 
-mutateIf(.tbl, ...)
+mutateIf(object, ...)
 
-transmuteAt(.tbl, ...)
+transmuteAt(object, ...)
 
-transmuteIf(.tbl, ...)
+transmuteIf(object, ...)
 
-\S4method{mutateAll}{data.frame}(.tbl, .funs, ...)
+\S4method{mutateAll}{DataFrame}(object, funs, ...)
 
-\S4method{mutateAll}{DataFrame}(.tbl, .funs, ...)
+\S4method{mutateAt}{DataFrame}(object, vars, funs, ...)
 
-\S4method{mutateAt}{data.frame}(.tbl, .vars, .funs, ...)
+\S4method{mutateIf}{DataFrame}(object, predicate, funs, ...)
 
-\S4method{mutateAt}{DataFrame}(.tbl, .vars, .funs, ...)
+\S4method{transmuteAt}{DataFrame}(object, vars, funs, ...)
 
-\S4method{mutateIf}{data.frame}(.tbl, .predicate, .funs, ...)
-
-\S4method{mutateIf}{DataFrame}(.tbl, .predicate, .funs, ...)
-
-\S4method{transmuteAt}{data.frame}(.tbl, .vars, .funs, ...)
-
-\S4method{transmuteAt}{DataFrame}(.tbl, .vars, .funs, ...)
-
-\S4method{transmuteIf}{data.frame}(.tbl, .predicate, .funs, ...)
-
-\S4method{transmuteIf}{DataFrame}(.tbl, .predicate, .funs, ...)
+\S4method{transmuteIf}{DataFrame}(object, predicate, funs, ...)
 }
 \arguments{
-\item{.tbl}{Object.}
+\item{object}{Object.}
 
 \item{...}{Additional argument.}
 
-\item{.funs, .predicate}{\code{function}.
+\item{funs, predicate}{\code{function}.
 Refer to dplyr documentation for details.}
 
-\item{.vars}{\code{character}.
+\item{vars}{\code{character}.
 Column names.}
 }
 \value{
@@ -86,9 +71,9 @@ data(mtcars, package = "datasets")
 
 ## DataFrame ====
 x <- as(mtcars, "DataFrame")
-mutateAll(x, .funs = log, base = 2L)
-mutateAt(x, .vars = c("mpg", "cyl"), log, base = 2L)
-mutateIf(x, .predicate = is.double, .funs = as.integer)
-transmuteAt(x, .vars = c("mpg", "cyl"), log, base = 2L)
-transmuteIf(x, .predicate = is.double, .funs = as.integer)
+mutateAll(x, funs = log, base = 2L)
+mutateAt(x, vars = c("mpg", "cyl"), log, base = 2L)
+mutateIf(x, predicate = is.double, funs = as.integer)
+transmuteAt(x, vars = c("mpg", "cyl"), log, base = 2L)
+transmuteIf(x, predicate = is.double, funs = as.integer)
 }

@@ -6,44 +6,32 @@
 \alias{selectAt}
 \alias{selectIf}
 \alias{select}
-\alias{selectAll,data.frame-method}
 \alias{selectAll,DataFrame-method}
-\alias{selectAt,data.frame-method}
 \alias{selectAt,DataFrame-method}
-\alias{selectIf,data.frame-method}
 \alias{selectIf,DataFrame-method}
 \title{Select and rename a selection of variables}
 \usage{
-selectAll(.tbl, ...)
+selectAll(object, ...)
 
-selectAt(.tbl, ...)
+selectAt(object, ...)
 
-selectIf(.tbl, ...)
+selectIf(object, ...)
 
-\S4method{selectAll}{data.frame}(.tbl, .funs = list(), ...)
+\S4method{selectAll}{DataFrame}(object, funs = list(), ...)
 
-\S4method{selectAll}{DataFrame}(.tbl, .funs = list(), ...)
+\S4method{selectAt}{DataFrame}(object, .vars, funs = list(), ...)
 
-\S4method{selectAt}{data.frame}(.tbl, .vars, .funs = list(), ...)
-
-\S4method{selectAt}{DataFrame}(.tbl, .vars, .funs = list(), ...)
-
-\S4method{selectIf}{data.frame}(.tbl, .predicate, .funs = list(), ...)
-
-\S4method{selectIf}{DataFrame}(.tbl, .predicate, .funs = list(), ...)
+\S4method{selectIf}{DataFrame}(object, predicate, funs = list(), ...)
 }
 \arguments{
-\item{.tbl}{Object.}
+\item{object}{Object.}
 
 \item{...}{Additional argument.}
 
-\item{.funs}{\code{function}.
+\item{funs}{\code{function}.
 Refer to dplyr documentation for details.}
 
-\item{.vars}{\code{character}.
-Column names.}
-
-\item{.predicate}{\code{function}.
+\item{predicate}{\code{function}.
 Refer to dplyr documentation for details.}
 }
 \value{
@@ -71,7 +59,7 @@ data(mtcars, package = "datasets")
 
 ## DataFrame ====
 x <- as(mtcars, "DataFrame")
-selectAll(x, .funs = toupper)
+selectAll(x, funs = toupper)
 selectAt(x, .vars = c("mpg", "cyl"))
-selectIf(x, .predicate = is.double)
+selectIf(x, predicate = is.double)
 }
