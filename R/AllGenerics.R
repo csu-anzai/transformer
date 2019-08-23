@@ -1,54 +1,54 @@
 #' @rdname join
 #' @export
 setGeneric(
-    name = "inner_join",
+    name = "innerJoin",
     def = function(x, y, ...) {
-        standardGeneric("inner_join")
+        standardGeneric("innerJoin")
     }
 )
 
 #' @rdname join
 #' @export
 setGeneric(
-    name = "left_join",
+    name = "leftJoin",
     def = function(x, y, ...) {
-        standardGeneric("left_join")
+        standardGeneric("leftJoin")
     }
 )
 
 #' @rdname join
 #' @export
 setGeneric(
-    name = "right_join",
+    name = "rightJoin",
     def = function(x, y, ...) {
-        standardGeneric("right_join")
+        standardGeneric("rightJoin")
     }
 )
 
 #' @rdname join
 #' @export
 setGeneric(
-    name = "full_join",
+    name = "fullJoin",
     def = function(x, y, ...) {
-        standardGeneric("full_join")
+        standardGeneric("fullJoin")
     }
 )
 
 #' @rdname join
 #' @export
 setGeneric(
-    name = "semi_join",
+    name = "semiJoin",
     def = function(x, y, ...) {
-        standardGeneric("semi_join")
+        standardGeneric("semiJoin")
     }
 )
 
 #' @rdname join
 #' @export
 setGeneric(
-    name = "anti_join",
+    name = "antiJoin",
     def = function(x, y, ...) {
-        standardGeneric("anti_join")
+        standardGeneric("antiJoin")
     }
 )
 
@@ -57,45 +57,45 @@ setGeneric(
 #' @rdname mutate
 #' @export
 setGeneric(
-    name = "mutate_all",
+    name = "mutateAll",
     def = function(.tbl, ...) {
-        standardGeneric("mutate_all")
+        standardGeneric("mutateAll")
     }
 )
 
 #' @rdname mutate
 #' @export
 setGeneric(
-    name = "mutate_at",
+    name = "mutateAt",
     def = function(.tbl, ...) {
-        standardGeneric("mutate_at")
+        standardGeneric("mutateAt")
     }
 )
 
 #' @rdname mutate
 #' @export
 setGeneric(
-    name = "mutate_if",
+    name = "mutateIf",
     def = function(.tbl, ...) {
-        standardGeneric("mutate_if")
+        standardGeneric("mutateIf")
     }
 )
 
 #' @rdname mutate
 #' @export
 setGeneric(
-    name = "transmute_at",
+    name = "transmuteAt",
     def = function(.tbl, ...) {
-        standardGeneric("transmute_at")
+        standardGeneric("transmuteAt")
     }
 )
 
 #' @rdname mutate
 #' @export
 setGeneric(
-    name = "transmute_if",
+    name = "transmuteIf",
     def = function(.tbl, ...) {
-        standardGeneric("transmute_if")
+        standardGeneric("transmuteIf")
     }
 )
 
@@ -104,26 +104,26 @@ setGeneric(
 #' @rdname select
 #' @export
 setGeneric(
-    name = "select_all",
+    name = "selectAll",
     def = function(.tbl, ...) {
-        standardGeneric("select_all")
+        standardGeneric("selectAll")
     }
 )
 
 #' @rdname select
 #' @export
 setGeneric(
-    name = "select_at",
+    name = "selectAt",
     def = function(.tbl, ...) {
-        standardGeneric("select_at")
+        standardGeneric("selectAt")
     }
 )
 
 #' @rdname select
 #' @export
 setGeneric(
-    name = "select_if",
+    name = "selectIf",
     def = function(.tbl, ...) {
-        standardGeneric("select_if")
+        standardGeneric("selectIf")
     }
 )

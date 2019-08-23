@@ -1,3 +1,7 @@
+## FIXME Rework these methods
+
+
+
 #' @inherit dplyr::select_all title
 #'
 #' @section `data.frame` methods:
@@ -21,14 +25,14 @@
 #'
 #' ## DataFrame ====
 #' x <- as(mtcars, "DataFrame")
-#' select_all(x, .funs = toupper)
-#' select_at(x, .vars = c("mpg", "cyl"))
-#' select_if(x, .predicate = is.double)
+#' selectAll(x, .funs = toupper)
+#' selectAt(x, .vars = c("mpg", "cyl"))
+#' selectIf(x, .predicate = is.double)
 NULL
 
 
 
-`select_all,data.frame` <-  # nolint
+`selectAll,data.frame` <-  # nolint
     function(.tbl, .funs = list(), ...) {
         assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::select_all(
@@ -43,16 +47,16 @@ NULL
 #' @rdname select
 #' @export
 setMethod(
-    f = "select_all",
+    f = "selectAll",
     signature = signature("data.frame"),
-    definition = `select_all,data.frame`
+    definition = `selectAll,data.frame`
 )
 
 
 
-`select_all,DataFrame` <-  # nolint
+`selectAll,DataFrame` <-  # nolint
     function(.tbl, .funs = list(), ...) {
-        tbl <- select_all(
+        tbl <- selectAll(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .funs = .funs,
             ...
@@ -67,14 +71,14 @@ setMethod(
 #' @rdname select
 #' @export
 setMethod(
-    f = "select_all",
+    f = "selectAll",
     signature = signature("DataFrame"),
-    definition = `select_all,DataFrame`
+    definition = `selectAll,DataFrame`
 )
 
 
 
-`select_at,data.frame` <-  # nolint
+`selectAt,data.frame` <-  # nolint
     function(.tbl, .vars, .funs = list(), ...) {
         assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::select_at(
@@ -90,16 +94,16 @@ setMethod(
 #' @rdname select
 #' @export
 setMethod(
-    f = "select_at",
+    f = "selectAt",
     signature = signature("data.frame"),
-    definition = `select_at,data.frame`
+    definition = `selectAt,data.frame`
 )
 
 
 
-`select_at,DataFrame` <-  # nolint
+`selectAt,DataFrame` <-  # nolint
     function(.tbl, .vars, .funs = list(), ...) {
-        tbl <- select_at(
+        tbl <- selectAt(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .vars = .vars,
             .funs = .funs,
@@ -115,14 +119,14 @@ setMethod(
 #' @rdname select
 #' @export
 setMethod(
-    f = "select_at",
+    f = "selectAt",
     signature = signature("DataFrame"),
-    definition = `select_at,DataFrame`
+    definition = `selectAt,DataFrame`
 )
 
 
 
-`select_if,data.frame` <-  # nolint
+`selectIf,data.frame` <-  # nolint
     function(.tbl, .predicate, .funs = list(), ...) {
         assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::select_if(
@@ -138,16 +142,16 @@ setMethod(
 #' @rdname select
 #' @export
 setMethod(
-    f = "select_if",
+    f = "selectIf",
     signature = signature("data.frame"),
-    definition = `select_if,data.frame`
+    definition = `selectIf,data.frame`
 )
 
 
 
-`select_if,DataFrame` <-  # nolint
+`selectIf,DataFrame` <-  # nolint
     function(.tbl, .predicate, .funs = list(), ...) {
-        tbl <- select_if(
+        tbl <- selectIf(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .predicate = .predicate,
             .funs = .funs,
@@ -163,7 +167,7 @@ setMethod(
 #' @rdname select
 #' @export
 setMethod(
-    f = "select_if",
+    f = "selectIf",
     signature = signature("DataFrame"),
-    definition = `select_if,DataFrame`
+    definition = `selectIf,DataFrame`
 )

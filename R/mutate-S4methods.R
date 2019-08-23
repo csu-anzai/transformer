@@ -1,3 +1,7 @@
+## FIXME Rework and rename the formals.
+
+
+
 #' @inherit dplyr::mutate_all title
 #'
 #' @section `data.frame` methods:
@@ -26,16 +30,16 @@
 #'
 #' ## DataFrame ====
 #' x <- as(mtcars, "DataFrame")
-#' mutate_all(x, .funs = log, base = 2L)
-#' mutate_at(x, .vars = c("mpg", "cyl"), log, base = 2L)
-#' mutate_if(x, .predicate = is.double, .funs = as.integer)
-#' transmute_at(x, .vars = c("mpg", "cyl"), log, base = 2L)
-#' transmute_if(x, .predicate = is.double, .funs = as.integer)
+#' mutateAll(x, .funs = log, base = 2L)
+#' mutateAt(x, .vars = c("mpg", "cyl"), log, base = 2L)
+#' mutateIf(x, .predicate = is.double, .funs = as.integer)
+#' transmuteAt(x, .vars = c("mpg", "cyl"), log, base = 2L)
+#' transmuteIf(x, .predicate = is.double, .funs = as.integer)
 NULL
 
 
 
-`mutate_all,data.frame` <-  # nolint
+`mutateAll,data.frame` <-  # nolint
     function(.tbl, .funs, ...) {
         assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::mutate_all(
@@ -50,16 +54,16 @@ NULL
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "mutate_all",
+    f = "mutateAll",
     signature = signature("data.frame"),
-    definition = `mutate_all,data.frame`
+    definition = `mutateAll,data.frame`
 )
 
 
 
-`mutate_all,DataFrame` <-  # nolint
+`mutateAll,DataFrame` <-  # nolint
     function(.tbl, .funs, ...) {
-        tbl <- mutate_all(
+        tbl <- mutateAll(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .funs = .funs,
             ...
@@ -74,14 +78,14 @@ setMethod(
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "mutate_all",
+    f = "mutateAll",
     signature = signature("DataFrame"),
-    definition = `mutate_all,DataFrame`
+    definition = `mutateAll,DataFrame`
 )
 
 
 
-`mutate_at,data.frame` <-  # nolint
+`mutateAt,data.frame` <-  # nolint
     function(.tbl, .vars, .funs, ...) {
         assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::mutate_at(
@@ -97,16 +101,16 @@ setMethod(
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "mutate_at",
+    f = "mutateAt",
     signature = signature("data.frame"),
-    definition = `mutate_at,data.frame`
+    definition = `mutateAt,data.frame`
 )
 
 
 
-`mutate_at,DataFrame` <-  # nolint
+`mutateAt,DataFrame` <-  # nolint
     function(.tbl, .vars, .funs, ...) {
-        tbl <- mutate_at(
+        tbl <- mutateAt(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .vars = .vars,
             .funs = .funs,
@@ -122,14 +126,14 @@ setMethod(
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "mutate_at",
+    f = "mutateAt",
     signature = signature("DataFrame"),
-    definition = `mutate_at,DataFrame`
+    definition = `mutateAt,DataFrame`
 )
 
 
 
-`mutate_if,data.frame` <-  # nolint
+`mutateIf,data.frame` <-  # nolint
     function(.tbl, .predicate, .funs, ...) {
         assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::mutate_if(
@@ -145,16 +149,16 @@ setMethod(
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "mutate_if",
+    f = "mutateIf",
     signature = signature("data.frame"),
-    definition = `mutate_if,data.frame`
+    definition = `mutateIf,data.frame`
 )
 
 
 
-`mutate_if,DataFrame` <-  # nolint
+`mutateIf,DataFrame` <-  # nolint
     function(.tbl, .predicate, .funs, ...) {
-        tbl <- mutate_if(
+        tbl <- mutateIf(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .predicate = .predicate,
             .funs = .funs,
@@ -170,17 +174,17 @@ setMethod(
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "mutate_if",
+    f = "mutateIf",
     signature = signature("DataFrame"),
-    definition = `mutate_if,DataFrame`
+    definition = `mutateIf,DataFrame`
 )
 
 
 
-`transmute_at,data.frame` <-  # nolint
+`transmuteAt,data.frame` <-  # nolint
     function(.tbl, .vars, .funs, ...) {
         assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::transmute_at(
+        dplyr::transmuteAt(
             .tbl = .tbl,
             .vars = .vars,
             .funs = .funs,
@@ -193,16 +197,16 @@ setMethod(
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "transmute_at",
+    f = "transmuteAt",
     signature = signature("data.frame"),
-    definition = `transmute_at,data.frame`
+    definition = `transmuteAt,data.frame`
 )
 
 
 
-`transmute_at,DataFrame` <-  # nolint
+`transmuteAt,DataFrame` <-  # nolint
     function(.tbl, .vars, .funs, ...) {
-        tbl <- transmute_at(
+        tbl <- transmuteAt(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .vars = .vars,
             .funs = .funs,
@@ -218,14 +222,14 @@ setMethod(
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "transmute_at",
+    f = "transmuteAt",
     signature = signature("DataFrame"),
-    definition = `transmute_at,DataFrame`
+    definition = `transmuteAt,DataFrame`
 )
 
 
 
-`transmute_if,data.frame` <-  # nolint
+`transmuteIf,data.frame` <-  # nolint
     function(.tbl, .predicate, .funs, ...) {
         assert(requireNamespace("dplyr", quietly = TRUE))
         dplyr::transmute_if(
@@ -241,16 +245,16 @@ setMethod(
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "transmute_if",
+    f = "transmuteIf",
     signature = signature("data.frame"),
-    definition = `transmute_if,data.frame`
+    definition = `transmuteIf,data.frame`
 )
 
 
 
-`transmute_if,DataFrame` <-  # nolint
+`transmuteIf,DataFrame` <-  # nolint
     function(.tbl, .predicate, .funs, ...) {
-        tbl <- transmute_if(
+        tbl <- transmuteIf(
             .tbl = as_tibble(.tbl, rownames = NULL),
             .predicate = .predicate,
             .funs = .funs,
@@ -266,7 +270,7 @@ setMethod(
 #' @rdname mutate
 #' @export
 setMethod(
-    f = "transmute_if",
+    f = "transmuteIf",
     signature = signature("DataFrame"),
-    definition = `transmute_if,DataFrame`
+    definition = `transmuteIf,DataFrame`
 )

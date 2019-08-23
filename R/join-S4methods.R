@@ -45,38 +45,17 @@
 #' y <- band_instruments
 #' print(y)
 #' by <- "name"
-#' inner_join(x = x, y = y, by = by)
-#' left_join(x = x, y = y, by = by)
-#' right_join(x = x, y = y, by = by)
-#' full_join(x = x, y = y, by = by)
-#' semi_join(x = x, y = y, by = by)
-#' anti_join(x = x, y = y, by = by)
+#' innerJoin(x = x, y = y, by = by)
+#' leftJoin(x = x, y = y, by = by)
+#' rightJoin(x = x, y = y, by = by)
+#' fullJoin(x = x, y = y, by = by)
+#' semiJoin(x = x, y = y, by = by)
+#' antiJoin(x = x, y = y, by = by)
 NULL
 
 
 
-`inner_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::inner_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "inner_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `inner_join,data.frame`
-)
-
-
-
-`inner_join,DataFrame` <-  # nolint
+`innerJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
             isCharacter(by),
@@ -100,38 +79,17 @@ setMethod(
 #' @rdname join
 #' @export
 setMethod(
-    f = "inner_join",
+    f = "innerJoin",
     signature = signature(
         x = "DataFrame",
         y = "DataFrame"
     ),
-    definition = `inner_join,DataFrame`
+    definition = `innerJoin,DataFrame`
 )
 
 
 
-`left_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::left_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "left_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `left_join,data.frame`
-)
-
-
-
-`left_join,DataFrame` <-  # nolint
+`leftJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
             isCharacter(by),
@@ -156,27 +114,19 @@ setMethod(
 #' @rdname join
 #' @export
 setMethod(
-    f = "left_join",
+    f = "leftJoin",
     signature = signature(
         x = "DataFrame",
         y = "DataFrame"
     ),
-    definition = `left_join,DataFrame`
+    definition = `leftJoin,DataFrame`
 )
 
 
 
-`right_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::right_join(x = x, y = y, ...)
-    }
-
-
-
-`right_join,DataFrame` <-  # nolint
+`rightJoin,DataFrame` <-  # nolint
     function(x, y, by) {
-        left_join(x = y, y = x, by = by)
+        leftJoin(x = y, y = x, by = by)
     }
 
 
@@ -184,38 +134,17 @@ setMethod(
 #' @rdname join
 #' @export
 setMethod(
-    f = "right_join",
+    f = "rightJoin",
     signature = signature(
         x = "DataFrame",
         y = "DataFrame"
     ),
-    definition = `right_join,DataFrame`
+    definition = `rightJoin,DataFrame`
 )
 
 
 
-#' @rdname join
-#' @export
-setMethod(
-    f = "right_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `right_join,data.frame`
-)
-
-
-
-`full_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::full_join(x = x, y = y, ...)
-    }
-
-
-
-`full_join,DataFrame` <-  # nolint
+`fullJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
             isCharacter(by),
@@ -244,51 +173,17 @@ setMethod(
 #' @rdname join
 #' @export
 setMethod(
-    f = "full_join",
+    f = "fullJoin",
     signature = signature(
         x = "DataFrame",
         y = "DataFrame"
     ),
-    definition = `full_join,DataFrame`
+    definition = `fullJoin,DataFrame`
 )
 
 
 
-#' @rdname join
-#' @export
-setMethod(
-    f = "full_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `full_join,data.frame`
-)
-
-
-
-`semi_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::semi_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "semi_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `semi_join,data.frame`
-)
-
-
-
-`semi_join,DataFrame` <-  # nolint
+`semiJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
             isCharacter(by),
@@ -309,38 +204,17 @@ setMethod(
 #' @rdname join
 #' @export
 setMethod(
-    f = "semi_join",
+    f = "semiJoin",
     signature = signature(
         x = "DataFrame",
         y = "DataFrame"
     ),
-    definition = `semi_join,DataFrame`
+    definition = `semiJoin,DataFrame`
 )
 
 
 
-`anti_join,data.frame` <-  # nolint
-    function(x, y, ...) {
-        assert(requireNamespace("dplyr", quietly = TRUE))
-        dplyr::anti_join(x = x, y = y, ...)
-    }
-
-
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "anti_join",
-    signature = signature(
-        x = "data.frame",
-        y = "data.frame"
-    ),
-    definition = `anti_join,data.frame`
-)
-
-
-
-`anti_join,DataFrame` <-  # nolint
+`antiJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
             isCharacter(by),
@@ -361,10 +235,10 @@ setMethod(
 #' @rdname join
 #' @export
 setMethod(
-    f = "anti_join",
+    f = "antiJoin",
     signature = signature(
         x = "DataFrame",
         y = "DataFrame"
     ),
-    definition = `anti_join,DataFrame`
+    definition = `antiJoin,DataFrame`
 )
