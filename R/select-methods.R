@@ -1,8 +1,3 @@
-## FIXME Rework and rename the formals.
-## FIXME How to support `funs()` here?
-
-
-
 #' Select multiple columns
 #'
 #' @name select
