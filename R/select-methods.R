@@ -1,77 +1,40 @@
-## FIXME Rework these methods
+## FIXME Rework and rename the formals.
+## FIXME How to support `funs()` here?
 
 
 
-#' @inherit dplyr::select_all title
-#'
-#' @section `data.frame` methods:
-#'
-#' Since we are defining S4 methods in this package, we are providing
-#' passthrough support to dplyr for `data.frame` class objects. Our generic
-#' methods pass through to dplyr select functions, which are optimized for
-#' `tbl_df` class.
-#'
-#' Refer to `help(topic = "select_all", package = "dplyr")` for details.
+#' Select multiple columns
 #'
 #' @name select
-#' @note Updated 2019-08-15.
+#' @note Updated 2019-08-23.
 #'
 #' @inheritParams mutate
+#' @param ... Passthrough arguments to `predicate` function.
 #'
 #' @return Modified object.
 #'
+#' @seealso
+#' - `help(topic = "select_all", package = "dplyr")`
+#'
 #' @examples
-#' data(mtcars, package = "datasets")
+#' data(iris, package = "datasets")
 #'
 #' ## DataFrame ====
-#' x <- as(mtcars, "DataFrame")
-#' selectAll(x, funs = toupper)
-#' selectAt(x, .vars = c("mpg", "cyl"))
-#' selectIf(x, predicate = is.double)
+#' x <- as(iris, "DataFrame")
+#' selectIf(x, .predicate = is.factor)
 NULL
 
 
 
-`selectAll,DataFrame` <-  # nolint
-    function(object, funs = list(), ...) {
-        ## FIXME
-        stop("REWORK")
-    }
-
-
-
-#' @rdname select
-#' @export
-setMethod(
-    f = "selectAll",
-    signature = signature("DataFrame"),
-    definition = `selectAll,DataFrame`
-)
-
-
-
-`selectAt,DataFrame` <-  # nolint
-    function(object, .vars, funs = list(), ...) {
-        ## FIXME
-        stop("REWORK")
-    }
-
-
-
-#' @rdname select
-#' @export
-setMethod(
-    f = "selectAt",
-    signature = signature("DataFrame"),
-    definition = `selectAt,DataFrame`
-)
-
-
-
 `selectIf,DataFrame` <-  # nolint
-    function(object, predicate, funs = list(), ...) {
-        ## FIXME
-        stop("REWORK")
+    function(object, .predicate, ...) {
+        assert(isAny(.predicate, c("function", "logical")))
+        if (is.function(.predicate)) {
+            keep <- bapply(X = object, FUN = .predicate, ...)
+        } else {
+            keep <- .predicate
+        }
+        object[, keep, drop = FALSE]
     }
 
 
