@@ -3,8 +3,8 @@
 #' @name select
 #' @note Updated 2019-08-23.
 #'
+#' @inheritParams acidroxygen::params
 #' @inheritParams mutate
-#' @param ... Passthrough arguments to `predicate` function.
 #'
 #' @return Modified object.
 #'
@@ -22,10 +22,10 @@ NULL
 
 
 `selectIf,DataFrame` <-  # nolint
-    function(object, .predicate, ...) {
+    function(object, .predicate) {
         assert(isAny(.predicate, c("function", "logical")))
         if (is.function(.predicate)) {
-            keep <- bapply(X = object, FUN = .predicate, ...)
+            keep <- bapply(X = object, FUN = .predicate)
         } else {
             keep <- .predicate
         }

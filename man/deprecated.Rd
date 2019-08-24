@@ -6,6 +6,7 @@
 \alias{relevel.DataFrame}
 \alias{relevel.Ranges}
 \alias{relevel.SummarizedExperiment}
+\alias{left_join}
 \title{Deprecated functions}
 \usage{
 relevel(x, ref, ...)
@@ -15,6 +16,8 @@ relevel(x, ref, ...)
 \method{relevel}{Ranges}(x, ref = NULL, ...)
 
 \method{relevel}{SummarizedExperiment}(x, ref = NULL, ...)
+
+left_join(x, y, ...)
 }
 \arguments{
 \item{x}{Object.}
@@ -22,6 +25,8 @@ relevel(x, ref, ...)
 \item{ref}{Unsupported.}
 
 \item{...}{Additional arguments.}
+
+\item{y}{Object.}
 }
 \value{
 \code{.Deprecated}.

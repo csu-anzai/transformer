@@ -1,55 +1,43 @@
-## FIXME Rework and rename the formals.
-## FIXME How to support `funs()` here?
-
-
-
-#' @inherit dplyr::mutate_all title
-#'
-#' @section `data.frame` methods:
-#'
-#' Since we are defining S4 methods in this package, we are providing
-#' passthrough support to dplyr for `data.frame` class objects. Our generic
-#' methods pass through to dplyr mutate functions, which are optimized for
-#' `tbl_df` class.
-#'
-#' Refer to `help(topic = "mutate_all", package = "dplyr")` for details.
+#' Mutate multiple columns
 #'
 #' @name mutate
-#' @note Updated 2019-08-15.
+#' @note Updated 2019-08-24.
 #'
 #' @inheritParams acidroxygen::params
-#' @param funs,predicate `function`.
-#'   Refer to dplyr documentation for details.
-#' @param vars `character`.
+#' @param .predicate `function` or `logical`.
+#'   A predicate function to be applied to the columns, or a logical vector
+#'   matching the number of columns.
+#' @param .fun `function`.
+#'   Mutation function.
+#' @param .vars `character`.
 #'   Column names.
-#' @param ... Additional argument.
+#' @param ... Passthrough arguments to function declared in `.fun` argument.
 #'
 #' @return Modified object.
+#'
+#' @seealso
+#' - `help(topic = "mutate_all", package = "dplyr")`
 #'
 #' @examples
 #' data(mtcars, package = "datasets")
 #'
 #' ## DataFrame ====
 #' x <- as(mtcars, "DataFrame")
-#' mutateAll(x, funs = log, base = 2L)
-#' mutateAt(x, vars = c("mpg", "cyl"), log, base = 2L)
-#' mutateIf(x, predicate = is.double, funs = as.integer)
-#' transmuteAt(x, vars = c("mpg", "cyl"), log, base = 2L)
-#' transmuteIf(x, predicate = is.double, funs = as.integer)
+#' mutateAll(x, .fun = log, base = 2L)
+#' mutateAt(x, .vars = c("mpg", "cyl"), .fun = log, base = 2L)
+#' mutateIf(x, .predicate = is.double, .fun = as.integer)
+#' transmuteAt(x, .vars = c("mpg", "cyl"), .fun = log, base = 2L)
+#' transmuteIf(x, .predicate = is.double, .fun = as.integer)
 NULL
 
 
 
+## Updated 2019-08-24.
 `mutateAll,DataFrame` <-  # nolint
-    function(object, funs, ...) {
-        object <- mutateAll(
-            object = as_tibble(object, rownames = NULL),
-            funs = funs,
-            ...
-        )
-        out <- as(object, "DataFrame")
-        rownames(out) <- rownames(object)
-        out
+    function(object, .fun, ...) {
+        x <- lapply(X = object, FUN = .fun, ...)
+        x <- DataFrame(x, row.names = rownames(object))
+        x
     }
 
 
@@ -64,10 +52,19 @@ setMethod(
 
 
 
+## Updated 2019-08-24.
 `mutateAt,DataFrame` <-  # nolint
-    function(object, vars, funs, ...) {
-        ## FIXME
-        stop("REWORK")
+    function(object, .vars, .fun, ...) {
+        x <- transmuteAt(
+            object = object,
+            .vars = .vars,
+            .fun = .fun,
+            ...
+        )
+        y <- object[, setdiff(colnames(object), colnames(x)), drop = FALSE]
+        out <- cbind(x, y)
+        out <- out[, colnames(object), drop = FALSE]
+        out
     }
 
 
@@ -82,10 +79,19 @@ setMethod(
 
 
 
+## Updated 2019-08-24.
 `mutateIf,DataFrame` <-  # nolint
-    function(object, predicate, funs, ...) {
-        ## FIXME
-        stop("REWORK")
+    function(object, .predicate, .fun, ...) {
+        x <- transmuteIf(
+            object = object,
+            .predicate = .predicate,
+            .fun = .fun,
+            ...
+        )
+        y <- object[, setdiff(colnames(object), colnames(x)), drop = FALSE]
+        out <- cbind(x, y)
+        out <- out[, colnames(object), drop = FALSE]
+        out
     }
 
 
@@ -100,10 +106,12 @@ setMethod(
 
 
 
+## Updated 2019-08-24.
 `transmuteAt,DataFrame` <-  # nolint
-    function(object, vars, funs, ...) {
-        ## FIXME
-        stop("REWORK")
+    function(object, .vars, .fun, ...) {
+        x <- object[, .vars, drop = FALSE]
+        x <- mutateAll(x, .fun = .fun, ...)
+        x
     }
 
 
@@ -118,10 +126,12 @@ setMethod(
 
 
 
+## Updated 2019-08-24.
 `transmuteIf,DataFrame` <-  # nolint
-    function(object, predicate, funs, ...) {
-        ## FIXME
-        stop("REWORK")
+    function(object, .predicate, .fun, ...) {
+        x <- selectIf(object, .predicate = .predicate)
+        x <- mutateAll(x, .fun = .fun, ...)
+        x
     }
 
 

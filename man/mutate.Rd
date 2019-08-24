@@ -25,26 +25,30 @@ transmuteAt(object, ...)
 
 transmuteIf(object, ...)
 
-\S4method{mutateAll}{DataFrame}(object, funs, ...)
+\S4method{mutateAll}{DataFrame}(object, .fun, ...)
 
-\S4method{mutateAt}{DataFrame}(object, vars, funs, ...)
+\S4method{mutateAt}{DataFrame}(object, .vars, .fun, ...)
 
-\S4method{mutateIf}{DataFrame}(object, predicate, funs, ...)
+\S4method{mutateIf}{DataFrame}(object, .predicate, .fun, ...)
 
-\S4method{transmuteAt}{DataFrame}(object, vars, funs, ...)
+\S4method{transmuteAt}{DataFrame}(object, .vars, .fun, ...)
 
-\S4method{transmuteIf}{DataFrame}(object, predicate, funs, ...)
+\S4method{transmuteIf}{DataFrame}(object, .predicate, .fun, ...)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Additional argument.}
+\item{...}{Passthrough arguments to function declared in \code{.fun} argument.}
 
-\item{funs, predicate}{\code{function}.
-Refer to dplyr documentation for details.}
+\item{.fun}{\code{function}.
+Mutation function.}
 
-\item{vars}{\code{character}.
+\item{.vars}{\code{character}.
 Column names.}
+
+\item{.predicate}{\code{function} or \code{logical}.
+A predicate function to be applied to the columns, or a logical vector
+matching the number of columns.}
 }
 \value{
 Modified object.
@@ -53,27 +57,21 @@ Modified object.
 Mutate multiple columns
 }
 \note{
-Updated 2019-08-15.
+Updated 2019-08-23.
 }
-\section{\code{data.frame} methods}{
-
-
-Since we are defining S4 methods in this package, we are providing
-passthrough support to dplyr for \code{data.frame} class objects. Our generic
-methods pass through to dplyr mutate functions, which are optimized for
-\code{tbl_df} class.
-
-Refer to \code{help(topic = "mutate_all", package = "dplyr")} for details.
-}
-
 \examples{
 data(mtcars, package = "datasets")
 
 ## DataFrame ====
 x <- as(mtcars, "DataFrame")
-mutateAll(x, funs = log, base = 2L)
-mutateAt(x, vars = c("mpg", "cyl"), log, base = 2L)
-mutateIf(x, predicate = is.double, funs = as.integer)
-transmuteAt(x, vars = c("mpg", "cyl"), log, base = 2L)
-transmuteIf(x, predicate = is.double, funs = as.integer)
+mutateAll(x, .fun = log, base = 2L)
+mutateAt(x, .vars = c("mpg", "cyl"), .fun = log, base = 2L)
+mutateIf(x, .predicate = is.double, .fun = as.integer)
+transmuteAt(x, .vars = c("mpg", "cyl"), .fun = log, base = 2L)
+transmuteIf(x, .predicate = is.double, .fun = as.integer)
+}
+\seealso{
+\itemize{
+\item \code{help(topic = "mutate_all", package = "dplyr")}
+}
 }
