@@ -115,24 +115,6 @@ setGeneric(
 #' @rdname select
 #' @export
 setGeneric(
-    name = "selectAll",
-    def = function(object, ...) {
-        standardGeneric("selectAll")
-    }
-)
-
-#' @rdname select
-#' @export
-setGeneric(
-    name = "selectAt",
-    def = function(object, ...) {
-        standardGeneric("selectAt")
-    }
-)
-
-#' @rdname select
-#' @export
-setGeneric(
     name = "selectIf",
     def = function(object, ...) {
         standardGeneric("selectIf")
