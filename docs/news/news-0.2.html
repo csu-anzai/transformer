@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -120,18 +120,18 @@
 <code>relevel</code>: Added S3 method support for <code>DataFrame</code> and <code>GRanges</code> objects containing factor columns.</li>
 </ul>
 </div>
-<div id="major-changes-1" class="section level3">
+<div id="major-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Migraged <code>atomize</code>, <code>decode</code>, and <code>encode</code> from brio here.</li>
 <li>Removed <code>as.DataFrame</code> S3 method in favor of simply using S4 <code>as</code> coercion.</li>
 <li>Tightened up <code>as.SummarizedExperiment</code> S3 methods to support <code>SummarizedExperiment</code> and <code>RangedSummarizedExperiment</code> specifically.</li>
 </ul>
 </div>
-<div id="minor-changes-3" class="section level3">
+<div id="minor-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved S3 method documentation. Use <code>rdname</code> tag instead of <code>method</code> (or legacy <code>s3method</code>).</li>
 </ul>
@@ -140,9 +140,9 @@
     <div id="transformer-0-2-1-2019-08-05" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-2-1-2019-08-05" class="anchor"></a>transformer 0.2.1 (2019-08-05)</h2>
-<div id="minor-changes-2" class="section level3">
+<div id="minor-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved documentation consistency, using new acidroxygen package.</li>
 </ul>
@@ -151,9 +151,9 @@
     <div id="transformer-0-2-2-2019-08-08" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-2-2-2019-08-08" class="anchor"></a>transformer 0.2.2 (2019-08-08)</h2>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Reexporting dplyr <code>left_join</code> generic. Improved <code>DataFrame</code> method for <code>left_join</code> to keep row names, which correspond to the <code>x</code> object.</li>
 </ul>
@@ -162,9 +162,9 @@
     <div id="transformer-0-2-3-2019-08-13" class="section level2">
 <h2 class="hasAnchor">
 <a href="#transformer-0-2-3-2019-08-13" class="anchor"></a>transformer 0.2.3 (2019-08-13)</h2>
-<div id="minor-changes" class="section level3">
+<div id="minor-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Fix for automatic decoding of <code>Rle</code> columns, which will error otherwise when attempting to coerce from <code>DataFrame</code> to <code>data.frame</code>.</li>
 </ul>
@@ -182,12 +182,31 @@
 <li>Scoped variants of <code>mutate</code> and <code>select</code>: <code>mutate_all</code>, <code>mutate_at</code>, <code>mutate_if</code>, <code>transmute_at</code>, <code>transmute_if</code>; <code>select_all</code>, <code>select_at</code>, <code>select_if</code>. These variants keep track of row names. Internally, these functions coerce to <code>tbl_df</code> and then call the dplyr function. Return is coerced back to <code>DataFrame</code>, with row names preserved.</li>
 </ul>
 </div>
+<div id="major-changes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<ul>
+<li>
+<code>relevel:</code> Made S3 methods for <code>relevel</code> defunct of favor of recommend S4 method usage of <code>droplevels</code> instead. S4 method support for <code>droplevels</code> is already provided in S4Vectors (i.e. <code>List</code>, <code>DataFrame)</code>. Here we are improving <code>droplevels</code> functionality by adding additional method support for <code>Ranges</code> (to support <code>IRanges</code>, <code>GRanges</code>) as well as <code>SummarizedExperiment</code>, which enables automatic leveling of factors in <code>colData</code> or <code>rowData</code>.</li>
+</ul>
+</div>
+</div>
+    <div id="transformer-0-2-5-2019-08-24" class="section level2">
+<h2 class="hasAnchor">
+<a href="#transformer-0-2-5-2019-08-24" class="anchor"></a>transformer 0.2.5 (2019-08-24)</h2>
 <div id="major-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#major-changes" class="anchor"></a>Major changes</h3>
 <ul>
-<li>
-<code>relevel:</code> Made S3 methods for <code>relevel</code> defunct of favor of recommend S4 method usage of <code>droplevels</code> instead. S4 method support for <code>droplevels</code> is already provided in S4Vectors (i.e. <code>List</code>, <code>DataFrame)</code>. Here we are improving <code>droplevels</code> functionality by adding additional method support for <code>Ranges</code> (to support <code>IRanges</code>, <code>GRanges</code>) as well as <code>SummarizedExperiment</code>, which enables automatic leveling of factors in <code>colData</code> or <code>rowData</code>.</li>
+<li>Renamed dplyr-like generics into camel case: <code>innerJoin</code>, <code>leftJoin</code>, <code>rightJoin</code>, <code>fullJoin</code>, <code>semiJoin</code>, <code>antiJoin</code>; <code>mutateAll</code>, <code>mutateAt</code>, <code>mutateIf</code>; <code>selectIf</code>.</li>
+<li>Reworked <code>mutate*</code> and <code>select*</code> verbs to use simple base R code internally, and now methods are only defined for <code>DataFrame</code> class. This way we don’t run into any masking issues with dplyr, and we don’t need to list it as a suggested package.</li>
+</ul>
+</div>
+<div id="minor-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Dropped support for <code>select_all</code> and <code>select_all</code>. These verbs don’t really make sense in the context of Bioconductor-related internal code.</li>
 </ul>
 </div>
 </div>
@@ -202,6 +221,7 @@
         <li><a href="#transformer-0-2-2-2019-08-08">0.2.2</a></li>
         <li><a href="#transformer-0-2-3-2019-08-13">0.2.3</a></li>
         <li><a href="#transformer-0-2-4-2019-08-15">0.2.4</a></li>
+        <li><a href="#transformer-0-2-5-2019-08-24">0.2.5</a></li>
       </ul>
     </div>
   </div>

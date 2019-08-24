@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Join operations supporting S4 class objects — inner_join • transformer</title>
+<title>Join operations supporting S4 class objects — innerJoin • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Join operations supporting S4 class objects — inner_join" />
+<meta property="og:title" content="Join operations supporting S4 class objects — innerJoin" />
 
 <meta property="og:description" content="Join operations supporting S4 class objects" />
 <meta name="twitter:card" content="summary" />
@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Join operations supporting S4 class objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/dplyr-join-S4methods.R'><code>R/dplyr-join-S4methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/join-methods.R'><code>R/join-methods.R</code></a></small>
     <div class="hidden name"><code>join.Rd</code></div>
     </div>
 
@@ -119,53 +119,38 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>inner_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
-<span class='fu'>left_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'>leftJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
-<span class='fu'>right_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'>rightJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
-<span class='fu'>full_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'>fullJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
-<span class='fu'>semi_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'>semiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
-<span class='fu'>anti_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>inner_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'>antiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame</span>
-<span class='fu'>inner_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>left_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'><a href='deprecated.html'>left_join</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame</span>
-<span class='fu'>left_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+<span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame</span>
-<span class='fu'>right_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>right_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'>leftJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame</span>
-<span class='fu'>full_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>full_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>semi_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'>rightJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame</span>
-<span class='fu'>semi_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
-
-<span class='co'># S4 method for data.frame,data.frame</span>
-<span class='fu'>anti_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+<span class='fu'>fullJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame</span>
-<span class='fu'>anti_join</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)</pre>
+<span class='fu'>semiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
+
+<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='fu'>antiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -250,31 +235,31 @@ passthrough support to dplyr for <code>data.frame</code> class objects.</p>
 #&gt; 1        John      guitar
 #&gt; 2        Paul        bass
 #&gt; 3       Keith      guitar</div><div class='input'><span class='no'>by</span> <span class='kw'>&lt;-</span> <span class='st'>"name"</span>
-<span class='fu'>inner_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 3 columns
+<span class='fu'>innerJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 3 columns
 #&gt;          name        band       plays
 #&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
 #&gt; 1        John     Beatles      guitar
-#&gt; 2        Paul     Beatles        bass</div><div class='input'><span class='fu'>left_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
+#&gt; 2        Paul     Beatles        bass</div><div class='input'><span class='fu'>leftJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
 #&gt;          name        band       plays
 #&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
 #&gt; 1        Mick      Stones          NA
 #&gt; 2        John     Beatles      guitar
-#&gt; 3        Paul     Beatles        bass</div><div class='input'><span class='fu'>right_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
+#&gt; 3        Paul     Beatles        bass</div><div class='input'><span class='fu'>rightJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 3 rows and 3 columns
 #&gt;          name       plays        band
 #&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
 #&gt; 1        John      guitar     Beatles
 #&gt; 2        Paul        bass     Beatles
-#&gt; 3       Keith      guitar          NA</div><div class='input'><span class='fu'>full_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
+#&gt; 3       Keith      guitar          NA</div><div class='input'><span class='fu'>fullJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 4 rows and 3 columns
 #&gt;          name        band       plays
 #&gt;   &lt;character&gt; &lt;character&gt; &lt;character&gt;
 #&gt; 1        Mick      Stones          NA
 #&gt; 2        John     Beatles      guitar
 #&gt; 3        Paul     Beatles        bass
-#&gt; 4       Keith          NA      guitar</div><div class='input'><span class='fu'>semi_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
+#&gt; 4       Keith          NA      guitar</div><div class='input'><span class='fu'>semiJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 2 rows and 2 columns
 #&gt;          name        band
 #&gt;   &lt;character&gt; &lt;character&gt;
 #&gt; 1        John     Beatles
-#&gt; 2        Paul     Beatles</div><div class='input'><span class='fu'>anti_join</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 1 row and 2 columns
+#&gt; 2        Paul     Beatles</div><div class='input'><span class='fu'>antiJoin</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; DataFrame with 1 row and 2 columns
 #&gt;          name        band
 #&gt;   &lt;character&gt; &lt;character&gt;
 #&gt; 1        Mick      Stones</div></pre>
