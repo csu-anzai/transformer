@@ -1,7 +1,7 @@
 #' Select multiple columns
 #'
 #' @name select
-#' @note Updated 2019-08-23.
+#' @note Updated 2019-08-24.
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams mutate
@@ -9,7 +9,12 @@
 #' @return Modified object.
 #'
 #' @seealso
-#' - `help(topic = "select_all", package = "dplyr")`
+#' These functions are inspired by dplyr. However, they are designed to only
+#' work on `DataFrame` class, and use base R code internally.
+#'
+#' ```r
+#' `help(topic = "select_all", package = "dplyr")`
+#' ```
 #'
 #' @examples
 #' data(iris, package = "datasets")

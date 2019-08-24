@@ -16,7 +16,12 @@
 #' @return Modified object.
 #'
 #' @seealso
-#' - `help(topic = "mutate_all", package = "dplyr")`
+#' These functions are inspired by dplyr. However, they are designed to only
+#' work on `DataFrame` class, and use base R code internally.
+#'
+#' ```r
+#' help(topic = "mutate_all", package = "dplyr")
+#' ```
 #'
 #' @examples
 #' data(mtcars, package = "datasets")

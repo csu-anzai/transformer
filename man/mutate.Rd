@@ -57,7 +57,7 @@ Modified object.
 Mutate multiple columns
 }
 \note{
-Updated 2019-08-23.
+Updated 2019-08-24.
 }
 \examples{
 data(mtcars, package = "datasets")
@@ -71,7 +71,7 @@ transmuteAt(x, .vars = c("mpg", "cyl"), .fun = log, base = 2L)
 transmuteIf(x, .predicate = is.double, .fun = as.integer)
 }
 \seealso{
-\itemize{
-\item \code{help(topic = "mutate_all", package = "dplyr")}
+These functions are inspired by dplyr. However, they are designed to only
+work on \code{DataFrame} class, and use base R code internally.\preformatted{help(topic = "mutate_all", package = "dplyr")
 }
 }
