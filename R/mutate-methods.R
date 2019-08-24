@@ -1,6 +1,7 @@
 #' Mutate multiple columns
 #'
 #' @name mutate
+#' @note Mutations are only allowed on `atomic` columns.
 #' @note Updated 2019-08-24.
 #'
 #' @inheritParams acidroxygen::params
@@ -40,6 +41,7 @@ NULL
 ## Updated 2019-08-24.
 `mutateAll,DataFrame` <-  # nolint
     function(object, .fun, ...) {
+        assert(allAreAtomic(object))
         x <- lapply(X = object, FUN = .fun, ...)
         x <- DataFrame(x, row.names = rownames(object))
         x
