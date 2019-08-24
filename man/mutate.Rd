@@ -57,6 +57,8 @@ Modified object.
 Mutate multiple columns
 }
 \note{
+Mutations are only allowed on \code{atomic} columns.
+
 Updated 2019-08-24.
 }
 \examples{
