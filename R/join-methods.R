@@ -35,42 +35,42 @@ NULL
 #' @rdname join
 #' @name innerJoin
 #' @importFrom bioverbs innerJoin
-#' @usage innerJoin(x, y, by...)
+#' @usage innerJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name leftJoin
 #' @importFrom bioverbs leftJoin
-#' @usage leftJoin(x, y, by...)
+#' @usage leftJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name rightJoin
 #' @importFrom bioverbs rightJoin
-#' @usage rightJoin(x, y, by...)
+#' @usage rightJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name fullJoin
 #' @importFrom bioverbs fullJoin
-#' @usage fullJoin(x, y, by...)
+#' @usage fullJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name semiJoin
 #' @importFrom bioverbs semiJoin
-#' @usage semiJoin(x, y, by...)
+#' @usage semiJoin(x, y, by, ...)
 #' @export
 NULL
 
 #' @rdname join
 #' @name antiJoin
 #' @importFrom bioverbs antiJoin
-#' @usage antiJoin(x, y, by...)
+#' @usage antiJoin(x, y, by, ...)
 #' @export
 NULL
 

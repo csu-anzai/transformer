@@ -86,25 +86,10 @@ relevel.SummarizedExperiment <-  # nolint
 # v0.2.5 =======================================================================
 #' @rdname deprecated
 #' @export
-setGeneric(
-    name = "left_join",
-    def = function(x, y, ...) {
-        standardGeneric("left_join")
-    }
-)
-
-#' @rdname join
-#' @export
-setMethod(
-    f = "left_join",
-    signature = signature(
-        x = "DataFrame",
-        y = "DataFrame"
-    ),
-    definition = function(x, y, ...) {
-        leftJoin(x, y, ...)
-    }
-)
+left_join <- function(...) {
+    .Deprecated("leftJoin")
+    leftJoin(...)
+}
 
 
 

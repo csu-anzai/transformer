@@ -17,7 +17,7 @@ relevel(x, ref, ...)
 
 \method{relevel}{SummarizedExperiment}(x, ref = NULL, ...)
 
-left_join(x, y, ...)
+left_join(...)
 }
 \arguments{
 \item{x}{Object.}
@@ -25,8 +25,6 @@ left_join(x, y, ...)
 \item{ref}{Unsupported.}
 
 \item{...}{Additional arguments.}
-
-\item{y}{Object.}
 }
 \value{
 \code{.Deprecated}.
