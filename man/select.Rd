@@ -3,13 +3,17 @@
 \docType{methods}
 \name{select}
 \alias{select}
-\alias{selectIf,DataFrame-method}
+\alias{selectIf,DataFrame,function-method}
 \title{Select multiple columns}
 \usage{
-\S4method{selectIf}{DataFrame}(object, .predicate)
+\S4method{selectIf}{DataFrame,`function`}(object, predicate)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{predicate}{\code{function} or \code{logical}.
+A predicate function to be applied to the columns.
+For example, \code{is.atomic()}.}
 }
 \value{
 Modified object.
@@ -25,7 +29,7 @@ data(iris, package = "datasets")
 
 ## DataFrame ====
 x <- as(iris, "DataFrame")
-selectIf(x, .predicate = is.factor)
+selectIf(x, predicate = is.factor)
 }
 \seealso{
 These functions are inspired by dplyr. However, they are designed to only

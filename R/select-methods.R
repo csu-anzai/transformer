@@ -21,7 +21,7 @@
 #'
 #' ## DataFrame ====
 #' x <- as(iris, "DataFrame")
-#' selectIf(x, .predicate = is.factor)
+#' selectIf(x, predicate = is.factor)
 NULL
 
 
@@ -36,13 +36,8 @@ NULL
 
 
 `selectIf,DataFrame` <-  # nolint
-    function(object, .predicate) {
-        assert(isAny(.predicate, c("function", "logical")))
-        if (is.function(.predicate)) {
-            keep <- bapply(X = object, FUN = .predicate)
-        } else {
-            keep <- .predicate
-        }
+    function(object, predicate) {
+        keep <- bapply(X = object, FUN = predicate)
         object[, keep, drop = FALSE]
     }
 
@@ -52,6 +47,9 @@ NULL
 #' @export
 setMethod(
     f = "selectIf",
-    signature = signature("DataFrame"),
+    signature = signature(
+        object = "DataFrame",
+        predicate = "function"
+    ),
     definition = `selectIf,DataFrame`
 )
