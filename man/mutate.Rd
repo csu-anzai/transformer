@@ -9,10 +9,10 @@
 \alias{transmuteAt}
 \alias{transmuteIf}
 \alias{mutateAll,DataFrame,function-method}
-\alias{mutateAt,DataFrame-method}
-\alias{mutateIf,DataFrame-method}
-\alias{transmuteAt,DataFrame-method}
-\alias{transmuteIf,DataFrame-method}
+\alias{mutateAt,DataFrame,character,function-method}
+\alias{mutateIf,DataFrame,function,function-method}
+\alias{transmuteAt,DataFrame,character,function-method}
+\alias{transmuteIf,DataFrame,function,function-method}
 \alias{selectIf}
 \title{Mutate multiple columns}
 \usage{
@@ -28,13 +28,16 @@ transmuteIf(object, predicate, fun, ...)
 
 \S4method{mutateAll}{DataFrame,`function`}(object, fun, ...)
 
-\S4method{mutateAt}{DataFrame}(object, vars, fun, ...)
+\S4method{mutateAt}{DataFrame,character,`function`}(object, vars, fun, ...)
 
-\S4method{mutateIf}{DataFrame}(object, predicate, fun, ...)
+\S4method{mutateIf}{DataFrame,`function`,`function`}(object, predicate,
+  fun, ...)
 
-\S4method{transmuteAt}{DataFrame}(object, vars, fun, ...)
+\S4method{transmuteAt}{DataFrame,character,`function`}(object, vars, fun,
+  ...)
 
-\S4method{transmuteIf}{DataFrame}(object, predicate, fun, ...)
+\S4method{transmuteIf}{DataFrame,`function`,`function`}(object, predicate,
+  fun, ...)
 
 selectIf(object, predicate, fun, ...)
 }

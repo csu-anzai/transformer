@@ -55,7 +55,6 @@ NULL
 
 
 
-## Updated 2019-08-24.
 `mutateAll,DataFrame` <-  # nolint
     function(object, fun, ...) {
         assert(allAreAtomic(object))
@@ -79,15 +78,9 @@ setMethod(
 
 
 
-## Updated 2019-08-24.
 `mutateAt,DataFrame` <-  # nolint
     function(object, vars, fun, ...) {
-        x <- transmuteAt(
-            object = object,
-            vars = vars,
-            fun = fun,
-            ...
-        )
+        x <- transmuteAt(object, vars = vars, fun = fun, ...)
         y <- object[, setdiff(colnames(object), colnames(x)), drop = FALSE]
         out <- cbind(x, y)
         out <- out[, colnames(object), drop = FALSE]
@@ -100,13 +93,16 @@ setMethod(
 #' @export
 setMethod(
     f = "mutateAt",
-    signature = signature("DataFrame"),
+    signature = signature(
+        object = "DataFrame",
+        vars = "character",
+        fun = "function"
+    ),
     definition = `mutateAt,DataFrame`
 )
 
 
 
-## Updated 2019-08-24.
 `mutateIf,DataFrame` <-  # nolint
     function(object, predicate, fun, ...) {
         x <- transmuteIf(
@@ -127,13 +123,16 @@ setMethod(
 #' @export
 setMethod(
     f = "mutateIf",
-    signature = signature("DataFrame"),
+    signature = signature(
+        object = "DataFrame",
+        predicate = "function",
+        fun = "function"
+    ),
     definition = `mutateIf,DataFrame`
 )
 
 
 
-## Updated 2019-08-24.
 `transmuteAt,DataFrame` <-  # nolint
     function(object, vars, fun, ...) {
         x <- object[, vars, drop = FALSE]
@@ -147,13 +146,16 @@ setMethod(
 #' @export
 setMethod(
     f = "transmuteAt",
-    signature = signature("DataFrame"),
+    signature = signature(
+        object = "DataFrame",
+        vars = "character",
+        fun = "function"
+    ),
     definition = `transmuteAt,DataFrame`
 )
 
 
 
-## Updated 2019-08-24.
 `transmuteIf,DataFrame` <-  # nolint
     function(object, predicate, fun, ...) {
         x <- selectIf(object, predicate = predicate)
@@ -167,6 +169,10 @@ setMethod(
 #' @export
 setMethod(
     f = "transmuteIf",
-    signature = signature("DataFrame"),
+    signature = signature(
+        object = "DataFrame",
+        predicate = "function",
+        fun = "function"
+    ),
     definition = `transmuteIf,DataFrame`
 )
