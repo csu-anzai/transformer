@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Select multiple columns — selectIf • transformer</title>
+<title>Select multiple columns — select • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Select multiple columns — selectIf" />
+<meta property="og:title" content="Select multiple columns — select" />
 
 <meta property="og:description" content="Select multiple columns" />
 <meta name="twitter:card" content="summary" />
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Select multiple columns</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/select-methods.R'><code>R/select-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/select-methods.R'><code>R/select-methods.R</code></a></small>
     <div class="hidden name"><code>select.Rd</code></div>
     </div>
 
@@ -119,10 +119,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>selectIf</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>selectIf</span>(<span class='no'>object</span>, <span class='no'>.predicate</span>)</pre>
+    <pre class="usage"><span class='co'># S4 method for DataFrame,`function`</span>
+<span class='fu'><a href='mutate.html'>selectIf</a></span>(<span class='no'>object</span>, <span class='no'>predicate</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -132,14 +130,10 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
-      <th>.predicate</th>
-      <td><p><code>function</code> or <code>logical</code>.
-A predicate function to be applied to the columns, or a logical vector
-matching the number of columns.</p></td>
+      <th>predicate</th>
+      <td><p><code>function</code>.
+A predicate function to be applied to the columns.
+For example, <code><a href='https://rdrr.io/r/base/is.recursive.html'>is.atomic()</a></code>.</p></td>
     </tr>
     </table>
     
@@ -149,7 +143,7 @@ matching the number of columns.</p></td>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-24.</p>
+    <p>Updated 2019-08-26.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -164,7 +158,7 @@ work on <code>DataFrame</code> class, and use base R code internally.</p><pre>`h
 
 <span class='co'>## DataFrame ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>iris</span>, <span class='st'>"DataFrame"</span>)
-<span class='fu'>selectIf</span>(<span class='no'>x</span>, <span class='kw'>.predicate</span> <span class='kw'>=</span> <span class='no'>is.factor</span>)</div><div class='output co'>#&gt; DataFrame with 150 rows and 1 column
+<span class='fu'><a href='mutate.html'>selectIf</a></span>(<span class='no'>x</span>, <span class='kw'>predicate</span> <span class='kw'>=</span> <span class='no'>is.factor</span>)</div><div class='output co'>#&gt; DataFrame with 150 rows and 1 column
 #&gt;       Species
 #&gt;      &lt;factor&gt;
 #&gt; 1      setosa

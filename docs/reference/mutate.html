@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mutate multiple columns — mutateAll • transformer</title>
+<title>Mutate multiple columns — mutate • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Mutate multiple columns — mutateAll" />
+<meta property="og:title" content="Mutate multiple columns — mutate" />
 
 <meta property="og:description" content="Mutate multiple columns" />
 <meta name="twitter:card" content="summary" />
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Mutate multiple columns</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/mutate-methods.R'><code>R/mutate-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/mutate-methods.R'><code>R/mutate-methods.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/select-methods.R'><code>R/select-methods.R</code></a></small>
     <div class="hidden name"><code>mutate.Rd</code></div>
     </div>
 
@@ -119,30 +119,35 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>mutateAll</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>mutateAll</span>(<span class='no'>object</span>, <span class='no'>fun</span>, <span class='no'>...</span>)
 
-<span class='fu'>mutateAt</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>mutateAll</span>(<span class='no'>object</span>, <span class='no'>vars</span>, <span class='no'>fun</span>, <span class='no'>...</span>)
 
-<span class='fu'>mutateIf</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>mutateIf</span>(<span class='no'>object</span>, <span class='no'>predicate</span>, <span class='no'>fun</span>, <span class='no'>...</span>)
 
-<span class='fu'>transmuteAt</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>mutateIf</span>(<span class='no'>object</span>, <span class='no'>vars</span>, <span class='no'>fun</span>, <span class='no'>...</span>)
 
-<span class='fu'>transmuteIf</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'>transmuteIf</span>(<span class='no'>object</span>, <span class='no'>predicate</span>, <span class='no'>fun</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>mutateAll</span>(<span class='no'>object</span>, <span class='no'>.fun</span>, <span class='no'>...</span>)
+<span class='co'># S4 method for DataFrame,`function`</span>
+<span class='fu'>mutateAll</span>(<span class='no'>object</span>, <span class='no'>fun</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>mutateAt</span>(<span class='no'>object</span>, <span class='no'>.vars</span>, <span class='no'>.fun</span>, <span class='no'>...</span>)
+<span class='co'># S4 method for DataFrame,character,`function`</span>
+<span class='fu'>mutateAt</span>(<span class='no'>object</span>, <span class='no'>vars</span>, <span class='no'>fun</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>mutateIf</span>(<span class='no'>object</span>, <span class='no'>.predicate</span>, <span class='no'>.fun</span>, <span class='no'>...</span>)
+<span class='co'># S4 method for DataFrame,`function`,`function`</span>
+<span class='fu'>mutateIf</span>(<span class='no'>object</span>, <span class='no'>predicate</span>,
+  <span class='no'>fun</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>transmuteAt</span>(<span class='no'>object</span>, <span class='no'>.vars</span>, <span class='no'>.fun</span>, <span class='no'>...</span>)
+<span class='co'># S4 method for DataFrame,character,`function`</span>
+<span class='fu'>transmuteAt</span>(<span class='no'>object</span>, <span class='no'>vars</span>, <span class='no'>fun</span>,
+  <span class='no'>...</span>)
 
-<span class='co'># S4 method for DataFrame</span>
-<span class='fu'>transmuteIf</span>(<span class='no'>object</span>, <span class='no'>.predicate</span>, <span class='no'>.fun</span>, <span class='no'>...</span>)</pre>
+<span class='co'># S4 method for DataFrame,`function`,`function`</span>
+<span class='fu'>transmuteIf</span>(<span class='no'>object</span>, <span class='no'>predicate</span>,
+  <span class='no'>fun</span>, <span class='no'>...</span>)
+
+<span class='fu'>selectIf</span>(<span class='no'>object</span>, <span class='no'>predicate</span>, <span class='no'>fun</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,24 +157,24 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Passthrough arguments to function declared in <code>.fun</code> argument.</p></td>
-    </tr>
-    <tr>
-      <th>.fun</th>
+      <th>fun</th>
       <td><p><code>function</code>.
 Mutation function.</p></td>
     </tr>
     <tr>
-      <th>.vars</th>
+      <th>...</th>
+      <td><p>Passthrough arguments to function declared in <code>fun</code> argument.</p></td>
+    </tr>
+    <tr>
+      <th>vars</th>
       <td><p><code>character</code>.
 Column names.</p></td>
     </tr>
     <tr>
-      <th>.predicate</th>
-      <td><p><code>function</code> or <code>logical</code>.
-A predicate function to be applied to the columns, or a logical vector
-matching the number of columns.</p></td>
+      <th>predicate</th>
+      <td><p><code>function</code>.
+A predicate function to be applied to the columns.
+For example, <code><a href='https://rdrr.io/r/base/is.recursive.html'>is.atomic()</a></code>.</p></td>
     </tr>
     </table>
     
@@ -179,13 +184,12 @@ matching the number of columns.</p></td>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Mutations are only allowed on <code>atomic</code> columns.</p>
-<p>Updated 2019-08-24.</p>
+    <p>Updated 2019-08-26.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>These functions are inspired by dplyr. However, they are designed to only
-work on <code>DataFrame</code> class, and use base R code internally.</p><pre>help(topic = "mutate_all", package = "dplyr")
+work on <code>DataFrame</code> class, and use base R code internally.</p><pre>help(topic = "mutate_if", package = "dplyr")
 </pre>
 </div>
     
@@ -195,7 +199,7 @@ work on <code>DataFrame</code> class, and use base R code internally.</p><pre>he
 
 <span class='co'>## DataFrame ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>mtcars</span>, <span class='st'>"DataFrame"</span>)
-<span class='fu'>mutateAll</span>(<span class='no'>x</span>, <span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
+<span class='fu'>mutateAll</span>(<span class='no'>x</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
 #&gt;                                mpg              cyl             disp
 #&gt;                          &lt;numeric&gt;        &lt;numeric&gt;        &lt;numeric&gt;
 #&gt; Mazda RX4         4.39231742277876 2.58496250072116 7.32192809488736
@@ -247,7 +251,7 @@ work on <code>DataFrame</code> class, and use base R code internally.</p><pre>he
 #&gt; Ford Pantera L                   2
 #&gt; Ferrari Dino      2.58496250072116
 #&gt; Maserati Bora                    3
-#&gt; Volvo 142E                       1</div><div class='input'><span class='fu'>mutateAt</span>(<span class='no'>x</span>, <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='st'>"cyl"</span>), <span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
+#&gt; Volvo 142E                       1</div><div class='input'><span class='fu'>mutateAt</span>(<span class='no'>x</span>, <span class='kw'>vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='st'>"cyl"</span>), <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
 #&gt;                                mpg              cyl      disp        hp
 #&gt;                          &lt;numeric&gt;        &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
 #&gt; Mazda RX4         4.39231742277876 2.58496250072116       160       110
@@ -286,7 +290,7 @@ work on <code>DataFrame</code> class, and use base R code internally.</p><pre>he
 #&gt; Ford Pantera L            4
 #&gt; Ferrari Dino              6
 #&gt; Maserati Bora             8
-#&gt; Volvo 142E                2</div><div class='input'><span class='fu'>mutateIf</span>(<span class='no'>x</span>, <span class='kw'>.predicate</span> <span class='kw'>=</span> <span class='no'>is.double</span>, <span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>as.integer</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
+#&gt; Volvo 142E                2</div><div class='input'><span class='fu'>mutateIf</span>(<span class='no'>x</span>, <span class='kw'>predicate</span> <span class='kw'>=</span> <span class='no'>is.double</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>as.integer</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
 #&gt;                         mpg       cyl      disp        hp      drat        wt
 #&gt;                   &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
 #&gt; Mazda RX4                21         6       160       110         3         2
@@ -312,7 +316,7 @@ work on <code>DataFrame</code> class, and use base R code internally.</p><pre>he
 #&gt; Ford Pantera L           14         0         1         5         4
 #&gt; Ferrari Dino             15         0         1         5         6
 #&gt; Maserati Bora            14         0         1         5         8
-#&gt; Volvo 142E               18         1         1         4         2</div><div class='input'><span class='fu'>transmuteAt</span>(<span class='no'>x</span>, <span class='kw'>.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='st'>"cyl"</span>), <span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 2 columns
+#&gt; Volvo 142E               18         1         1         4         2</div><div class='input'><span class='fu'>transmuteAt</span>(<span class='no'>x</span>, <span class='kw'>vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mpg"</span>, <span class='st'>"cyl"</span>), <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>log</span>, <span class='kw'>base</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 2 columns
 #&gt;                                mpg              cyl
 #&gt;                          &lt;numeric&gt;        &lt;numeric&gt;
 #&gt; Mazda RX4         4.39231742277876 2.58496250072116
@@ -325,7 +329,7 @@ work on <code>DataFrame</code> class, and use base R code internally.</p><pre>he
 #&gt; Ford Pantera L    3.98185265328974                3
 #&gt; Ferrari Dino      4.30012372456901 2.58496250072116
 #&gt; Maserati Bora     3.90689059560852                3
-#&gt; Volvo 142E        4.41953889151378                2</div><div class='input'><span class='fu'>transmuteIf</span>(<span class='no'>x</span>, <span class='kw'>.predicate</span> <span class='kw'>=</span> <span class='no'>is.double</span>, <span class='kw'>.fun</span> <span class='kw'>=</span> <span class='no'>as.integer</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
+#&gt; Volvo 142E        4.41953889151378                2</div><div class='input'><span class='fu'>transmuteIf</span>(<span class='no'>x</span>, <span class='kw'>predicate</span> <span class='kw'>=</span> <span class='no'>is.double</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>as.integer</span>)</div><div class='output co'>#&gt; DataFrame with 32 rows and 11 columns
 #&gt;                         mpg       cyl      disp        hp      drat        wt
 #&gt;                   &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt; &lt;integer&gt;
 #&gt; Mazda RX4                21         6       160       110         3         2

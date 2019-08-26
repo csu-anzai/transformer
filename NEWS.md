@@ -1,4 +1,4 @@
-## transformer 0.2.5 (2019-08-24)
+## transformer 0.2.5 (2019-08-26)
 
 ### Major changes
 

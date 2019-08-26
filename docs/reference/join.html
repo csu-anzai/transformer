@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Join operations supporting S4 class objects — innerJoin • transformer</title>
+<title>Join operations — left_join,DataFrame,DataFrame-method • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Join operations supporting S4 class objects — innerJoin" />
+<meta property="og:title" content="Join operations — left_join,DataFrame,DataFrame-method" />
 
-<meta property="og:description" content="Join operations supporting S4 class objects" />
+<meta property="og:description" content="Join operations" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,57 +108,60 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Join operations supporting S4 class objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/join-methods.R'><code>R/join-methods.R</code></a></small>
+    <h1>Join operations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/join-methods.R'><code>R/join-methods.R</code></a></small>
     <div class="hidden name"><code>join.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Join operations supporting S4 class objects</p>
+    <p>Join operations</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='fu'>leftJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='fu'>rightJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='fu'>fullJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='fu'>semiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='fu'>antiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for DataFrame,DataFrame</span>
+    <pre class="usage"><span class='co'># S4 method for DataFrame,DataFrame</span>
 <span class='fu'><a href='deprecated.html'>left_join</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+
+<span class='fu'>leftJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+
+<span class='fu'>rightJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+
+<span class='fu'>fullJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+
+<span class='fu'>semiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+
+<span class='fu'>antiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+
+<span class='co'># S4 method for DataFrame,DataFrame,character</span>
 <span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
 
-<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='co'># S4 method for DataFrame,DataFrame,character</span>
 <span class='fu'>leftJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
 
-<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='co'># S4 method for DataFrame,DataFrame,character</span>
 <span class='fu'>rightJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
 
-<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='co'># S4 method for DataFrame,DataFrame,character</span>
 <span class='fu'>fullJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
 
-<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='co'># S4 method for DataFrame,DataFrame,character</span>
 <span class='fu'>semiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
 
-<span class='co'># S4 method for DataFrame,DataFrame</span>
+<span class='co'># S4 method for DataFrame,DataFrame,character</span>
 <span class='fu'>antiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x, y</th>
-      <td><p><code>DataFrame</code>.
-Data frames, or objects, to be coerced into a single object.</p></td>
+      <th>x</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td><p>Object.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -167,19 +170,17 @@ Data frames, or objects, to be coerced into a single object.</p></td>
     <tr>
       <th>by</th>
       <td><p><code>character</code>.
-Column names to use for merge operation.
-Note that this is always required, unlike the dplyr <code>tbl_df</code> method, where
-this is optional.</p></td>
+Column names to use for join operation.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Merge of <code>x</code> and <code>y</code> objects.</p>
+    <p>New object containing a merge of <code>x</code> and <code>y</code> objects.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-15.</p>
+    <p>Updated 2019-08-26.</p>
     
     <h2 class="hasAnchor" id="ordering"><a class="anchor" href="#ordering"></a>Ordering</h2>
 
@@ -197,15 +198,6 @@ setting an internal <code>.idx</code> column that we can use to reorder the rows
 
 <p>Unlike the S3 methods defined in dplyr, the join methods defined here for
 <code>DataFrame</code> always preserve row names.</p>
-    
-    <h2 class="hasAnchor" id="data-frame-methods"><a class="anchor" href="#data-frame-methods"></a><code>data.frame</code> methods</h2>
-
-    
-
-
-<p>Since we are defining S4 methods in this package, we are providing
-passthrough support to dplyr for <code>data.frame</code> class objects.</p>
-<p>Refer to <code><a href='https://rdrr.io/r/utils/help.html'>help(topic = "join", package = "dplyr")</a></code> for details.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -276,8 +268,6 @@ passthrough support to dplyr for <code>data.frame</code> class objects.</p>
       <li><a href="#ordering">Ordering</a></li>
 
       <li><a href="#row-names">Row names</a></li>
-
-      <li><a href="#data-frame-methods"><code>data.frame</code> methods</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
