@@ -1,7 +1,7 @@
 #' Select multiple columns
 #'
 #' @name select
-#' @note Updated 2019-08-24.
+#' @note Updated 2019-08-26.
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams mutate
@@ -22,6 +22,15 @@
 #' ## DataFrame ====
 #' x <- as(iris, "DataFrame")
 #' selectIf(x, .predicate = is.factor)
+NULL
+
+
+
+#' @rdname mutate
+#' @name selectIf
+#' @importFrom bioverbs selectIf
+#' @usage selectIf(object, predicate, fun, ...)
+#' @export
 NULL
 
 

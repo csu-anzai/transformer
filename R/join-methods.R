@@ -1,4 +1,6 @@
-#' Join operations supporting S4 class objects
+#' @name join
+#' @inherit bioverbs::join
+#' @note Updated 2019-08-26.
 #'
 #' @section Ordering:
 #'
@@ -10,31 +12,6 @@
 #'
 #' Unlike the S3 methods defined in dplyr, the join methods defined here for
 #' `DataFrame` always preserve row names.
-#'
-#' @section `data.frame` methods:
-#'
-#' Since we are defining S4 methods in this package, we are providing
-#' passthrough support to dplyr for `data.frame` class objects.
-#'
-#' Refer to `help(topic = "join", package = "dplyr")` for details.
-#'
-#' @name join
-#' @note Updated 2019-08-15.
-#'
-#' @param x,y `DataFrame`.
-#'   Data frames, or objects, to be coerced into a single object.
-#' @param by `character`.
-#'   Column names to use for merge operation.
-#'   Note that this is always required, unlike the dplyr `tbl_df` method, where
-#'   this is optional.
-#' @param ... Additional arguments.
-#'
-#' @seealso
-#' - `help(topic = "join", package = "dplyr")`.
-#' - `help(topic = "merge", package = "S4Vectors")`.
-#' - https://support.bioconductor.org/p/120277/
-#'
-#' @return Merge of `x` and `y` objects.
 #'
 #' @examples
 #' data(band_members, band_instruments)
@@ -55,10 +32,53 @@ NULL
 
 
 
+#' @rdname join
+#' @name innerJoin
+#' @importFrom bioverbs innerJoin
+#' @usage innerJoin(x, y, by...)
+#' @export
+NULL
+
+#' @rdname join
+#' @name leftJoin
+#' @importFrom bioverbs leftJoin
+#' @usage leftJoin(x, y, by...)
+#' @export
+NULL
+
+#' @rdname join
+#' @name rightJoin
+#' @importFrom bioverbs rightJoin
+#' @usage rightJoin(x, y, by...)
+#' @export
+NULL
+
+#' @rdname join
+#' @name fullJoin
+#' @importFrom bioverbs fullJoin
+#' @usage fullJoin(x, y, by...)
+#' @export
+NULL
+
+#' @rdname join
+#' @name semiJoin
+#' @importFrom bioverbs semiJoin
+#' @usage semiJoin(x, y, by...)
+#' @export
+NULL
+
+#' @rdname join
+#' @name antiJoin
+#' @importFrom bioverbs antiJoin
+#' @usage antiJoin(x, y, by...)
+#' @export
+NULL
+
+
+
 `innerJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
-            isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
@@ -82,7 +102,8 @@ setMethod(
     f = "innerJoin",
     signature = signature(
         x = "DataFrame",
-        y = "DataFrame"
+        y = "DataFrame",
+        by = "character"
     ),
     definition = `innerJoin,DataFrame`
 )
@@ -92,7 +113,6 @@ setMethod(
 `leftJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
-            isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
@@ -117,7 +137,8 @@ setMethod(
     f = "leftJoin",
     signature = signature(
         x = "DataFrame",
-        y = "DataFrame"
+        y = "DataFrame",
+        by = "character"
     ),
     definition = `leftJoin,DataFrame`
 )
@@ -137,7 +158,8 @@ setMethod(
     f = "rightJoin",
     signature = signature(
         x = "DataFrame",
-        y = "DataFrame"
+        y = "DataFrame",
+        by = "character"
     ),
     definition = `rightJoin,DataFrame`
 )
@@ -147,7 +169,6 @@ setMethod(
 `fullJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
-            isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
@@ -176,7 +197,8 @@ setMethod(
     f = "fullJoin",
     signature = signature(
         x = "DataFrame",
-        y = "DataFrame"
+        y = "DataFrame",
+        by = "character"
     ),
     definition = `fullJoin,DataFrame`
 )
@@ -186,7 +208,6 @@ setMethod(
 `semiJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
-            isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
@@ -207,7 +228,8 @@ setMethod(
     f = "semiJoin",
     signature = signature(
         x = "DataFrame",
-        y = "DataFrame"
+        y = "DataFrame",
+        by = "character"
     ),
     definition = `semiJoin,DataFrame`
 )
@@ -217,7 +239,6 @@ setMethod(
 `antiJoin,DataFrame` <-  # nolint
     function(x, y, by) {
         assert(
-            isCharacter(by),
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
@@ -238,7 +259,8 @@ setMethod(
     f = "antiJoin",
     signature = signature(
         x = "DataFrame",
-        y = "DataFrame"
+        y = "DataFrame",
+        by = "character"
     ),
     definition = `antiJoin,DataFrame`
 )
