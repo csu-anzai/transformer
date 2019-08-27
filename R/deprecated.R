@@ -83,15 +83,5 @@ relevel.SummarizedExperiment <-  # nolint
 
 
 
-# v0.2.5 =======================================================================
-#' @rdname deprecated
-#' @export
-left_join <- function(...) {
-    .Deprecated("leftJoin")
-    leftJoin(...)
-}
-
-
-
 ## nolint end
 ## nocov end
