@@ -119,10 +119,10 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'><a href='mutate.html'>selectIf</a></span>(<span class='no'>object</span>, <span class='no'>predicate</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>selectIf</span>(<span class='no'>object</span>, <span class='no'>predicate</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame,`function`</span>
-<span class='fu'><a href='mutate.html'>selectIf</a></span>(<span class='no'>object</span>, <span class='no'>predicate</span>)</pre>
+<span class='fu'>selectIf</span>(<span class='no'>object</span>, <span class='no'>predicate</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,7 +164,7 @@ work on <code>DataFrame</code> class, and use base R code internally.</p><pre>`h
 
 <span class='co'>## DataFrame ====</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>as</span>(<span class='no'>iris</span>, <span class='st'>"DataFrame"</span>)
-<span class='fu'><a href='mutate.html'>selectIf</a></span>(<span class='no'>x</span>, <span class='kw'>predicate</span> <span class='kw'>=</span> <span class='no'>is.factor</span>)</div><div class='output co'>#&gt; DataFrame with 150 rows and 1 column
+<span class='fu'>selectIf</span>(<span class='no'>x</span>, <span class='kw'>predicate</span> <span class='kw'>=</span> <span class='no'>is.factor</span>)</div><div class='output co'>#&gt; DataFrame with 150 rows and 1 column
 #&gt;       Species
 #&gt;      &lt;factor&gt;
 #&gt; 1      setosa
