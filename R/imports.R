@@ -8,7 +8,7 @@
 #'
 #' @importFrom IRanges end start width
 #' @importFrom S4Vectors DataFrame Rle as.data.frame cbind decode do.call mcols
-#'   mcols<- merge metadata metadata<-
+#'   mcols<- merge metadata metadata<- na.omit
 #' @importFrom SummarizedExperiment colData colData<- rowData rowData<-
 #'   rowRanges
 #' @importFrom goalie allAreAtomic areDisjointSets assert bapply hasCols
@@ -16,7 +16,6 @@
 #'   isSubset printString validNames
 #' @importFrom methods as getMethod is setAs setMethod signature slotNames
 #'   validObject .hasSlot
-#' @importFrom stats na.omit
 #' @importFrom tibble as_tibble
 NULL
 
