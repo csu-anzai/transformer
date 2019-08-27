@@ -3,9 +3,12 @@
 \docType{methods}
 \name{select}
 \alias{select}
+\alias{selectIf}
 \alias{selectIf,DataFrame,function-method}
 \title{Select multiple columns}
 \usage{
+selectIf(object, predicate, ...)
+
 \S4method{selectIf}{DataFrame,`function`}(object, predicate)
 }
 \arguments{
@@ -14,6 +17,8 @@
 \item{predicate}{\code{function}.
 A predicate function to be applied to the columns.
 For example, \code{is.atomic()}.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Modified object.

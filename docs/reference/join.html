@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Join operations — left_join,DataFrame,DataFrame-method • transformer</title>
+<title>Join operations — join • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Join operations — left_join,DataFrame,DataFrame-method" />
+<meta property="og:title" content="Join operations — join" />
 
 <meta property="og:description" content="Join operations" />
 <meta name="twitter:card" content="summary" />
@@ -109,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Join operations</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/join-methods.R'><code>R/join-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/join-methods.R'><code>R/join-methods.R</code></a></small>
     <div class="hidden name"><code>join.Rd</code></div>
     </div>
 
@@ -119,20 +119,17 @@
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for DataFrame,DataFrame</span>
-<span class='fu'><a href='deprecated.html'>left_join</a></span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
 
-<span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+<span class='fu'>leftJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
 
-<span class='fu'>leftJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+<span class='fu'>rightJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
 
-<span class='fu'>rightJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+<span class='fu'>fullJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
 
-<span class='fu'>fullJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+<span class='fu'>semiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
 
-<span class='fu'>semiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
-
-<span class='fu'>antiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by...</span>)
+<span class='fu'>antiJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame,DataFrame,character</span>
 <span class='fu'>innerJoin</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>by</span>)
@@ -164,13 +161,13 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
-    </tr>
-    <tr>
       <th>by</th>
       <td><p><code>character</code>.
 Column names to use for join operation.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     

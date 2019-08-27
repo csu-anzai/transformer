@@ -5,6 +5,7 @@
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams mutate
+#' @param ... Additional arguments.
 #'
 #' @return Modified object.
 #'
@@ -26,10 +27,10 @@ NULL
 
 
 
-#' @rdname mutate
+#' @rdname select
 #' @name selectIf
 #' @importFrom bioverbs selectIf
-#' @usage selectIf(object, predicate, fun, ...)
+#' @usage selectIf(object, predicate, ...)
 #' @export
 NULL
 

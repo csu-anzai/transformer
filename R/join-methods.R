@@ -2,6 +2,9 @@
 #' @inherit bioverbs::join
 #' @note Updated 2019-08-26.
 #'
+#' @inheritParams acidroxygen::params
+#' @param ... Additional arguments.
+#'
 #' @section Ordering:
 #'
 #' The join functions never rearrange rows. To accomplish this, we're currently

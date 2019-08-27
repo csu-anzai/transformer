@@ -28,7 +28,7 @@ NULL
 #' @rdname mutate
 #' @name mutateAt
 #' @importFrom bioverbs mutateAt
-#' @usage mutateAll(object, vars, fun, ...)
+#' @usage mutateAll(object, fun, ...)
 #' @export
 NULL
 
@@ -42,7 +42,7 @@ NULL
 #' @rdname mutate
 #' @name transmuteAt
 #' @importFrom bioverbs transmuteAt
-#' @usage mutateIf(object, vars, fun, ...)
+#' @usage transmuteAt(object, vars, fun, ...)
 #' @export
 NULL
 

@@ -48,6 +48,8 @@ antiJoin(x, y, by, ...)
 
 \item{by}{\code{character}.
 Column names to use for join operation.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 New object containing a merge of \code{x} and \code{y} objects.
