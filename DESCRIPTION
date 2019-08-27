@@ -33,8 +33,7 @@ Imports:
     Matrix (>= 1.2),
     data.table (>= 1.12),
     tibble (>= 2.1),
-    methods,
-    stats
+    methods
 Suggests:
     acidroxygen (>= 0.1),
     acidtest (>= 0.2.4),

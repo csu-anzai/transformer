@@ -7,16 +7,15 @@
 #' @importClassesFrom tibble tbl_df
 #'
 #' @importFrom IRanges end start width
-#' @importFrom S4Vectors DataFrame Rle as.data.frame decode mcols mcols<- merge
-#'   metadata metadata<-
+#' @importFrom S4Vectors DataFrame Rle as.data.frame cbind decode do.call mcols
+#'   mcols<- merge metadata metadata<- na.omit
 #' @importFrom SummarizedExperiment colData colData<- rowData rowData<-
 #'   rowRanges
 #' @importFrom goalie allAreAtomic areDisjointSets assert bapply hasCols
-#'   hasLength hasNames hasRows hasRownames isAny isCharacter isFlag isSubset
-#'   printString validNames
+#'   hasLength hasNames hasRows hasRownames isAny isCharacter isFlag isInt
+#'   isSubset printString validNames
 #' @importFrom methods as getMethod is setAs setMethod signature slotNames
 #'   validObject .hasSlot
-#' @importFrom stats na.omit
 #' @importFrom tibble as_tibble
 NULL
 

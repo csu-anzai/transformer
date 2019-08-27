@@ -55,12 +55,21 @@ NULL
 
 
 
+## nolint start
+## These approaches don't work well with nested list columns (e.g. PANTHER):
+## > DataFrame(list, row.names = rownames(object))
+## > as(list, "DataFrame")
+## nolint end
+
 `mutateAll,DataFrame` <-  # nolint
     function(object, fun, ...) {
         assert(allAreAtomic(object))
-        x <- lapply(X = object, FUN = fun, ...)
-        x <- DataFrame(x, row.names = rownames(object))
-        x
+        list <- lapply(X = object, FUN = fun, ...)
+        assert(isInt(unique(unlist(lapply(list, length)))))
+        DataFrame(
+            do.call(what = cbind, args = list),
+            row.names = rownames(object)
+        )
     }
 
 
