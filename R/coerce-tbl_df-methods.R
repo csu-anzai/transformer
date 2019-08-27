@@ -3,6 +3,7 @@
 #' Coerce to `tbl_df`.
 #'
 #' @name coerce-tbl_df
+#'
 #' @inheritParams tibble::as_tibble
 #' @inheritParams acidroxygen::params
 #'
@@ -30,6 +31,8 @@
 #'
 #' @seealso [tibble::as_tibble()].
 #'
+#' @return `tbl_df`.
+#'
 #' @examples
 #' data(DataFrame, GRanges, IRanges, package = "acidtest")
 #'
@@ -51,55 +54,72 @@ NULL
 
 
 
-rownames <- quote(pkgconfig::get_config("tibble::rownames", "rowname"))
-
-
-
-#' @rdname coerce-tbl_df
-#' @name as_tibble
-#' @importFrom tibble as_tibble
-#' @export
-NULL
-
-
-
-#' @rdname coerce-tbl_df
-#' @export
 ## Updated 2019-07-19.
-as_tibble.DataFrame <-  # nolint
-    function(x, ..., rownames) {
-        x <- `.coerce,DataFrame,data.frame`(x)
-        if (!hasRownames(x)) {
-            rownames <- NULL
-        }
-        as_tibble(x = x, ..., rownames = rownames)
+`coerce,ANY,tbl_df` <-  # nolint
+    function(from) {
+        as_tibble(from)
     }
 
-formals(as_tibble.DataFrame)[["rownames"]] <- rownames
+
+
+## Updated 2019-07-19.
+`coerce,data.frame,tbl_df` <-  # nolint
+    `coerce,ANY,tbl_df`
 
 
 
 #' @rdname coerce-tbl_df
-#' @export
-## Updated 2019-07-20.
-as_tibble.IPosRanges <-  # nolint
-    function(x, ..., rownames) {
-        x <- as(x, "data.frame")
-        if (!hasRownames(x)) {
-            rownames <- NULL
-        }
-        as_tibble(x = x, ..., rownames = rownames)
-    }
+#' @name coerce,data.frame,tbl_df-method
+setAs(
+    from = "data.frame",
+    to = "tbl_df",
+    def = `coerce,data.frame,tbl_df`
+)
 
-formals(as_tibble.IPosRanges)[["rownames"]] <- rownames
+
+
+## Updated 2019-07-19.
+`coerce,DataFrame,tbl_df` <-  # nolint
+    `coerce,ANY,tbl_df`
 
 
 
 #' @rdname coerce-tbl_df
-#' @export
+#' @name coerce,DataFrame,tbl_df-method
+setAs(
+    from = "DataFrame",
+    to = "tbl_df",
+    def = `coerce,DataFrame,tbl_df`
+)
+
+
+
 ## Updated 2019-07-20.
-as_tibble.GenomicRanges <- as_tibble.IPosRanges  # nolint
+`coerce,GenomicRanges,tbl_df` <-  # nolint
+    `coerce,ANY,tbl_df`
 
 
 
-rm(rownames)
+#' @rdname coerce-tbl_df
+#' @name coerce,GenomicRanges,tbl_df-method
+setAs(
+    from = "GenomicRanges",
+    to = "tbl_df",
+    def = `coerce,GenomicRanges,tbl_df`
+)
+
+
+
+## Updated 2019-07-20.
+`coerce,IPosRanges,tbl_df` <-  # nolint
+    `coerce,ANY,tbl_df`
+
+
+
+#' @rdname coerce-tbl_df
+#' @name coerce,IPosRanges,tbl_df-method
+setAs(
+    from = "IPosRanges",
+    to = "tbl_df",
+    def = `coerce,IPosRanges,tbl_df`
+)

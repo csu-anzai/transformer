@@ -2,8 +2,8 @@ Package: transformer
 Title: Coercion methods for biological data
 Description: Additional S3 and S4 coercion methods for easy interconversion
     of Bioconductor data classes.
-Version: 0.2.4
-Date: 2019-08-15
+Version: 0.2.5
+Date: 2019-08-27
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -21,15 +21,15 @@ URL:
 BugReports: https://github.com/acidgenomics/transformer/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends: R (>= 3.5)
+Depends: R (>= 3.6)
 Imports:
-    bioverbs (>= 0.2.5),
-    goalie (>= 0.3.5),
-    BiocGenerics,
-    GenomicRanges,
-    IRanges,
-    S4Vectors,
-    SummarizedExperiment,
+    bioverbs (>= 0.2.7),
+    goalie (>= 0.3.6),
+    BiocGenerics (>= 0.30),
+    GenomicRanges (>= 1.36),
+    IRanges (>= 2.18),
+    S4Vectors (>= 0.22),
+    SummarizedExperiment (>= 1.14),
     Matrix (>= 1.2),
     data.table (>= 1.12),
     tibble (>= 2.1),
@@ -37,10 +37,9 @@ Imports:
     stats
 Suggests:
     acidroxygen (>= 0.1),
-    acidtest (>= 0.2.2),
-    dplyr (>= 0.8),
+    acidtest (>= 0.2.4),
     patrick (>= 0.0.1),
-    testthat (>= 2.1),
+    testthat (>= 2.2),
     datasets
 Remotes:
     acidgenomics/acidroxygen,

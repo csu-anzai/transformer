@@ -1,4 +1,4 @@
-context("dplyr : join : Beatles vs. Stones")
+context("join : Beatles vs. Stones")
 
 ## nolint start
 ## Compare with `data.frame` objects:
@@ -12,8 +12,8 @@ y <- band_instruments
 rownames(y) <- y[["name"]]
 by <- "name"
 
-test_that("inner_join", {
-    object <- inner_join(x = x, y = y, by = by)
+test_that("innerJoin", {
+    object <- innerJoin(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("John", "Paul"),
         band = c("Beatles", "Beatles"),
@@ -23,8 +23,8 @@ test_that("inner_join", {
     expect_identical(object, expected)
 })
 
-test_that("left_join", {
-    object <- left_join(x = x, y = y, by = by)
+test_that("leftJoin", {
+    object <- leftJoin(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("Mick", "John", "Paul"),
         band = c("Stones", "Beatles", "Beatles"),
@@ -34,8 +34,8 @@ test_that("left_join", {
     expect_identical(object, expected)
 })
 
-test_that("right_join", {
-    object <- right_join(x = x, y = y, by = by)
+test_that("rightJoin", {
+    object <- rightJoin(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("John", "Paul", "Keith"),
         plays = c("guitar", "bass", "guitar"),
@@ -45,8 +45,8 @@ test_that("right_join", {
     expect_identical(object, expected)
 })
 
-test_that("full_join", {
-    object <- full_join(x = x, y = y, by = by)
+test_that("fullJoin", {
+    object <- fullJoin(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("Mick", "John", "Paul", "Keith"),
         band = c("Stones", "Beatles", "Beatles", NA),
@@ -56,8 +56,8 @@ test_that("full_join", {
     expect_identical(object, expected)
 })
 
-test_that("semi_join", {
-    object <- semi_join(x = x, y = y, by = by)
+test_that("semiJoin", {
+    object <- semiJoin(x = x, y = y, by = by)
     expected <- DataFrame(
         name = c("John", "Paul"),
         band = c("Beatles", "Beatles"),
@@ -66,8 +66,8 @@ test_that("semi_join", {
     expect_identical(object, expected)
 })
 
-test_that("anti_join", {
-    object <- anti_join(x = x, y = y, by = by)
+test_that("antiJoin", {
+    object <- antiJoin(x = x, y = y, by = by)
     expected <- DataFrame(
         name = "Mick",
         band = "Stones",
@@ -78,7 +78,7 @@ test_that("anti_join", {
 
 
 
-context("dplyr : join : left_join with bioinfo")
+context("join : bioinfo")
 
 test_that("Matched rows", {
     df1 <- DataFrame(
@@ -90,7 +90,7 @@ test_that("Matched rows", {
         treatment = as.factor(rep(x = c("control", "expt"), times = 2L))
     )
     expect_identical(
-        object = left_join(df1, df2, by = "id"),
+        object = leftJoin(df1, df2, by = "id"),
         expected = DataFrame(
             id = as.factor(seq(4L)),
             genotype = as.factor(rep(x = c("wt", "ko"), each = 2L)),
@@ -111,7 +111,7 @@ test_that("Unmatched rows", {
     ## Reverse the row order of df2.
     df2 <- df2[rev(seq_len(nrow(df2))), ]
     expect_identical(
-        object = left_join(df1, df2, by = "id"),
+        object = leftJoin(df1, df2, by = "id"),
         expected = DataFrame(
             id = as.factor(seq(4L)),
             genotype = as.factor(rep(x = c("wt", "ko"), each = 2L)),
@@ -130,7 +130,7 @@ test_that("Uneven rows", {
         treatment = as.factor(rep(x = c("control", "expt"), times = 1L))
     )
     expect_identical(
-        object = left_join(df1, df2, by = "id"),
+        object = leftJoin(df1, df2, by = "id"),
         expected = DataFrame(
             id = as.factor(seq(4L)),
             genotype = as.factor(rep(x = c("wt", "ko"), each = 2L)),

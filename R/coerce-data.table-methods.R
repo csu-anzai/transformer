@@ -3,6 +3,7 @@
 #' Coerce to `data.table`.
 #'
 #' @name coerce-data.table
+#'
 #' @inheritParams data.table::as.data.table
 #' @inheritParams acidroxygen::params
 #'
@@ -30,6 +31,8 @@
 #'
 #' See `getClass("data.table")` for details.
 #'
+#' @return `data.table`.
+#'
 #' @seealso [data.table::as.data.table()].
 #'
 #' @examples
@@ -53,51 +56,71 @@ NULL
 
 
 
-#' @rdname coerce-data.table
-#' @name as.data.table
-#' @importFrom data.table as.data.table
-#' @usage as.data.table(x, keep.rownames = FALSE, ...)
-#' @export
-NULL
-
-
-
-## Note that we're matching `as_tibble()` convention here, using "rowname" as
-## column for row names assignment. We also using similar internal assert checks
-## here, allowing atomic and/or list columns only.
-
-#' @rdname coerce-data.table
-#' @export
 ## Updated 2019-07-19.
-as.data.table.DataFrame <-  # nolint
-    function(x, keep.rownames = TRUE, ...) {  # nolint
-        x <- `.coerce,DataFrame,data.frame`(x)
-        if (!hasRownames(x)) {
-            keep.rownames <- FALSE  # nolint
-        }
-        as.data.table(x = x, keep.rownames = keep.rownames, ...)
+`coerce,ANY,data.table` <-  # nolint
+    function(from) {
+        as.data.table(from)
     }
 
 
-
-## The default handling from data.frame isn't clean, so add this.
-## Default method will warn: `Arguments in '...' ignored`.
-
-#' @rdname coerce-data.table
-#' @export
 ## Updated 2019-07-19.
-as.data.table.IPosRanges <-  # nolint
-    function(x, keep.rownames = TRUE, ...) {  # nolint
-        x <- as(x, "data.frame")
-        if (!hasRownames(x)) {
-            keep.rownames <- FALSE  # nolint
-        }
-        as.data.table(x = x, keep.rownames = keep.rownames, ...)
-    }
+`coerce,data.frame,data.table` <-  # nolint
+    `coerce,ANY,data.table`
 
 
 
 #' @rdname coerce-data.table
-#' @export
+#' @name coerce,data.frame,data.table-method
+setAs(
+    from = "data.frame",
+    to = "data.table",
+    def = `coerce,data.frame,data.table`
+)
+
+
+
+## Updated 2019-07-19.
+`coerce,DataFrame,data.table` <-  # nolint
+    `coerce,ANY,data.table`
+
+
+
+#' @rdname coerce-data.table
+#' @name coerce,DataFrame,data.table-method
+setAs(
+    from = "DataFrame",
+    to = "data.table",
+    def = `coerce,DataFrame,data.table`
+)
+
+
+
+## Updated 2019-07-19.
+`coerce,IPosRanges,data.table` <-  # nolint
+    `coerce,ANY,data.table`
+
+
+
+#' @rdname coerce-data.table
+#' @name coerce,IPosRanges,data.table-method
+setAs(
+    from = "IPosRanges",
+    to = "data.table",
+    def = `coerce,IPosRanges,data.table`
+)
+
+
+
 ## Updated 2019-07-20.
-as.data.table.GenomicRanges <- as.data.table.IPosRanges
+`coerce,GenomicRanges,data.table` <-  # nolint
+    `coerce,ANY,data.table`
+
+
+
+#' @rdname coerce-data.table
+#' @name coerce,GenomicRanges,data.table-method
+setAs(
+    from = "GenomicRanges",
+    to = "data.table",
+    def = `coerce,GenomicRanges,data.table`
+)

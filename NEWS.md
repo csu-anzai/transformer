@@ -1,3 +1,20 @@
+## transformer 0.2.5 (2019-08-26)
+
+### Major changes
+
+- Renamed dplyr-like generics into camel case: `innerJoin`, `leftJoin`,
+  `rightJoin`, `fullJoin`, `semiJoin`, `antiJoin`; `mutateAll`, `mutateAt`,
+  `mutateIf`; `selectIf`.
+- Reworked `mutate*` and `select*` verbs to use simple base R code internally,
+  and now methods are only defined for `DataFrame` class. This way we don't
+  run into any masking issues with dplyr, and we don't need to list it as a
+  suggested package.
+
+### Minor changes
+
+- Dropped support for `select_all` and `select_all`. These verbs don't really
+  make sense in the context of Bioconductor-related internal code.
+
 ## transformer 0.2.4 (2019-08-15)
 
 ### New functions

@@ -32,7 +32,7 @@ NULL
 #' @export
 relevel.DataFrame <-  # nolint
     function(x, ref = NULL, ...) {
-        ## > .Deprecated("droplevels")  # nolint
+        .Deprecated("droplevels")
         assert(is.null(ref))
         if (!hasRows(x) || !hasCols(x)) return(x)
         DataFrame(
@@ -60,7 +60,7 @@ relevel.DataFrame <-  # nolint
 #' @export
 relevel.Ranges <-  # nolint
     function(x, ref = NULL, ...) {
-        ## > .Deprecated("droplevels")  # nolint
+        .Deprecated("droplevels")
         assert(is.null(ref))
         if (!is.null(mcols(x))) {
             mcols <- mcols(x)
@@ -74,12 +74,22 @@ relevel.Ranges <-  # nolint
 #' @export
 relevel.SummarizedExperiment <-  # nolint
     function(x, ref = NULL, ...) {
-        ## > .Deprecated("droplevels")  # nolint
+        .Deprecated("droplevels")
         assert(is.null(ref))
         rowData(x) <- relevel(rowData(x))
         colData(x) <- relevel(colData(x))
         x
     }
+
+
+
+# v0.2.5 =======================================================================
+#' @rdname deprecated
+#' @export
+left_join <- function(...) {
+    .Deprecated("leftJoin")
+    leftJoin(...)
+}
 
 
 

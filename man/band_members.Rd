@@ -26,4 +26,4 @@ band_members
 \seealso{
 \code{help(topic = "band_members", package = "dplyr")}
 }
-\keyword{datasets}
+\keyword{internal}

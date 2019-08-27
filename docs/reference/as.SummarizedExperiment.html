@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Coerce to summarized experiment — coerce-SummarizedExperiment • transformer</title>
+<title>Coerce to summarized experiment — as.SummarizedExperiment • transformer</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,7 +34,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce to summarized experiment — coerce-SummarizedExperiment" />
+<meta property="og:title" content="Coerce to summarized experiment — as.SummarizedExperiment" />
 
 <meta property="og:description" content="Coerce to SummarizedExperiment." />
 <meta name="twitter:card" content="summary" />
@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -109,8 +109,8 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Coerce to summarized experiment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/coerce-SummarizedExperiment-S3methods.R'><code>R/coerce-SummarizedExperiment-S3methods.R</code></a></small>
-    <div class="hidden name"><code>coerce-SummarizedExperiment.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/transformer/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/transformer/blob/master/R/as.SummarizedExperiment-methods.R'><code>R/as.SummarizedExperiment-methods.R</code></a></small>
+    <div class="hidden name"><code>as.SummarizedExperiment.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -121,10 +121,10 @@
 
     <pre class="usage"><span class='fu'>as.SummarizedExperiment</span>(<span class='no'>x</span>)
 
-<span class='co'># S3 method for RangedSummarizedExperiment</span>
+<span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>as.SummarizedExperiment</span>(<span class='no'>x</span>)
 
-<span class='co'># S3 method for SummarizedExperiment</span>
+<span class='co'># S4 method for RangedSummarizedExperiment</span>
 <span class='fu'>as.SummarizedExperiment</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -136,13 +136,15 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>SummarizedExperiment</code>.</p>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Improved S3 methods for reliably coercing objects that extend
+    <p>Improved S4 methods for reliably coercing objects that extend
 <code>RangedSummarizedExperiment</code> to a standard <code>SummarizedExperiment</code>, that
 doesn't drop <code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>rowData()</a></code>.</p>
-<p>We can't set S4 coercion methods here because RangedSummarizedExperiment and
-SummarizedExperiment aren't local, modifiable.</p>
 <p>Related S4 coercion method of interest:</p><pre>getMethod(
     f = "coerce",
     signature = signature(
@@ -175,6 +177,8 @@ SummarizedExperiment aren't local, modifiable.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>

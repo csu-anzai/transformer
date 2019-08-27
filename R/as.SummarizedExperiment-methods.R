@@ -2,12 +2,9 @@
 #'
 #' Coerce to `SummarizedExperiment`.
 #'
-#' Improved S3 methods for reliably coercing objects that extend
+#' Improved S4 methods for reliably coercing objects that extend
 #' `RangedSummarizedExperiment` to a standard `SummarizedExperiment`, that
 #' doesn't drop [`rowData()`][SummarizedExperiment::rowData].
-#'
-#' We can't set S4 coercion methods here because RangedSummarizedExperiment and
-#' SummarizedExperiment aren't local, modifiable.
 #'
 #' Related S4 coercion method of interest:
 #'
@@ -22,9 +19,11 @@
 #' )
 #' ```
 #'
-#' @name coerce-SummarizedExperiment
+#' @name as.SummarizedExperiment
 #'
 #' @inheritParams acidroxygen::params
+#'
+#' @return `SummarizedExperiment`.
 #'
 #' @examples
 #' suppressPackageStartupMessages(library(SummarizedExperiment))
@@ -42,38 +41,44 @@ NULL
 
 
 
-#' @rdname coerce-SummarizedExperiment
-#' @export
-as.SummarizedExperiment <-  # nolint
-    function(x) {
-        UseMethod("as.SummarizedExperiment")
-    }
-
-
-
-#' @rdname coerce-SummarizedExperiment
-#' @export
-## Updated 2019-07-22.
-as.SummarizedExperiment.RangedSummarizedExperiment <-  # nolint
-    function(x) {
-        rowMeta <- metadata(rowRanges(x))
-        y <- x
-        y <- as(y, "RangedSummarizedExperiment")
-        y <- as(y, "SummarizedExperiment")
-        metadata(rowData(y)) <- rowMeta
-        y
-    }
-
-
-
-#' @rdname coerce-SummarizedExperiment
-#' @export
-## Updated 2019-07-22.
-as.SummarizedExperiment.SummarizedExperiment <-  # nolint
+## Updated 2019-08-23.
+`as.SummarizedExperiment,SummarizedExperiment` <-  # nolint
     function(x) {
         rowMeta <- metadata(rowData(x))
-        y <- x
-        y <- as(y, "SummarizedExperiment")
-        metadata(rowData(y)) <- rowMeta
-        y
+        x <- as(x, "SummarizedExperiment")
+        metadata(rowData(x)) <- rowMeta
+        x
     }
+
+
+
+#' @rdname as.SummarizedExperiment
+#' @export
+setMethod(
+    f = "as.SummarizedExperiment",
+    signature = signature("SummarizedExperiment"),
+    definition = `as.SummarizedExperiment,SummarizedExperiment`
+)
+
+
+
+
+## Updated 2019-08-23.
+`as.SummarizedExperiment,RangedSummarizedExperiment` <-  # nolint
+    function(x) {
+        rowMeta <- metadata(rowRanges(x))
+        x <- as(x, "RangedSummarizedExperiment")
+        x <- as(x, "SummarizedExperiment")
+        metadata(rowData(x)) <- rowMeta
+        x
+    }
+
+
+
+#' @rdname as.SummarizedExperiment
+#' @export
+setMethod(
+    f = "as.SummarizedExperiment",
+    signature = signature("RangedSummarizedExperiment"),
+    definition = `as.SummarizedExperiment,RangedSummarizedExperiment`
+)
