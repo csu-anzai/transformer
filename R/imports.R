@@ -12,8 +12,8 @@
 #' @importFrom SummarizedExperiment colData colData<- rowData rowData<-
 #'   rowRanges
 #' @importFrom goalie allAreAtomic areDisjointSets assert bapply hasCols
-#'   hasLength hasNames hasRows hasRownames isAny isCharacter isFlag isSubset
-#'   printString validNames
+#'   hasLength hasNames hasRows hasRownames isAny isCharacter isFlag isInt
+#'   isSubset printString validNames
 #' @importFrom methods as getMethod is setAs setMethod signature slotNames
 #'   validObject .hasSlot
 #' @importFrom stats na.omit
