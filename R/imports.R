@@ -7,8 +7,8 @@
 #' @importClassesFrom tibble tbl_df
 #'
 #' @importFrom IRanges end start width
-#' @importFrom S4Vectors DataFrame Rle as.data.frame decode mcols mcols<- merge
-#'   metadata metadata<-
+#' @importFrom S4Vectors DataFrame Rle as.data.frame cbind decode do.call mcols
+#'   mcols<- merge metadata metadata<-
 #' @importFrom SummarizedExperiment colData colData<- rowData rowData<-
 #'   rowRanges
 #' @importFrom goalie allAreAtomic areDisjointSets assert bapply hasCols
