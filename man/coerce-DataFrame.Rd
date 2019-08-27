@@ -6,6 +6,9 @@
 \alias{coerce,Matrix,DataFrame-method}
 \alias{coerce,tbl_df,DataFrame-method}
 \title{Coerce to data frame}
+\value{
+\code{DataFrame}.
+}
 \description{
 Coerce to \code{DataFrame}.
 }

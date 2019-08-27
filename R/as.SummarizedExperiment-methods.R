@@ -23,6 +23,8 @@
 #'
 #' @inheritParams acidroxygen::params
 #'
+#' @return `SummarizedExperiment`.
+#'
 #' @examples
 #' suppressPackageStartupMessages(library(SummarizedExperiment))
 #' data(RangedSummarizedExperiment, package = "acidtest")

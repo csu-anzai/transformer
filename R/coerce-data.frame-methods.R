@@ -3,8 +3,11 @@
 #' Coerce to `data.frame`.
 #'
 #' @name coerce-data.frame
+#'
 #' @inheritParams base::as.data.frame
 #' @inheritParams acidroxygen::params
+#'
+#' @return `data.frame`.
 #'
 #' @examples
 #' data(sparseMatrix, package = "acidtest")

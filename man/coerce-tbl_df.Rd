@@ -36,6 +36,9 @@ into this column and the \code{row.names} attribute is deleted.
 Read more in \link{rownames}.
 }}
 }
+\value{
+\code{tbl_df}.
+}
 \description{
 Coerce to \code{tbl_df}.
 }

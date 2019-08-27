@@ -3,6 +3,7 @@
 #' Coerce to `tbl_df`.
 #'
 #' @name coerce-tbl_df
+#'
 #' @inheritParams tibble::as_tibble
 #' @inheritParams acidroxygen::params
 #'
@@ -29,6 +30,8 @@
 #' See `getClass("tbl_df")` for details on how tibble is a virtual class.
 #'
 #' @seealso [tibble::as_tibble()].
+#'
+#' @return `tbl_df`.
 #'
 #' @examples
 #' data(DataFrame, GRanges, IRanges, package = "acidtest")

@@ -35,6 +35,9 @@ as.data.frame(x, row.names = NULL, optional = FALSE, ...)
 
 \item{...}{additional arguments to be passed to or from methods.}
 }
+\value{
+\code{data.frame}.
+}
 \description{
 Coerce to \code{data.frame}.
 }

@@ -17,6 +17,9 @@ as.SummarizedExperiment(x)
 \arguments{
 \item{x}{Object.}
 }
+\value{
+\code{SummarizedExperiment}.
+}
 \description{
 Coerce to \code{SummarizedExperiment}.
 }
