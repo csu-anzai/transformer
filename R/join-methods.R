@@ -1,6 +1,6 @@
 #' @name join
 #' @inherit bioverbs::join
-#' @note Updated 2019-08-26.
+#' @note Updated 2019-08-29.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -84,6 +84,7 @@ NULL
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
@@ -118,12 +119,14 @@ setMethod(
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)
         out <- out[order(out[[".idx"]]), , drop = FALSE]
+        ## FIXME This step is failing for our example...argh
         assert(identical(x[[".idx"]], out[[".idx"]]))
         if (hasRownames(x)) {
             rownames(out) <- rownames(x)
@@ -174,6 +177,7 @@ setMethod(
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
@@ -213,6 +217,7 @@ setMethod(
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
@@ -244,6 +249,7 @@ setMethod(
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
