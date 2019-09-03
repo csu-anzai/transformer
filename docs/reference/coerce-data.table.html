@@ -8,11 +8,13 @@
 
 <title>Coerce to data table — as.data.table • transformer</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -34,10 +36,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce to data table — as.data.table" />
 
+<meta property="og:title" content="Coerce to data table — as.data.table" />
 <meta property="og:description" content="Coerce to data.table." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -68,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
       </span>
     </div>
 
@@ -87,7 +90,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/acidgenomics/transformer">
@@ -114,9 +116,7 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Coerce to <code>data.table</code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>as.data.table</span>(<span class='no'>x</span>, <span class='kw'>keep.rownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
@@ -129,7 +129,7 @@
 
 <span class='co'># S3 method for GenomicRanges</span>
 <span class='fu'>as.data.table</span>(<span class='no'>x</span>, <span class='kw'>keep.rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -146,11 +146,10 @@
       <td><p>Additional arguments to be passed to or from other methods.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>data.table</code>.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Our defined methods attempt to improve on the defaults in the data.table
@@ -159,7 +158,6 @@ default for bioinformatics. This is accomplished by setting
 <code>keep.rownames = "rowname"</code> by default instead of <code>keep.rownames = NULL</code>.
 Note that we're manually defining the <code>"rowname"</code> column instead of using
 <code>TRUE</code>, to match the conventions used in our <code><a href='coerce-tbl_df.html'>as_tibble()</a></code> methods.</p>
-    
     <h2 class="hasAnchor" id="s-as-data-table-"><a class="anchor" href="#s-as-data-table-"></a>S3 <code>as.data.table()</code></h2>
 
     
@@ -171,7 +169,6 @@ support for these S4 classes:</p><ul>
 <li><p><code>GenomicRanges</code>.</p></li>
 </ul>
 
-    
     <h2 class="hasAnchor" id="s-as-"><a class="anchor" href="#s-as-"></a>S4 <code>as()</code></h2>
 
     
@@ -181,11 +178,9 @@ support for these S4 classes:</p><ul>
 S4 coercion method that allows us to use <code><a href='https://rdrr.io/r/methods/as.html'>as()</a></code> to coerce an
 object to a <code>data.table</code>.</p>
 <p>See <code>getClass("data.table")</code> for details.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/data.table/man/as.data.table.html'>data.table::as.data.table()</a></code>.</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>DataFrame</span>, <span class='no'>GRanges</span>, <span class='no'>IRanges</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
@@ -225,17 +220,11 @@ object to a <code>data.table</code>.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#s-as-data-table-">S3 <code>as.data.table()</code></a></li>
-
       <li><a href="#s-as-">S4 <code>as()</code></a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

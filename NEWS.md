@@ -1,4 +1,4 @@
-## transformer 0.2.6 (UNRELEASED)
+## transformer 0.2.6 (2019-09-03)
 
 ### Minor changes
 
