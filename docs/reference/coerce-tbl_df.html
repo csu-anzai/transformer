@@ -8,11 +8,13 @@
 
 <title>Coerce to tibble — as_tibble • transformer</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -34,10 +36,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Coerce to tibble — as_tibble" />
 
+<meta property="og:title" content="Coerce to tibble — as_tibble" />
 <meta property="og:description" content="Coerce to tbl_df." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -68,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">transformer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
       </span>
     </div>
 
@@ -87,7 +90,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/acidgenomics/transformer">
@@ -114,9 +116,7 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Coerce to <code>tbl_df</code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='co'># S3 method for DataFrame</span>
@@ -130,7 +130,7 @@
 <span class='co'># S3 method for GenomicRanges</span>
 <span class='fu'>as_tibble</span>(<span class='no'>x</span>, <span class='no'>...</span>,
   <span class='kw'>rownames</span> <span class='kw'>=</span> <span class='kw pkg'>pkgconfig</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pkgconfig/man/get_config.html'>get_config</a></span>(<span class='st'>"tibble::rownames"</span>, <span class='st'>"rowname"</span>))</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -154,18 +154,16 @@ Read more in <a href='https://rdrr.io/r/base/colnames.html'>rownames</a>.</p></l
 </ul></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>tbl_df</code>.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Our defined methods attempt to improve on the defaults in the tibble package
 to ensure that row names are not dropped by default, which is a poor default
 for bioinformatics. This is accomplished by setting <code>rownames = "rowname"</code> by
 default instead of <code>rownames = NULL</code>.</p>
-    
     <h2 class="hasAnchor" id="s-as-tibble-"><a class="anchor" href="#s-as-tibble-"></a>S3 <code>as_tibble()</code></h2>
 
     
@@ -177,7 +175,6 @@ these S4 classes:</p><ul>
 <li><p><code>GRanges</code>.</p></li>
 </ul>
 
-    
     <h2 class="hasAnchor" id="s-as-"><a class="anchor" href="#s-as-"></a>S4 <code>as()</code></h2>
 
     
@@ -187,11 +184,9 @@ these S4 classes:</p><ul>
 need to define an S4 coercion method that allows us to use
 <code><a href='https://rdrr.io/r/methods/as.html'>as()</a></code> to coerce an object to a tibble.</p>
 <p>See <code>getClass("tbl_df")</code> for details on how tibble is a virtual class.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>tibble::as_tibble()</a></code>.</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>DataFrame</span>, <span class='no'>GRanges</span>, <span class='no'>IRanges</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
@@ -231,17 +226,11 @@ need to define an S4 coercion method that allows us to use
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#s-as-tibble-">S3 <code>as_tibble()</code></a></li>
-
       <li><a href="#s-as-">S4 <code>as()</code></a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

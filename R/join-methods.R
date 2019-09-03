@@ -1,6 +1,6 @@
 #' @name join
 #' @inherit bioverbs::join
-#' @note Updated 2019-08-26.
+#' @note Updated 2019-09-03.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -84,6 +84,7 @@ NULL
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
@@ -118,6 +119,7 @@ setMethod(
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
@@ -174,6 +176,7 @@ setMethod(
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
@@ -213,6 +216,7 @@ setMethod(
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )
@@ -244,6 +248,7 @@ setMethod(
         assert(
             isSubset(by, colnames(x)),
             isSubset(by, colnames(y)),
+            areDisjointSets(setdiff(colnames(x), by), setdiff(colnames(y), by)),
             areDisjointSets(c(".idx", ".idy"), colnames(x)),
             areDisjointSets(c(".idx", ".idy"), colnames(y))
         )

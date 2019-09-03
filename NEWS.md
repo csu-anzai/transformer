@@ -1,3 +1,9 @@
+## transformer 0.2.6 (2019-09-03)
+
+### Minor changes
+
+- `mutateAll`: Bug fix that improves column creation with `DataFrame`.
+
 ## transformer 0.2.5 (2019-08-26)
 
 ### Major changes

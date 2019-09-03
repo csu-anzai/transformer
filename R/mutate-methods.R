@@ -1,6 +1,6 @@
 #' @name mutate
 #' @inherit bioverbs::mutate
-#' @note Updated 2019-08-26.
+#' @note Updated 2019-09-02.
 #'
 #' @inheritParams acidroxygen::params
 #'
@@ -55,21 +55,12 @@ NULL
 
 
 
-## nolint start
-## These approaches don't work well with nested list columns (e.g. PANTHER):
-## > DataFrame(list, row.names = rownames(object))
-## > as(list, "DataFrame")
-## nolint end
-
 `mutateAll,DataFrame` <-  # nolint
     function(object, fun, ...) {
         assert(allAreAtomic(object))
         list <- lapply(X = object, FUN = fun, ...)
         assert(isInt(unique(unlist(lapply(list, length)))))
-        DataFrame(
-            do.call(what = cbind, args = list),
-            row.names = rownames(object)
-        )
+        DataFrame(list, row.names = rownames(object))
     }
 
 
