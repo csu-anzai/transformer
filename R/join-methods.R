@@ -1,6 +1,6 @@
 #' @name join
 #' @inherit bioverbs::join
-#' @note Updated 2019-08-29.
+#' @note Updated 2019-09-03.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -126,7 +126,6 @@ setMethod(
         x[[".idx"]] <- seq_len(nrow(x))
         out <- merge(x = x, y = y, by = by, all.x = TRUE, sort = FALSE)
         out <- out[order(out[[".idx"]]), , drop = FALSE]
-        ## FIXME This step is failing for our example...argh
         assert(identical(x[[".idx"]], out[[".idx"]]))
         if (hasRownames(x)) {
             rownames(out) <- rownames(x)
